@@ -67,7 +67,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/trash"
         android:layout_width="219dp"
         android:layout_height="215dp"
         android:layout_gravity="center"
@@ -79,28 +79,31 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/imageButton6"
+            android:id="@+id/paper"
             android:layout_width="100dp"
             android:layout_height="140dp"
             android:layout_gravity="start"
             android:layout_weight="1"
-            android:background="@drawable/paper" />
+            android:background="@drawable/paper"
+            android:onClick="paper"/>
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/metal"
             android:layout_width="100dp"
             android:layout_height="140dp"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
-            android:background="@drawable/metal" />
+            android:background="@drawable/metal"
+            android:onClick="metal"/>
 
         <ImageButton
-            android:id="@+id/imageButton7"
+            android:id="@+id/glass"
             android:layout_width="100dp"
             android:layout_height="140dp"
             android:layout_gravity="end"
             android:layout_weight="1"
-            android:background="@drawable/glass" />
+            android:background="@drawable/glass"
+            android:onClick="glass" />
 
     </LinearLayout>
 
@@ -111,28 +114,31 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/plastic"
             android:layout_width="100dp"
             android:layout_height="140dp"
             android:layout_weight="1"
             android:layout_gravity="start"
-            android:background="@drawable/plastic" />
+            android:background="@drawable/plastic"
+            android:onClick="plastic"/>
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/organic"
             android:layout_width="100dp"
             android:layout_height="140dp"
             android:layout_weight="1"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/organic" />
+            android:background="@drawable/organic"
+            android:onClick="organic"/>
 
         <ImageButton
-            android:id="@+id/imageButton5"
+            android:id="@+id/notrecycle"
             android:layout_width="100dp"
             android:layout_height="140dp"
             android:layout_weight="1"
             android:layout_gravity="end"
-            android:background="@drawable/notrecycle" />
+            android:background="@drawable/notrecycle"
+            android:onClick="notrecycle"/>
 
     </LinearLayout>
 
