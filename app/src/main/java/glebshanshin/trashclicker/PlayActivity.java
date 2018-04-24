@@ -16,8 +16,7 @@ public class PlayActivity extends Activity {
     ImageView trash;
     TextView TSH,TSHs;
     int Adder=1;
-    int counter=9;
-
+    String tsh="         0";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +28,7 @@ public class PlayActivity extends Activity {
         trash= findViewById(R.id.trash);
         TSH=findViewById(R.id.TSH);
         TSHs=findViewById(R.id.TSHs);
+        TSH.setText(tsh);
         newTrash();
     }
     public void toMenu(View view) {
@@ -37,9 +37,11 @@ public class PlayActivity extends Activity {
         finish();
     }
     public void increaseTSH(){
-        String newa=""+(Integer.parseInt(((String) TSH.getText()).replaceAll(" ",""))+Adder);
+        String newa=""+(Integer.parseInt(tsh.replaceAll(" ",""))+Adder);
         String prefix=new String(new char[10-newa.length()]).replace("\0", " ");
-        TSH.setText(prefix+newa);
+        tsh=prefix+newa;
+        TSH.setText(tsh);
+
     }
     public void newTrash(){
         String id = ""+((int)(Math.random()*16)+1);
@@ -59,7 +61,7 @@ public class PlayActivity extends Activity {
             return "notrecycle";
         }
         else if ((id1>=9)&(id1<=9)){
-            return "notrecycle";
+            return "organic";
         }
         else if ((id1>=10)&(id1<=13)){
             return "paper";

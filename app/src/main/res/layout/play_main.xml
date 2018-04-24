@@ -42,7 +42,6 @@
                 android:layout_height="38dp"
                 android:layout_gravity="start"
                 android:layout_weight="1"
-                android:text="         0"
                 android:textColor="#000000"
                 android:textSize="27dp"
                 app:font_name="nyeti.ttf" />
