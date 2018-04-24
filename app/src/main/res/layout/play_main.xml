@@ -37,7 +37,7 @@
                 android:layout_weight="1" />
 
             <io.gloxey.cfv.CFTextView
-                android:id="@+id/textView3"
+                android:id="@+id/TSH"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
                 android:layout_gravity="start"
@@ -48,7 +48,7 @@
                 app:font_name="nyeti.ttf" />
 
             <io.gloxey.cfv.CFTextView
-                android:id="@+id/textView"
+                android:id="@+id/TSHs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -70,8 +70,7 @@
         android:id="@+id/trash"
         android:layout_width="219dp"
         android:layout_height="215dp"
-        android:layout_gravity="center"
-        android:background="@drawable/eggcont" />
+        android:layout_gravity="center" />
 
     <LinearLayout
         android:layout_width="match_parent"

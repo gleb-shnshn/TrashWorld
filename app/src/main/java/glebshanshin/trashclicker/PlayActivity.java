@@ -8,11 +8,15 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class PlayActivity extends Activity {
     private String choice,tag;
     ImageView trash;
+    TextView TSH,TSHs;
+    int Adder=1;
+    int counter=9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +27,19 @@ public class PlayActivity extends Activity {
 
         setContentView(R.layout.play_main);
         trash= findViewById(R.id.trash);
+        TSH=findViewById(R.id.TSH);
+        TSHs=findViewById(R.id.TSHs);
         newTrash();
-        tag="paper";
     }
     public void toMenu(View view) {
         Intent intent1 = new Intent(PlayActivity.this, MainActivity.class);
         startActivity(intent1);
+        finish();
+    }
+    public void increaseTSH(){
+        String newa=""+(Integer.parseInt(((String) TSH.getText()).replaceAll(" ",""))+Adder);
+        String prefix=new String(new char[10-newa.length()]).replace("\0", " ");
+        TSH.setText(prefix+newa);
     }
     public void newTrash(){
         String id = ""+((int)(Math.random()*16)+1);
@@ -37,7 +48,28 @@ public class PlayActivity extends Activity {
     }
 
     private String getTag(String id) {
-        return "none";
+        int id1=Integer.parseInt(id);
+        if ((id1>=1)&(id1<=3)){
+            return "glass";
+        }
+        else if ((id1>=4)&(id1<=5)){
+            return "metal";
+        }
+        else if ((id1>=6)&(id1<=8)){
+            return "notrecycle";
+        }
+        else if ((id1>=9)&(id1<=9)){
+            return "notrecycle";
+        }
+        else if ((id1>=10)&(id1<=13)){
+            return "paper";
+        }
+        else if ((id1>=14)&(id1<=16)){
+            return "plastic";
+        }
+        else{
+            return "none";
+        }
     }
 
     public void notrecycle(View view) {
@@ -70,11 +102,14 @@ public class PlayActivity extends Activity {
         game();
     }
     public void game() {
-        if (tag==choice)
-            Toast.makeText(this,"Правильно",Toast.LENGTH_SHORT).show();
+        if (tag==choice) {
+            Toast.makeText(this, "Правильно", Toast.LENGTH_SHORT).show();
+            increaseTSH();
+        }
         else
             Toast.makeText(this,"неПравильно",Toast.LENGTH_SHORT).show();
         choice="null";
+        newTrash();
     }
 
 

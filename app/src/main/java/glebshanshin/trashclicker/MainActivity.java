@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
     public void toStart(View view) {
         Intent intent = new Intent(MainActivity.this, PlayActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void toExit(View view) {
