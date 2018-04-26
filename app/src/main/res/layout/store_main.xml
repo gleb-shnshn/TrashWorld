@@ -14,7 +14,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="60dp" />
+        android:layout_height="60dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,6 +29,41 @@
             android:layout_width="111dp"
             android:layout_height="111dp"
             android:background="@drawable/man" />
+
+        <LinearLayout
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <io.gloxey.cfv.CFTextView
+                android:id="@+id/TSHs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="У вас сейчас 0"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:font_name="brody.ttf" />
+            <io.gloxey.cfv.CFEditText
+                android:id="@+id/editText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:layout_gravity="center_horizontal"
+                app:font_name="brody.ttf"
+                android:hint="Введите сколько вам\n надо и нажмите\n купить"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/butstore" />
 
     </LinearLayout>
 
@@ -45,6 +80,40 @@
             android:layout_width="111dp"
             android:layout_height="111dp"
             android:background="@drawable/car"  />
+        <LinearLayout
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <io.gloxey.cfv.CFTextView
+                android:id="@+id/TSHs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="У вас сейчас 0"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:font_name="brody.ttf" />
+            <io.gloxey.cfv.CFEditText
+                android:id="@+id/editText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:layout_gravity="center_horizontal"
+                app:font_name="brody.ttf"
+                android:hint="Введите сколько вам\n надо и нажмите\n купить"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/butstore" />
     </LinearLayout>
 
     <LinearLayout
@@ -60,6 +129,40 @@
             android:layout_width="111dp"
             android:layout_height="111dp"
             android:background="@drawable/robot" />
+        <LinearLayout
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <io.gloxey.cfv.CFTextView
+                android:id="@+id/TSHs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="У вас сейчас 0"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:font_name="brody.ttf" />
+            <io.gloxey.cfv.CFEditText
+                android:id="@+id/editText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:layout_gravity="center_horizontal"
+                app:font_name="brody.ttf"
+                android:hint="Введите сколько вам\n надо и нажмите\n купить"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/butstore" />
     </LinearLayout>
 
     <LinearLayout
@@ -74,5 +177,39 @@
             android:layout_width="111dp"
             android:layout_height="111dp"
             android:background="@drawable/factory" />
+        <LinearLayout
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <io.gloxey.cfv.CFTextView
+                android:id="@+id/TSHs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="У вас сейчас 0"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:font_name="brody.ttf" />
+            <io.gloxey.cfv.CFEditText
+                android:id="@+id/editText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:layout_gravity="center_horizontal"
+                app:font_name="brody.ttf"
+                android:hint="Введите сколько вам\n надо и нажмите\n купить"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/butstore" />
     </LinearLayout>
 </LinearLayout>
