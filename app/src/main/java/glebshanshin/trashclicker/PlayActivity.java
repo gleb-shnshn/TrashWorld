@@ -46,7 +46,7 @@ public class PlayActivity extends Activity {
     public void newTrash(){
         String id = ""+((int)(Math.random()*16)+1);
         tag=getTag(id);
-        trash.setImageDrawable(getDrawable(getResources().getIdentifier("trash"+id , "drawable", getPackageName())));
+        trash.setImageDrawable(getDrawable(getResources().getIdentifier("trash"+id , "trash", getPackageName())));
     }
 
     private String getTag(String id) {
