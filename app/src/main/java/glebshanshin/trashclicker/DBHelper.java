@@ -25,17 +25,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String query = CREATE_TABLE;
         db.execSQL(query);
-        getData(db);
-    }
-
-    private void getData(SQLiteDatabase db) {
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            System.out.println(cursor.getString(1));
-            cursor.moveToNext();
-        }
-        cursor.close();
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
