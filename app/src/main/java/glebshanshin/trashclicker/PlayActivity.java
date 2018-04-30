@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -115,5 +114,9 @@ public class PlayActivity extends Activity {
     }
 
 
-
+    public void toStore(View view) {
+        Intent intent = new Intent(PlayActivity.this, StoreActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

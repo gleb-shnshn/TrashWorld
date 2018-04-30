@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity"
+    tools:context=".StoreActivity"
     android:orientation="vertical">
 
 
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingBottom="@dimen/activity_vertical_margin"
-        tools:context=".MainActivity">
+        tools:context=".StoreActivity">
 
 
         <ImageView
@@ -37,12 +37,22 @@
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/textman"
                 android:layout_width="wrap_content"
-                android:layout_height="63dp"
+                android:layout_height="33dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:text="У вас сейчас\n   0/100"
                 android:textColor="#000000"
                 android:textSize="20dp"
+                app:font_name="brody.ttf" />
+
+            <io.gloxey.cfv.CFTextView
+                android:layout_width="wrap_content"
+                android:layout_height="12dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="+1 TSH в секунду"
+                android:textColor="#000000"
+                android:textSize="18dp"
                 app:font_name="brody.ttf" />
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/text2man"
@@ -59,10 +69,12 @@
         </LinearLayout>
 
         <ImageButton
+            android:id="@+id/buyman"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/butstore" />
+            android:background="@drawable/butstore"
+            android:onClick="buyMan" />
 
     </LinearLayout>
 
@@ -86,13 +98,24 @@
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/textcar"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="33dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:text="У вас сейчас\n   0/100"
                 android:textColor="#000000"
                 android:textSize="20dp"
                 app:font_name="brody.ttf" />
+
+            <io.gloxey.cfv.CFTextView
+                android:layout_width="wrap_content"
+                android:layout_height="12dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="+10 TSH в секунду"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                app:font_name="brody.ttf" />
+
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/text2car"
                 android:layout_width="wrap_content"
@@ -108,10 +131,12 @@
         </LinearLayout>
 
         <ImageButton
+            android:id="@+id/buycar"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/butstore" />
+            android:background="@drawable/butstore"
+            android:onClick="buyCar" />
     </LinearLayout>
 
     <LinearLayout
@@ -134,13 +159,24 @@
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/textrobot"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="33dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:text="У вас сейчас\n   0/100"
                 android:textColor="#000000"
                 android:textSize="20dp"
                 app:font_name="brody.ttf" />
+
+            <io.gloxey.cfv.CFTextView
+                android:layout_width="wrap_content"
+                android:layout_height="12dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="+50 TSH в секунду"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                app:font_name="brody.ttf" />
+
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/text2robot"
                 android:layout_width="wrap_content"
@@ -156,9 +192,11 @@
         </LinearLayout>
 
         <ImageButton
+            android:id="@+id/buyrobot"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_gravity="center_vertical"
+            android:onClick="buyRobot"
             android:background="@drawable/butstore" />
     </LinearLayout>
 
@@ -181,13 +219,24 @@
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/textfactory"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="33dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:text="У вас сейчас\n   0/100"
                 android:textColor="#000000"
                 android:textSize="20dp"
                 app:font_name="brody.ttf" />
+
+            <io.gloxey.cfv.CFTextView
+                android:layout_width="wrap_content"
+                android:layout_height="12dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="+100 TSH в секунду"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                app:font_name="brody.ttf" />
+
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/text2factory"
                 android:layout_width="wrap_content"
@@ -203,8 +252,10 @@
         </LinearLayout>
 
         <ImageButton
+            android:id="@+id/buyfactory"
             android:layout_width="70dp"
             android:layout_height="70dp"
+            android:onClick="buyFactory"
             android:layout_gravity="center_vertical"
             android:background="@drawable/butstore" />
     </LinearLayout>
