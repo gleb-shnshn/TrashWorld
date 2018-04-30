@@ -116,6 +116,7 @@ public class PlayActivity extends Activity {
 
     public void toStore(View view) {
         Intent intent = new Intent(PlayActivity.this, StoreActivity.class);
+        intent.putExtra("TSH", TSH+"");
         startActivity(intent);
         finish();
     }
