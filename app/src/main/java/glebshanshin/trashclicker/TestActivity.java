@@ -25,11 +25,12 @@ public class TestActivity extends Activity {
         tv= findViewById(R.id.tv);
         dbHelper= new DBHelper(this);
         db=dbHelper.getWritableDatabase();
+        update(db,0,0,0,0,0);
         //insert(db);
-        cursor = db.query("Data",null,null,null,null,null,null);
+        /*cursor = db.query("Data",null,null,null,null,null,null);
         cursor.moveToFirst();
         tv.setText(cursor.getCount()+"");
-        /*int TSH=Integer.parseInt(cursor.getString(1));
+        int TSH=Integer.parseInt(cursor.getString(1));
         int man=Integer.parseInt(cursor.getString(2));
         int car=Integer.parseInt(cursor.getString(3));
         int robot=Integer.parseInt(cursor.getString(4));

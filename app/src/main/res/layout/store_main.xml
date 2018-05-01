@@ -42,7 +42,7 @@
                 android:layout_weight="1" />
 
             <io.gloxey.cfv.CFTextView
-                android:id="@+id/textView"
+                android:id="@+id/TSH"
                 android:layout_width="230dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
