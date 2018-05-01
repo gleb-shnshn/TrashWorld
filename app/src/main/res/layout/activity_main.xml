@@ -34,7 +34,8 @@
         android:layout_height="64dp"
         android:layout_alignStart="@+id/button2"
         android:layout_centerVertical="true"
-        android:background="@color/alpha1" />
+        android:background="@color/alpha1"
+        android:onClick="toAchievements" />
 
     <Button
         android:id="@+id/button3"

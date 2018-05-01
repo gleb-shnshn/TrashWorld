@@ -24,6 +24,10 @@
             android:name=".StoreActivity"
             android:label=".StoreActivity" >
         </activity>
+        <activity
+            android:name=".AchievementsActivity"
+            android:label=".AchievementsActivity" >
+        </activity>
     </application>
 
 </manifest>

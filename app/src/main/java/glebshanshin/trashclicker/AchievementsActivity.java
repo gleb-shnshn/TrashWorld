@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-public class TestActivity2 extends Activity {
+public class AchievementsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,3 +16,4 @@ public class TestActivity2 extends Activity {
     }
 
 }
+

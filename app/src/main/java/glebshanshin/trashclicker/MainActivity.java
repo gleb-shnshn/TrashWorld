@@ -28,4 +28,10 @@ public class MainActivity extends Activity {
     public void toExit(View view) {
         finish();
     }
+
+    public void toAchievements(View view) {
+        Intent intent = new Intent(MainActivity.this, AchievementsActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
