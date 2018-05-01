@@ -1,7 +1,10 @@
 package glebshanshin.trashclicker;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -11,24 +14,52 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class PlayActivity extends Activity {
+    int factory,robot,car,man,TSH;
+    DBHelper dbHelper;
+    Cursor cursor;
+    SQLiteDatabase db;
     private String choice,tag;
     ImageView trash;
-    TextView TSH,TSHs;
+    TextView TSHv,TSHsv;
     int Adder=1;
-    String tsh="         0";
+    String tsh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+        dbHelper= new DBHelper(this);
+        db=dbHelper.getWritableDatabase();
+        init(db);
         setContentView(R.layout.play_main);
         trash= findViewById(R.id.trash);
-        TSH=findViewById(R.id.TSH);
-        TSHs=findViewById(R.id.TSHs);
-        TSH.setText(tsh);
+        TSHv=findViewById(R.id.TSH);
+        TSHsv=findViewById(R.id.TSHs);
+        String newa=""+TSH;
+        String prefix=new String(new char[10-newa.length()]).replace("\0", " ");
+        tsh=prefix+newa;
+        TSHv.setText(tsh);
         newTrash();
+    }
+    private void update(SQLiteDatabase db) {
+        ContentValues newValues = new ContentValues();
+        newValues.put("TSH",TSH);
+        newValues.put("man",man);
+        newValues.put("car",car);
+        newValues.put("robot",robot);
+        newValues.put("factory",factory);
+        db.update("Data", newValues,"_id = 1",null);
+    }
+    public void init(SQLiteDatabase db){
+        cursor = db.query("Data",null,null,null,null,null,null);
+        cursor.moveToFirst();
+        TSH=Integer.parseInt(cursor.getString(1));
+        man=Integer.parseInt(cursor.getString(2));
+        car=Integer.parseInt(cursor.getString(3));
+        robot=Integer.parseInt(cursor.getString(4));
+        factory=Integer.parseInt(cursor.getString(5));
+        cursor.close();
     }
     public void toMenu(View view) {
         Intent intent1 = new Intent(PlayActivity.this, MainActivity.class);
@@ -39,13 +70,14 @@ public class PlayActivity extends Activity {
         String newa=""+(Integer.parseInt(tsh.replaceAll(" ",""))+Adder);
         String prefix=new String(new char[10-newa.length()]).replace("\0", " ");
         tsh=prefix+newa;
-        TSH.setText(tsh);
+        TSH+=Adder;
+        TSHv.setText(tsh);
 
     }
     public void newTrash(){
         String id = ""+((int)(Math.random()*16)+1);
         tag=getTag(id);
-        trash.setImageDrawable(getDrawable(getResources().getIdentifier("trash"+id , "trash", getPackageName())));
+        trash.setImageDrawable(getDrawable(getResources().getIdentifier("trash"+id , "drawable", getPackageName())));
     }
 
     private String getTag(String id) {
@@ -115,8 +147,8 @@ public class PlayActivity extends Activity {
 
 
     public void toStore(View view) {
+        update(db);
         Intent intent = new Intent(PlayActivity.this, StoreActivity.class);
-        intent.putExtra("TSH", TSH+"");
         startActivity(intent);
         finish();
     }

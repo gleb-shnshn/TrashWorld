@@ -12,9 +12,47 @@
     android:orientation="vertical">
 
 
-    <Space
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"/>
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@color/alpha1"
+            android:onClick="toPlay" />
+
+        <Space
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="230dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="27dp"
+                android:layout_weight="1" />
+
+            <io.gloxey.cfv.CFTextView
+                android:id="@+id/textView"
+                android:layout_width="230dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="           0"
+                android:textColor="@color/blue"
+                android:textSize="30sp"
+                app:font_name="nyeti.ttf" />
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
