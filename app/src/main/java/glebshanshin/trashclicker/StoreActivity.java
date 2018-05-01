@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 public class StoreActivity extends Activity{
     int factory,robot,car,man,TSH;
+    int organicc,plasticc,metalc,glassc,notrecyclec,paperc,mistakes;
     SQLiteDatabase db;
     DBHelper dbHelper;
     Cursor cursor;
@@ -88,6 +89,23 @@ public class StoreActivity extends Activity{
         tsh=prefix+newa;
         TSHv.setText(tsh);
     }
+    private void update(SQLiteDatabase db) {
+        ContentValues newValues = new ContentValues();
+        newValues.put("TSH",TSH);
+        newValues.put("man",man);
+        newValues.put("car",car);
+        newValues.put("robot",robot);
+        newValues.put("factory",factory);
+
+        newValues.put("paper",paperc);
+        newValues.put("plastic",plasticc);
+        newValues.put("metal",metalc);
+        newValues.put("organic",organicc);
+        newValues.put("notrecycle",notrecyclec);
+        newValues.put("glass", glassc);
+        newValues.put("mistakes",mistakes);
+        db.update("Data", newValues,"_id = 1",null);
+    }
     public void init(SQLiteDatabase db){
         cursor = db.query("Data",null,null,null,null,null,null);
         cursor.moveToFirst();
@@ -96,6 +114,13 @@ public class StoreActivity extends Activity{
         car=Integer.parseInt(cursor.getString(3));
         robot=Integer.parseInt(cursor.getString(4));
         factory=Integer.parseInt(cursor.getString(5));
+        paperc=Integer.parseInt(cursor.getString(6));
+        plasticc=Integer.parseInt(cursor.getString(7));
+        metalc=Integer.parseInt(cursor.getString(8));
+        organicc=Integer.parseInt(cursor.getString(9));
+        notrecyclec=Integer.parseInt(cursor.getString(10));
+        glassc=Integer.parseInt(cursor.getString(11));
+        mistakes=Integer.parseInt(cursor.getString(12));
         cursor.close();
         priceman=findViewById(R.id.text2man);
         pricecar=findViewById(R.id.text2car);
@@ -158,20 +183,12 @@ public class StoreActivity extends Activity{
             toast();
         }
     }
-    private void update(SQLiteDatabase db) {
-        ContentValues newValues = new ContentValues();
-        newValues.put("TSH",TSH);
-        newValues.put("man",man);
-        newValues.put("car",car);
-        newValues.put("robot",robot);
-        newValues.put("factory",factory);
-        db.update("Data", newValues,"_id = 1",null);
-    }
 
 
     public void toPlay(View view) {
         Intent intent = new Intent(StoreActivity.this, PlayActivity.class);
         startActivity(intent);
         update(db);
+        finish();
     }
 }

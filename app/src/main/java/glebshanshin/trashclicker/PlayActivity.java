@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 public class PlayActivity extends Activity {
     int factory,robot,car,man,TSH;
+    int organicc,plasticc,metalc,glassc,notrecyclec,paperc,mistakes;
     DBHelper dbHelper;
     Cursor cursor;
     SQLiteDatabase db;
@@ -49,6 +50,14 @@ public class PlayActivity extends Activity {
         newValues.put("car",car);
         newValues.put("robot",robot);
         newValues.put("factory",factory);
+
+        newValues.put("paper",paperc);
+        newValues.put("plastic",plasticc);
+        newValues.put("metal",metalc);
+        newValues.put("organic",organicc);
+        newValues.put("notrecycle",notrecyclec);
+        newValues.put("glass", glassc);
+        newValues.put("mistakes",mistakes);
         db.update("Data", newValues,"_id = 1",null);
     }
     public void init(SQLiteDatabase db){
@@ -59,11 +68,19 @@ public class PlayActivity extends Activity {
         car=Integer.parseInt(cursor.getString(3));
         robot=Integer.parseInt(cursor.getString(4));
         factory=Integer.parseInt(cursor.getString(5));
+        paperc=Integer.parseInt(cursor.getString(6));
+        plasticc=Integer.parseInt(cursor.getString(7));
+        metalc=Integer.parseInt(cursor.getString(8));
+        organicc=Integer.parseInt(cursor.getString(9));
+        notrecyclec=Integer.parseInt(cursor.getString(10));
+        glassc=Integer.parseInt(cursor.getString(11));
+        mistakes=Integer.parseInt(cursor.getString(12));
         cursor.close();
     }
     public void toMenu(View view) {
         Intent intent1 = new Intent(PlayActivity.this, MainActivity.class);
         startActivity(intent1);
+        update(db);
         finish();
     }
     public void increaseTSH(){
@@ -136,13 +153,32 @@ public class PlayActivity extends Activity {
     }
     public void game() {
         if (tag==choice) {
-            Toast.makeText(this, "Правильно", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Правильно", Toast.LENGTH_SHORT).show();
             increaseTSH();
+            incCounter(choice);
         }
         else
             Toast.makeText(this,"неПравильно",Toast.LENGTH_SHORT).show();
+            mistakes++;
         choice="null";
         newTrash();
+    }
+
+    private void incCounter(String choice) {
+        switch (choice){
+            case "paper":
+                paperc++;
+            case "plastic":
+                plasticc++;
+            case "metal":
+                metalc++;
+            case "notrecycle":
+                notrecyclec++;
+            case "organic":
+                organicc++;
+            case "glass":
+                glassc++;
+        }
     }
 
 
