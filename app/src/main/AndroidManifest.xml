@@ -9,25 +9,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".PlayActivity"
-            android:label=".PlayActivity" >
-        </activity>
+            android:label=".PlayActivity" />
         <activity
             android:name=".StoreActivity"
-            android:label=".StoreActivity" >
-        </activity>
+            android:label=".StoreActivity" />
         <activity
             android:name=".AchievementsActivity"
-            android:label=".AchievementsActivity" >
-        </activity>
+            android:label=".AchievementsActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label=".SettingsActivity" />
+        <activity
+            android:name=".StatisticsActivity"
+            android:label=".StatisticsActivity"/>
     </application>
 
 </manifest>

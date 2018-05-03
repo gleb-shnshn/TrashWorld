@@ -157,9 +157,10 @@ public class PlayActivity extends Activity {
             increaseTSH();
             incCounter(choice);
         }
-        else
-            Toast.makeText(this,"неПравильно",Toast.LENGTH_SHORT).show();
+        else {
+            Toast.makeText(this, "неПравильно", Toast.LENGTH_SHORT).show();
             mistakes++;
+        }
         choice="null";
         newTrash();
     }
@@ -168,16 +169,22 @@ public class PlayActivity extends Activity {
         switch (choice){
             case "paper":
                 paperc++;
+                break;
             case "plastic":
                 plasticc++;
+                break;
             case "metal":
                 metalc++;
+                break;
             case "notrecycle":
                 notrecyclec++;
+                break;
             case "organic":
                 organicc++;
+                break;
             case "glass":
                 glassc++;
+                break;
         }
     }
 

@@ -34,4 +34,10 @@ public class MainActivity extends Activity {
         startActivity(intent);
         finish();
     }
+
+    public void toSettings(View view) {
+        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

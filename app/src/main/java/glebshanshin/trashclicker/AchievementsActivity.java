@@ -1,7 +1,6 @@
 package glebshanshin.trashclicker;
 
 import android.app.Activity;
-import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -10,9 +9,9 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 public class AchievementsActivity extends Activity {
-    ImageView carb,factoryb,glassb,manb,metalb,notrecycleb,organicb,paperb,plasticb,robotb,trashb,carg,factoryg,glassg,mang,metalg,notrecycleg,organicg,paperg,plasticg,robotg,trashg,cars,factorys,glasss,mans,metals,notrecycles,organics,papers,plastics,robots,trashs;
+    ImageView mistakes,mistakeb,mistakeg,carb,factoryb,glassb,manb,metalb,notrecycleb,organicb,paperb,plasticb,robotb,trashb,carg,factoryg,glassg,mang,metalg,notrecycleg,organicg,paperg,plasticg,robotg,trashg,cars,factorys,glasss,mans,metals,notrecycles,organics,papers,plastics,robots,trashs;
     int factory,robot,car,man;
-    int organicc,plasticc,metalc,glassc,notrecyclec,paperc,mistakes,trash;
+    int organicc,plasticc,metalc,glassc,notrecyclec,paperc,mistake,trash;
     DBHelper dbHelper;
     Cursor cursor;
     SQLiteDatabase db;
@@ -42,7 +41,7 @@ public class AchievementsActivity extends Activity {
         organicc=Integer.parseInt(cursor.getString(9));
         notrecyclec=Integer.parseInt(cursor.getString(10));
         glassc=Integer.parseInt(cursor.getString(11));
-        mistakes=Integer.parseInt(cursor.getString(12));
+        mistake=Integer.parseInt(cursor.getString(12));
         cursor.close();
         trash=plasticc+paperc+metalc+organicc+notrecyclec+glassc;
     }
@@ -51,7 +50,7 @@ public class AchievementsActivity extends Activity {
             manb.setImageDrawable(getDrawable(R.drawable.manb));
             if (man>=10) {
                 mans.setImageDrawable(getDrawable(R.drawable.mans));
-                if (man==100)
+                if (man>=100)
                     mang.setImageDrawable(getDrawable(R.drawable.mang));
             }
         }
@@ -59,7 +58,7 @@ public class AchievementsActivity extends Activity {
             carb.setImageDrawable(getDrawable(R.drawable.carb));
             if (car>=10) {
                 cars.setImageDrawable(getDrawable(R.drawable.cars));
-                if (car==100)
+                if (car>=100)
                     carg.setImageDrawable(getDrawable(R.drawable.carg));
             }
         }
@@ -67,7 +66,7 @@ public class AchievementsActivity extends Activity {
             robotb.setImageDrawable(getDrawable(R.drawable.robotb));
             if (robot>=10) {
                 robots.setImageDrawable(getDrawable(R.drawable.robots));
-                if (robot==100)
+                if (robot>=100)
                     robotg.setImageDrawable(getDrawable(R.drawable.robotg));
             }
         }
@@ -75,7 +74,7 @@ public class AchievementsActivity extends Activity {
             factoryb.setImageDrawable(getDrawable(R.drawable.factoryb));
             if (factory>=10) {
                 factorys.setImageDrawable(getDrawable(R.drawable.factorys));
-                if (factory==100)
+                if (factory>=100)
                     factoryg.setImageDrawable(getDrawable(R.drawable.factoryg));
             }
         }
@@ -135,6 +134,14 @@ public class AchievementsActivity extends Activity {
                     trashg.setImageDrawable(getDrawable(R.drawable.trashg));
             }
         }
+        if(mistake>=1) {
+            mistakeb.setImageDrawable(getDrawable(R.drawable.mistakeb));
+            if (mistake>=10) {
+                mistakes.setImageDrawable(getDrawable(R.drawable.mistakes));
+                if (mistake>=100)
+                    mistakeg.setImageDrawable(getDrawable(R.drawable.mistakeg));
+            }
+        }
     }
 
     private void init1() {
@@ -171,6 +178,9 @@ public class AchievementsActivity extends Activity {
         plastics=findViewById(R.id.plastics);
         robots=findViewById(R.id.robots);
         trashs=findViewById(R.id.trashs);
+        mistakes=findViewById(R.id.mistakes);
+        mistakeb=findViewById(R.id.mistakeb);
+        mistakeg=findViewById(R.id.mistakeg);
     }
 
 

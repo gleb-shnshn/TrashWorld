@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
+    Cursor cursor;
     private static final String DATABASE_NAME = "DATAforT.db";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "Data";
@@ -33,25 +34,27 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String query = CREATE_TABLE;
         db.execSQL(query);
-        insert(db);
+        cursor = db.query("Data", null, null, null, null, null, null);
+        if (cursor.getCount() == 0)
+            insert(db);
     }
 
     public void insert(SQLiteDatabase db) {
         ContentValues newValues = new ContentValues();
-        newValues.put("TSH",0);
-        newValues.put("man",0);
-        newValues.put("car",0);
-        newValues.put("robot",0);
-        newValues.put("factory",0);
+        newValues.put("TSH", 0);
+        newValues.put("man", 0);
+        newValues.put("car", 0);
+        newValues.put("robot", 0);
+        newValues.put("factory", 0);
 
-        newValues.put("paper",0);
-        newValues.put("plastic",0);
-        newValues.put("metal",0);
-        newValues.put("organic",0);
-        newValues.put("notrecycle",0);
+        newValues.put("paper", 0);
+        newValues.put("plastic", 0);
+        newValues.put("metal", 0);
+        newValues.put("organic", 0);
+        newValues.put("notrecycle", 0);
         newValues.put("glass", 0);
-        newValues.put("mistakes",0);
-        db.insert(TABLE_NAME,null,newValues);
+        newValues.put("mistakes", 0);
+        db.insert(TABLE_NAME, null, newValues);
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
