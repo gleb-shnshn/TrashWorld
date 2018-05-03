@@ -78,7 +78,7 @@
                 android:layout_height="33dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:text="У вас сейчас\n   0/100"
+                android:text="У вас сейчас\n     0"
                 android:textColor="#000000"
                 android:textSize="20dp"
                 app:font_name="brody.ttf" />
@@ -139,7 +139,7 @@
                 android:layout_height="33dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:text="У вас сейчас\n   0/100"
+                android:text="У вас сейчас\n     0"
                 android:textColor="#000000"
                 android:textSize="20dp"
                 app:font_name="brody.ttf" />
@@ -200,7 +200,7 @@
                 android:layout_height="33dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:text="У вас сейчас\n   0/100"
+                android:text="У вас сейчас\n     0"
                 android:textColor="#000000"
                 android:textSize="20dp"
                 app:font_name="brody.ttf" />
@@ -260,7 +260,7 @@
                 android:layout_height="33dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:text="У вас сейчас\n   0/100"
+                android:text="У вас сейчас\n     0"
                 android:textColor="#000000"
                 android:textSize="20dp"
                 app:font_name="brody.ttf" />

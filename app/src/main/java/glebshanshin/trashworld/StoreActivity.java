@@ -75,12 +75,12 @@ public class StoreActivity extends Activity{
 
     private String getstr(int what) {
         String newa=""+what;
-        int d=2-newa.length();
+        int d=4-newa.length();
         if (d<0){
             d=0;
         }
         String prefix=new String(new char[d]).replace("\0", " ");
-        return u+prefix+newa+"/100";
+        return u+prefix+newa;
     }
 
     private void updateTSH() {
