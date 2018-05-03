@@ -1,4 +1,4 @@
-package glebshanshin.trashclicker;
+package glebshanshin.trashworld;
 
 import android.app.Activity;
 import android.content.Intent;
