@@ -3,7 +3,7 @@ package glebshanshin.trashworld;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class TestActivity2 extends Activity {
+public class Test extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

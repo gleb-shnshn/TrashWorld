@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@drawable/newpage">
+    android:background="@drawable/playpage">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,7 +36,6 @@
                 android:layout_height="23dp"
                 android:layout_gravity="start"
                 android:layout_weight="1"
-                android:text="        00"
                 android:textColor="#000000"
                 android:textSize="27dp"
                 app:font_name="nyeti.ttf" />
@@ -46,7 +45,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_weight="1"
-                android:text="             0"
                 android:textColor="#000000"
                 android:textSize="20dp"
                 app:font_name="brody.ttf" />
@@ -63,78 +61,69 @@
 
     <ImageView
         android:id="@+id/notrecycle"
-        android:layout_width="110dp"
-        android:layout_height="150dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_gravity="end"
-        android:layout_weight="1"
-        android:background="@drawable/notrecycle"
-        android:tag="notrecycle" />
-
-    <ImageView
-        android:id="@+id/plastic"
-        android:layout_width="110dp"
-        android:layout_height="150dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_gravity="start"
-        android:layout_weight="1"
-        android:background="@drawable/plastic"
-        android:tag="plastic" />
-
-    <ImageView
-        android:id="@+id/organic"
-        android:layout_width="110dp"
-        android:layout_height="150dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
-        android:background="@drawable/organic"
-        android:tag="organic" />
-
-    <ImageView
-        android:id="@+id/metal"
-        android:layout_width="110dp"
-        android:layout_height="150dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="157dp"
-        android:layout_weight="1"
-        android:background="@drawable/metal"
-        android:tag="metal" />
-
-    <ImageView
-        android:id="@+id/paper"
-        android:layout_width="110dp"
-        android:layout_height="150dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/metal"
-        android:layout_gravity="start"
-        android:layout_weight="1"
-        android:background="@drawable/paper"
-        android:tag="paper" />
+        android:layout_marginBottom="90dp"
+        android:src="@drawable/ele"
+        android:tag="ele" />
 
     <ImageView
         android:id="@+id/glass"
-        android:layout_width="110dp"
-        android:layout_height="150dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/metal"
-        android:layout_gravity="end"
-        android:layout_weight="1"
-        android:background="@drawable/glass"
-        android:tag="glass" />
+        android:layout_centerVertical="true"
+        android:src="@drawable/gla"
+        android:tag="gla" />
+
+    <ImageView
+        android:id="@+id/metal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="202dp"
+        android:src="@drawable/met"
+        android:tag="met" />
+
+    <ImageView
+        android:id="@+id/organic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="82dp"
+        android:src="@drawable/org"
+        android:tag="org" />
+
+    <ImageView
+        android:id="@+id/paper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/pap"
+        android:tag="pap" />
+
+    <ImageView
+        android:id="@+id/plastic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="116dp"
+        android:layout_toStartOf="@+id/organic"
+        android:src="@drawable/pla"
+        android:tag="pla" />
 
     <ImageView
         android:id="@+id/img"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="158dp"
+        android:layout_marginBottom="171dp"
         android:src="@drawable/trash2" />
 
 </RelativeLayout>

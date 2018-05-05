@@ -30,14 +30,23 @@ public class PlayActivity extends Activity implements OnTouchListener {
     boolean dropFlag = false;
     LayoutParams imageParams;
     ImageView plastic,glass,metal,organic,notrecycle,paper,trash,now;
-    String choice,tag,tsh;
+    String choice,tag,tsh,postfix=" TSH";
     int eX, eY;
-
-    public void increaseTSH(){
-        String newa=""+(Integer.parseInt(tsh.replaceAll(" ",""))+Adder);
-        String prefix=new String(new char[10-newa.length()]).replace("\0", " ");
-        tsh=prefix+newa;
+    int w,h;
+    public void increaseTSH(int Adder){
         TSH+=Adder;
+        String newa=""+TSH;
+        if (newa.length()>9){
+            newa=newa.substring(0,newa.length()-9)+"B";
+        }
+        else if (newa.length()>6){
+            newa=newa.substring(0,newa.length()-6)+"M";
+        }
+        else if (newa.length()>3){
+            newa=newa.substring(0,newa.length()-3)+"K";
+        }
+        String prefix=new String(new char[9-newa.length()]).replace("\0", " ");
+        tsh=prefix+newa+postfix;
         TSHv.setText(tsh);
 
     }
@@ -66,22 +75,22 @@ public class PlayActivity extends Activity implements OnTouchListener {
     }
     private void incCounter(String choice) {
         switch (choice){
-            case "paper":
+            case "pap":
                 paperc++;
                 break;
-            case "plastic":
+            case "pla":
                 plasticc++;
                 break;
-            case "metal":
+            case "met":
                 metalc++;
                 break;
-            case "notrecycle":
+            case "ele":
                 notrecyclec++;
                 break;
-            case "organic":
+            case "org":
                 organicc++;
                 break;
-            case "glass":
+            case "gla":
                 glassc++;
                 break;
         }
@@ -96,7 +105,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
     public void game() {
         if (tag.equals(choice)) {
             //Toast.makeText(this, "Правильно", Toast.LENGTH_SHORT).show();
-            increaseTSH();
+            increaseTSH(Adder);
             incCounter(choice);
         }
         else {
@@ -109,22 +118,22 @@ public class PlayActivity extends Activity implements OnTouchListener {
     private String getTag(String id) {
         int id1=Integer.parseInt(id);
         if ((id1>=1)&(id1<=3)){
-            return "glass";
+            return "gla";
         }
         else if ((id1>=4)&(id1<=5)){
-            return "metal";
+            return "met";
         }
         else if ((id1>=6)&(id1<=8)){
-            return "notrecycle";
+            return "ele";
         }
         else if ((id1>=9)&(id1<=9)){
-            return "organic";
+            return "org";
         }
         else if ((id1>=10)&(id1<=13)){
-            return "paper";
+            return "pap";
         }
         else if ((id1>=14)&(id1<=16)){
-            return "plastic";
+            return "pla";
         }
         else{
             return "none";
@@ -136,13 +145,13 @@ public class PlayActivity extends Activity implements OnTouchListener {
         int rightX = i.getRight();
         int bottomY = i.getBottom();
         if (eX > leftX && eX < rightX && eY > topY && eY < bottomY) {
-            i.setBackground(getDrawable(getResources().getIdentifier(i.getTag()+"w" , "drawable", getPackageName())));
+            i.setImageDrawable(getDrawable(getResources().getIdentifier(i.getTag()+"w" , "drawable", getPackageName())));
             dropFlag = true;
             choice=""+i.getTag();
             now=findViewById(i.getId());
         }
         else {
-            i.setBackground(getDrawable(getResources().getIdentifier(i.getTag()+"" , "drawable", getPackageName())));
+            i.setImageDrawable(getDrawable(getResources().getIdentifier(i.getTag()+"" , "drawable", getPackageName())));
         }
     }
     public void newTrash(){
@@ -166,6 +175,19 @@ public class PlayActivity extends Activity implements OnTouchListener {
         glassc=Integer.parseInt(cursor.getString(11));
         mistakes=Integer.parseInt(cursor.getString(12));
         cursor.close();
+        Adder=1+man+car*10+robot*50+factory*100;
+        String newa=""+Adder;
+        if (newa.length()>9){
+            newa=newa.substring(0,newa.length()-9)+"B";
+        }
+        else if (newa.length()>6){
+            newa=newa.substring(0,newa.length()-6)+"M";
+        }
+        else if (newa.length()>3){
+            newa=newa.substring(0,newa.length()-3)+"K";
+        }
+        String prefix=new String(new char[12-newa.length()]).replace("\0", " ");
+        TSHsv.setText(prefix+newa+" TSH за клик");
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -183,14 +205,13 @@ public class PlayActivity extends Activity implements OnTouchListener {
         trash =  findViewById(R.id.img);
         dbHelper= new DBHelper(this);
         db=dbHelper.getWritableDatabase();
-        init(db);
         TSHv=findViewById(R.id.TSH);
         TSHsv=findViewById(R.id.TSHs);
-        String newa=""+TSH;
-        String prefix=new String(new char[10-newa.length()]).replace("\0", " ");
-        tsh=prefix+newa;
-        TSHv.setText(tsh);
+        init(db);
+        increaseTSH(0);
         newTrash();
+        w = getWindowManager().getDefaultDisplay().getWidth() - 50;
+        h = getWindowManager().getDefaultDisplay().getHeight() - 10;
         trash.setOnTouchListener(this);
         root.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
@@ -201,12 +222,10 @@ public class PlayActivity extends Activity implements OnTouchListener {
                             eY = (int) event.getY();
                             int x = (int) event.getX() - offset_x;
                             int y = (int) event.getY() - offset_y;
-                            int w = getWindowManager().getDefaultDisplay().getWidth() - 50;
-                            int h = getWindowManager().getDefaultDisplay().getHeight() - 10;
                             if (x > w) x = w;
                             if (y > h) y = h;
                             RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(new ViewGroup.MarginLayoutParams(trash.getWidth(),trash.getHeight()));
-                            lp.setMargins(x, y, 0, 0);
+                            lp.setMargins(x, y, -10, 0);
                             check(plastic);
                             check(metal);
                             check(glass);
@@ -219,7 +238,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
                             touchFlag = false;
                             if (dropFlag) {
                                 dropFlag = false;
-                                now.setBackground(getDrawable(getResources().getIdentifier(choice , "drawable", getPackageName())));
+                                now.setImageDrawable(getDrawable(getResources().getIdentifier(choice , "drawable", getPackageName())));
                                 game();
                                 trash.setLayoutParams(imageParams);
                             } else {

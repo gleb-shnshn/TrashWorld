@@ -23,6 +23,8 @@ public class StoreActivity extends Activity{
     String tsh;
     String t=" TSH";
     String u="У вас сейчас\n   ";
+    String postfix=" TSH";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,8 +87,17 @@ public class StoreActivity extends Activity{
 
     private void updateTSH() {
         String newa=""+TSH;
+        if (newa.length()>9){
+            newa=newa.substring(0,newa.length()-9)+"B";
+        }
+        if (newa.length()>6){
+            newa=newa.substring(0,newa.length()-6)+"M";
+        }
+        else if (newa.length()>3){
+            newa=newa.substring(0,newa.length()-3)+"K";
+        }
         String prefix=new String(new char[10-newa.length()]).replace("\0", " ");
-        tsh=prefix+newa;
+        tsh=prefix+newa+postfix;
         TSHv.setText(tsh);
     }
     private void update(SQLiteDatabase db) {
