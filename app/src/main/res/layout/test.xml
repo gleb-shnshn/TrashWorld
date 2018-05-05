@@ -1,11 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/move"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@drawable/emptypage">
+
+    <ImageView
+        android:id="@+id/ImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/trash2" />
+
     <TextView
-        android:id="@+id/tv"
+        android:id="@+id/textView"
+        android:layout_width="139dp"
+        android:layout_height="46dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="107dp"
+        android:text="TextView" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="40sp" />
-</LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="161dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/plastic"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_gravity="start"
+            android:layout_weight="1"
+            android:background="@drawable/plastic"
+            android:onClick="plastic" />
+
+        <ImageButton
+            android:id="@+id/organic"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/organic"
+            android:onClick="organic" />
+
+        <ImageButton
+            android:id="@+id/notrecycle"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:background="@drawable/notrecycle"
+            android:onClick="notrecycle" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="153dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/paper"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_gravity="start"
+            android:layout_weight="1"
+            android:background="@drawable/paper"
+            android:onClick="paper" />
+
+        <ImageButton
+            android:id="@+id/metal"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/metal"
+            android:onClick="metal" />
+
+        <ImageButton
+            android:id="@+id/glass"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:background="@drawable/glass"
+            android:onClick="glass" />
+
+    </LinearLayout>
+
+</RelativeLayout>

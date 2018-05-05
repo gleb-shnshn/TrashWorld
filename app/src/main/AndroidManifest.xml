@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         <activity
-            android:name=".MainActivity"
+            android:name=".TestActivity3"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +32,7 @@
             android:label=".SettingsActivity" />
         <activity
             android:name=".StatisticsActivity"
-            android:label=".StatisticsActivity"/>
+            android:label=".StatisticsActivity" />
     </application>
 
 </manifest>
