@@ -9,10 +9,8 @@
         android:id="@+id/ImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="32dp"
+        android:layout_alignTop="@+id/textView"
+        android:layout_toStartOf="@+id/textView"
         android:src="@drawable/trash2" />
 
     <TextView
