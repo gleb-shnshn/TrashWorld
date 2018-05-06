@@ -33,6 +33,12 @@
         <activity
             android:name=".StatisticsActivity"
             android:label=".StatisticsActivity" />
+        <activity
+            android:name=".LotteryActivity"
+            android:label=".LotteryActivity" />
+        <activity
+            android:name=".LotteryStoreActivity"
+            android:label=".LotteryStoreActivity" />
     </application>
 
 </manifest>

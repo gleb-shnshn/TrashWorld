@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="202dp"
+        android:layout_marginTop="205dp"
         android:src="@drawable/met"
         android:tag="met" />
 
@@ -94,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="82dp"
+        android:layout_marginBottom="85dp"
         android:src="@drawable/org"
         android:tag="org" />
 
@@ -125,5 +125,15 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="171dp"
         android:src="@drawable/trash2" />
+
+    <ImageView
+        android:id="@+id/button2"
+        android:layout_width="88dp"
+        android:layout_height="72dp"
+        android:layout_above="@+id/metal"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="-205dp"
+        android:src="@drawable/logo"
+        android:onClick="toLotteryStore"/>
 
 </RelativeLayout>
