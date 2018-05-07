@@ -18,8 +18,7 @@ public class LotteryStoreActivity extends Activity {
     Cursor cursor;
     Intent intent;
     TextView TSHv, priceO;
-    int factory, robot, car, man, TSH;
-    int organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistakes, price;
+    int factory, robot, car, man, TSH, price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,13 +80,6 @@ public class LotteryStoreActivity extends Activity {
         car = Integer.parseInt(cursor.getString(3));
         robot = Integer.parseInt(cursor.getString(4));
         factory = Integer.parseInt(cursor.getString(5));
-        paperc = Integer.parseInt(cursor.getString(6));
-        plasticc = Integer.parseInt(cursor.getString(7));
-        metalc = Integer.parseInt(cursor.getString(8));
-        organicc = Integer.parseInt(cursor.getString(9));
-        notrecyclec = Integer.parseInt(cursor.getString(10));
-        glassc = Integer.parseInt(cursor.getString(11));
-        mistakes = Integer.parseInt(cursor.getString(12));
         cursor.close();
     }
 
@@ -98,14 +90,6 @@ public class LotteryStoreActivity extends Activity {
         newValues.put("car", car);
         newValues.put("robot", robot);
         newValues.put("factory", factory);
-
-        newValues.put("paper", paperc);
-        newValues.put("plastic", plasticc);
-        newValues.put("metal", metalc);
-        newValues.put("organic", organicc);
-        newValues.put("notrecycle", notrecyclec);
-        newValues.put("glass", glassc);
-        newValues.put("mistakes", mistakes);
         db.update("Data", newValues, "_id = 1", null);
     }
 

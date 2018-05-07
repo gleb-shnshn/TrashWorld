@@ -24,7 +24,13 @@ public class DBHelper extends SQLiteOpenHelper {
             "                    organic TEXT NOT NULL DEFAULT 0, \n" +
             "                    notrecycle TEXT NOT NULL DEFAULT 0, \n" +
             "                    glass TEXT NOT NULL DEFAULT 0, \n" +
-            "                    mistakes TEXT NOT NULL DEFAULT 0)";
+            "                    mistakes TEXT NOT NULL DEFAULT 0, \n" +
+            "                    paperb TEXT NOT NULL DEFAULT 1, \n" +
+            "                    plasticb TEXT NOT NULL DEFAULT 1, \n" +
+            "                    metalb TEXT NOT NULL DEFAULT 1, \n" +
+            "                    organicb TEXT NOT NULL DEFAULT 1, \n" +
+            "                    notrecycleb TEXT NOT NULL DEFAULT 1, \n" +
+            "                    glassb TEXT NOT NULL DEFAULT 1)";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -54,6 +60,13 @@ public class DBHelper extends SQLiteOpenHelper {
         newValues.put("notrecycle", 0);
         newValues.put("glass", 0);
         newValues.put("mistakes", 0);
+
+        newValues.put("paperb",1);
+        newValues.put("plasticb",1);
+        newValues.put("metalb",1);
+        newValues.put("organicb",1);
+        newValues.put("notrecycleb",1);
+        newValues.put("glassb",1);
         db.insert(TABLE_NAME, null, newValues);
     }
 

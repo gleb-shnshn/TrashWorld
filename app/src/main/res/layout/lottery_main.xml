@@ -44,11 +44,6 @@
             android:layout_gravity="center" />
 
         <!-- scratch view -->
-        <ImageView
-            android:id="@+id/img2"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_gravity="center" />
 
         <com.clock.scratch.ScratchView
             android:id="@+id/scratch_view"

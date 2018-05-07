@@ -1,7 +1,10 @@
 package glebshanshin.trashworld;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -19,6 +22,10 @@ public class LotteryActivity extends Activity {
     TextView tv, tsh;
     Button btn, back;
     ImageView img;
+    DBHelper dbHelper;
+    Cursor cursor;
+    SQLiteDatabase db;
+    int organicc, plasticc, metalc, glassc, notrecyclec, paperc;
     int obj;
     private boolean isOpen = false, isBack = false;
 
@@ -54,30 +61,45 @@ public class LotteryActivity extends Activity {
             tsh = findViewById(R.id.TSH);
             tsh.setText(obj + " TSH");
         } else if (got.equals("goldl")) {
-            img = findViewById(R.id.img2);
+            dbHelper = new DBHelper(this);
+            db = dbHelper.getWritableDatabase();
+            init(db);
+            img = findViewById(R.id.img);
             obj = random.nextInt(6) + 5;
-            tsh = findViewById(R.id.TSH);
             switch (obj) {
                 case 5:
-                    img.setImageDrawable(getDrawable(R.drawable.glassstat));
+                    glassc = m(glassc)+1;
+                    img.setImageDrawable(getDrawable(getResources().getIdentifier("glass" + glassc, "drawable", getPackageName())));
+                    update("glassb", glassc);
                     break;
                 case 6:
-                    img.setImageDrawable(getDrawable(R.drawable.metalstat));
+                    metalc = m(metalc)+1;
+                    img.setImageDrawable(getDrawable(getResources().getIdentifier("metal" + metalc, "drawable", getPackageName())));
+                    update("metalb", metalc);
                     break;
                 case 7:
-                    img.setImageDrawable(getDrawable(R.drawable.paperstat));
+                    paperc = m(paperc)+1;
+                    img.setImageDrawable(getDrawable(getResources().getIdentifier("paper" + paperc, "drawable", getPackageName())));
+                    update("paperb", paperc);
                     break;
                 case 8:
-                    img.setImageDrawable(getDrawable(R.drawable.organicstat));
+                    organicc = m(organicc)+1;
+                    img.setImageDrawable(getDrawable(getResources().getIdentifier("organic" + organicc, "drawable", getPackageName())));
+                    update("organicb", organicc);
                     break;
                 case 9:
-                    img.setImageDrawable(getDrawable(R.drawable.notrecyclestat));
+                    notrecyclec = m(notrecyclec)+1;
+                    img.setImageDrawable(getDrawable(getResources().getIdentifier("notrecycle" + notrecyclec, "drawable", getPackageName())));
+                    update("notrecycleb", notrecyclec);
                     break;
                 case 10:
-                    img.setImageDrawable(getDrawable(R.drawable.plasticstat));
+                    plasticc = m(plasticc)+1;
+                    img.setImageDrawable(getDrawable(getResources().getIdentifier("plastic" + plasticc, "drawable", getPackageName())));
+                    update("plasticb", plasticc);
                     break;
+
             }
-            tsh.setText("\n     X2");
+            obj = 0;
         }
         sc.setMaskColor(0x00000000);
         sc.setMaxPercent(80);
@@ -98,6 +120,19 @@ public class LotteryActivity extends Activity {
         });
     }
 
+    private int m(int in) {
+        if (in == 3) {
+            return 2;
+        }
+        return in;
+    }
+
+    private void update(String str, int in) {
+        ContentValues newValues = new ContentValues();
+        newValues.put(str, in);
+        db.update("Data", newValues, "_id = 1", null);
+    }
+
     public void skip(View view) {
         if (isOpen) {
             sc.clear();
@@ -106,6 +141,18 @@ public class LotteryActivity extends Activity {
             back.setBackgroundDrawable(getResources().getDrawable(R.drawable.backbut1));
             isBack = true;
         }
+    }
+
+    public void init(SQLiteDatabase db) {
+        cursor = db.query("Data", null, null, null, null, null, null);
+        cursor.moveToFirst();
+        paperc = Integer.parseInt(cursor.getString(13));
+        plasticc = Integer.parseInt(cursor.getString(14));
+        metalc = Integer.parseInt(cursor.getString(15));
+        organicc = Integer.parseInt(cursor.getString(16));
+        notrecyclec = Integer.parseInt(cursor.getString(17));
+        glassc = Integer.parseInt(cursor.getString(18));
+        cursor.close();
     }
 
     public void toBack(View view) {

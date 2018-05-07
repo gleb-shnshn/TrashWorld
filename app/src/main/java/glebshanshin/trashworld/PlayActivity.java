@@ -20,22 +20,41 @@ import android.widget.Toast;
 
 public class PlayActivity extends Activity implements OnTouchListener {
     int factory, robot, car, man, TSH;
+    int organicb, plasticb, metalb, glassb, notrecycleb, paperb;
     int organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistakes, Adder = 1;
     DBHelper dbHelper;
     Cursor cursor;
     SQLiteDatabase db;
     TextView TSHv, TSHsv;
-    private int offset_x = 0;
-    private int offset_y = 0;
-    Boolean touchFlag = false;
+    int offset_x = 0;
+    int offset_y = 0;
+    boolean touchFlag = false;
     boolean dropFlag = false;
     LayoutParams imageParams;
     ImageView plastic, glass, metal, organic, notrecycle, paper, trash, now;
-    String choice, tag, tsh, postfix = " TSH";
+    String choice="null", tag, tsh, postfix = " TSH";
     int eX, eY;
     int w, h;
 
     public void increaseTSH(int Adder) {
+        if (choice.equals("org")){
+            Adder*=organicb;
+        }
+        else if (choice.equals("ele")){
+            Adder*=notrecycleb;
+        }
+        else if (choice.equals("pap")){
+            Adder*=paperb;
+        }
+        else if (choice.equals("pla")){
+            Adder*=plasticb;
+        }
+        else if (choice.equals("gla")){
+            Adder*=glassb;
+        }
+        else if (choice.equals("met")){
+            Adder*=metalb;
+        }
         TSH += Adder;
         String newa = "" + TSH;
         if (newa.length() > 9) {
@@ -121,17 +140,17 @@ public class PlayActivity extends Activity implements OnTouchListener {
 
     private String getTag(String id) {
         int id1 = Integer.parseInt(id);
-        if ((id1 >= 1) & (id1 <= 3)) {
+        if ((id1 >= 1) & (id1 <= 6)) {
             return "gla";
-        } else if ((id1 >= 4) & (id1 <= 5)) {
+        } else if ((id1 >= 7) & (id1 <= 15)) {
             return "met";
-        } else if ((id1 >= 6) & (id1 <= 8)) {
+        } else if ((id1 >= 16) & (id1 <= 26)) {
             return "ele";
-        } else if ((id1 >= 9) & (id1 <= 9)) {
+        } else if ((id1 >= 27) & (id1 <= 35)) {
             return "org";
-        } else if ((id1 >= 10) & (id1 <= 13)) {
+        } else if ((id1 >= 36) & (id1 <= 49)) {
             return "pap";
-        } else if ((id1 >= 14) & (id1 <= 16)) {
+        } else if ((id1 >= 50) & (id1 <= 59)) {
             return "pla";
         } else {
             return "none";
@@ -154,7 +173,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
     }
 
     public void newTrash() {
-        String id = "" + ((int) (Math.random() * 16) + 1);
+        String id = "" + ((int) (Math.random() * 58) + 1);
         tag = getTag(id);
         trash.setImageDrawable(getDrawable(getResources().getIdentifier("trash" + id, "drawable", getPackageName())));
     }
@@ -174,6 +193,12 @@ public class PlayActivity extends Activity implements OnTouchListener {
         notrecyclec = Integer.parseInt(cursor.getString(10));
         glassc = Integer.parseInt(cursor.getString(11));
         mistakes = Integer.parseInt(cursor.getString(12));
+        paperb = Integer.parseInt(cursor.getString(13));
+        plasticb = Integer.parseInt(cursor.getString(14));
+        metalb = Integer.parseInt(cursor.getString(15));
+        organicb = Integer.parseInt(cursor.getString(16));
+        notrecycleb = Integer.parseInt(cursor.getString(17));
+        glassb = Integer.parseInt(cursor.getString(18));
         cursor.close();
         initTSHs();
     }
@@ -278,6 +303,13 @@ public class PlayActivity extends Activity implements OnTouchListener {
         update(db);
         Intent intent = new Intent(PlayActivity.this, LotteryStoreActivity.class);
         intent.putExtra("prize", "0");
+        startActivity(intent);
+        finish();
+    }
+
+    public void toBonus(View view) {
+        update(db);
+        Intent intent = new Intent(PlayActivity.this, BonusActivity.class);
         startActivity(intent);
         finish();
     }

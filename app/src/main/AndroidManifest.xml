@@ -39,6 +39,9 @@
         <activity
             android:name=".LotteryStoreActivity"
             android:label=".LotteryStoreActivity" />
+        <activity
+            android:name=".BonusActivity"
+            android:label=".BonusActivity" />
     </application>
 
 </manifest>
