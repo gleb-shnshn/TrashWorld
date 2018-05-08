@@ -15,13 +15,14 @@ import android.widget.Toast;
 
 public class StoreActivity extends Activity {
     int factory, robot, car, man, TSH;
+    TextView TSHv, priceman1, pricecar1, pricerobot1, pricefactory1,
+            priceman10, pricecar10, pricerobot10, pricefactory10,
+            priceman50, pricecar50, pricerobot50, pricefactory50,
+            countman, countcar, countrobot, countfactory;
     SQLiteDatabase db;
     DBHelper dbHelper;
     Cursor cursor;
-    TextView TSHv, priceman, pricecar, pricerobot, pricefactory, countman, countcar, countrobot, countfactory;
-    String tsh;
-    String u = "У вас сейчас\n   ";
-    String t = " TSH";
+    String t = " TSH", tsh, s = " шт.";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,36 +41,65 @@ public class StoreActivity extends Activity {
     private void updatePRICE(String what) {
         switch (what) {
             case "all":
-                priceman.setText(getPrice((man + 1)));
-                pricecar.setText(getPrice((car + 1) * 10));
-                pricerobot.setText(getPrice((robot + 1) * 50));
-                pricefactory.setText(getPrice((factory + 1) * 100));
+                priceman1.setText(getPrice((man + 1)));
+                pricecar1.setText(getPrice((car + 1) * 10));
+                pricerobot1.setText(getPrice((robot + 1) * 50));
+                pricefactory1.setText(getPrice((factory + 1) * 100));
+                priceman10.setText(getPrice(get(10, man, 1)));
+                pricecar10.setText(getPrice(get(10, car, 10)));
+                pricerobot10.setText(getPrice(get(10, robot, 50)));
+                pricefactory10.setText(getPrice(get(10, factory, 100)));
+                priceman50.setText(getPrice(get(50, man, 1)));
+                pricecar50.setText(getPrice(get(50, car, 10)));
+                pricerobot50.setText(getPrice(get(50, robot, 50)));
+                pricefactory50.setText(getPrice(get(50, factory, 100)));
+                break;
             case "man":
-                priceman.setText(getPrice((man + 1)));
+                priceman1.setText(getPrice((man + 1)));
+                priceman10.setText(getPrice(get(10, man, 1)));
+                priceman50.setText(getPrice(get(50, man, 1)));
+                break;
             case "car":
-                pricecar.setText(getPrice((car + 1) * 10));
+                pricecar1.setText(getPrice((car + 1) * 10));
+                pricecar10.setText(getPrice(get(10, car, 10)));
+                pricecar50.setText(getPrice(get(50, car, 10)));
+                break;
             case "robot":
-                pricerobot.setText(getPrice((robot + 1) * 50));
+                pricerobot1.setText(getPrice((robot + 1) * 50));
+                pricerobot10.setText(getPrice(get(10, robot, 50)));
+                pricerobot50.setText(getPrice(get(50, robot, 50)));
+                break;
             case "factory":
-                pricefactory.setText(getPrice((factory + 1) * 100));
-
+                pricefactory1.setText(getPrice((factory + 1) * 100));
+                pricefactory10.setText(getPrice(get(10, factory, 100)));
+                pricefactory50.setText(getPrice(get(50, factory, 100)));
+                break;
         }
         switch (what) {
             case "all":
-                countman.setText(getstr(man));
-                countcar.setText(getstr(car));
-                countrobot.setText(getstr(robot));
-                countfactory.setText(getstr(factory));
+                countman.setText(man + s);
+                countcar.setText(car + s);
+                countrobot.setText(robot + s);
+                countfactory.setText(factory + s);
+                break;
             case "man":
-                countman.setText(getstr(man));
+                countman.setText(man + s);
+                break;
             case "car":
-                countcar.setText(getstr(car));
+                countcar.setText(car + s);
+                break;
             case "robot":
-                countrobot.setText(getstr(robot));
+                countrobot.setText(robot + s);
+                break;
             case "factory":
-                countfactory.setText(getstr(factory));
+                countfactory.setText(factory + s);
+                break;
 
         }
+    }
+
+    private int get(int m, int a1, int d) {
+        return ((2 * (a1 + d) + (m - 1) * d) * m) / 2;
     }
 
     private String getPrice(int s) {
@@ -84,27 +114,10 @@ public class StoreActivity extends Activity {
         return newa + t;
     }
 
-    private String getstr(int what) {
-        String newa = "" + what;
-        int d = 4 - newa.length();
-        if (d < 0) {
-            d = 0;
-        }
-        String prefix = new String(new char[d]).replace("\0", " ");
-        return u + prefix + newa;
-    }
-
     private void updateTSH() {
-        String newa = "" + TSH;
-        if (newa.length() > 9) {
-            newa = newa.substring(0, newa.length() - 9) + "B";
-        } else if (newa.length() > 6) {
-            newa = newa.substring(0, newa.length() - 6) + "M";
-        } else if (newa.length() > 3) {
-            newa = newa.substring(0, newa.length() - 3) + "K";
-        }
-        String prefix = new String(new char[10 - newa.length()]).replace("\0", " ");
-        tsh = prefix + newa + t;
+        String m = getPrice(TSH);
+        String prefix = new String(new char[14 - m.length()]).replace("\0", " ");
+        tsh = prefix + m;
         TSHv.setText(tsh);
     }
 
@@ -127,63 +140,126 @@ public class StoreActivity extends Activity {
         robot = Integer.parseInt(cursor.getString(4));
         factory = Integer.parseInt(cursor.getString(5));
         cursor.close();
-        priceman = findViewById(R.id.text2man);
-        pricecar = findViewById(R.id.text2car);
-        pricerobot = findViewById(R.id.text2robot);
-        pricefactory = findViewById(R.id.text2factory);
-        countman = findViewById(R.id.textman);
-        countcar = findViewById(R.id.textcar);
-        countrobot = findViewById(R.id.textrobot);
-        countfactory = findViewById(R.id.textfactory);
-    }
-
-    public void buyMan(View view) {
-        if (man + 1 <= TSH) {
-            TSH -= (man + 1);
-            man++;
-            updateTSH();
-            updatePRICE("man");
-        } else {
-            toast();
-        }
+        priceman1 = findViewById(R.id.price1man);
+        pricecar1 = findViewById(R.id.price1car);
+        pricerobot1 = findViewById(R.id.price1robot);
+        pricefactory1 = findViewById(R.id.price1factory);
+        priceman10 = findViewById(R.id.price10man);
+        pricecar10 = findViewById(R.id.price10car);
+        pricerobot10 = findViewById(R.id.price10robot);
+        pricefactory10 = findViewById(R.id.price10factory);
+        priceman50 = findViewById(R.id.price50man);
+        pricecar50 = findViewById(R.id.price50car);
+        pricerobot50 = findViewById(R.id.price50robot);
+        pricefactory50 = findViewById(R.id.price50factory);
+        countman = findViewById(R.id.countman);
+        countcar = findViewById(R.id.countcar);
+        countrobot = findViewById(R.id.countrobot);
+        countfactory = findViewById(R.id.countfactory);
     }
 
     private void toast() {
         Toast.makeText(getApplicationContext(), "Не достаточно TSH", Toast.LENGTH_SHORT).show();
     }
 
-    public void buyCar(View view) {
-        if ((car + 1) * 10 <= TSH) {
-            TSH -= ((car + 1) * 10);
-            car++;
+    private void increase(int b, int i, String d) {
+        int t = 0;
+        switch (d) {
+            case "man":
+                t = 1;
+                break;
+            case "car":
+                t = 10;
+                break;
+            case "robot":
+                t = 50;
+                break;
+            case "factory":
+                t = 100;
+                break;
+
+
+    /*
+            if ((car + 1) * 10 <= TSH) {
+                TSH -= ((car + 1) * 10);
+                car++;
+                updateTSH();
+                updatePRICE("car");
+            } else {
+                toast();
+            }*/
+        }
+        int money = get(i, b, t);
+        if (money <= TSH) {
+            TSH -= money;
+            switch (d) {
+                case "man":
+                    man += i;
+                    break;
+                case "car":
+                    car += i;
+                    break;
+                case "robot":
+                    robot += i;
+                    break;
+                case "factory":
+                    factory += i;
+                    break;
+            }
             updateTSH();
-            updatePRICE("car");
+            updatePRICE(d);
         } else {
             toast();
         }
     }
 
-
-    public void buyRobot(View view) {
-        if ((robot + 1) * 50 <= TSH) {
-            TSH -= ((robot + 1) * 50);
-            robot++;
-            updateTSH();
-            updatePRICE("robot");
-        } else {
-            toast();
-        }
+    public void buyMan1(View view) {
+        increase(man, 1, "man");
     }
 
-    public void buyFactory(View view) {
-        if ((factory + 1) * 100 <= TSH) {
-            TSH -= ((factory + 1) * 100);
-            factory++;
-            updateTSH();
-            updatePRICE("factory");
-        } else {
-            toast();
-        }
+
+    public void buyMan10(View view) {
+        increase(man, 10, "man");
+    }
+
+    public void buyMan50(View view) {
+        increase(man, 50, "man");
+    }
+
+    public void buyCar1(View view) {
+        increase(car, 1, "car");
+    }
+
+    public void buyCar10(View view) {
+        increase(car, 10, "car");
+    }
+
+    public void buyCar50(View view) {
+        increase(car, 50, "car");
+    }
+
+    public void buyRobot1(View view) {
+        increase(robot, 1, "robot");
+    }
+
+    public void buyRobot10(View view) {
+        increase(robot, 10, "robot");
+    }
+
+    public void buyRobot50(View view) {
+        increase(robot, 50, "robot");
+    }
+
+    public void buyFactory1(View view) {
+        increase(factory, 1, "factory");
+    }
+
+    public void buyFactory10(View view) {
+        increase(factory, 10, "factory");
+    }
+
+    public void buyFactory50(View view) {
+        increase(factory, 50, "factory");
     }
 
 

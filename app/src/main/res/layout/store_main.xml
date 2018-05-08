@@ -14,13 +14,12 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/back"
             android:layout_width="70dp"
-            android:layout_height="60dp"
+            android:layout_height="82dp"
             android:layout_weight="1"
             android:background="@color/alpha1"
             android:onClick="toPlay" />
@@ -44,9 +43,9 @@
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/TSH"
                 android:layout_width="230dp"
-                android:layout_height="match_parent"
+                android:layout_height="81dp"
                 android:layout_weight="1"
-                android:text="           0"
+                android:text="                 0"
                 android:textColor="@color/blue"
                 android:textSize="30sp"
                 app:font_name="nyeti.ttf" />
@@ -56,245 +55,563 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="133dp"
         android:orientation="horizontal"
         android:paddingBottom="@dimen/activity_vertical_margin"
         tools:context=".StoreActivity">
 
 
-        <ImageView
-            android:layout_width="111dp"
-            android:layout_height="111dp"
-            android:background="@drawable/man" />
-
         <LinearLayout
-            android:layout_width="140dp"
+            android:layout_width="91dp"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:context=".StoreActivity">
+
 
             <io.gloxey.cfv.CFTextView
-                android:id="@+id/textman"
-                android:layout_width="wrap_content"
-                android:layout_height="33dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:text="У вас сейчас\n     0"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                app:font_name="brody.ttf" />
-
-            <io.gloxey.cfv.CFTextView
-                android:layout_width="wrap_content"
-                android:layout_height="12dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:text="+1 TSH в секунду"
-                android:textColor="#000000"
-                android:textSize="18dp"
-                app:font_name="brody.ttf" />
-            <io.gloxey.cfv.CFTextView
-                android:id="@+id/text2man"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="20dp"
                 android:layout_gravity="center_horizontal"
-                app:font_name="brody.ttf"
-                android:text="Цена: "
+                android:layout_weight="1"
+                android:text="+1 TSH/мусор"
+                android:textAlignment="center"
                 android:textColor="#000000"
-                android:inputType="number" />
+                android:textSize="13dp"
+                app:font_name="brody.ttf" />
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/man"
+                android:layout_gravity="center"/>
+
+            <io.gloxey.cfv.CFTextView
+                android:id="@+id/countman"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="0 шт."
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="15dp"
+                app:font_name="brody.ttf" />
 
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/buyman"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/butstore"
-            android:onClick="buyMan" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <io.gloxey.cfv.CFTextView
+                    android:id="@+id/price1man"
+                    android:layout_width="234dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:text="0 TSH"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="18dp"
+                    app:font_name="brody.ttf" />
+
+                <io.gloxey.cfv.CFTextView
+                    android:id="@+id/price10man"
+                    android:layout_width="234dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:text="0 TSH"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="18dp"
+                    app:font_name="brody.ttf" />
+
+                <io.gloxey.cfv.CFTextView
+                    android:id="@+id/price50man"
+                    android:layout_width="234dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:text="0 TSH"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="18dp"
+                    app:font_name="brody.ttf" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="buyMan1"
+                    android:src="@drawable/store1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="buyMan10"
+                    android:src="@drawable/store10" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="buyMan50"
+                    android:src="@drawable/store50" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="133dp"
         android:orientation="horizontal"
         android:paddingBottom="@dimen/activity_vertical_margin"
-        tools:context=".MainActivity">
+        tools:context=".StoreActivity">
 
 
-        <ImageView
-            android:layout_width="111dp"
-            android:layout_height="111dp"
-            android:background="@drawable/car"  />
         <LinearLayout
-            android:layout_width="140dp"
+            android:layout_width="91dp"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:context=".StoreActivity">
+
 
             <io.gloxey.cfv.CFTextView
-                android:id="@+id/textcar"
-                android:layout_width="wrap_content"
-                android:layout_height="33dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:text="У вас сейчас\n     0"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                app:font_name="brody.ttf" />
-
-            <io.gloxey.cfv.CFTextView
-                android:layout_width="wrap_content"
-                android:layout_height="12dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:text="+10 TSH в секунду"
-                android:textColor="#000000"
-                android:textSize="18dp"
-                app:font_name="brody.ttf" />
-
-            <io.gloxey.cfv.CFTextView
-                android:id="@+id/text2car"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="20dp"
                 android:layout_gravity="center_horizontal"
-                app:font_name="brody.ttf"
-                android:text="Цена: "
+                android:layout_weight="1"
+                android:text="+10 TSH/мусор"
+                android:textAlignment="center"
                 android:textColor="#000000"
-                android:inputType="number" />
+                android:textSize="13dp"
+                app:font_name="brody.ttf" />
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:background="@drawable/car" />
+
+            <io.gloxey.cfv.CFTextView
+                android:id="@+id/countcar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="0 шт."
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="15dp"
+                app:font_name="brody.ttf" />
 
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/buycar"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/butstore"
-            android:onClick="buyCar" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <io.gloxey.cfv.CFTextView
+                    android:id="@+id/price1car"
+                    android:layout_width="234dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:text="0 TSH"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="18dp"
+                    app:font_name="brody.ttf" />
+
+                <io.gloxey.cfv.CFTextView
+                    android:id="@+id/price10car"
+                    android:layout_width="234dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:text="0 TSH"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="18dp"
+                    app:font_name="brody.ttf" />
+
+                <io.gloxey.cfv.CFTextView
+                    android:id="@+id/price50car"
+                    android:layout_width="234dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:text="0 TSH"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="18dp"
+                    app:font_name="brody.ttf" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="buyCar1"
+                    android:src="@drawable/store1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="buyCar10"
+                    android:src="@drawable/store10" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="buyCar50"
+                    android:src="@drawable/store50" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="133dp"
         android:orientation="horizontal"
         android:paddingBottom="@dimen/activity_vertical_margin"
-        tools:context=".MainActivity">
+        tools:context=".StoreActivity">
 
 
-        <ImageView
-            android:layout_width="111dp"
-            android:layout_height="111dp"
-            android:background="@drawable/robot" />
         <LinearLayout
-            android:layout_width="140dp"
+            android:layout_width="91dp"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:context=".StoreActivity">
+
 
             <io.gloxey.cfv.CFTextView
-                android:id="@+id/textrobot"
-                android:layout_width="wrap_content"
-                android:layout_height="33dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:text="У вас сейчас\n     0"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                app:font_name="brody.ttf" />
-
-            <io.gloxey.cfv.CFTextView
-                android:layout_width="wrap_content"
-                android:layout_height="12dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:text="+50 TSH в секунду"
-                android:textColor="#000000"
-                android:textSize="18dp"
-                app:font_name="brody.ttf" />
-
-            <io.gloxey.cfv.CFTextView
-                android:id="@+id/text2robot"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="20dp"
                 android:layout_gravity="center_horizontal"
-                app:font_name="brody.ttf"
-                android:text="Цена: "
+                android:layout_weight="1"
+                android:text="+50 TSH/мусор"
+                android:textAlignment="center"
                 android:textColor="#000000"
-                android:inputType="number" />
+                android:textSize="13dp"
+                app:font_name="brody.ttf" />
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:background="@drawable/robot" />
+
+            <io.gloxey.cfv.CFTextView
+                android:id="@+id/countrobot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="0 шт."
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="15dp"
+                app:font_name="brody.ttf" />
 
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/buyrobot"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center_vertical"
-            android:onClick="buyRobot"
-            android:background="@drawable/butstore" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <io.gloxey.cfv.CFTextView
+                    android:id="@+id/price1robot"
+                    android:layout_width="234dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:text="0 TSH"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="18dp"
+                    app:font_name="brody.ttf" />
+
+                <io.gloxey.cfv.CFTextView
+                    android:id="@+id/price10robot"
+                    android:layout_width="234dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:text="0 TSH"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="18dp"
+                    app:font_name="brody.ttf" />
+
+                <io.gloxey.cfv.CFTextView
+                    android:id="@+id/price50robot"
+                    android:layout_width="234dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:text="0 TSH"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="18dp"
+                    app:font_name="brody.ttf" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="buyRobot1"
+                    android:src="@drawable/store1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="buyRobot10"
+                    android:src="@drawable/store10" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="buyRobot50"
+                    android:src="@drawable/store50" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="133dp"
         android:orientation="horizontal"
-        tools:context=".MainActivity">
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context=".StoreActivity">
 
 
-        <ImageView
-            android:layout_width="111dp"
-            android:layout_height="111dp"
-            android:background="@drawable/factory" />
         <LinearLayout
-            android:layout_width="140dp"
+            android:layout_width="91dp"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:context=".StoreActivity">
+
 
             <io.gloxey.cfv.CFTextView
-                android:id="@+id/textfactory"
-                android:layout_width="wrap_content"
-                android:layout_height="33dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:text="У вас сейчас\n     0"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                app:font_name="brody.ttf" />
-
-            <io.gloxey.cfv.CFTextView
-                android:layout_width="wrap_content"
-                android:layout_height="12dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:text="+100 TSH в секунду"
-                android:textColor="#000000"
-                android:textSize="18dp"
-                app:font_name="brody.ttf" />
-
-            <io.gloxey.cfv.CFTextView
-                android:id="@+id/text2factory"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="20dp"
                 android:layout_gravity="center_horizontal"
-                app:font_name="brody.ttf"
-                android:text="Цена: "
+                android:layout_weight="1"
+                android:text="+100 TSH/мусор"
+                android:textAlignment="center"
                 android:textColor="#000000"
-                android:inputType="number" />
+                android:textSize="13dp"
+                app:font_name="brody.ttf" />
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:background="@drawable/factory" />
+
+            <io.gloxey.cfv.CFTextView
+                android:id="@+id/countfactory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="0 шт."
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="15dp"
+                app:font_name="brody.ttf" />
 
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/buyfactory"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:onClick="buyFactory"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/butstore" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <io.gloxey.cfv.CFTextView
+                    android:id="@+id/price1factory"
+                    android:layout_width="234dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:text="0 TSH"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="18dp"
+                    app:font_name="brody.ttf" />
+
+                <io.gloxey.cfv.CFTextView
+                    android:id="@+id/price10factory"
+                    android:layout_width="234dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:text="0 TSH"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="18dp"
+                    app:font_name="brody.ttf" />
+
+                <io.gloxey.cfv.CFTextView
+                    android:id="@+id/price50factory"
+                    android:layout_width="234dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:text="0 TSH"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="18dp"
+                    app:font_name="brody.ttf" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="buyFactory1"
+                    android:src="@drawable/store1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="buyFactory10"
+                    android:src="@drawable/store10" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="buyFactory50"
+                    android:src="@drawable/store50" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
     </LinearLayout>
+
+
 </LinearLayout>

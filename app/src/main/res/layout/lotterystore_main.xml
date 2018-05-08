@@ -206,7 +206,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:text="Случайное x2 TSH\n     за мусор"
+                android:text="Случайный бонус"
                 android:textColor="#000000"
                 android:textSize="20dp"
                 app:font_name="brody.ttf" />
