@@ -17,8 +17,9 @@ public class LotteryStoreActivity extends Activity {
     DBHelper dbHelper;
     Cursor cursor;
     Intent intent;
-    TextView TSHv, priceO;
-    int factory, robot, car, man, TSH, price;
+    TextView TSHv, priceO, priceB, text;
+    String m = "Случайное  TSH\nот ";
+    int factory, robot, car, man, TSH, price, nprice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,16 +61,14 @@ public class LotteryStoreActivity extends Activity {
 
     private void updatePrice() {
         price = ((man + 1) + ((car + 1) * 10) + ((robot + 1) * 50) + ((factory + 1) * 100)) / 4;
-        String newa = "" + price;
-        if (newa.length() > 9) {
-            newa = newa.substring(0, newa.length() - 9) + "B";
-        } else if (newa.length() > 6) {
-            newa = newa.substring(0, newa.length() - 6) + "M";
-        } else if (newa.length() > 3) {
-            newa = newa.substring(0, newa.length() - 3) + "K";
-        }
+        String newa = getPrice(price);
         priceO = findViewById(R.id.price);
         priceO.setText("Цена: " + newa + " TSH");
+        nprice = (TSH / 10) + 1000;
+        priceB = findViewById(R.id.price1);
+        text = findViewById(R.id.priceB);
+        priceB.setText("Цена: "+getPrice(nprice)+" TSH");
+        text.setText(m + getPrice(nprice / 2) + " до " + getPrice((int)(nprice * 1.5)));
     }
 
     public void init(SQLiteDatabase db) {
@@ -93,22 +92,25 @@ public class LotteryStoreActivity extends Activity {
         db.update("Data", newValues, "_id = 1", null);
     }
 
-    private void updateTSH() {
-        String newa = "" + TSH;
+    private String getPrice(int s) {
+        String newa = "" + s;
         if (newa.length() > 9) {
             newa = newa.substring(0, newa.length() - 9) + "B";
-        }
-        if (newa.length() > 6) {
+        } else if (newa.length() > 6) {
             newa = newa.substring(0, newa.length() - 6) + "M";
         } else if (newa.length() > 3) {
             newa = newa.substring(0, newa.length() - 3) + "K";
         }
-        String prefix = new String(new char[10 - newa.length()]).replace("\0", " ");
-        TSHv.setText(prefix + newa + " TSH");
+        return newa;
+    }
+
+    private void updateTSH() {
+        String newa = getPrice(TSH);
+        TSHv.setText(newa + " TSH ");
     }
 
     private void toast() {
-        Toast.makeText(getApplicationContext(), "Не достаточно TSH", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Недостаточно TSH", Toast.LENGTH_SHORT).show();
     }
 
     public void toPlay(View view) {
@@ -119,8 +121,8 @@ public class LotteryStoreActivity extends Activity {
     }
 
     public void buyBronze(View view) {
-        if (TSH >= 1000) {
-            TSH -= 1000;
+        if (TSH >= nprice) {
+            TSH -= nprice;
             intent.putExtra("1", "bronzel");
             update(db);
             startActivity(intent);

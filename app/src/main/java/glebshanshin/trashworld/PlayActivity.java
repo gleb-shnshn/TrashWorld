@@ -32,31 +32,33 @@ public class PlayActivity extends Activity implements OnTouchListener {
     boolean dropFlag = false;
     LayoutParams imageParams;
     ImageView plastic, glass, metal, organic, notrecycle, paper, trash, now;
-    String choice="null", tag, tsh, postfix = " TSH";
+    String choice = "null", tag, tsh, postfix = " TSH";
     int eX, eY;
     int w, h;
 
     public void increaseTSH(int Adder) {
-        if (choice.equals("org")){
-            Adder*=organicb;
-        }
-        else if (choice.equals("ele")){
-            Adder*=notrecycleb;
-        }
-        else if (choice.equals("pap")){
-            Adder*=paperb;
-        }
-        else if (choice.equals("pla")){
-            Adder*=plasticb;
-        }
-        else if (choice.equals("gla")){
-            Adder*=glassb;
-        }
-        else if (choice.equals("met")){
-            Adder*=metalb;
+        if (choice.equals("org")) {
+            Adder *= organicb;
+        } else if (choice.equals("ele")) {
+            Adder *= notrecycleb;
+        } else if (choice.equals("pap")) {
+            Adder *= paperb;
+        } else if (choice.equals("pla")) {
+            Adder *= plasticb;
+        } else if (choice.equals("gla")) {
+            Adder *= glassb;
+        } else if (choice.equals("met")) {
+            Adder *= metalb;
         }
         TSH += Adder;
-        String newa = "" + TSH;
+        String newa = getPrice(TSH);
+        tsh = newa + postfix;
+        TSHv.setText(tsh);
+
+    }
+
+    private String getPrice(int s) {
+        String newa = "" + s;
         if (newa.length() > 9) {
             newa = newa.substring(0, newa.length() - 9) + "B";
         } else if (newa.length() > 6) {
@@ -64,10 +66,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
         } else if (newa.length() > 3) {
             newa = newa.substring(0, newa.length() - 3) + "K";
         }
-        String prefix = new String(new char[9 - newa.length()]).replace("\0", " ");
-        tsh = prefix + newa + postfix;
-        TSHv.setText(tsh);
-
+        return newa;
     }
 
     public void toMenu(View view) {
@@ -205,16 +204,8 @@ public class PlayActivity extends Activity implements OnTouchListener {
 
     private void initTSHs() {
         Adder = 1 + man + car * 10 + robot * 50 + factory * 100;
-        String newa = "" + Adder;
-        if (newa.length() > 9) {
-            newa = newa.substring(0, newa.length() - 9) + "B";
-        } else if (newa.length() > 6) {
-            newa = newa.substring(0, newa.length() - 6) + "M";
-        } else if (newa.length() > 3) {
-            newa = newa.substring(0, newa.length() - 3) + "K";
-        }
-        String prefix = new String(new char[12 - newa.length()]).replace("\0", " ");
-        TSHsv.setText(prefix + newa + " TSH за мусор");
+        String newa = getPrice(Adder);
+        TSHsv.setText(newa + " TSH/мусор");
     }
 
     @Override

@@ -116,9 +116,7 @@ public class StoreActivity extends Activity {
 
     private void updateTSH() {
         String m = getPrice(TSH);
-        String prefix = new String(new char[14 - m.length()]).replace("\0", " ");
-        tsh = prefix + m;
-        TSHv.setText(tsh);
+        TSHv.setText(m+" ");
     }
 
     private void update(SQLiteDatabase db) {
@@ -159,7 +157,7 @@ public class StoreActivity extends Activity {
     }
 
     private void toast() {
-        Toast.makeText(getApplicationContext(), "Не достаточно TSH", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Недостаточно TSH", Toast.LENGTH_SHORT).show();
     }
 
     private void increase(int b, int i, String d) {

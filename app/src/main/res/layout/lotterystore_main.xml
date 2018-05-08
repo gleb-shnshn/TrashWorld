@@ -10,13 +10,12 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/back"
             android:layout_width="70dp"
-            android:layout_height="83dp"
+            android:layout_height="82dp"
             android:layout_weight="1"
             android:background="@color/alpha1"
             android:onClick="toPlay" />
@@ -39,10 +38,11 @@
 
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/TSH"
-                android:layout_width="230dp"
-                android:layout_height="70dp"
+                android:layout_width="209dp"
+                android:layout_height="49dp"
                 android:layout_weight="1"
-                android:text="           0"
+                android:text="0 "
+                android:textAlignment="textEnd"
                 android:textColor="@color/blue"
                 android:textSize="30sp"
                 app:font_name="nyeti.ttf" />
@@ -78,17 +78,19 @@
             android:orientation="vertical">
 
             <io.gloxey.cfv.CFTextView
-                android:id="@+id/textman"
-                android:layout_width="wrap_content"
+                android:id="@+id/priceB"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:text="Случайное  TSH\nот 500 до 2К"
+                android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="20dp"
                 app:font_name="brody.ttf" />
 
             <io.gloxey.cfv.CFTextView
+                android:id="@+id/price1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -140,11 +142,12 @@
             android:orientation="vertical">
 
             <io.gloxey.cfv.CFTextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:text="Случайный предмет\n   из магазина"
+                android:text="Случайный предмет\nиз магазина"
+                android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="20dp"
                 app:font_name="brody.ttf" />
@@ -202,11 +205,12 @@
             android:orientation="vertical">
 
             <io.gloxey.cfv.CFTextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:text="Случайный бонус"
+                android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="20dp"
                 app:font_name="brody.ttf" />

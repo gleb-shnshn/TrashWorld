@@ -48,8 +48,7 @@ public class StatisticsActivity extends Activity {
         } else if (newa.length() > 3) {
             newa = newa.substring(0, newa.length() - 3) + "K";
         }
-        String prefix = new String(new char[14 - newa.length()]).replace("\0", " ");
-        TSH.setText(prefix + newa);
+        TSH.setText(newa+" TSH ");
     }
 
     private void init1() {

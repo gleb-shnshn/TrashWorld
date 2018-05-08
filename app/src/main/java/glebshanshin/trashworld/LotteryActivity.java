@@ -25,7 +25,7 @@ public class LotteryActivity extends Activity {
     DBHelper dbHelper;
     Cursor cursor;
     SQLiteDatabase db;
-    int organicc, plasticc, metalc, glassc, notrecyclec, paperc;
+    int organicc, plasticc, metalc, glassc, notrecyclec, paperc,TSH;
     int obj;
     private boolean isOpen = false, isBack = false;
 
@@ -57,9 +57,10 @@ public class LotteryActivity extends Activity {
                     break;
             }
         } else if (got.equals("bronzel")) {
-            obj = random.nextInt(1500) + 500;
+            int nprice = (TSH / 10) + 1000;
+            obj = random.nextInt(nprice) + nprice/2;
             tsh = findViewById(R.id.TSH);
-            tsh.setText(obj + " TSH");
+            tsh.setText(getPrice(obj) + " \nTSH ");
         } else if (got.equals("goldl")) {
             dbHelper = new DBHelper(this);
             db = dbHelper.getWritableDatabase();
@@ -146,6 +147,7 @@ public class LotteryActivity extends Activity {
     public void init(SQLiteDatabase db) {
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
+        TSH=Integer.parseInt(cursor.getString(1));
         paperc = Integer.parseInt(cursor.getString(13));
         plasticc = Integer.parseInt(cursor.getString(14));
         metalc = Integer.parseInt(cursor.getString(15));
@@ -162,5 +164,16 @@ public class LotteryActivity extends Activity {
             startActivity(intent);
             finish();
         }
+    }
+    private String getPrice(int s) {
+        String newa = "" + s;
+        if (newa.length() > 10) {
+            newa = newa.substring(0, newa.length() - 9) + "B";
+        } else if (newa.length() > 7) {
+            newa = newa.substring(0, newa.length() - 6) + "M";
+        } else if (newa.length() > 4) {
+            newa = newa.substring(0, newa.length() - 3) + "K";
+        }
+        return newa;
     }
 }

@@ -27,15 +27,17 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="32dp"
                 android:layout_weight="1" />
 
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/TSH"
                 android:layout_width="match_parent"
-                android:layout_height="23dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_weight="1"
+                android:text="14K TSH"
+                android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="27dp"
                 app:font_name="nyeti.ttf" />
@@ -43,11 +45,18 @@
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/TSHs"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:text="1K TSH за мусор"
+                android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="20dp"
                 app:font_name="brody.ttf" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <Button
