@@ -67,8 +67,8 @@ public class LotteryStoreActivity extends Activity {
         nprice = (TSH / 10) + 1000;
         priceB = findViewById(R.id.price1);
         text = findViewById(R.id.priceB);
-        priceB.setText("Цена: "+getPrice(nprice)+" TSH");
-        text.setText(m + getPrice(nprice / 2) + " до " + getPrice((int)(nprice * 1.5)));
+        priceB.setText("Цена: " + getPrice(nprice) + " TSH");
+        text.setText(m + getPrice(nprice / 2) + " до " + getPrice((int) (nprice * 1.5)));
     }
 
     public void init(SQLiteDatabase db) {
@@ -113,8 +113,8 @@ public class LotteryStoreActivity extends Activity {
         Toast.makeText(getApplicationContext(), "Недостаточно TSH", Toast.LENGTH_SHORT).show();
     }
 
-    public void toPlay(View view) {
-        Intent intent = new Intent(LotteryStoreActivity.this, PlayActivity.class);
+    public void toStore(View view) {
+        Intent intent = new Intent(LotteryStoreActivity.this, StoreActivity.class);
         update(db);
         startActivity(intent);
         finish();

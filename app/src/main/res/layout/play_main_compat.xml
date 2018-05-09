@@ -45,7 +45,7 @@
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/TSHs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_weight="1"
                 android:text="1K TSH за мусор"
                 android:textAlignment="center"
@@ -72,8 +72,9 @@
         android:id="@+id/notrecycle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/organic"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_marginBottom="39dp"
         android:src="@drawable/ele"
         android:tag="ele" />
 
@@ -81,9 +82,9 @@
         android:id="@+id/glass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="223dp"
+        android:layout_marginBottom="179dp"
         android:src="@drawable/gla"
         android:tag="gla" />
 
@@ -93,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="191dp"
+        android:layout_marginTop="228dp"
         android:src="@drawable/met"
         android:tag="met" />
 
@@ -101,9 +102,9 @@
         android:id="@+id/organic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/notrecycle"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="109dp"
+        android:layout_marginTop="-85dp"
         android:src="@drawable/org"
         android:tag="org" />
 
@@ -122,8 +123,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="134dp"
-        android:layout_marginStart="21dp"
+        android:layout_marginBottom="58dp"
+        android:layout_marginStart="19dp"
         android:src="@drawable/pla"
         android:tag="pla" />
 
@@ -133,7 +134,27 @@
         android:layout_height="150dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="195dp"
+        android:layout_marginBottom="115dp"
         android:src="@drawable/trash2" />
+
+    <ImageView
+        android:id="@+id/button2"
+        android:layout_width="88dp"
+        android:layout_height="72dp"
+        android:layout_above="@+id/metal"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="-205dp"
+        android:onClick="toBonus"
+        android:src="@drawable/logob" />
+
+    <ImageView
+        android:id="@+id/button3"
+        android:layout_width="88dp"
+        android:layout_height="72dp"
+        android:layout_above="@+id/metal"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="-205dp"
+        android:onClick="toLotteryStore"
+        android:src="@drawable/logo" />
 
 </RelativeLayout>

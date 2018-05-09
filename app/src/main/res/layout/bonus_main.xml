@@ -19,14 +19,14 @@
 
         <ImageView
             android:id="@+id/back"
-            android:layout_width="207dp"
+            android:layout_width="200dp"
             android:layout_height="98dp"
             android:layout_weight="1"
-            android:onClick="toPlay"
+            android:onClick="toAchievements"
             android:src="@drawable/backbut2" />
 
         <ImageView
-            android:layout_width="196dp"
+            android:layout_width="200dp"
             android:layout_height="98dp"
             android:layout_weight="1" />
 

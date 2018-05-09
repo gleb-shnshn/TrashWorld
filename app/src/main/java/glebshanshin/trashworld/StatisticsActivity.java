@@ -48,7 +48,7 @@ public class StatisticsActivity extends Activity {
         } else if (newa.length() > 3) {
             newa = newa.substring(0, newa.length() - 3) + "K";
         }
-        TSH.setText(newa+" TSH ");
+        TSH.setText(newa + " TSH ");
     }
 
     private void init1() {
@@ -72,7 +72,6 @@ public class StatisticsActivity extends Activity {
         robot = Integer.parseInt(cursor.getString(4));
         factory = Integer.parseInt(cursor.getString(5));
         TSHc = TSHc + ((2 + (man - 1)) * man / 2) + ((20 + 10 * (car - 1)) * car / 2) + ((100 + 50 * (robot - 1)) * robot / 2) + ((200 + 100 * (factory - 1)) * factory / 2);
-        //((2a₁+d(n-1))/2)·n
         paperc = Integer.parseInt(cursor.getString(6));
         plasticc = Integer.parseInt(cursor.getString(7));
         metalc = Integer.parseInt(cursor.getString(8));

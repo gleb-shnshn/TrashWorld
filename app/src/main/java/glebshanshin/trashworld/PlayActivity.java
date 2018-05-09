@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -35,6 +37,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
     String choice = "null", tag, tsh, postfix = " TSH";
     int eX, eY;
     int w, h;
+    View root;
 
     public void increaseTSH(int Adder) {
         if (choice.equals("org")) {
@@ -139,18 +142,18 @@ public class PlayActivity extends Activity implements OnTouchListener {
 
     private String getTag(String id) {
         int id1 = Integer.parseInt(id);
-        if ((id1 >= 1) & (id1 <= 6)) {
+        if ((id1 >= 1) & (id1 <= 3)) {
             return "gla";
-        } else if ((id1 >= 7) & (id1 <= 15)) {
+        } else if ((id1 >= 4) & (id1 <= 9)) {
             return "met";
-        } else if ((id1 >= 16) & (id1 <= 26)) {
-            return "ele";
-        } else if ((id1 >= 27) & (id1 <= 35)) {
-            return "org";
-        } else if ((id1 >= 36) & (id1 <= 49)) {
+        } else if ((id1 >= 10) & (id1 <= 19)) {
             return "pap";
-        } else if ((id1 >= 50) & (id1 <= 59)) {
+        } else if ((id1 >= 20) & (id1 <= 25)) {
             return "pla";
+        } else if ((id1 >= 26) & (id1 <= 29)) {
+            return "org";
+        } else if ((id1 >= 30) & (id1 <= 33)) {
+            return "ele";
         } else {
             return "none";
         }
@@ -172,7 +175,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
     }
 
     public void newTrash() {
-        String id = "" + ((int) (Math.random() * 58) + 1);
+        String id = "" + ((int) (Math.random() * 32) + 1);
         tag = getTag(id);
         trash.setImageDrawable(getDrawable(getResources().getIdentifier("trash" + id, "drawable", getPackageName())));
     }
@@ -213,8 +216,13 @@ public class PlayActivity extends Activity implements OnTouchListener {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.play_main);
-        View root = findViewById(android.R.id.content).getRootView();
+        boolean hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
+        boolean hasHomeKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_HOME);
+        if (hasBackKey && hasHomeKey)
+            setContentView(R.layout.play_main);
+        else
+            setContentView(R.layout.play_main_compat);
+        root = findViewById(android.R.id.content).getRootView();
         plastic = findViewById(R.id.plastic);
         glass = findViewById(R.id.glass);
         metal = findViewById(R.id.metal);
@@ -288,20 +296,5 @@ public class PlayActivity extends Activity implements OnTouchListener {
                 break;
         }
         return false;
-    }
-
-    public void toLotteryStore(View view) {
-        update(db);
-        Intent intent = new Intent(PlayActivity.this, LotteryStoreActivity.class);
-        intent.putExtra("prize", "0");
-        startActivity(intent);
-        finish();
-    }
-
-    public void toBonus(View view) {
-        update(db);
-        Intent intent = new Intent(PlayActivity.this, BonusActivity.class);
-        startActivity(intent);
-        finish();
     }
 }

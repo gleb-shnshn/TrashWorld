@@ -53,8 +53,8 @@ public class BonusActivity extends Activity {
         cursor.close();
         init1();
     }
-    public void toPlay(View view) {
-        Intent intent = new Intent(BonusActivity.this, PlayActivity.class);
+    public void toAchievements(View view) {
+        Intent intent = new Intent(BonusActivity.this, AchievementsActivity.class);
         startActivity(intent);
         finish();
     }

@@ -193,4 +193,9 @@ public class AchievementsActivity extends Activity {
         finish();
     }
 
+    public void toBonus(View view) {
+        Intent intent1 = new Intent(AchievementsActivity.this, BonusActivity.class);
+        startActivity(intent1);
+        finish();
+    }
 }

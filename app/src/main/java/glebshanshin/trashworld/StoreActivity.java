@@ -98,6 +98,14 @@ public class StoreActivity extends Activity {
         }
     }
 
+    public void toLotteryStore(View view) {
+        update(db);
+        Intent intent = new Intent(StoreActivity.this, LotteryStoreActivity.class);
+        intent.putExtra("prize", "0");
+        startActivity(intent);
+        finish();
+    }
+
     private int get(int m, int a1, int d) {
         return ((2 * (a1 + d) + (m - 1) * d) * m) / 2;
     }
@@ -116,7 +124,7 @@ public class StoreActivity extends Activity {
 
     private void updateTSH() {
         String m = getPrice(TSH);
-        TSHv.setText(m+" ");
+        TSHv.setText(m + " ");
     }
 
     private void update(SQLiteDatabase db) {
@@ -175,17 +183,6 @@ public class StoreActivity extends Activity {
             case "factory":
                 t = 100;
                 break;
-
-
-    /*
-            if ((car + 1) * 10 <= TSH) {
-                TSH -= ((car + 1) * 10);
-                car++;
-                updateTSH();
-                updatePRICE("car");
-            } else {
-                toast();
-            }*/
         }
         int money = get(i, b, t);
         if (money <= TSH) {

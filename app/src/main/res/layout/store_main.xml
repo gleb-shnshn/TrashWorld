@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/store"
+    android:background="@drawable/store2"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -24,11 +24,6 @@
             android:background="@color/alpha1"
             android:onClick="toPlay" />
 
-        <Space
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
         <LinearLayout
             android:layout_width="230dp"
             android:layout_height="match_parent"
@@ -42,15 +37,24 @@
 
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/TSH"
-                android:layout_width="209dp"
+                android:layout_width="189dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
                 android:text="0 "
                 android:textAlignment="textEnd"
-                android:textColor="@color/blue"
+                android:textColor="#ffffff"
                 android:textSize="30sp"
                 app:font_name="nyeti.ttf" />
+
         </LinearLayout>
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="84dp"
+            android:layout_height="82dp"
+            android:layout_weight="1"
+            android:background="@color/alpha1"
+            android:onClick="toLotteryStore" />
 
     </LinearLayout>
 

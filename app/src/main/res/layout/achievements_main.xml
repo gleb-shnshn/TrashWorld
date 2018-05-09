@@ -24,30 +24,32 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="77dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/tomenu"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="left"
                     android:layout_weight="1"
                     android:onClick="toMenu"
-                    android:src="@drawable/backbut" />
+                    android:src="@drawable/backbut2" />
 
                 <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="left"
                     android:layout_weight="1" />
 
                 <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="left"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:src="@drawable/logob"
+                    android:onClick="toBonus"/>
 
             </LinearLayout>
 

@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -25,7 +27,7 @@ public class LotteryActivity extends Activity {
     DBHelper dbHelper;
     Cursor cursor;
     SQLiteDatabase db;
-    int organicc, plasticc, metalc, glassc, notrecyclec, paperc,TSH;
+    int organicc, plasticc, metalc, glassc, notrecyclec, paperc, TSH;
     int obj;
     private boolean isOpen = false, isBack = false;
 
@@ -34,10 +36,19 @@ public class LotteryActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.lottery_main);
+        boolean hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
+        boolean hasHomeKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_HOME);
+        if (hasBackKey && hasHomeKey)
+            setContentView(R.layout.lottery_main);
+        else
+            setContentView(R.layout.lottery_main_compat);
         sc = findViewById(R.id.scratch_view);
         String got = getIntent().getExtras().getString("1");
+        if (getWindowManager().getDefaultDisplay().getWidth() == 720)
+            got += "c";
         sc.setWatermark(getResources().getIdentifier(got, "drawable", getPackageName()));
+        if (getWindowManager().getDefaultDisplay().getWidth() == 720)
+            got = got.substring(0, got.length() - 1);
         Random random = new Random();
         if (got.equals("silverl")) {
             img = findViewById(R.id.img);
@@ -58,7 +69,7 @@ public class LotteryActivity extends Activity {
             }
         } else if (got.equals("bronzel")) {
             int nprice = (TSH / 10) + 1000;
-            obj = random.nextInt(nprice) + nprice/2;
+            obj = random.nextInt(nprice) + nprice / 2;
             tsh = findViewById(R.id.TSH);
             tsh.setText(getPrice(obj) + " \nTSH ");
         } else if (got.equals("goldl")) {
@@ -69,32 +80,32 @@ public class LotteryActivity extends Activity {
             obj = random.nextInt(6) + 5;
             switch (obj) {
                 case 5:
-                    glassc = m(glassc)+1;
+                    glassc = m(glassc) + 1;
                     img.setImageDrawable(getDrawable(getResources().getIdentifier("glass" + glassc, "drawable", getPackageName())));
                     update("glassb", glassc);
                     break;
                 case 6:
-                    metalc = m(metalc)+1;
+                    metalc = m(metalc) + 1;
                     img.setImageDrawable(getDrawable(getResources().getIdentifier("metal" + metalc, "drawable", getPackageName())));
                     update("metalb", metalc);
                     break;
                 case 7:
-                    paperc = m(paperc)+1;
+                    paperc = m(paperc) + 1;
                     img.setImageDrawable(getDrawable(getResources().getIdentifier("paper" + paperc, "drawable", getPackageName())));
                     update("paperb", paperc);
                     break;
                 case 8:
-                    organicc = m(organicc)+1;
+                    organicc = m(organicc) + 1;
                     img.setImageDrawable(getDrawable(getResources().getIdentifier("organic" + organicc, "drawable", getPackageName())));
                     update("organicb", organicc);
                     break;
                 case 9:
-                    notrecyclec = m(notrecyclec)+1;
+                    notrecyclec = m(notrecyclec) + 1;
                     img.setImageDrawable(getDrawable(getResources().getIdentifier("notrecycle" + notrecyclec, "drawable", getPackageName())));
                     update("notrecycleb", notrecyclec);
                     break;
                 case 10:
-                    plasticc = m(plasticc)+1;
+                    plasticc = m(plasticc) + 1;
                     img.setImageDrawable(getDrawable(getResources().getIdentifier("plastic" + plasticc, "drawable", getPackageName())));
                     update("plasticb", plasticc);
                     break;
@@ -147,7 +158,7 @@ public class LotteryActivity extends Activity {
     public void init(SQLiteDatabase db) {
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
-        TSH=Integer.parseInt(cursor.getString(1));
+        TSH = Integer.parseInt(cursor.getString(1));
         paperc = Integer.parseInt(cursor.getString(13));
         plasticc = Integer.parseInt(cursor.getString(14));
         metalc = Integer.parseInt(cursor.getString(15));
@@ -165,6 +176,7 @@ public class LotteryActivity extends Activity {
             finish();
         }
     }
+
     private String getPrice(int s) {
         String newa = "" + s;
         if (newa.length() > 10) {
