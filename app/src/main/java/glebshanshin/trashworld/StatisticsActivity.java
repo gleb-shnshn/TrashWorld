@@ -15,7 +15,8 @@ public class StatisticsActivity extends Activity {
     SQLiteDatabase db;
     Cursor cursor;
     TextView organic, plastic, metal, glass, notrecycle, paper, mistake, trash, TSH;
-    int organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistakes, trashc, TSHc, man, car, robot, factory;
+    long organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistakes, trashc, man, car, robot, factory;
+    long TSHc;
     String pref = "\n:";
 
     @Override
@@ -41,13 +42,15 @@ public class StatisticsActivity extends Activity {
         metal.setText(pref + metalc);
         plastic.setText(pref + plasticc);
         String newa = "" + TSHc;
-        if (newa.length() > 9) {
+        if (newa.length() > 12)
+            newa = newa.substring(0, newa.length() - 9) + "T";
+        else if (newa.length() > 9)
             newa = newa.substring(0, newa.length() - 9) + "B";
-        } else if (newa.length() > 6) {
+        else if (newa.length() > 6)
             newa = newa.substring(0, newa.length() - 6) + "M";
-        } else if (newa.length() > 3) {
+        else if (newa.length() > 3)
             newa = newa.substring(0, newa.length() - 3) + "K";
-        }
+
         TSH.setText(newa + " TSH ");
     }
 
@@ -66,11 +69,11 @@ public class StatisticsActivity extends Activity {
     public void init(SQLiteDatabase db) {
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
-        TSHc = Integer.parseInt(cursor.getString(1));
-        man = Integer.parseInt(cursor.getString(2));
-        car = Integer.parseInt(cursor.getString(3));
-        robot = Integer.parseInt(cursor.getString(4));
-        factory = Integer.parseInt(cursor.getString(5));
+        TSHc = cursor.getLong(1);
+        man = cursor.getLong(2);
+        car = cursor.getLong(3);
+        robot = cursor.getLong(4);
+        factory = cursor.getLong(5);
         TSHc = TSHc + ((2 + (man - 1)) * man / 2) + ((20 + 10 * (car - 1)) * car / 2) + ((100 + 50 * (robot - 1)) * robot / 2) + ((200 + 100 * (factory - 1)) * factory / 2);
         paperc = Integer.parseInt(cursor.getString(6));
         plasticc = Integer.parseInt(cursor.getString(7));

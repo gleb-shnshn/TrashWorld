@@ -45,34 +45,34 @@ public class StoreActivity extends Activity {
                 pricecar1.setText(getPrice((car + 1) * 10));
                 pricerobot1.setText(getPrice((robot + 1) * 50));
                 pricefactory1.setText(getPrice((factory + 1) * 100));
-                priceman10.setText(getPrice(get(10, man, 1)));
-                pricecar10.setText(getPrice(get(10, car, 10)));
-                pricerobot10.setText(getPrice(get(10, robot, 50)));
-                pricefactory10.setText(getPrice(get(10, factory, 100)));
-                priceman50.setText(getPrice(get(50, man, 1)));
-                pricecar50.setText(getPrice(get(50, car, 10)));
-                pricerobot50.setText(getPrice(get(50, robot, 50)));
-                pricefactory50.setText(getPrice(get(50, factory, 100)));
+                priceman10.setText(getPrice(get(10, (man + 1), 1)));
+                pricecar10.setText(getPrice(get(10, (car + 1) * 10, 10)));
+                pricerobot10.setText(getPrice(get(10,(robot + 1) * 50, 50)));
+                pricefactory10.setText(getPrice(get(10, (factory + 1) * 100, 100)));
+                priceman50.setText(getPrice(get(50, (man + 1), 1)));
+                pricecar50.setText(getPrice(get(50, (car + 1) * 10, 10)));
+                pricerobot50.setText(getPrice(get(50, (robot + 1) * 50, 50)));
+                pricefactory50.setText(getPrice(get(50, (factory + 1) * 100, 100)));
                 break;
             case "man":
                 priceman1.setText(getPrice((man + 1)));
-                priceman10.setText(getPrice(get(10, man, 1)));
-                priceman50.setText(getPrice(get(50, man, 1)));
+                priceman10.setText(getPrice(get(10, (man + 1), 1)));
+                priceman50.setText(getPrice(get(50, (man + 1), 1)));
                 break;
             case "car":
                 pricecar1.setText(getPrice((car + 1) * 10));
-                pricecar10.setText(getPrice(get(10, car, 10)));
-                pricecar50.setText(getPrice(get(50, car, 10)));
+                pricecar10.setText(getPrice(get(10, (car + 1) * 10, 10)));
+                pricecar50.setText(getPrice(get(50, (car + 1) * 10, 10)));
                 break;
             case "robot":
                 pricerobot1.setText(getPrice((robot + 1) * 50));
-                pricerobot10.setText(getPrice(get(10, robot, 50)));
-                pricerobot50.setText(getPrice(get(50, robot, 50)));
+                pricerobot10.setText(getPrice(get(10, (robot + 1) * 50, 50)));
+                pricerobot50.setText(getPrice(get(50, (robot + 1) * 50, 50)));
                 break;
             case "factory":
                 pricefactory1.setText(getPrice((factory + 1) * 100));
-                pricefactory10.setText(getPrice(get(10, factory, 100)));
-                pricefactory50.setText(getPrice(get(50, factory, 100)));
+                pricefactory10.setText(getPrice(get(10, (factory + 1) * 100, 100)));
+                pricefactory50.setText(getPrice(get(50, (factory + 1) * 100, 100)));
                 break;
         }
         switch (what) {
@@ -106,19 +106,22 @@ public class StoreActivity extends Activity {
         finish();
     }
 
-    private int get(int m, int a1, int d) {
-        return ((2 * (a1 + d) + (m - 1) * d) * m) / 2;
+    private int get(int n, int a1, int d) {
+        return ((((2 * a1) + (n - 1) * d) * n)/ 2);
     }
 
     private String getPrice(int s) {
         String newa = "" + s;
-        if (newa.length() > 9) {
+
+        if (newa.length() > 12)
+            newa = newa.substring(0, newa.length() - 9) + "T";
+        else if (newa.length() > 9)
             newa = newa.substring(0, newa.length() - 9) + "B";
-        } else if (newa.length() > 6) {
+        else if (newa.length() > 6)
             newa = newa.substring(0, newa.length() - 6) + "M";
-        } else if (newa.length() > 3) {
+        else if (newa.length() > 3)
             newa = newa.substring(0, newa.length() - 3) + "K";
-        }
+
         return newa + t;
     }
 
@@ -164,8 +167,8 @@ public class StoreActivity extends Activity {
         countfactory = findViewById(R.id.countfactory);
     }
 
-    private void toast() {
-        Toast.makeText(getApplicationContext(), "Недостаточно TSH", Toast.LENGTH_SHORT).show();
+    private void toast(int a) {
+        Toast.makeText(getApplicationContext(), "Не хватает "+a+" TSH", Toast.LENGTH_SHORT).show();
     }
 
     private void increase(int b, int i, String d) {
@@ -184,7 +187,7 @@ public class StoreActivity extends Activity {
                 t = 100;
                 break;
         }
-        int money = get(i, b, t);
+        int money = get(i, (b+1) * t, t);
         if (money <= TSH) {
             TSH -= money;
             switch (d) {
@@ -201,17 +204,18 @@ public class StoreActivity extends Activity {
                     factory += i;
                     break;
             }
+            Toast.makeText(this, "Снято " + money+" TSH", Toast.LENGTH_SHORT).show();
             updateTSH();
             updatePRICE(d);
+            update(db);
         } else {
-            toast();
+            toast(money-TSH);
         }
     }
 
     public void buyMan1(View view) {
         increase(man, 1, "man");
     }
-
 
     public void buyMan10(View view) {
         increase(man, 10, "man");

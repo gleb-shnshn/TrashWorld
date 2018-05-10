@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.clock.scratch.ScratchView;
 
@@ -43,6 +44,9 @@ public class LotteryActivity extends Activity {
         else
             setContentView(R.layout.lottery_main_compat);
         sc = findViewById(R.id.scratch_view);
+        dbHelper = new DBHelper(this);
+        db = dbHelper.getWritableDatabase();
+        init(db);
         String got = getIntent().getExtras().getString("1");
         if (getWindowManager().getDefaultDisplay().getWidth() == 720)
             got += "c";
@@ -71,11 +75,8 @@ public class LotteryActivity extends Activity {
             int nprice = (TSH / 10) + 1000;
             obj = random.nextInt(nprice) + nprice / 2;
             tsh = findViewById(R.id.TSH);
-            tsh.setText(getPrice(obj) + " \nTSH ");
+            tsh.setText(getPrice(obj) + "\nTSH");
         } else if (got.equals("goldl")) {
-            dbHelper = new DBHelper(this);
-            db = dbHelper.getWritableDatabase();
-            init(db);
             img = findViewById(R.id.img);
             obj = random.nextInt(6) + 5;
             switch (obj) {

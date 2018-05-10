@@ -36,10 +36,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_weight="1"
-                android:text="14K TSH"
+                android:text="999M TSH"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="27dp"
+                android:textSize="23dp"
                 app:font_name="nyeti.ttf" />
 
             <io.gloxey.cfv.CFTextView
@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="1K TSH за мусор"
+                android:text="999M TSH за мусор"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="20dp"

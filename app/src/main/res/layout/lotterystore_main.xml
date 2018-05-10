@@ -39,7 +39,7 @@
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/TSH"
                 android:layout_width="209dp"
-                android:layout_height="49dp"
+                android:layout_height="68dp"
                 android:layout_weight="1"
                 android:text="0 "
                 android:textAlignment="textEnd"

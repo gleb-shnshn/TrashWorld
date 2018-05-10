@@ -94,13 +94,15 @@ public class LotteryStoreActivity extends Activity {
 
     private String getPrice(int s) {
         String newa = "" + s;
-        if (newa.length() > 9) {
+        if (newa.length() > 12)
+            newa = newa.substring(0, newa.length() - 9) + "T";
+        else if (newa.length() > 9)
             newa = newa.substring(0, newa.length() - 9) + "B";
-        } else if (newa.length() > 6) {
+        else if (newa.length() > 6)
             newa = newa.substring(0, newa.length() - 6) + "M";
-        } else if (newa.length() > 3) {
+        else if (newa.length() > 3)
             newa = newa.substring(0, newa.length() - 3) + "K";
-        }
+
         return newa;
     }
 
@@ -109,8 +111,8 @@ public class LotteryStoreActivity extends Activity {
         TSHv.setText(newa + " TSH ");
     }
 
-    private void toast() {
-        Toast.makeText(getApplicationContext(), "Недостаточно TSH", Toast.LENGTH_SHORT).show();
+    private void toast(int a) {
+        Toast.makeText(getApplicationContext(), "Не хватает "+a+" TSH", Toast.LENGTH_SHORT).show();
     }
 
     public void toStore(View view) {
@@ -123,33 +125,36 @@ public class LotteryStoreActivity extends Activity {
     public void buyBronze(View view) {
         if (TSH >= nprice) {
             TSH -= nprice;
+            Toast.makeText(this,"Снято "+nprice+" TSH", Toast.LENGTH_SHORT);
             intent.putExtra("1", "bronzel");
             update(db);
             startActivity(intent);
         } else {
-            toast();
+            toast(nprice-TSH);
         }
     }
 
     public void buySilver(View view) {
         if (TSH >= price) {
+            Toast.makeText(this,"Снято "+price+" TSH", Toast.LENGTH_SHORT);
             TSH -= price;
             intent.putExtra("1", "silverl");
             update(db);
             startActivity(intent);
         } else {
-            toast();
+            toast(price-TSH);
         }
     }
 
     public void buyGold(View view) {
-        if (TSH >= 10000) {
-            TSH -= 10000;
+        if (TSH >= 100000) {
+            TSH -= 100000;
+            Toast.makeText(this,"Снято "+100000+" TSH", Toast.LENGTH_SHORT);
             intent.putExtra("1", "goldl");
             update(db);
             startActivity(intent);
         } else {
-            toast();
+            toast(100000-TSH);
         }
     }
 }

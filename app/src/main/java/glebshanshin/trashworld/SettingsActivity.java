@@ -52,12 +52,15 @@ public class SettingsActivity extends Activity {
         newValues.put("glass", 0);
         newValues.put("mistakes", 0);
 
-        newValues.put("paperb",1);
-        newValues.put("plasticb",1);
-        newValues.put("metalb",1);
-        newValues.put("organicb",1);
-        newValues.put("notrecycleb",1);
-        newValues.put("glassb",1);
+        newValues.put("paperb", 1);
+        newValues.put("plasticb", 1);
+        newValues.put("metalb", 1);
+        newValues.put("organicb", 1);
+        newValues.put("notrecycleb", 1);
+        newValues.put("glassb", 1);
+
+        newValues.put("multi", 1);
+
         db.update("Data", newValues, "_id = 1", null);
         Toast.makeText(this, "Все данные стерты", Toast.LENGTH_SHORT).show();
     }

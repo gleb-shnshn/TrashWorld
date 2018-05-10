@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/emptypage"
     android:orientation="vertical"
-    tools:context=".AchievementsActivity"
-    android:background="@drawable/emptypage">
+    tools:context=".AchievementsActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -41,15 +41,17 @@
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="left"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:src="@drawable/logo3"
+                    android:onClick="toFacts" />
 
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="left"
                     android:layout_weight="1"
-                    android:src="@drawable/logob"
-                    android:onClick="toBonus"/>
+                    android:onClick="toBonus"
+                    android:src="@drawable/logob" />
 
             </LinearLayout>
 

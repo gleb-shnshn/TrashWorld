@@ -23,7 +23,7 @@ import android.widget.Toast;
 public class PlayActivity extends Activity implements OnTouchListener {
     int factory, robot, car, man, TSH;
     int organicb, plasticb, metalb, glassb, notrecycleb, paperb;
-    int organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistakes, Adder = 1;
+    int organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistakes, Adder,multi;
     DBHelper dbHelper;
     Cursor cursor;
     SQLiteDatabase db;
@@ -62,13 +62,15 @@ public class PlayActivity extends Activity implements OnTouchListener {
 
     private String getPrice(int s) {
         String newa = "" + s;
-        if (newa.length() > 9) {
+        if (newa.length() > 12)
+            newa = newa.substring(0, newa.length() - 9) + "T";
+        else if (newa.length() > 9)
             newa = newa.substring(0, newa.length() - 9) + "B";
-        } else if (newa.length() > 6) {
+        else if (newa.length() > 6)
             newa = newa.substring(0, newa.length() - 6) + "M";
-        } else if (newa.length() > 3) {
+        else if (newa.length() > 3)
             newa = newa.substring(0, newa.length() - 3) + "K";
-        }
+
         return newa;
     }
 
@@ -183,30 +185,32 @@ public class PlayActivity extends Activity implements OnTouchListener {
     public void init(SQLiteDatabase db) {
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
-        TSH = Integer.parseInt(cursor.getString(1));
-        man = Integer.parseInt(cursor.getString(2));
-        car = Integer.parseInt(cursor.getString(3));
-        robot = Integer.parseInt(cursor.getString(4));
-        factory = Integer.parseInt(cursor.getString(5));
-        paperc = Integer.parseInt(cursor.getString(6));
-        plasticc = Integer.parseInt(cursor.getString(7));
-        metalc = Integer.parseInt(cursor.getString(8));
-        organicc = Integer.parseInt(cursor.getString(9));
-        notrecyclec = Integer.parseInt(cursor.getString(10));
-        glassc = Integer.parseInt(cursor.getString(11));
-        mistakes = Integer.parseInt(cursor.getString(12));
-        paperb = Integer.parseInt(cursor.getString(13));
-        plasticb = Integer.parseInt(cursor.getString(14));
-        metalb = Integer.parseInt(cursor.getString(15));
-        organicb = Integer.parseInt(cursor.getString(16));
-        notrecycleb = Integer.parseInt(cursor.getString(17));
-        glassb = Integer.parseInt(cursor.getString(18));
+        TSH = cursor.getInt(1);
+        man = cursor.getInt(2);
+        car = cursor.getInt(3);
+        robot = cursor.getInt(4);
+        factory = cursor.getInt(5);
+        paperc = cursor.getInt(6);
+        plasticc = cursor.getInt(7);
+        metalc = cursor.getInt(8);
+        organicc = cursor.getInt(9);
+        notrecyclec = cursor.getInt(10);
+        glassc = cursor.getInt(11);
+        mistakes = cursor.getInt(12);
+        paperb = cursor.getInt(13);
+        plasticb = cursor.getInt(14);
+        metalb = cursor.getInt(15);
+        organicb = cursor.getInt(16);
+        notrecycleb = cursor.getInt(17);
+        glassb = cursor.getInt(18);
+        multi = cursor.getInt(19);
         cursor.close();
         initTSHs();
     }
 
     private void initTSHs() {
         Adder = 1 + man + car * 10 + robot * 50 + factory * 100;
+        Adder*=multi;
         String newa = getPrice(Adder);
         TSHsv.setText(newa + " TSH/мусор");
     }

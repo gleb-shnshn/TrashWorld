@@ -35,7 +35,7 @@
             android:layout_gravity="center"
             android:textAlignment="center"
             android:textColor="#333333"
-            android:textSize="70sp"
+            android:textSize="60sp"
             app:font_name="nyeti.ttf" />
 
         <ImageView
@@ -44,12 +44,13 @@
             android:layout_height="185dp"
             android:layout_gravity="center" />
 
-        <!-- scratch view -->
-
         <com.clock.scratch.ScratchView
             android:id="@+id/scratch_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+        <!-- scratch view -->
+
     </FrameLayout>
 
     <Button

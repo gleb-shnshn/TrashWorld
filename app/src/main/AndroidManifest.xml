@@ -43,10 +43,8 @@
             android:name=".BonusActivity"
             android:label=".BonusActivity" />
         <activity
-            android:name=".FullscreenActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_fullscreen"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:name=".FactActivity"
+            android:label=".FactActivity" />
     </application>
 
 </manifest>
