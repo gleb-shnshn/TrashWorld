@@ -10,22 +10,31 @@
     <Button
         android:id="@+id/reset"
         android:layout_width="224dp"
-        android:layout_height="95dp"
-        android:layout_alignParentBottom="true"
+        android:layout_height="103dp"
+        android:layout_above="@+id/promo"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="206dp"
         android:background="@color/alpha1"
         android:onClick="reset" />
 
     <Button
         android:id="@+id/statistics"
         android:layout_width="227dp"
-        android:layout_height="94dp"
+        android:layout_height="99dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="217dp"
+        android:layout_marginTop="184dp"
         android:background="@color/alpha1"
         android:onClick="statistics" />
+
+    <Button
+        android:id="@+id/promo"
+        android:layout_width="224dp"
+        android:layout_height="95dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="156dp"
+        android:background="@color/alpha1"
+        android:onClick="promo" />
 
     <Button
         android:id="@+id/toMenu"

@@ -23,7 +23,7 @@ import android.widget.Toast;
 public class PlayActivity extends Activity implements OnTouchListener {
     int factory, robot, car, man, TSH;
     int organicb, plasticb, metalb, glassb, notrecycleb, paperb;
-    int organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistakes, Adder,multi;
+    int organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistakes, Adder, multi;
     DBHelper dbHelper;
     Cursor cursor;
     SQLiteDatabase db;
@@ -210,7 +210,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
 
     private void initTSHs() {
         Adder = 1 + man + car * 10 + robot * 50 + factory * 100;
-        Adder*=multi;
+        Adder *= multi;
         String newa = getPrice(Adder);
         TSHsv.setText(newa + " TSH/мусор");
     }

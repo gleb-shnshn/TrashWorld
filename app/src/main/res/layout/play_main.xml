@@ -8,13 +8,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="117dp"
+        android:layout_height="97dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/tomenu"
             android:layout_width="10dp"
-            android:layout_height="match_parent"
+            android:layout_height="97dp"
             android:layout_weight="1"
             android:background="@color/alpha1"
             android:onClick="toMenu" />
@@ -27,7 +27,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
+                android:layout_height="26dp"
                 android:layout_weight="1" />
 
             <io.gloxey.cfv.CFTextView
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_weight="1"
-                android:text="999M TSH"
+                android:text="888M TSH"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="23dp"
@@ -45,7 +45,7 @@
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/TSHs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:layout_weight="1"
                 android:text="999M TSH за мусор"
                 android:textAlignment="center"
@@ -53,10 +53,6 @@
                 android:textSize="20dp"
                 app:font_name="brody.ttf" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_weight="1" />
         </LinearLayout>
 
         <Button

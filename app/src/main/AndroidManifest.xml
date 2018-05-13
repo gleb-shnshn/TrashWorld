@@ -43,8 +43,11 @@
             android:name=".BonusActivity"
             android:label=".BonusActivity" />
         <activity
-            android:name=".FactActivity"
-            android:label=".FactActivity" />
+            android:name=".QRScanActivity"
+            android:label=".QRScanActivity" />
+        <activity
+            android:name=".PromoActivity"
+            android:label=".QRScanActivity" />
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

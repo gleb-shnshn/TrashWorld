@@ -70,4 +70,10 @@ public class SettingsActivity extends Activity {
         startActivity(intent1);
         finish();
     }
+
+    public void promo(View view) {
+        Intent intent1 = new Intent(SettingsActivity.this, PromoActivity.class);
+        startActivity(intent1);
+        finish();
+    }
 }

@@ -198,10 +198,4 @@ public class AchievementsActivity extends Activity {
         startActivity(intent1);
         finish();
     }
-
-    public void toFacts(View view) {
-        Intent intent1 = new Intent(AchievementsActivity.this, FactActivity.class);
-        startActivity(intent1);
-        finish();
-    }
 }

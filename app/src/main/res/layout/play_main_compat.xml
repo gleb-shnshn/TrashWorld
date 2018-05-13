@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="117dp"
+        android:layout_height="83dp"
         android:orientation="horizontal">
 
         <Button
@@ -33,13 +33,13 @@
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/TSH"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:layout_gravity="start"
                 android:layout_weight="1"
                 android:text="14K TSH"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="27dp"
+                android:textSize="23sp"
                 app:font_name="nyeti.ttf" />
 
             <io.gloxey.cfv.CFTextView
@@ -136,25 +136,5 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="115dp"
         android:src="@drawable/trash2" />
-
-    <ImageView
-        android:id="@+id/button2"
-        android:layout_width="88dp"
-        android:layout_height="72dp"
-        android:layout_above="@+id/metal"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="-205dp"
-        android:onClick="toBonus"
-        android:src="@drawable/logob" />
-
-    <ImageView
-        android:id="@+id/button3"
-        android:layout_width="88dp"
-        android:layout_height="72dp"
-        android:layout_above="@+id/metal"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="-205dp"
-        android:onClick="toLotteryStore"
-        android:src="@drawable/logo" />
 
 </RelativeLayout>
