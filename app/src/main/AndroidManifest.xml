@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="glebshanshin.trashworld">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         <activity
-            android:name=".MainActivity"
+            android:name=".test"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,7 +49,7 @@
             android:label=".QRScanActivity" />
         <activity
             android:name=".PromoActivity"
-            android:label=".QRScanActivity" />
+            android:label=".PromoActivity" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
 </manifest>

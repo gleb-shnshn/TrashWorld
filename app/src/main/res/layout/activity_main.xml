@@ -15,7 +15,7 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="223dp"
+        android:layout_marginTop="261dp"
         android:background="@color/alpha1"
         android:onClick="toStart" />
 
@@ -25,7 +25,7 @@
         android:layout_height="64dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="192dp"
+        android:layout_marginBottom="171dp"
         android:background="@color/alpha1"
         android:onClick="toSettings" />
 
@@ -35,7 +35,7 @@
         android:layout_height="64dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="274dp"
+        android:layout_marginBottom="250dp"
         android:background="@color/alpha1"
         android:onClick="toAchievements" />
 
@@ -45,7 +45,7 @@
         android:layout_height="67dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="105dp"
+        android:layout_marginBottom="93dp"
         android:background="@color/alpha1"
         android:onClick="toExit" />
 </RelativeLayout>

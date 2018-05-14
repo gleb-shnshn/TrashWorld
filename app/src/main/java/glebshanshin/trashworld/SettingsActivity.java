@@ -31,9 +31,7 @@ public class SettingsActivity extends Activity {
     }
 
     public void reset(View view) {
-        dbHelper = new DBHelper(this);
-        db = dbHelper.getWritableDatabase();
-        update(db);
+        setContentView(R.layout.check_main);
     }
 
     private void update(SQLiteDatabase db) {
@@ -75,5 +73,16 @@ public class SettingsActivity extends Activity {
         Intent intent1 = new Intent(SettingsActivity.this, PromoActivity.class);
         startActivity(intent1);
         finish();
+    }
+
+    public void Yes(View view) {
+        setContentView(R.layout.settings_main);
+        dbHelper = new DBHelper(this);
+        db = dbHelper.getWritableDatabase();
+        update(db);
+    }
+
+    public void No(View view) {
+        setContentView(R.layout.settings_main);
     }
 }

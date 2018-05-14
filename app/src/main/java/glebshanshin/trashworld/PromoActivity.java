@@ -138,7 +138,7 @@ public class PromoActivity extends Activity {
 
     public void Generate(View view) throws WriterException {
         setContentView(R.layout.qr);
-        String code ="QR100K"+ UUID.randomUUID().toString().substring(0,7);
+        String code ="QR100K"+ UUID.randomUUID().toString().substring(0,7)+"QR";
         BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
         Bitmap bitmap = barcodeEncoder.encodeBitmap(code, BarcodeFormat.QR_CODE, 400, 400);
         ImageView imageViewQrCode =findViewById(R.id.imageView);
@@ -149,5 +149,11 @@ public class PromoActivity extends Activity {
     public void toBack(View view){
         setContentView(R.layout.promo_main);
 
+    }
+
+    public void toSettings(View view) {
+        Intent intent = new Intent(PromoActivity.this, SettingsActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
