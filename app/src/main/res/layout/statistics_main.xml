@@ -6,25 +6,22 @@
     android:layout_height="match_parent"
     android:background="@drawable/store"
     android:orientation="vertical"
-    tools:context=".StatisticsActivity">
+    tools:context=".StatisticsActivity"
+    android:weightSum="1">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="84dp"
+        android:layout_weight="0.001"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/back"
-            android:layout_width="70dp"
-            android:layout_height="60dp"
+            android:layout_width="17dp"
+            android:layout_height="86dp"
             android:layout_weight="1"
             android:background="@color/alpha1"
             android:onClick="toSettings" />
-
-        <Space
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
 
         <LinearLayout
             android:layout_width="230dp"
@@ -39,9 +36,10 @@
 
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/TSH"
-                android:layout_width="204dp"
-                android:layout_height="107dp"
+                android:layout_width="254dp"
+                android:layout_height="53dp"
                 android:layout_weight="1"
+                android:text="150 tsh"
                 android:textAlignment="textEnd"
                 android:textColor="@color/blue"
                 android:textSize="25sp"
@@ -50,9 +48,15 @@
 
     </LinearLayout>
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.4" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_weight="0.001"
         android:orientation="horizontal">
 
         <ImageView
@@ -65,6 +69,7 @@
             android:id="@+id/trash"
             android:layout_width="80dp"
             android:layout_height="80dp"
+            android:layout_weight="1"
             android:textColor="@color/blue"
             android:textSize="25sp"
             app:font_name="nyeti.ttf" />
@@ -73,10 +78,10 @@
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:src="@drawable/organicstat" />
+            android:src="@drawable/mistakestat" />
 
         <io.gloxey.cfv.CFTextView
-            android:id="@+id/organic"
+            android:id="@+id/mistake"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_weight="1"
@@ -89,16 +94,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_weight="0.001"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:src="@drawable/mistakestat" />
+            android:src="@drawable/organicstat" />
 
         <io.gloxey.cfv.CFTextView
-            android:id="@+id/mistake"
+            android:id="@+id/organic"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_weight="1"
@@ -125,6 +131,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_weight="0.001"
         android:orientation="horizontal">
 
         <ImageView
@@ -161,6 +168,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="0.001"
         android:orientation="horizontal">
 
         <ImageView

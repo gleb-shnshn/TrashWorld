@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class PlayActivity extends Activity implements OnTouchListener {
+    MediaPlayer mediaPlayer;
     int factory, robot, car, man, TSH;
     int organicb, plasticb, metalb, glassb, notrecycleb, paperb;
     int organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistakes, Adder, multi;
@@ -167,6 +169,8 @@ public class PlayActivity extends Activity implements OnTouchListener {
         int rightX = i.getRight();
         int bottomY = i.getBottom();
         if (eX > leftX && eX < rightX && eY > topY && eY < bottomY) {
+            if (!choice.equals(""+i.getTag()))
+                mediaPlayer.start();
             i.setImageDrawable(getDrawable(getResources().getIdentifier(i.getTag() + "w", "drawable", getPackageName())));
             dropFlag = true;
             choice = "" + i.getTag();
@@ -220,12 +224,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        boolean hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
-        boolean hasHomeKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_HOME);
-        if (hasBackKey && hasHomeKey)
-            setContentView(R.layout.play_main);
-        else
-            setContentView(R.layout.play_main_compat);
+        setContentView(R.layout.play_main);
         root = findViewById(android.R.id.content).getRootView();
         plastic = findViewById(R.id.plastic);
         glass = findViewById(R.id.glass);
@@ -241,6 +240,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
         init(db);
         increaseTSH(0);
         newTrash();
+        mediaPlayer = MediaPlayer.create(this, R.raw.click);
         w = getWindowManager().getDefaultDisplay().getWidth() - 50;
         h = getWindowManager().getDefaultDisplay().getHeight() - 10;
         trash.setOnTouchListener(this);

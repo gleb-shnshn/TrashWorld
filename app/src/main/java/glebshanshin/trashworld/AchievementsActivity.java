@@ -34,17 +34,17 @@ public class AchievementsActivity extends Activity {
     public void init(SQLiteDatabase db) {
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
-        man = Integer.parseInt(cursor.getString(2));
-        car = Integer.parseInt(cursor.getString(3));
-        robot = Integer.parseInt(cursor.getString(4));
-        factory = Integer.parseInt(cursor.getString(5));
-        paperc = Integer.parseInt(cursor.getString(6));
-        plasticc = Integer.parseInt(cursor.getString(7));
-        metalc = Integer.parseInt(cursor.getString(8));
-        organicc = Integer.parseInt(cursor.getString(9));
-        notrecyclec = Integer.parseInt(cursor.getString(10));
-        glassc = Integer.parseInt(cursor.getString(11));
-        mistake = Integer.parseInt(cursor.getString(12));
+        man = cursor.getInt(2);
+        car = cursor.getInt(3);
+        robot = cursor.getInt(4);
+        factory = cursor.getInt(5);
+        paperc = cursor.getInt(6);
+        plasticc = cursor.getInt(7);
+        metalc = cursor.getInt(8);
+        organicc = cursor.getInt(9);
+        notrecyclec = cursor.getInt(10);
+        glassc = cursor.getInt(11);
+        mistake = cursor.getInt(12);
         cursor.close();
         trash = plasticc + paperc + metalc + organicc + notrecyclec + glassc;
     }

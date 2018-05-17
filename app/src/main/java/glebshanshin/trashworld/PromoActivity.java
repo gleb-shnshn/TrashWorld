@@ -1,7 +1,10 @@
 package glebshanshin.trashworld;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
@@ -28,6 +31,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PromoActivity extends Activity {
+    DBHelper dbHelper;
+    SQLiteDatabase db;
+    Cursor cursor;
+    long TSHc;
     private final String server = "https://gleb2700.000webhostapp.com";
     private Gson gson = new GsonBuilder().create();
     private Retrofit retrofit = new Retrofit.Builder()
@@ -36,13 +43,21 @@ public class PromoActivity extends Activity {
             .build();
     private check che = retrofit.create(check.class);
     private delete del = retrofit.create(delete.class);
-    private insert ins = retrofit.create(insert.class);
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.promo_main);
+        dbHelper = new DBHelper(this);
+        db = dbHelper.getWritableDatabase();
+        init(db);
+    }
+
+    private void update(SQLiteDatabase db) {
+        ContentValues newValues = new ContentValues();
+        newValues.put("TSH", TSHc);
+        db.update("Data", newValues, "_id = 1", null);
     }
 
     @Override
@@ -63,8 +78,7 @@ public class PromoActivity extends Activity {
                         HashMap<String, String> map = gson.fromJson(response.body().toString(), HashMap.class);
                         if (map.get("success").equals("good")) {
                             delete(QR);
-                        }
-                        else{
+                        } else {
                             Toast.makeText(getApplicationContext(), "bad qr", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -81,7 +95,7 @@ public class PromoActivity extends Activity {
     }
 
     private void delete(String qr) {
-        final String qr1=qr;
+        final String qr1 = qr;
         HashMap<String, String> postDataParams = new HashMap<String, String>();
         postDataParams.put("code", qr);
         Call<Object> call = del.performPostCall(postDataParams);
@@ -97,26 +111,10 @@ public class PromoActivity extends Activity {
             }
         });
     }
-    private void insert(String qr) {
-        final String qr1=qr;
-        HashMap<String, String> postDataParams = new HashMap<String, String>();
-        postDataParams.put("code", qr);
-        Call<Object> call = ins.performPostCall(postDataParams);
-        call.enqueue(new Callback<Object>() {
-            @Override
-            public void onResponse(Call<Object> call, Response<Object> response) {
-            }
-
-            @Override
-            public void onFailure(Call<Object> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     private void decodeMoney(String a) {
         long b = Integer.parseInt(a.substring(2, 5));
-        switch (a.substring(5,6)) {
+        switch (a.substring(5, 6)) {
             case "K":
                 b *= 1000;
                 break;
@@ -124,10 +122,11 @@ public class PromoActivity extends Activity {
                 b *= 1000000;
                 break;
             case "B":
-                b*=1000000000;
+                b *= 1000000000;
                 break;
         }
-        Toast.makeText(getApplicationContext(), ""+b, Toast.LENGTH_SHORT).show();
+        TSHc += b;
+        Toast.makeText(getApplicationContext(), "Вы получили " + b + " TSH", Toast.LENGTH_SHORT).show();
     }
 
     public void Scan(View view) {
@@ -136,24 +135,23 @@ public class PromoActivity extends Activity {
         integrator.initiateScan();
     }
 
-    public void Generate(View view) throws WriterException {
-        setContentView(R.layout.qr);
-        String code ="QR100K"+ UUID.randomUUID().toString().substring(0,7)+"QR";
-        BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-        Bitmap bitmap = barcodeEncoder.encodeBitmap(code, BarcodeFormat.QR_CODE, 400, 400);
-        ImageView imageViewQrCode =findViewById(R.id.imageView);
-        imageViewQrCode.setImageBitmap(bitmap);
-        Toast.makeText(this,code,Toast.LENGTH_SHORT).show();
-        insert(code);
-    }
-    public void toBack(View view){
-        setContentView(R.layout.promo_main);
-
+    public void Generate(View view) {
+        Intent intent = new Intent(PromoActivity.this, QRActivity.class);
+        update(db);
+        startActivity(intent);
+        finish();
     }
 
     public void toSettings(View view) {
         Intent intent = new Intent(PromoActivity.this, SettingsActivity.class);
         startActivity(intent);
+        update(db);
         finish();
+    }
+
+    public void init(SQLiteDatabase db) {
+        cursor = db.query("Data", null, null, null, null, null, null);
+        cursor.moveToFirst();
+        TSHc = cursor.getLong(1);
     }
 }

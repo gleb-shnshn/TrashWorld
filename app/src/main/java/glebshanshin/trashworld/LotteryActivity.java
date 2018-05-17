@@ -37,12 +37,7 @@ public class LotteryActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        boolean hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
-        boolean hasHomeKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_HOME);
-        if (hasBackKey && hasHomeKey)
-            setContentView(R.layout.lottery_main);
-        else
-            setContentView(R.layout.lottery_main_compat);
+        setContentView(R.layout.lottery_main);
         sc = findViewById(R.id.scratch_view);
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();

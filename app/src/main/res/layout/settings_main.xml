@@ -1,49 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:gravity="center_horizontal"
     android:background="@drawable/settingpage"
     tools:context=".SettingsActivity">
 
     <Button
-        android:id="@+id/reset"
-        android:layout_width="224dp"
-        android:layout_height="103dp"
-        android:layout_above="@+id/promo"
-        android:layout_centerHorizontal="true"
+        android:id="@+id/toMenu"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="left"
+        android:layout_weight="0.01"
         android:background="@color/alpha1"
-        android:onClick="reset" />
+        android:onClick="toMenu" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2" />
 
     <Button
         android:id="@+id/statistics"
-        android:layout_width="227dp"
-        android:layout_height="99dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="184dp"
+        android:layout_width="230dp"
+        android:layout_height="25dp"
+        android:layout_weight="0.16"
         android:background="@color/alpha1"
         android:onClick="statistics" />
 
     <Button
+        android:id="@+id/reset"
+        android:layout_width="230dp"
+        android:layout_height="25dp"
+        android:layout_weight="0.16"
+        android:background="@color/alpha1"
+        android:onClick="reset" />
+
+    <Button
         android:id="@+id/promo"
-        android:layout_width="224dp"
-        android:layout_height="95dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="156dp"
+        android:layout_width="230dp"
+        android:layout_height="25dp"
+        android:layout_weight="0.16"
         android:background="@color/alpha1"
         android:onClick="promo" />
 
-    <Button
-        android:id="@+id/toMenu"
-        android:layout_width="78dp"
-        android:layout_height="70dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/alpha1"
-        android:onClick="toMenu"/>
-</RelativeLayout>
+</LinearLayout>

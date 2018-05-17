@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/store2"
+    android:weightSum="1"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -14,7 +15,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="44dp"
+        android:layout_weight="0.8"
         android:orientation="horizontal">
 
         <Button
@@ -37,8 +39,8 @@
 
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/TSH"
-                android:layout_width="188dp"
-                android:layout_height="88dp"
+                android:layout_width="185dp"
+                android:layout_height="70dp"
                 android:layout_weight="1"
                 android:text="999M TSH"
                 android:textAlignment="textEnd"
@@ -58,9 +60,15 @@
 
     </LinearLayout>
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0.5" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="133dp"
+        android:layout_weight="0.001"
         android:orientation="horizontal"
         android:paddingBottom="@dimen/activity_vertical_margin"
         tools:context=".StoreActivity">
@@ -87,8 +95,8 @@
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:background="@drawable/man"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:background="@drawable/man" />
 
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/countman"
@@ -201,6 +209,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="133dp"
+        android:layout_weight="0.01"
         android:orientation="horizontal"
         android:paddingBottom="@dimen/activity_vertical_margin"
         tools:context=".StoreActivity">
@@ -341,6 +350,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="133dp"
+        android:layout_weight="0.01"
         android:orientation="horizontal"
         android:paddingBottom="@dimen/activity_vertical_margin"
         tools:context=".StoreActivity">
@@ -481,6 +491,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="133dp"
+        android:layout_weight="0.01"
         android:orientation="horizontal"
         android:paddingBottom="@dimen/activity_vertical_margin"
         tools:context=".StoreActivity">

@@ -1,65 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:scratch="http://schemas.android.com/tools"
-    android:id="@+id/move"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/emptypage">
+    android:background="@drawable/emptypage"
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/back"
-        android:layout_width="78dp"
-        android:layout_height="78dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
-        android:layout_weight="1"
-        android:background="@drawable/backbut1"
-        android:onClick="toBack" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.01"
+        android:orientation="horizontal">
 
-    <FrameLayout
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="144dp">
+        <Button
+            android:id="@+id/back"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_margin="20dp"
+            android:layout_weight="0.01"
+            android:background="@drawable/backbut1"
+            android:onClick="toBack" />
 
-        <!-- content view -->
-        <io.gloxey.cfv.CFTextView
-            android:id="@+id/TSH"
-            android:layout_width="268dp"
-            android:layout_height="165dp"
-            android:layout_gravity="center"
-            android:textAlignment="center"
-            android:textColor="#333333"
-            android:textSize="60sp"
-            app:font_name="nyeti.ttf" />
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="40" />
+    </LinearLayout>
 
-        <ImageView
-            android:id="@+id/img"
-            android:layout_width="185dp"
-            android:layout_height="185dp"
-            android:layout_gravity="center" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.02"
+        android:padding="2dp">
 
-        <com.clock.scratch.ScratchView
-            android:id="@+id/scratch_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="w,1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <!-- scratch view -->
+            <!-- content view -->
+            <io.gloxey.cfv.CFTextView
+                android:id="@+id/TSH"
+                android:layout_width="268dp"
+                android:layout_height="165dp"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textColor="#333333"
+                android:textSize="60sp"
+                app:font_name="nyeti.ttf" />
 
-    </FrameLayout>
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="185dp"
+                android:layout_height="185dp"
+                android:layout_gravity="center" />
+
+            <com.clock.scratch.ScratchView
+                android:id="@+id/scratch_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center" />
+
+            <!-- scratch view -->
+
+        </FrameLayout>
+    </android.support.constraint.ConstraintLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="19dp"
+        android:layout_weight="0.01" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="238dp"
         android:layout_height="86dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="114dp"
+        android:layout_gravity="center_horizontal"
         android:background="@drawable/skip"
         android:onClick="skip" />
-</RelativeLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="19dp"
+        android:layout_weight="0.01" />
+
+</LinearLayout>
