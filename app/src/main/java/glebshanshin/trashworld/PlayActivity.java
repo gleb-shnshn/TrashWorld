@@ -2,13 +2,13 @@ package glebshanshin.trashworld;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.KeyCharacterMap;
-import android.view.KeyEvent;
+import android.os.Vibrator;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -19,10 +19,11 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class PlayActivity extends Activity implements OnTouchListener {
-    MediaPlayer mediaPlayer;
+    long mills = 500L;
+    Vibrator vibrator;
+    MediaPlayer clickPlayer, playPlayer;
     int factory, robot, car, man, TSH;
     int organicb, plasticb, metalb, glassb, notrecycleb, paperb;
     int organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistakes, Adder, multi;
@@ -80,6 +81,13 @@ public class PlayActivity extends Activity implements OnTouchListener {
         Intent intent1 = new Intent(PlayActivity.this, MainActivity.class);
         startActivity(intent1);
         update(db);
+        finish1();
+    }
+
+    private void finish1() {
+        playPlayer.stop();
+        clickPlayer.setVolume(0.4f, 0.4f);
+        clickPlayer.start();
         finish();
     }
 
@@ -128,16 +136,15 @@ public class PlayActivity extends Activity implements OnTouchListener {
         update(db);
         Intent intent = new Intent(PlayActivity.this, StoreActivity.class);
         startActivity(intent);
-        finish();
+        finish1();
     }
 
     public void game() {
         if (tag.equals(choice)) {
-            //Toast.makeText(this, "Правильно", Toast.LENGTH_SHORT).show();
             increaseTSH(Adder);
             incCounter(choice);
         } else {
-            Toast.makeText(this, "неПравильно", Toast.LENGTH_SHORT).show();
+            vibrator.vibrate(mills);
             mistakes++;
         }
         choice = "null";
@@ -169,8 +176,8 @@ public class PlayActivity extends Activity implements OnTouchListener {
         int rightX = i.getRight();
         int bottomY = i.getBottom();
         if (eX > leftX && eX < rightX && eY > topY && eY < bottomY) {
-            if (!choice.equals(""+i.getTag()))
-                mediaPlayer.start();
+            if (!choice.equals("" + i.getTag()))
+                clickPlayer.start();
             i.setImageDrawable(getDrawable(getResources().getIdentifier(i.getTag() + "w", "drawable", getPackageName())));
             dropFlag = true;
             choice = "" + i.getTag();
@@ -240,7 +247,11 @@ public class PlayActivity extends Activity implements OnTouchListener {
         init(db);
         increaseTSH(0);
         newTrash();
-        mediaPlayer = MediaPlayer.create(this, R.raw.click);
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        clickPlayer = MediaPlayer.create(this, R.raw.click);
+        clickPlayer.setVolume(0.3f, 0.3f);
+        playPlayer = MediaPlayer.create(this, R.raw.play);
+        playPlayer.start();
         w = getWindowManager().getDefaultDisplay().getWidth() - 50;
         h = getWindowManager().getDefaultDisplay().getHeight() - 10;
         trash.setOnTouchListener(this);

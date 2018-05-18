@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_weight="1"
-                android:text="999M TSH за мусор"
+                android:text="999M TSH/мусор"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="20dp"
@@ -68,8 +68,9 @@
         android:id="@+id/notrecycle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/organic"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/glass"
+        android:layout_marginBottom="149dp"
         android:src="@drawable/ele"
         android:tag="ele" />
 
@@ -79,7 +80,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="223dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="217dp"
         android:src="@drawable/gla"
         android:tag="gla" />
 
@@ -99,7 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="109dp"
+        android:layout_marginBottom="123dp"
         android:src="@drawable/org"
         android:tag="org" />
 
@@ -107,7 +109,7 @@
         android:id="@+id/paper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_alignStart="@+id/plastic"
         android:layout_alignTop="@+id/glass"
         android:src="@drawable/pap"
         android:tag="pap" />
@@ -116,10 +118,9 @@
         android:id="@+id/plastic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="134dp"
-        android:layout_marginStart="21dp"
+        android:layout_alignTop="@+id/notrecycle"
+        android:layout_marginStart="20dp"
         android:src="@drawable/pla"
         android:tag="pla" />
 
@@ -129,7 +130,7 @@
         android:layout_height="150dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="195dp"
+        android:layout_marginBottom="206dp"
         android:src="@drawable/trash2" />
 
 </RelativeLayout>

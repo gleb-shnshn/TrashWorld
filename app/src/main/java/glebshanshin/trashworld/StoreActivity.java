@@ -13,6 +13,8 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
+
 public class StoreActivity extends Activity {
     int factory, robot, car, man, TSH;
     TextView TSHv, priceman1, pricecar1, pricerobot1, pricefactory1,
@@ -47,7 +49,7 @@ public class StoreActivity extends Activity {
                 pricefactory1.setText(getPrice((factory + 1) * 100));
                 priceman10.setText(getPrice(get(10, (man + 1), 1)));
                 pricecar10.setText(getPrice(get(10, (car + 1) * 10, 10)));
-                pricerobot10.setText(getPrice(get(10,(robot + 1) * 50, 50)));
+                pricerobot10.setText(getPrice(get(10, (robot + 1) * 50, 50)));
                 pricefactory10.setText(getPrice(get(10, (factory + 1) * 100, 100)));
                 priceman50.setText(getPrice(get(50, (man + 1), 1)));
                 pricecar50.setText(getPrice(get(50, (car + 1) * 10, 10)));
@@ -107,7 +109,7 @@ public class StoreActivity extends Activity {
     }
 
     private int get(int n, int a1, int d) {
-        return ((((2 * a1) + (n - 1) * d) * n)/ 2);
+        return ((((2 * a1) + (n - 1) * d) * n) / 2);
     }
 
     private String getPrice(int s) {
@@ -168,7 +170,7 @@ public class StoreActivity extends Activity {
     }
 
     private void toast(int a) {
-        Toast.makeText(getApplicationContext(), "Не хватает "+a+" TSH", Toast.LENGTH_SHORT).show();
+        StyleableToast.makeText(getApplicationContext(), "✘  Не хватает "+a+" TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
     }
 
     private void increase(int b, int i, String d) {
@@ -187,7 +189,7 @@ public class StoreActivity extends Activity {
                 t = 100;
                 break;
         }
-        int money = get(i, (b+1) * t, t);
+        int money = get(i, (b + 1) * t, t);
         if (money <= TSH) {
             TSH -= money;
             switch (d) {
@@ -204,12 +206,11 @@ public class StoreActivity extends Activity {
                     factory += i;
                     break;
             }
-            Toast.makeText(this, "Снято " + money+" TSH", Toast.LENGTH_SHORT).show();
             updateTSH();
             updatePRICE(d);
             update(db);
         } else {
-            toast(money-TSH);
+            toast(money - TSH);
         }
     }
 

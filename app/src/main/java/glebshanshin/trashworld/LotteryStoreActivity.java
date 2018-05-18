@@ -12,6 +12,8 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
+
 public class LotteryStoreActivity extends Activity {
     SQLiteDatabase db;
     DBHelper dbHelper;
@@ -112,7 +114,7 @@ public class LotteryStoreActivity extends Activity {
     }
 
     private void toast(int a) {
-        Toast.makeText(getApplicationContext(), "Не хватает "+a+" TSH", Toast.LENGTH_SHORT).show();
+        StyleableToast.makeText(getApplicationContext(), "✘  Не хватает "+a+" TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
     }
 
     public void toStore(View view) {

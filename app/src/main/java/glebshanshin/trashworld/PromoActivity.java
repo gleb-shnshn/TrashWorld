@@ -20,6 +20,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -65,9 +66,7 @@ public class PromoActivity extends Activity {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
 
         if (result != null) {
-            if (result.getContents() == null) {
-                Toast.makeText(this, "Result Not Found", Toast.LENGTH_LONG).show();
-            } else {
+            if (result.getContents() != null) {
                 final String QR = result.getContents();
                 HashMap<String, String> postDataParams = new HashMap<String, String>();
                 postDataParams.put("code", QR);
@@ -79,13 +78,13 @@ public class PromoActivity extends Activity {
                         if (map.get("success").equals("good")) {
                             delete(QR);
                         } else {
-                            Toast.makeText(getApplicationContext(), "bad qr", Toast.LENGTH_SHORT).show();
+                            StyleableToast.makeText(getApplicationContext(), "Некорректный код", Toast.LENGTH_SHORT, R.style.wrong).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<Object> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+                        StyleableToast.makeText(getApplicationContext(), "Нет доступа к интернету", Toast.LENGTH_SHORT, R.style.wrong).show();
                     }
                 });
             }
@@ -107,7 +106,7 @@ public class PromoActivity extends Activity {
 
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+                StyleableToast.makeText(getApplicationContext(), "Нет доступа к интернету", Toast.LENGTH_SHORT, R.style.wrong).show();
             }
         });
     }
@@ -126,7 +125,7 @@ public class PromoActivity extends Activity {
                 break;
         }
         TSHc += b;
-        Toast.makeText(getApplicationContext(), "Вы получили " + b + " TSH", Toast.LENGTH_SHORT).show();
+        StyleableToast.makeText(this, "Вы получили " + a.substring(2, 6) + " TSH", Toast.LENGTH_SHORT, R.style.get).show();
     }
 
     public void Scan(View view) {

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/emptypage">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        app:layout_heightPercent="15%"
+        app:layout_widthPercent="100%">
+
+        <Button
+            android:id="@+id/tomenu"
+            android:layout_width="10dp"
+            android:layout_height="97dp"
+            android:layout_weight="1"
+            android:background="@color/alpha1"
+            android:onClick="toMenu" />
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:layout_weight="1" />
+
+            <io.gloxey.cfv.CFTextView
+                android:id="@+id/TSH"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="1"
+                android:text="888M TSH"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="23dp"
+                app:font_name="nyeti.ttf" />
+
+            <io.gloxey.cfv.CFTextView
+                android:id="@+id/TSHs"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:text="999M TSH за мусор"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:font_name="brody.ttf" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/tostore"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/alpha1"
+            android:onClick="toStore" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/notrecycle2"
+        android:layout_toEndOf="@+id/img2"
+        android:src="@drawable/ele"
+        android:tag="ele"
+        app:layout_aspectRatio="50%"
+        app:layout_widthPercent="26%"
+        app:layout_marginTopPercent="54%"/>
+
+    <ImageView
+        android:id="@+id/glass2"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/notrecycle2"
+        app:layout_marginTopPercent="32%"
+        android:src="@drawable/gla"
+        android:tag="gla"
+        app:layout_aspectRatio="50%"
+        app:layout_widthPercent="26%" />
+
+    <ImageView
+        android:id="@+id/metal2"
+        app:layout_widthPercent="44%"
+        app:layout_aspectRatio="200%"
+        app:layout_marginTopPercent="30%"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/met"
+        android:tag="met"/>
+
+    <ImageView
+        android:id="@+id/organic2"
+        app:layout_widthPercent="44%"
+        app:layout_aspectRatio="200%"
+        app:layout_marginTopPercent="73%"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/org"
+        android:tag="org" />
+
+    <ImageView
+        android:id="@+id/paper2"
+        android:layout_alignTop="@+id/glass2"
+        android:layout_toStartOf="@+id/img2"
+        android:src="@drawable/pap"
+        android:tag="pap"
+        app:layout_aspectRatio="50%"
+        app:layout_widthPercent="26%" />
+
+    <ImageView
+        android:id="@+id/plastic2"
+        app:layout_aspectRatio="50%"
+        app:layout_widthPercent="26%"
+        android:layout_alignStart="@+id/paper2"
+        android:layout_alignTop="@+id/notrecycle2"
+        android:src="@drawable/pla"
+        android:tag="pla" />
+
+    <ImageView
+        android:id="@+id/img2"
+        android:layout_centerHorizontal="true"
+        app:layout_marginTopPercent="47%"
+        android:src="@drawable/trash2"
+        app:layout_aspectRatio="100%"
+        app:layout_widthPercent="40%" />
+
+</android.support.percent.PercentRelativeLayout>

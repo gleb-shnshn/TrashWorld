@@ -3,30 +3,40 @@ package glebshanshin.trashworld;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
+
 public class SettingsActivity extends Activity {
+    MediaPlayer menuPlayer;
     DBHelper dbHelper;
     SQLiteDatabase db;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.settings_main);
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.start();
     }
 
     public void statistics(View view) {
         Intent intent = new Intent(SettingsActivity.this, StatisticsActivity.class);
         startActivity(intent);
+        finish1();
+    }
+
+    private void finish1() {
+        menuPlayer = MediaPlayer.create(this, R.raw.click);
+        menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.start();
         finish();
     }
 
@@ -60,19 +70,19 @@ public class SettingsActivity extends Activity {
         newValues.put("multi", 1);
 
         db.update("Data", newValues, "_id = 1", null);
-        Toast.makeText(this, "Все данные стерты", Toast.LENGTH_SHORT).show();
+        StyleableToast.makeText(this, "✓  Все данные стерты", Toast.LENGTH_SHORT, R.style.Clear).show();
     }
 
     public void toMenu(View view) {
         Intent intent1 = new Intent(SettingsActivity.this, MainActivity.class);
         startActivity(intent1);
-        finish();
+        finish1();
     }
 
     public void promo(View view) {
         Intent intent1 = new Intent(SettingsActivity.this, PromoActivity.class);
         startActivity(intent1);
-        finish();
+        finish1();
     }
 
     public void Yes(View view) {
