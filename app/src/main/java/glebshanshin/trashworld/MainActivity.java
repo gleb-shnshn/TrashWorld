@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
         menuPlayer=MediaPlayer.create(this,R.raw.menu);
         menuPlayer.start();
     }
-    
+
     public void toStart(View view) {
         Intent intent = new Intent(MainActivity.this, PlayActivity.class);
         startActivity(intent);

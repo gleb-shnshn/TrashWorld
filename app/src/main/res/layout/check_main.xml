@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:id="@+id/set">
 
     <Space
         android:layout_width="match_parent"

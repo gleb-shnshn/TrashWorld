@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/emptypage1"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/so1"
+        android:orientation="horizontal"
+        app:layout_heightPercent="15%"
+        app:layout_widthPercent="100%">
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="@color/alpha1"
+            android:onClick="toBack" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="@color/alpha1"
+            android:onClick="reload"/>
+
+    </LinearLayout>
+
+    <Space
+        android:id="@+id/so"
+        android:layout_below="@id/so1"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="100%" />
+
+    <LinearLayout
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/so"
+        android:background="@drawable/lookqr"
+        android:orientation="horizontal"
+        app:layout_heightPercent="15%"
+        app:layout_marginPercent="5%"
+        app:layout_widthPercent="100%">
+
+        <Button
+            android:id="@+id/show1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/alpha1"
+            android:onClick="show1" />
+
+        <io.gloxey.cfv.CFTextView
+            android:id="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="21sp"
+            app:font_name="nyeti.ttf" />
+
+        <Button
+            android:id="@+id/delete1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/alpha1"
+            android:onClick="delete1" />
+    </LinearLayout>
+
+    <Space
+        android:id="@+id/so2"
+        android:layout_below="@id/button2"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="100%" />
+
+    <LinearLayout
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/so2"
+        android:layout_weight="1"
+        android:background="@drawable/emptyqr"
+        android:orientation="horizontal"
+        app:layout_heightPercent="15%"
+        app:layout_marginPercent="5%"
+        app:layout_widthPercent="100%">
+
+        <Button
+            android:id="@+id/show2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/alpha1"
+            android:onClick="show2" />
+
+        <io.gloxey.cfv.CFTextView
+            android:id="@+id/text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="21sp"
+            app:font_name="nyeti.ttf" />
+
+        <Button
+            android:id="@+id/delete2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/alpha1"
+            android:onClick="delete2" />
+
+    </LinearLayout>
+
+</android.support.percent.PercentRelativeLayout>

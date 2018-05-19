@@ -19,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PlayActivity extends Activity implements OnTouchListener {
     long mills = 500L;
@@ -36,7 +37,8 @@ public class PlayActivity extends Activity implements OnTouchListener {
     boolean touchFlag = false;
     boolean dropFlag = false;
     LayoutParams imageParams;
-    ImageView plastic, glass, metal, organic, notrecycle, paper, trash, now;
+    ImageView circle, trash;
+    TextView plastic, glass, metal, organic, notrecycle, paper;
     String choice = "null", tag, tsh, postfix = " TSH";
     int eX, eY;
     int w, h;
@@ -170,7 +172,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
         }
     }
 
-    private void check(ImageView i) {
+    private void check(TextView i) {
         int topY = i.getTop();
         int leftX = i.getLeft();
         int rightX = i.getRight();
@@ -178,12 +180,9 @@ public class PlayActivity extends Activity implements OnTouchListener {
         if (eX > leftX && eX < rightX && eY > topY && eY < bottomY) {
             if (!choice.equals("" + i.getTag()))
                 clickPlayer.start();
-            i.setImageDrawable(getDrawable(getResources().getIdentifier(i.getTag() + "w", "drawable", getPackageName())));
+            circle.setImageDrawable(getDrawable(getResources().getIdentifier(i.getTag()+"", "drawable", getPackageName())));
             dropFlag = true;
             choice = "" + i.getTag();
-            now = findViewById(i.getId());
-        } else {
-            i.setImageDrawable(getDrawable(getResources().getIdentifier(i.getTag() + "", "drawable", getPackageName())));
         }
     }
 
@@ -232,6 +231,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.play_main);
+        circle=findViewById(R.id.circle);
         root = findViewById(android.R.id.content).getRootView();
         plastic = findViewById(R.id.plastic);
         glass = findViewById(R.id.glass);
@@ -280,7 +280,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
                             touchFlag = false;
                             if (dropFlag) {
                                 dropFlag = false;
-                                now.setImageDrawable(getDrawable(getResources().getIdentifier(choice, "drawable", getPackageName())));
+                                circle.setImageDrawable(getDrawable(getResources().getIdentifier("playcircle", "drawable", getPackageName())));
                                 game();
                                 trash.setLayoutParams(imageParams);
                             } else {

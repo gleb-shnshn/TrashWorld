@@ -31,7 +31,9 @@ public class DBHelper extends SQLiteOpenHelper {
             "                    organicb TEXT NOT NULL DEFAULT 1, \n" +
             "                    notrecycleb TEXT NOT NULL DEFAULT 1, \n" +
             "                    glassb TEXT NOT NULL DEFAULT 1, \n" +
-            "                    multi TEXT NOT NULL DEFAULT 1)";
+            "                    multi TEXT NOT NULL DEFAULT 1, \n" +
+            "                    qr1 TEXT NOT NULL DEFAULT 0, \n" +
+            "                    qr2 TEXT NOT NULL DEFAULT 0)";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

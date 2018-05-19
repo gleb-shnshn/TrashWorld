@@ -19,6 +19,7 @@ import com.google.gson.GsonBuilder;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
@@ -35,6 +36,7 @@ public class QRActivity extends Activity {
     DBHelper dbHelper;
     SQLiteDatabase db;
     Cursor cursor;
+    String code;
     private final String server = "https://gleb2700.000webhostapp.com";
     private Gson gson = new GsonBuilder().create();
     private Retrofit retrofit = new Retrofit.Builder()
@@ -78,6 +80,7 @@ public class QRActivity extends Activity {
             }
         });
     }
+
     private String getPrice(long s) {
         String newa = "" + s;
         if (newa.length() > 12)
@@ -91,17 +94,18 @@ public class QRActivity extends Activity {
 
         return newa;
     }
+
     public void init(SQLiteDatabase db) {
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
         TSHc = cursor.getLong(1);
-        textView=findViewById(R.id.TSH);
-        textView.setText(""+getPrice(TSHc)+" TSH");
+        textView = findViewById(R.id.TSH);
+        textView.setText("" + getPrice(TSHc) + " TSH");
+        cursor.close();
     }
 
     public void toBack(View view) {
-        Intent intent = new Intent(QRActivity.this, PromoActivity.class);
-        update(db);
+        Intent intent = new Intent(QRActivity.this, StorageActivity.class);
         startActivity(intent);
         finish();
     }
@@ -110,26 +114,25 @@ public class QRActivity extends Activity {
         int value = seekbar.getProgress();
         String code;
         long money;
-        if (value < 1000) {
+        if (value <= 1000) {
             code = value + "K";
-            money=value*1000;
-        } else if (value < 2000) {
+            money = value * 1000;
+        } else if (value <= 2000) {
             code = value % 1000 + "M";
-            money=value*1000000;
+            money = (value % 1000) * 1000000;
         } else {
             code = value % 1000 + "B";
-            money=value*1000000000;
+            money = (value % 1000) * 1000000000;
         }
         while (code.length() < 4) {
             code = "0" + code;
         }
-        if (TSHc>=money) {
-            TSHc-=money;
-            textView.setText(""+getPrice(TSHc)+" TSH");
+        if (TSHc >= money) {
+            TSHc -= money;
+            textView.setText("" + getPrice(TSHc) + " TSH");
             generate(code);
-        }
-        else{
-            Toast.makeText(this, "Не хватает "+(money-TSHc)+" TSH", Toast.LENGTH_SHORT).show();
+        } else {
+            StyleableToast.makeText(getApplicationContext(), "✘  Не хватает "+(money-TSHc)+" TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
         }
     }
 
@@ -158,13 +161,15 @@ public class QRActivity extends Activity {
 
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+                StyleableToast.makeText(getApplicationContext(), "Нет доступа к интернету", Toast.LENGTH_SHORT, R.style.wrong).show();
             }
         });
     }
+
     private void update(SQLiteDatabase db) {
         ContentValues newValues = new ContentValues();
         newValues.put("TSH", TSHc);
+        newValues.put("qr"+getIntent().getStringExtra("code"),code);
         db.update("Data", newValues, "_id = 1", null);
     }
 }

@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@drawable/playpage"
-    android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/playpage">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="97dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_heightPercent="15%"
+        app:layout_widthPercent="100%">
 
         <Button
             android:id="@+id/tomenu"
@@ -47,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_weight="1"
-                android:text="999M TSH/мусор"
+                android:text="999M TSH за мусор"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="20dp"
@@ -64,73 +63,82 @@
             android:onClick="toStore" />
     </LinearLayout>
 
-    <ImageView
+    <TextView
         android:id="@+id/notrecycle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/glass"
-        android:layout_marginBottom="149dp"
-        android:src="@drawable/ele"
-        android:tag="ele" />
+        android:layout_below="@+id/paper"
+        android:layout_toEndOf="@+id/metal"
+        android:background="@color/alpha1"
+        android:tag="ele"
+        app:layout_aspectRatio="60%"
+        app:layout_marginBottomPercent="20%"
+        app:layout_widthPercent="26%" />
 
-    <ImageView
+    <TextView
         android:id="@+id/glass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="217dp"
-        android:src="@drawable/gla"
-        android:tag="gla" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/notrecycle"
+        android:background="@color/alpha1"
+        android:tag="gla"
+        app:layout_aspectRatio="60%"
+        app:layout_marginBottomPercent="45%"
+        app:layout_widthPercent="26%" />
 
-    <ImageView
+    <TextView
         android:id="@+id/metal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="191dp"
-        android:src="@drawable/met"
-        android:tag="met" />
-
-    <ImageView
-        android:id="@+id/organic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="123dp"
-        android:src="@drawable/org"
-        android:tag="org" />
+        android:background="@color/alpha1"
+        android:tag="met"
+        app:layout_aspectRatio="200%"
+        app:layout_marginBottomPercent="62.5%"
+        app:layout_widthPercent="42%" />
 
-    <ImageView
+    <TextView
+        android:id="@+id/organic"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/alpha1"
+        android:tag="org"
+        app:layout_aspectRatio="200%"
+        app:layout_marginBottomPercent="16%"
+        app:layout_widthPercent="42%" />
+
+    <TextView
         android:id="@+id/paper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/plastic"
         android:layout_alignTop="@+id/glass"
-        android:src="@drawable/pap"
-        android:tag="pap" />
+        android:layout_toStartOf="@+id/metal"
+        android:background="@color/alpha1"
+        android:tag="pap"
+        app:layout_aspectRatio="60%"
+        app:layout_widthPercent="26%" />
+
+    <TextView
+        android:id="@+id/plastic"
+        android:layout_alignBottom="@+id/notrecycle"
+        android:layout_alignStart="@+id/paper"
+        android:background="@color/alpha1"
+        android:tag="pla"
+        app:layout_aspectRatio="60%"
+        app:layout_widthPercent="26%" />
+
 
     <ImageView
-        android:id="@+id/plastic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/notrecycle"
-        android:layout_marginStart="20dp"
-        android:src="@drawable/pla"
-        android:tag="pla" />
+        android:id="@+id/circle"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/playcircle"
+        app:layout_aspectRatio="100%"
+        app:layout_marginBottomPercent="17%"
+        app:layout_marginPercent="5%"
+        app:layout_widthPercent="100%" />
 
     <ImageView
         android:id="@+id/img"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="206dp"
-        android:src="@drawable/trash2" />
+        android:src="@drawable/trash2"
+        app:layout_aspectRatio="100%"
+        app:layout_marginBottomPercent="33%"
+        app:layout_widthPercent="40%" />
 
-</RelativeLayout>
+</android.support.percent.PercentRelativeLayout>

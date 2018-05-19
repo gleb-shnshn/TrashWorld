@@ -54,6 +54,9 @@
         <activity
             android:name=".QRActivity"
             android:label=".QRActivity" />
+        <activity
+            android:name=".StorageActivity"
+            android:label=".StorageActivity" />
     </application>
 
 </manifest>

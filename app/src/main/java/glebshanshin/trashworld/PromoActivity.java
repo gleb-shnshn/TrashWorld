@@ -67,30 +67,43 @@ public class PromoActivity extends Activity {
 
         if (result != null) {
             if (result.getContents() != null) {
-                final String QR = result.getContents();
-                HashMap<String, String> postDataParams = new HashMap<String, String>();
-                postDataParams.put("code", QR);
-                Call<Object> call = che.performPostCall(postDataParams);
-                call.enqueue(new Callback<Object>() {
-                    @Override
-                    public void onResponse(Call<Object> call, Response<Object> response) {
-                        HashMap<String, String> map = gson.fromJson(response.body().toString(), HashMap.class);
-                        if (map.get("success").equals("good")) {
-                            delete(QR);
-                        } else {
-                            StyleableToast.makeText(getApplicationContext(), "Некорректный код", Toast.LENGTH_SHORT, R.style.wrong).show();
+                if (smartCheck(result.getContents())) {
+                    final String QR = result.getContents();
+                    HashMap<String, String> postDataParams = new HashMap<String, String>();
+                    postDataParams.put("code", QR);
+                    Call<Object> call = che.performPostCall(postDataParams);
+                    call.enqueue(new Callback<Object>() {
+                        @Override
+                        public void onResponse(Call<Object> call, Response<Object> response) {
+                            HashMap<String, String> map = gson.fromJson(response.body().toString(), HashMap.class);
+                            if (map.get("success").equals("good")) {
+                                delete(QR);
+                            } else {
+                                StyleableToast.makeText(getApplicationContext(), "Некорректный код", Toast.LENGTH_SHORT, R.style.wrong).show();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<Object> call, Throwable t) {
-                        StyleableToast.makeText(getApplicationContext(), "Нет доступа к интернету", Toast.LENGTH_SHORT, R.style.wrong).show();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<Object> call, Throwable t) {
+                            StyleableToast.makeText(getApplicationContext(), "Нет доступа к интернету", Toast.LENGTH_SHORT, R.style.wrong).show();
+                        }
+                    });
+                } else {
+                    StyleableToast.makeText(getApplicationContext(), "Некорректный код", Toast.LENGTH_SHORT, R.style.wrong).show();
+                }
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    private boolean smartCheck(String code) {
+        if ((code.length() == 15)) {
+            if ((code.substring(0, 2).equals("QR")) && (code.substring(13, 15).equals("QR"))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void delete(String qr) {
@@ -112,7 +125,8 @@ public class PromoActivity extends Activity {
     }
 
     private void decodeMoney(String a) {
-        long b = Integer.parseInt(a.substring(2, 5));
+        long t = Integer.parseInt(a.substring(2, 5));
+        long b = t;
         switch (a.substring(5, 6)) {
             case "K":
                 b *= 1000;
@@ -125,7 +139,7 @@ public class PromoActivity extends Activity {
                 break;
         }
         TSHc += b;
-        StyleableToast.makeText(this, "Вы получили " + a.substring(2, 6) + " TSH", Toast.LENGTH_SHORT, R.style.get).show();
+        StyleableToast.makeText(this, "Вы получили " + t + a.substring(5, 6) + " TSH", Toast.LENGTH_SHORT, R.style.get).show();
     }
 
     public void Scan(View view) {
@@ -135,7 +149,7 @@ public class PromoActivity extends Activity {
     }
 
     public void Generate(View view) {
-        Intent intent = new Intent(PromoActivity.this, QRActivity.class);
+        Intent intent = new Intent(PromoActivity.this, StorageActivity.class);
         update(db);
         startActivity(intent);
         finish();
@@ -152,5 +166,6 @@ public class PromoActivity extends Activity {
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
         TSHc = cursor.getLong(1);
+        cursor.close();
     }
 }

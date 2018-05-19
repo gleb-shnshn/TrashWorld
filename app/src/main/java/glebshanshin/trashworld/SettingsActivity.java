@@ -17,6 +17,7 @@ public class SettingsActivity extends Activity {
     MediaPlayer menuPlayer;
     DBHelper dbHelper;
     SQLiteDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +69,9 @@ public class SettingsActivity extends Activity {
         newValues.put("glassb", 1);
 
         newValues.put("multi", 1);
+
+        newValues.put("qr1", 0);
+        newValues.put("qr2", 0);
 
         db.update("Data", newValues, "_id = 1", null);
         StyleableToast.makeText(this, "✓  Все данные стерты", Toast.LENGTH_SHORT, R.style.Clear).show();
