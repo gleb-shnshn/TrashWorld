@@ -27,6 +27,7 @@ public class SettingsActivity extends Activity {
         setContentView(R.layout.settings_main);
         menuPlayer = MediaPlayer.create(this, R.raw.menu);
         menuPlayer.start();
+        menuPlayer.setLooping(true);
     }
 
     public void statistics(View view) {
@@ -36,8 +37,10 @@ public class SettingsActivity extends Activity {
     }
 
     private void finish1() {
+        menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
         menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.setLooping(false);
         menuPlayer.start();
         finish();
     }

@@ -39,12 +39,12 @@
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/TSH"
                 android:layout_width="209dp"
-                android:layout_height="68dp"
+                android:layout_height="59dp"
                 android:layout_weight="1"
-                android:text="0 "
+                android:text="0 TSH"
                 android:textAlignment="textEnd"
                 android:textColor="@color/blue"
-                android:textSize="30sp"
+                android:textSize="27sp"
                 app:font_name="nyeti.ttf" />
         </LinearLayout>
 

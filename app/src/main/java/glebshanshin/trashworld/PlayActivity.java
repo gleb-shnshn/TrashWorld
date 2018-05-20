@@ -257,6 +257,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
         clickPlayer = MediaPlayer.create(this, R.raw.click);
         clickPlayer.setVolume(0.3f, 0.3f);
         playPlayer = MediaPlayer.create(this, R.raw.play);
+        playPlayer.setLooping(true);
         playPlayer.start();
         w = getWindowManager().getDefaultDisplay().getWidth() - 50;
         h = getWindowManager().getDefaultDisplay().getHeight() - 10;

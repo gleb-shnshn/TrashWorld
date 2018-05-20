@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +27,7 @@ public class StoreActivity extends Activity {
     Cursor cursor;
     String t = " TSH", tsh, s = " шт.";
     boolean notIntent = true;
+    MediaPlayer menuPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,9 @@ public class StoreActivity extends Activity {
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
         TSHv = findViewById(R.id.TSH);
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.start();
+        menuPlayer.setLooping(true);
         init(db);
         updateTSH();
         updatePRICE("all");
@@ -108,7 +113,7 @@ public class StoreActivity extends Activity {
             Intent intent = new Intent(StoreActivity.this, LotteryStoreActivity.class);
             intent.putExtra("prize", "0");
             startActivity(intent);
-            finish();
+            finish1();
         }
     }
 
@@ -273,7 +278,16 @@ public class StoreActivity extends Activity {
             Intent intent = new Intent(StoreActivity.this, PlayActivity.class);
             startActivity(intent);
             update(db);
-            finish();
+            finish1();
         }
+    }
+
+    private void finish1() {
+        menuPlayer.stop();
+        menuPlayer = MediaPlayer.create(this, R.raw.click);
+        menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.setLooping(false);
+        menuPlayer.start();
+        finish();
     }
 }

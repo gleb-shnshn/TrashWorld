@@ -14,7 +14,7 @@
             android:id="@+id/tomenu"
             android:layout_width="10dp"
             android:layout_height="97dp"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             android:background="@color/alpha1"
             android:onClick="toMenu" />
 
@@ -26,7 +26,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="26dp"
+                android:layout_height="19dp"
                 android:layout_weight="1" />
 
             <io.gloxey.cfv.CFTextView
@@ -44,7 +44,7 @@
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/TSHs"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="39dp"
                 android:layout_weight="1"
                 android:text="999M TSH за мусор"
                 android:textAlignment="center"
@@ -58,7 +58,7 @@
             android:id="@+id/tostore"
             android:layout_width="10dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             android:background="@color/alpha1"
             android:onClick="toStore" />
     </LinearLayout>

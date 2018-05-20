@@ -20,6 +20,7 @@ public class MainActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setLooping(true);
         menuPlayer.start();
     }
 
@@ -33,8 +34,10 @@ public class MainActivity extends Activity {
     }
 
     private void finish1() {
+        menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
         menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.setLooping(false);
         menuPlayer.start();
         finish();
     }

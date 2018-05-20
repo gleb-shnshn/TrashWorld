@@ -5,12 +5,15 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 public class BonusActivity extends Activity {
     DBHelper dbHelper;
@@ -20,6 +23,7 @@ public class BonusActivity extends Activity {
     int organicc, plasticc, metalc, glassc, notrecyclec, paperc, multi;
     boolean flag;
     boolean notIntent = true;
+    MediaPlayer menuPlayer;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +32,13 @@ public class BonusActivity extends Activity {
         setContentView(R.layout.bonus_main);
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setLooping(true);
+        menuPlayer.start();
         init(db);
         if (organicc + plasticc + metalc + glassc + notrecyclec + paperc == 18) {
             flag = true;
-            Toast.makeText(this, "Вы можете обнулить бонусы и тогда весь ваш TSH/мусор будет умножаться на " + multi * 3, Toast.LENGTH_SHORT).show();
+            StyleableToast.makeText(this, "Вы можете обнулить бонусы и тогда весь ваш TSH/мусор будет умножаться на " + multi * 3, R.style.Clear).show();
             reloadt = findViewById(R.id.reload);
             reloadt.setImageDrawable(getDrawable(R.drawable.reload));
         }
@@ -66,12 +73,21 @@ public class BonusActivity extends Activity {
         init1();
     }
 
+    private void finish1() {
+        menuPlayer.stop();
+        menuPlayer = MediaPlayer.create(this, R.raw.click);
+        menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.setLooping(false);
+        menuPlayer.start();
+        finish();
+    }
+
     public void toAchievements(View view) {
         if (notIntent) {
             notIntent = false;
             Intent intent = new Intent(BonusActivity.this, AchievementsActivity.class);
             startActivity(intent);
-            finish();
+            finish1();
         }
     }
 
@@ -87,7 +103,7 @@ public class BonusActivity extends Activity {
             newValues.put("multi", multi * 3);
             db.update("Data", newValues, "_id = 1", null);
             init(db);
-            Toast.makeText(this, "Бонусы обнулены", Toast.LENGTH_SHORT);
+            StyleableToast.makeText(this, "✓  Бонусы успешно обнулены", R.style.Clear).show();
             reloadt.setAlpha(0);
             flag = false;
         }

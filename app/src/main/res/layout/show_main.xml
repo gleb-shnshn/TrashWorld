@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/emptypage">
+
+    <ImageView
+        android:id="@+id/place"
+        app:layout_widthPercent="100%"
+        app:layout_aspectRatio="100%"
+        android:layout_centerInParent="true"
+        android:padding="50dp" />
+
+    <Button
+        android:id="@+id/button8"
+        android:background="@drawable/backbut1"
+        android:onClick="reload"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="10%"
+        app:layout_marginStartPercent="5%"
+        app:layout_marginTopPercent="2.5%" />
+
+</android.support.percent.PercentRelativeLayout>

@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,6 +20,7 @@ public class AchievementsActivity extends Activity {
     Cursor cursor;
     SQLiteDatabase db;
     boolean notIntent = true;
+    MediaPlayer menuPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,18 @@ public class AchievementsActivity extends Activity {
         init(db);
         init1();
         fillall();
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setLooping(true);
+        menuPlayer.start();
+    }
+
+    private void finish1() {
+        menuPlayer.stop();
+        menuPlayer = MediaPlayer.create(this, R.raw.click);
+        menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.setLooping(false);
+        menuPlayer.start();
+        finish();
     }
 
     public void init(SQLiteDatabase db) {
@@ -193,7 +208,7 @@ public class AchievementsActivity extends Activity {
             notIntent = false;
             Intent intent1 = new Intent(AchievementsActivity.this, MainActivity.class);
             startActivity(intent1);
-            finish();
+            finish1();
         }
     }
 
@@ -202,7 +217,7 @@ public class AchievementsActivity extends Activity {
             notIntent = false;
             Intent intent1 = new Intent(AchievementsActivity.this, BonusActivity.class);
             startActivity(intent1);
-            finish();
+            finish1();
         }
     }
 }

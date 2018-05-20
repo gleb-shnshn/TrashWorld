@@ -5,16 +5,22 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 import java.util.HashMap;
@@ -43,6 +49,7 @@ public class StorageActivity extends Activity {
     private delete del = retrofit.create(delete.class);
     private int now;
     private long TSHc;
+    MediaPlayer menuPlayer;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +59,9 @@ public class StorageActivity extends Activity {
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
         init(db);
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.start();
+        menuPlayer.setLooping(true);
     }
 
     public void init(SQLiteDatabase db) {
@@ -79,13 +89,13 @@ public class StorageActivity extends Activity {
             lin1.setBackground(getDrawable(R.drawable.emptyqr));
         } else {
             lin1.setBackground(getDrawable(R.drawable.lookqr));
-            text1.setText(code1.substring(2, 6));
+            text1.setText(code1.substring(2, 6) + " TSH");
         }
         if (code2.equals("0")) {
             lin2.setBackground(getDrawable(R.drawable.emptyqr));
         } else {
             lin2.setBackground(getDrawable(R.drawable.lookqr));
-            text2.setText(code2.substring(2, 6));
+            text2.setText(code2.substring(2, 6) + " TSH");
         }
     }
 
@@ -98,7 +108,6 @@ public class StorageActivity extends Activity {
             public void onResponse(Call<Object> call, Response<Object> response) {
                 HashMap<String, String> map = gson.fromJson(response.body().toString(), HashMap.class);
                 if (map.get("success").equals("good")) {
-
                 } else {
                     delete(num);
                 }
@@ -123,11 +132,21 @@ public class StorageActivity extends Activity {
             newValues.put("qr2", 0);
             db.update("Data", newValues, "_id = 1", null);
         }
-        init(db);
+        if (notIntent) {
+            notIntent = false;
+            Intent intent = new Intent(StorageActivity.this, StorageActivity.class);
+            startActivity(intent);
+            finish1();
+        }
     }
 
     public void reload(View view) {
-        checkexistingall();
+        if (notIntent) {
+            notIntent = false;
+            Intent intent = new Intent(StorageActivity.this, StorageActivity.class);
+            startActivity(intent);
+            finish1();
+        }
     }
 
     public void toBack(View view) {
@@ -135,7 +154,7 @@ public class StorageActivity extends Activity {
             notIntent = false;
             Intent intent = new Intent(StorageActivity.this, PromoActivity.class);
             startActivity(intent);
-            finish();
+            finish1();
         }
     }
 
@@ -146,25 +165,44 @@ public class StorageActivity extends Activity {
                 Intent intent = new Intent(StorageActivity.this, QRActivity.class);
                 intent.putExtra("code", "1");
                 startActivity(intent);
-                finish();
+                finish1();
             }
         } else {
-            //change view to showing qr
+            show(1);
         }
     }
 
     public void show2(View view) {
-        if (code1.equals("0")) {
+        if (code2.equals("0")) {
             if (notIntent) {
                 notIntent = false;
                 Intent intent = new Intent(StorageActivity.this, QRActivity.class);
                 intent.putExtra("code", "2");
                 startActivity(intent);
-                finish();
+                finish1();
             }
         } else {
-            //change view to showing qr
+            show(2);
         }
+    }
+
+    private void show(int i) {
+        String code;
+        if (i==1){
+            code=code1;
+        }else{
+            code=code2;
+        }
+        setContentView(R.layout.show_main);
+        BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+        Bitmap bitmap = null;
+        try {
+            bitmap = barcodeEncoder.encodeBitmap(code, BarcodeFormat.QR_CODE, 400, 400);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+        ImageView imageViewQrCode = findViewById(R.id.place);
+        imageViewQrCode.setImageBitmap(bitmap);
     }
 
     public void delete1(View view) {
@@ -208,6 +246,12 @@ public class StorageActivity extends Activity {
             public void onResponse(Call<Object> call, Response<Object> response) {
                 delete(now);
                 decodeMoney(code);
+                if (notIntent) {
+                    notIntent = false;
+                    Intent intent = new Intent(StorageActivity.this, StorageActivity.class);
+                    startActivity(intent);
+                    finish1();
+                }
             }
 
             @Override
@@ -254,5 +298,14 @@ public class StorageActivity extends Activity {
 
     public void No(View view) {
         setContentView(R.layout.storage_main);
+    }
+
+    private void finish1() {
+        menuPlayer.stop();
+        menuPlayer = MediaPlayer.create(this, R.raw.click);
+        menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.setLooping(false);
+        menuPlayer.start();
+        finish();
     }
 }

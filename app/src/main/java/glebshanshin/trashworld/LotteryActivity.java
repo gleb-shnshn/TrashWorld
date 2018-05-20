@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
@@ -31,7 +32,7 @@ public class LotteryActivity extends Activity {
     int organicc, plasticc, metalc, glassc, notrecyclec, paperc, TSH;
     int obj;
     private boolean isOpen = false, isBack = false, notIntent = true;
-
+    MediaPlayer menuPlayer;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,9 @@ public class LotteryActivity extends Activity {
         sc = findViewById(R.id.scratch_view);
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setLooping(true);
+        menuPlayer.start();
         init(db);
         String got = getIntent().getExtras().getString("1");
         if (getWindowManager().getDefaultDisplay().getWidth() == 720)
@@ -166,11 +170,11 @@ public class LotteryActivity extends Activity {
 
     public void toBack(View view) {
         if ((isBack) && (notIntent)) {
-            notIntent=false;
+            notIntent = false;
             Intent intent = new Intent(LotteryActivity.this, LotteryStoreActivity.class);
             intent.putExtra("prize", obj + "");
             startActivity(intent);
-            finish();
+            finish1();
         }
     }
 
@@ -184,5 +188,14 @@ public class LotteryActivity extends Activity {
             newa = newa.substring(0, newa.length() - 3) + "K";
         }
         return newa;
+    }
+
+    private void finish1() {
+        menuPlayer.stop();
+        menuPlayer = MediaPlayer.create(this, R.raw.click);
+        menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.setLooping(false);
+        menuPlayer.start();
+        finish();
     }
 }

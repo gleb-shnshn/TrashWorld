@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -19,6 +20,7 @@ public class StatisticsActivity extends Activity {
     long TSHc;
     String pref = "\n:";
     boolean notIntent = true;
+    MediaPlayer menuPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,9 @@ public class StatisticsActivity extends Activity {
         init(db);
         init1();
         fillall();
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.start();
+        menuPlayer.setLooping(true);
     }
 
     private void fillall() {
@@ -92,7 +97,16 @@ public class StatisticsActivity extends Activity {
             notIntent = false;
             Intent intent = new Intent(StatisticsActivity.this, SettingsActivity.class);
             startActivity(intent);
-            finish();
+            finish1();
         }
+    }
+
+    private void finish1() {
+        menuPlayer.stop();
+        menuPlayer = MediaPlayer.create(this, R.raw.click);
+        menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.setLooping(false);
+        menuPlayer.start();
+        finish();
     }
 }

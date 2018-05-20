@@ -47,7 +47,7 @@ public class QRActivity extends Activity {
     private insert ins = retrofit.create(insert.class);
     long TSHc;
     TextView textView;
-    boolean notIntent=true;
+    boolean notIntent = true;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,9 +135,8 @@ public class QRActivity extends Activity {
             TSHc -= money;
             textView.setText("" + getPrice(TSHc) + " TSH");
             generate(code);
-            update(db);
         } else {
-            StyleableToast.makeText(getApplicationContext(), "✘  Не хватает "+(money-TSHc)+" TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
+            StyleableToast.makeText(getApplicationContext(), "✘  Не хватает " + (money - TSHc) + " TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
         }
     }
 
@@ -162,6 +161,13 @@ public class QRActivity extends Activity {
         call.enqueue(new Callback<Object>() {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
+                if (notIntent) {
+                    notIntent = false;
+                    update(db);
+                    Intent intent = new Intent(QRActivity.this, StorageActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
 
             @Override
@@ -174,7 +180,7 @@ public class QRActivity extends Activity {
     private void update(SQLiteDatabase db) {
         ContentValues newValues = new ContentValues();
         newValues.put("TSH", TSHc);
-        newValues.put("qr"+getIntent().getStringExtra("code"),code);
+        newValues.put("qr" + getIntent().getStringExtra("code"), code);
         db.update("Data", newValues, "_id = 1", null);
     }
 }

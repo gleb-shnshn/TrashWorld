@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -45,6 +46,7 @@ public class PromoActivity extends Activity {
     private check che = retrofit.create(check.class);
     private delete del = retrofit.create(delete.class);
     boolean notIntent = true;
+    MediaPlayer menuPlayer;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +56,9 @@ public class PromoActivity extends Activity {
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
         init(db);
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.start();
+        menuPlayer.setLooping(true);
     }
 
     private void update(SQLiteDatabase db) {
@@ -155,7 +160,7 @@ public class PromoActivity extends Activity {
             Intent intent = new Intent(PromoActivity.this, StorageActivity.class);
             update(db);
             startActivity(intent);
-            finish();
+            finish1();
         }
     }
 
@@ -165,7 +170,7 @@ public class PromoActivity extends Activity {
             Intent intent = new Intent(PromoActivity.this, SettingsActivity.class);
             startActivity(intent);
             update(db);
-            finish();
+            finish1();
         }
     }
 
@@ -174,5 +179,14 @@ public class PromoActivity extends Activity {
         cursor.moveToFirst();
         TSHc = cursor.getLong(1);
         cursor.close();
+    }
+
+    private void finish1() {
+        menuPlayer.stop();
+        menuPlayer = MediaPlayer.create(this, R.raw.click);
+        menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.setLooping(false);
+        menuPlayer.start();
+        finish();
     }
 }

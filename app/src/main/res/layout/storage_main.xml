@@ -45,7 +45,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/so"
-        android:background="@drawable/lookqr"
         android:orientation="horizontal"
         app:layout_heightPercent="15%"
         app:layout_marginPercent="5%"
@@ -59,15 +58,27 @@
             android:background="@color/alpha1"
             android:onClick="show1" />
 
-        <io.gloxey.cfv.CFTextView
-            android:id="@+id/text1"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textAlignment="center"
-            android:textColor="#fff"
-            android:textSize="21sp"
-            app:font_name="nyeti.ttf" />
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <io.gloxey.cfv.CFTextView
+                android:id="@+id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="21sp"
+                app:font_name="nyeti.ttf" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/delete1"
@@ -90,7 +101,6 @@
         android:layout_height="match_parent"
         android:layout_below="@id/so2"
         android:layout_weight="1"
-        android:background="@drawable/emptyqr"
         android:orientation="horizontal"
         app:layout_heightPercent="15%"
         app:layout_marginPercent="5%"
@@ -104,15 +114,28 @@
             android:background="@color/alpha1"
             android:onClick="show2" />
 
-        <io.gloxey.cfv.CFTextView
-            android:id="@+id/text2"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textAlignment="center"
-            android:textColor="#fff"
-            android:textSize="21sp"
-            app:font_name="nyeti.ttf" />
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <io.gloxey.cfv.CFTextView
+                android:id="@+id/text2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="21sp"
+                app:font_name="nyeti.ttf" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/delete2"

@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -22,7 +23,8 @@ public class LotteryStoreActivity extends Activity {
     TextView TSHv, priceO, priceB, text;
     String m = "Случайное  TSH\nот ";
     int factory, robot, car, man, TSH, price, nprice;
-    boolean notIntent=true;
+    boolean notIntent = true;
+    MediaPlayer menuPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,9 @@ public class LotteryStoreActivity extends Activity {
         updateTSH();
         updatePrice();
         intent = new Intent(LotteryStoreActivity.this, LotteryActivity.class);
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setLooping(true);
+        menuPlayer.start();
     }
 
     private void checkPrize() {
@@ -124,7 +129,7 @@ public class LotteryStoreActivity extends Activity {
             Intent intent = new Intent(LotteryStoreActivity.this, StoreActivity.class);
             update(db);
             startActivity(intent);
-            finish();
+            finish1();
         }
     }
 
@@ -171,5 +176,14 @@ public class LotteryStoreActivity extends Activity {
                 toast(100000 - TSH);
             }
         }
+    }
+
+    private void finish1() {
+        menuPlayer.stop();
+        menuPlayer = MediaPlayer.create(this, R.raw.click);
+        menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.setLooping(false);
+        menuPlayer.start();
+        finish();
     }
 }
