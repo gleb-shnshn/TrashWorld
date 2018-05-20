@@ -18,6 +18,7 @@ public class StatisticsActivity extends Activity {
     long organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistakes, trashc, man, car, robot, factory;
     long TSHc;
     String pref = "\n:";
+    boolean notIntent = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,8 +88,11 @@ public class StatisticsActivity extends Activity {
     }
 
     public void toSettings(View view) {
-        Intent intent = new Intent(StatisticsActivity.this, SettingsActivity.class);
-        startActivity(intent);
-        finish();
+        if (notIntent) {
+            notIntent = false;
+            Intent intent = new Intent(StatisticsActivity.this, SettingsActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 }

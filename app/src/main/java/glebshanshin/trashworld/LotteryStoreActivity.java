@@ -22,6 +22,7 @@ public class LotteryStoreActivity extends Activity {
     TextView TSHv, priceO, priceB, text;
     String m = "Случайное  TSH\nот ";
     int factory, robot, car, man, TSH, price, nprice;
+    boolean notIntent=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,49 +115,61 @@ public class LotteryStoreActivity extends Activity {
     }
 
     private void toast(int a) {
-        StyleableToast.makeText(getApplicationContext(), "✘  Не хватает "+a+" TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
+        StyleableToast.makeText(getApplicationContext(), "✘  Не хватает " + a + " TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
     }
 
     public void toStore(View view) {
-        Intent intent = new Intent(LotteryStoreActivity.this, StoreActivity.class);
-        update(db);
-        startActivity(intent);
-        finish();
+        if (notIntent) {
+            notIntent = false;
+            Intent intent = new Intent(LotteryStoreActivity.this, StoreActivity.class);
+            update(db);
+            startActivity(intent);
+            finish();
+        }
     }
 
     public void buyBronze(View view) {
-        if (TSH >= nprice) {
-            TSH -= nprice;
-            Toast.makeText(this,"Снято "+nprice+" TSH", Toast.LENGTH_SHORT);
-            intent.putExtra("1", "bronzel");
-            update(db);
-            startActivity(intent);
-        } else {
-            toast(nprice-TSH);
+        if (notIntent) {
+            notIntent = false;
+            if (TSH >= nprice) {
+                TSH -= nprice;
+                Toast.makeText(this, "Снято " + nprice + " TSH", Toast.LENGTH_SHORT);
+                intent.putExtra("1", "bronzel");
+                update(db);
+                startActivity(intent);
+            } else {
+                toast(nprice - TSH);
+            }
         }
     }
 
     public void buySilver(View view) {
-        if (TSH >= price) {
-            Toast.makeText(this,"Снято "+price+" TSH", Toast.LENGTH_SHORT);
-            TSH -= price;
-            intent.putExtra("1", "silverl");
-            update(db);
-            startActivity(intent);
-        } else {
-            toast(price-TSH);
+        if (notIntent) {
+            notIntent = false;
+            if (TSH >= price) {
+                Toast.makeText(this, "Снято " + price + " TSH", Toast.LENGTH_SHORT);
+                TSH -= price;
+                intent.putExtra("1", "silverl");
+                update(db);
+                startActivity(intent);
+            } else {
+                toast(price - TSH);
+            }
         }
     }
 
     public void buyGold(View view) {
-        if (TSH >= 100000) {
-            TSH -= 100000;
-            Toast.makeText(this,"Снято "+100000+" TSH", Toast.LENGTH_SHORT);
-            intent.putExtra("1", "goldl");
-            update(db);
-            startActivity(intent);
-        } else {
-            toast(100000-TSH);
+        if (notIntent) {
+            notIntent = false;
+            if (TSH >= 100000) {
+                TSH -= 100000;
+                Toast.makeText(this, "Снято " + 100000 + " TSH", Toast.LENGTH_SHORT);
+                intent.putExtra("1", "goldl");
+                update(db);
+                startActivity(intent);
+            } else {
+                toast(100000 - TSH);
+            }
         }
     }
 }

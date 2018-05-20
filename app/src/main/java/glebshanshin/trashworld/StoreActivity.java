@@ -25,6 +25,7 @@ public class StoreActivity extends Activity {
     DBHelper dbHelper;
     Cursor cursor;
     String t = " TSH", tsh, s = " шт.";
+    boolean notIntent = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,11 +102,14 @@ public class StoreActivity extends Activity {
     }
 
     public void toLotteryStore(View view) {
-        update(db);
-        Intent intent = new Intent(StoreActivity.this, LotteryStoreActivity.class);
-        intent.putExtra("prize", "0");
-        startActivity(intent);
-        finish();
+        if (notIntent) {
+            notIntent = false;
+            update(db);
+            Intent intent = new Intent(StoreActivity.this, LotteryStoreActivity.class);
+            intent.putExtra("prize", "0");
+            startActivity(intent);
+            finish();
+        }
     }
 
     private int get(int n, int a1, int d) {
@@ -170,7 +174,7 @@ public class StoreActivity extends Activity {
     }
 
     private void toast(int a) {
-        StyleableToast.makeText(getApplicationContext(), "✘  Не хватает "+a+" TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
+        StyleableToast.makeText(getApplicationContext(), "✘  Не хватает " + a + " TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
     }
 
     private void increase(int b, int i, String d) {
@@ -264,9 +268,12 @@ public class StoreActivity extends Activity {
 
 
     public void toPlay(View view) {
-        Intent intent = new Intent(StoreActivity.this, PlayActivity.class);
-        startActivity(intent);
-        update(db);
-        finish();
+        if (notIntent) {
+            notIntent = false;
+            Intent intent = new Intent(StoreActivity.this, PlayActivity.class);
+            startActivity(intent);
+            update(db);
+            finish();
+        }
     }
 }

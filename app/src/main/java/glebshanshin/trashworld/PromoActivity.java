@@ -44,6 +44,7 @@ public class PromoActivity extends Activity {
             .build();
     private check che = retrofit.create(check.class);
     private delete del = retrofit.create(delete.class);
+    boolean notIntent = true;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -149,17 +150,23 @@ public class PromoActivity extends Activity {
     }
 
     public void Generate(View view) {
-        Intent intent = new Intent(PromoActivity.this, StorageActivity.class);
-        update(db);
-        startActivity(intent);
-        finish();
+        if (notIntent) {
+            notIntent = false;
+            Intent intent = new Intent(PromoActivity.this, StorageActivity.class);
+            update(db);
+            startActivity(intent);
+            finish();
+        }
     }
 
     public void toSettings(View view) {
-        Intent intent = new Intent(PromoActivity.this, SettingsActivity.class);
-        startActivity(intent);
-        update(db);
-        finish();
+        if (notIntent) {
+            notIntent = false;
+            Intent intent = new Intent(PromoActivity.this, SettingsActivity.class);
+            startActivity(intent);
+            update(db);
+            finish();
+        }
     }
 
     public void init(SQLiteDatabase db) {

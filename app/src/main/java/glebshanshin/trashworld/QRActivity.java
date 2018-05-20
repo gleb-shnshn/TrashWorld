@@ -47,6 +47,7 @@ public class QRActivity extends Activity {
     private insert ins = retrofit.create(insert.class);
     long TSHc;
     TextView textView;
+    boolean notIntent=true;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,9 +106,12 @@ public class QRActivity extends Activity {
     }
 
     public void toBack(View view) {
-        Intent intent = new Intent(QRActivity.this, StorageActivity.class);
-        startActivity(intent);
-        finish();
+        if (notIntent) {
+            notIntent = false;
+            Intent intent = new Intent(QRActivity.this, StorageActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     public void Buy(View view) {
@@ -131,13 +135,14 @@ public class QRActivity extends Activity {
             TSHc -= money;
             textView.setText("" + getPrice(TSHc) + " TSH");
             generate(code);
+            update(db);
         } else {
             StyleableToast.makeText(getApplicationContext(), "✘  Не хватает "+(money-TSHc)+" TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
         }
     }
 
     private void generate(String money) {
-        String code = "QR" + money + UUID.randomUUID().toString().substring(0, 7) + "QR";
+        code = "QR" + money + UUID.randomUUID().toString().substring(0, 7) + "QR";
 
         try {
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();

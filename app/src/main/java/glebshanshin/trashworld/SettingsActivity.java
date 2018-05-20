@@ -17,6 +17,7 @@ public class SettingsActivity extends Activity {
     MediaPlayer menuPlayer;
     DBHelper dbHelper;
     SQLiteDatabase db;
+    boolean notIntent = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,15 +79,21 @@ public class SettingsActivity extends Activity {
     }
 
     public void toMenu(View view) {
-        Intent intent1 = new Intent(SettingsActivity.this, MainActivity.class);
-        startActivity(intent1);
-        finish1();
+        if (notIntent) {
+            notIntent = false;
+            Intent intent1 = new Intent(SettingsActivity.this, MainActivity.class);
+            startActivity(intent1);
+            finish1();
+        }
     }
 
     public void promo(View view) {
-        Intent intent1 = new Intent(SettingsActivity.this, PromoActivity.class);
-        startActivity(intent1);
-        finish1();
+        if (notIntent) {
+            notIntent = false;
+            Intent intent1 = new Intent(SettingsActivity.this, PromoActivity.class);
+            startActivity(intent1);
+            finish1();
+        }
     }
 
     public void Yes(View view) {

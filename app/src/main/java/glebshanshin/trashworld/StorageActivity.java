@@ -26,6 +26,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class StorageActivity extends Activity {
+    boolean notIntent = true;
     LinearLayout lin1, lin2;
     TextView text1, text2;
     String code1, code2;
@@ -114,14 +115,15 @@ public class StorageActivity extends Activity {
         if (num == 1) {
             code1 = "0";
             ContentValues newValues = new ContentValues();
-            newValues.put("code1", 0);
+            newValues.put("qr1", 0);
             db.update("Data", newValues, "_id = 1", null);
         } else {
             code2 = "0";
             ContentValues newValues = new ContentValues();
-            newValues.put("code2", 0);
+            newValues.put("qr2", 0);
             db.update("Data", newValues, "_id = 1", null);
         }
+        init(db);
     }
 
     public void reload(View view) {
@@ -129,17 +131,23 @@ public class StorageActivity extends Activity {
     }
 
     public void toBack(View view) {
-        Intent intent = new Intent(StorageActivity.this, PromoActivity.class);
-        startActivity(intent);
-        finish();
+        if (notIntent) {
+            notIntent = false;
+            Intent intent = new Intent(StorageActivity.this, PromoActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     public void show1(View view) {
         if (code1.equals("0")) {
-            Intent intent = new Intent(StorageActivity.this, QRActivity.class);
-            intent.putExtra("code", 1);
-            startActivity(intent);
-            finish();
+            if (notIntent) {
+                notIntent = false;
+                Intent intent = new Intent(StorageActivity.this, QRActivity.class);
+                intent.putExtra("code", "1");
+                startActivity(intent);
+                finish();
+            }
         } else {
             //change view to showing qr
         }
@@ -147,10 +155,13 @@ public class StorageActivity extends Activity {
 
     public void show2(View view) {
         if (code1.equals("0")) {
-            Intent intent = new Intent(StorageActivity.this, QRActivity.class);
-            intent.putExtra("code", 2);
-            startActivity(intent);
-            finish();
+            if (notIntent) {
+                notIntent = false;
+                Intent intent = new Intent(StorageActivity.this, QRActivity.class);
+                intent.putExtra("code", "2");
+                startActivity(intent);
+                finish();
+            }
         } else {
             //change view to showing qr
         }
@@ -222,6 +233,9 @@ public class StorageActivity extends Activity {
         b /= 2;
         TSHc += b;
         StyleableToast.makeText(this, "Вам вернули  " + getPrice(b) + " TSH", Toast.LENGTH_SHORT, R.style.get).show();
+        ContentValues newValues = new ContentValues();
+        newValues.put("TSH", TSHc);
+        db.update("Data", newValues, "_id = 1", null);
     }
 
     private String getPrice(long s) {

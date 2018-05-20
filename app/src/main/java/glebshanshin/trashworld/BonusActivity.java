@@ -17,8 +17,9 @@ public class BonusActivity extends Activity {
     Cursor cursor;
     SQLiteDatabase db;
     ImageView plastic, glass, paper, notrecycle, metal, organic, reloadt;
-    int organicc, plasticc, metalc, glassc, notrecyclec, paperc,multi;
+    int organicc, plasticc, metalc, glassc, notrecyclec, paperc, multi;
     boolean flag;
+    boolean notIntent = true;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +31,7 @@ public class BonusActivity extends Activity {
         init(db);
         if (organicc + plasticc + metalc + glassc + notrecyclec + paperc == 18) {
             flag = true;
-            Toast.makeText(this, "Вы можете обнулить бонусы и тогда весь ваш TSH/мусор будет умножаться на "+multi*3, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Вы можете обнулить бонусы и тогда весь ваш TSH/мусор будет умножаться на " + multi * 3, Toast.LENGTH_SHORT).show();
             reloadt = findViewById(R.id.reload);
             reloadt.setImageDrawable(getDrawable(R.drawable.reload));
         }
@@ -66,9 +67,12 @@ public class BonusActivity extends Activity {
     }
 
     public void toAchievements(View view) {
-        Intent intent = new Intent(BonusActivity.this, AchievementsActivity.class);
-        startActivity(intent);
-        finish();
+        if (notIntent) {
+            notIntent = false;
+            Intent intent = new Intent(BonusActivity.this, AchievementsActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     public void reload(View view) {
@@ -80,12 +84,12 @@ public class BonusActivity extends Activity {
             newValues.put("organicb", 1);
             newValues.put("notrecycleb", 1);
             newValues.put("glassb", 1);
-            newValues.put("multi", multi*3);
+            newValues.put("multi", multi * 3);
             db.update("Data", newValues, "_id = 1", null);
             init(db);
             Toast.makeText(this, "Бонусы обнулены", Toast.LENGTH_SHORT);
             reloadt.setAlpha(0);
-            flag=false;
+            flag = false;
         }
     }
 }

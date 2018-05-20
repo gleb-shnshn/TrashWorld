@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.gloxey.cfv:custom-font-views-1.0.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/custom-font-views-1.0.2.aar/d46d86eca42e4506c7f78f938d1109a1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/custom-font-views-1.0.2.aar/d46d86eca42e4506c7f78f938d1109a1/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.gloxey.cfv/custom-font-views/1.0.2/55cbca1adea522f1ef472670e917e95dd3c393e7/custom-font-views-1.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -30,7 +30,7 @@ public class LotteryActivity extends Activity {
     SQLiteDatabase db;
     int organicc, plasticc, metalc, glassc, notrecyclec, paperc, TSH;
     int obj;
-    private boolean isOpen = false, isBack = false;
+    private boolean isOpen = false, isBack = false, notIntent = true;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -165,7 +165,8 @@ public class LotteryActivity extends Activity {
     }
 
     public void toBack(View view) {
-        if (isBack) {
+        if ((isBack) && (notIntent)) {
+            notIntent=false;
             Intent intent = new Intent(LotteryActivity.this, LotteryStoreActivity.class);
             intent.putExtra("prize", obj + "");
             startActivity(intent);

@@ -17,6 +17,7 @@ public class AchievementsActivity extends Activity {
     DBHelper dbHelper;
     Cursor cursor;
     SQLiteDatabase db;
+    boolean notIntent = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -188,14 +189,20 @@ public class AchievementsActivity extends Activity {
     }
 
     public void toMenu(View view) {
-        Intent intent1 = new Intent(AchievementsActivity.this, MainActivity.class);
-        startActivity(intent1);
-        finish();
+        if (notIntent) {
+            notIntent = false;
+            Intent intent1 = new Intent(AchievementsActivity.this, MainActivity.class);
+            startActivity(intent1);
+            finish();
+        }
     }
 
     public void toBonus(View view) {
-        Intent intent1 = new Intent(AchievementsActivity.this, BonusActivity.class);
-        startActivity(intent1);
-        finish();
+        if (notIntent) {
+            notIntent = false;
+            Intent intent1 = new Intent(AchievementsActivity.this, BonusActivity.class);
+            startActivity(intent1);
+            finish();
+        }
     }
 }
