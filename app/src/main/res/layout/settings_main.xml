@@ -22,13 +22,21 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.2" />
+        android:layout_weight="0.1" />
+
+    <Button
+        android:id="@+id/music"
+        android:layout_width="230dp"
+        android:layout_height="25dp"
+        android:layout_weight="0.15"
+        android:background="@color/alpha1"
+        android:onClick="music" />
 
     <Button
         android:id="@+id/statistics"
         android:layout_width="230dp"
         android:layout_height="25dp"
-        android:layout_weight="0.16"
+        android:layout_weight="0.15"
         android:background="@color/alpha1"
         android:onClick="statistics" />
 

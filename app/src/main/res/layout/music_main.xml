@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/emptypage"
+    android:paddingEnd="@dimen/activity_horizontal_margin"
+    android:paddingStart="@dimen/activity_horizontal_margin">
+
+    <Button
+        android:id="@+id/button8"
+        android:background="@drawable/backbut1"
+        android:onClick="toSettings"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="2.5%" />
+
+    <io.gloxey.cfv.CFTextView
+        android:id="@+id/music"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Музыка"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textSize="20sp"
+        app:font_name="nyeti.ttf"
+        app:layout_heightPercent="7%"
+        app:layout_marginTopPercent="30%"
+        app:layout_widthPercent="100%" />
+
+    <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+        android:id="@+id/musicbar"
+        android:layout_below="@+id/music"
+        app:dsb_indicatorPopupEnabled="false"
+        app:dsb_max="100"
+        app:dsb_min="0"
+        app:dsb_progressColor="@color/blue"
+        app:dsb_thumbSize="20dp"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="100%" />
+
+    <Space
+        android:id="@+id/space"
+        android:layout_below="@+id/musicbar"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="100%" />
+
+    <io.gloxey.cfv.CFTextView
+        android:id="@+id/effects"
+        android:layout_below="@+id/space"
+        android:text="звуки"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textSize="20sp"
+        app:font_name="nyeti.ttf"
+        app:layout_heightPercent="7%"
+        app:layout_widthPercent="100%" />
+
+    <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+        android:id="@+id/effectsbar"
+        android:layout_below="@+id/effects"
+        app:dsb_indicatorPopupEnabled="false"
+        app:dsb_max="100"
+        app:dsb_min="0"
+        app:dsb_progressColor="@color/blue"
+        app:dsb_thumbSize="20dp"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="100%" />
+
+</android.support.percent.PercentRelativeLayout>

@@ -73,8 +73,8 @@ public class StorageActivity extends Activity {
         cursor.close();
         text1 = findViewById(R.id.text1);
         text2 = findViewById(R.id.text2);
-        lin1 = findViewById(R.id.button2);
-        lin2 = findViewById(R.id.button3);
+        lin1 = findViewById(R.id.lin1);
+        lin2 = findViewById(R.id.lin2);
         checkexistingall();
     }
 

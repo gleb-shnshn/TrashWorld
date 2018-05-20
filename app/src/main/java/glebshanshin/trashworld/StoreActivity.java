@@ -17,7 +17,8 @@ import android.widget.Toast;
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 public class StoreActivity extends Activity {
-    int factory, robot, car, man, TSH;
+    int factory, robot, car, man;
+    long TSH;
     TextView TSHv, priceman1, pricecar1, pricerobot1, pricefactory1,
             priceman10, pricecar10, pricerobot10, pricefactory10,
             priceman50, pricecar50, pricerobot50, pricefactory50,
@@ -35,12 +36,12 @@ public class StoreActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.store_main);
-        dbHelper = new DBHelper(this);
-        db = dbHelper.getWritableDatabase();
-        TSHv = findViewById(R.id.TSH);
         menuPlayer = MediaPlayer.create(this, R.raw.menu);
         menuPlayer.start();
         menuPlayer.setLooping(true);
+        dbHelper = new DBHelper(this);
+        db = dbHelper.getWritableDatabase();
+        TSHv = findViewById(R.id.TSH);
         init(db);
         updateTSH();
         updatePRICE("all");
@@ -121,7 +122,7 @@ public class StoreActivity extends Activity {
         return ((((2 * a1) + (n - 1) * d) * n) / 2);
     }
 
-    private String getPrice(int s) {
+    private String getPrice(long s) {
         String newa = "" + s;
 
         if (newa.length() > 12)
@@ -154,11 +155,11 @@ public class StoreActivity extends Activity {
     public void init(SQLiteDatabase db) {
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
-        TSH = Integer.parseInt(cursor.getString(1));
-        man = Integer.parseInt(cursor.getString(2));
-        car = Integer.parseInt(cursor.getString(3));
-        robot = Integer.parseInt(cursor.getString(4));
-        factory = Integer.parseInt(cursor.getString(5));
+        TSH = cursor.getLong(1);
+        man = cursor.getInt(2);
+        car = cursor.getInt(3);
+        robot = cursor.getInt(4);
+        factory = cursor.getInt(5);
         cursor.close();
         priceman1 = findViewById(R.id.price1man);
         pricecar1 = findViewById(R.id.price1car);
@@ -178,7 +179,7 @@ public class StoreActivity extends Activity {
         countfactory = findViewById(R.id.countfactory);
     }
 
-    private void toast(int a) {
+    private void toast(long a) {
         StyleableToast.makeText(getApplicationContext(), "✘  Не хватает " + a + " TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
     }
 

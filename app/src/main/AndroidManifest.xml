@@ -57,6 +57,9 @@
         <activity
             android:name=".StorageActivity"
             android:label=".StorageActivity" />
+        <activity
+            android:name=".MusicActivity"
+            android:label=".MusicActivity" />
     </application>
 
 </manifest>

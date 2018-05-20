@@ -22,7 +22,8 @@ public class LotteryStoreActivity extends Activity {
     Intent intent;
     TextView TSHv, priceO, priceB, text;
     String m = "Случайное  TSH\nот ";
-    int factory, robot, car, man, TSH, price, nprice;
+    long TSH, price, nprice;
+    int factory, robot, car, man;
     boolean notIntent = true;
     MediaPlayer menuPlayer;
 
@@ -32,6 +33,9 @@ public class LotteryStoreActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.lotterystore_main);
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setLooping(true);
+        menuPlayer.start();
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
         TSHv = findViewById(R.id.TSH);
@@ -40,9 +44,6 @@ public class LotteryStoreActivity extends Activity {
         updateTSH();
         updatePrice();
         intent = new Intent(LotteryStoreActivity.this, LotteryActivity.class);
-        menuPlayer = MediaPlayer.create(this, R.raw.menu);
-        menuPlayer.setLooping(true);
-        menuPlayer.start();
     }
 
     private void checkPrize() {
@@ -82,11 +83,11 @@ public class LotteryStoreActivity extends Activity {
     public void init(SQLiteDatabase db) {
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
-        TSH = Integer.parseInt(cursor.getString(1));
-        man = Integer.parseInt(cursor.getString(2));
-        car = Integer.parseInt(cursor.getString(3));
-        robot = Integer.parseInt(cursor.getString(4));
-        factory = Integer.parseInt(cursor.getString(5));
+        TSH = cursor.getLong(1);
+        man = cursor.getInt(2);
+        car = cursor.getInt(3);
+        robot = cursor.getInt(4);
+        factory = cursor.getInt(5);
         cursor.close();
     }
 
@@ -100,7 +101,7 @@ public class LotteryStoreActivity extends Activity {
         db.update("Data", newValues, "_id = 1", null);
     }
 
-    private String getPrice(int s) {
+    private String getPrice(long s) {
         String newa = "" + s;
         if (newa.length() > 12)
             newa = newa.substring(0, newa.length() - 9) + "T";
@@ -119,7 +120,7 @@ public class LotteryStoreActivity extends Activity {
         TSHv.setText(newa + " TSH ");
     }
 
-    private void toast(int a) {
+    private void toast(long a) {
         StyleableToast.makeText(getApplicationContext(), "✘  Не хватает " + a + " TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
     }
 

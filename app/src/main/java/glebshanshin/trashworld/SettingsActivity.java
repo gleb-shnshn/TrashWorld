@@ -77,6 +77,9 @@ public class SettingsActivity extends Activity {
         newValues.put("qr1", 0);
         newValues.put("qr2", 0);
 
+        newValues.put("music", 0);
+        newValues.put("effects", 0);
+
         db.update("Data", newValues, "_id = 1", null);
         StyleableToast.makeText(this, "✓  Все данные стерты", Toast.LENGTH_SHORT, R.style.Clear).show();
     }
@@ -108,5 +111,14 @@ public class SettingsActivity extends Activity {
 
     public void No(View view) {
         setContentView(R.layout.settings_main);
+    }
+
+    public void music(View view) {
+        if (notIntent) {
+            notIntent = false;
+            Intent intent1 = new Intent(SettingsActivity.this, MusicActivity.class);
+            startActivity(intent1);
+            finish1();
+        }
     }
 }

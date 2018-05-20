@@ -41,7 +41,7 @@
         app:layout_widthPercent="100%" />
 
     <LinearLayout
-        android:id="@+id/button2"
+        android:id="@+id/lin1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/so"
@@ -91,12 +91,12 @@
 
     <Space
         android:id="@+id/so2"
-        android:layout_below="@id/button2"
+        android:layout_below="@id/lin1"
         app:layout_heightPercent="10%"
         app:layout_widthPercent="100%" />
 
     <LinearLayout
-        android:id="@+id/button3"
+        android:id="@+id/lin2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/so2"

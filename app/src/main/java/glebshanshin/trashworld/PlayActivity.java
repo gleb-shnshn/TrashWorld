@@ -24,7 +24,8 @@ public class PlayActivity extends Activity implements OnTouchListener {
     long mills = 500L;
     Vibrator vibrator;
     MediaPlayer clickPlayer, playPlayer;
-    int factory, robot, car, man, TSH;
+    int factory, robot, car, man;
+    long TSH;
     int organicb, plasticb, metalb, glassb, notrecycleb, paperb;
     int organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistakes, Adder, multi;
     DBHelper dbHelper;
@@ -65,7 +66,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
 
     }
 
-    private String getPrice(int s) {
+    private String getPrice(long s) {
         String newa = "" + s;
         if (newa.length() > 12)
             newa = newa.substring(0, newa.length() - 9) + "T";
@@ -201,7 +202,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
     public void init(SQLiteDatabase db) {
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
-        TSH = cursor.getInt(1);
+        TSH = cursor.getLong(1);
         man = cursor.getInt(2);
         car = cursor.getInt(3);
         robot = cursor.getInt(4);

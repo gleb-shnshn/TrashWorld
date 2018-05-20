@@ -33,7 +33,9 @@ public class DBHelper extends SQLiteOpenHelper {
             "                    glassb TEXT NOT NULL DEFAULT 1, \n" +
             "                    multi TEXT NOT NULL DEFAULT 1, \n" +
             "                    qr1 TEXT NOT NULL DEFAULT 0, \n" +
-            "                    qr2 TEXT NOT NULL DEFAULT 0)";
+            "                    qr2 TEXT NOT NULL DEFAULT 0, \n" +
+            "                    music TEXT NOT NULL DEFAULT 0, \n" +
+            "                    effects TEXT NOT NULL DEFAULT 0)";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -64,13 +66,20 @@ public class DBHelper extends SQLiteOpenHelper {
         newValues.put("glass", 0);
         newValues.put("mistakes", 0);
 
-        newValues.put("paperb",1);
-        newValues.put("plasticb",1);
-        newValues.put("metalb",1);
-        newValues.put("organicb",1);
-        newValues.put("notrecycleb",1);
-        newValues.put("glassb",1);
-        newValues.put("multi",1);
+        newValues.put("paperb", 1);
+        newValues.put("plasticb", 1);
+        newValues.put("metalb", 1);
+        newValues.put("organicb", 1);
+        newValues.put("notrecycleb", 1);
+        newValues.put("glassb", 1);
+        newValues.put("multi", 1);
+
+        newValues.put("qr1", 0);
+        newValues.put("qr2", 0);
+
+        newValues.put("music", 0);
+        newValues.put("effects", 0);
+
         db.insert(TABLE_NAME, null, newValues);
     }
 
