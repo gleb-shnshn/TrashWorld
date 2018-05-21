@@ -23,6 +23,7 @@ import android.widget.TextView;
 public class PlayActivity extends Activity implements OnTouchListener {
     long mills = 500L;
     Vibrator vibrator;
+    float music, effects;
     MediaPlayer clickPlayer, playPlayer;
     int factory, robot, car, man;
     long TSH;
@@ -92,7 +93,6 @@ public class PlayActivity extends Activity implements OnTouchListener {
 
     private void finish1() {
         playPlayer.stop();
-        clickPlayer.setVolume(0.4f, 0.4f);
         clickPlayer.start();
         finish();
     }
@@ -221,6 +221,8 @@ public class PlayActivity extends Activity implements OnTouchListener {
         notrecycleb = cursor.getInt(17);
         glassb = cursor.getInt(18);
         multi = cursor.getInt(19);
+        music = cursor.getFloat(22);
+        effects = cursor.getFloat(23);
         cursor.close();
         initTSHs();
     }
@@ -256,8 +258,9 @@ public class PlayActivity extends Activity implements OnTouchListener {
         newTrash();
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         clickPlayer = MediaPlayer.create(this, R.raw.click);
-        clickPlayer.setVolume(0.3f, 0.3f);
+        clickPlayer.setVolume(effects, effects);
         playPlayer = MediaPlayer.create(this, R.raw.play);
+        playPlayer.setVolume(music, music);
         playPlayer.setLooping(true);
         playPlayer.start();
         w = getWindowManager().getDefaultDisplay().getWidth() - 50;

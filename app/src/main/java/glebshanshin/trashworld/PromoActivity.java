@@ -47,6 +47,7 @@ public class PromoActivity extends Activity {
     private delete del = retrofit.create(delete.class);
     boolean notIntent = true;
     MediaPlayer menuPlayer;
+    float music, effects;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +58,9 @@ public class PromoActivity extends Activity {
         db = dbHelper.getWritableDatabase();
         init(db);
         menuPlayer = MediaPlayer.create(this, R.raw.menu);
-        menuPlayer.start();
+        menuPlayer.setVolume(music, music);
         menuPlayer.setLooping(true);
+        menuPlayer.start();
     }
 
     private void update(SQLiteDatabase db) {
@@ -69,6 +71,10 @@ public class PromoActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(music, music);
+        menuPlayer.setLooping(true);
+        menuPlayer.start();
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
 
         if (result != null) {
@@ -149,6 +155,11 @@ public class PromoActivity extends Activity {
     }
 
     public void Scan(View view) {
+        menuPlayer.stop();
+        menuPlayer = MediaPlayer.create(this, R.raw.click);
+        menuPlayer.setVolume(effects, effects);
+        menuPlayer.setLooping(false);
+        menuPlayer.start();
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setCaptureActivity(QRScanActivity.class);
         integrator.initiateScan();
@@ -178,13 +189,15 @@ public class PromoActivity extends Activity {
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
         TSHc = cursor.getLong(1);
+        music = cursor.getFloat(22);
+        effects = cursor.getFloat(23);
         cursor.close();
     }
 
     private void finish1() {
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
-        menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.setVolume(effects, effects);
         menuPlayer.setLooping(false);
         menuPlayer.start();
         finish();

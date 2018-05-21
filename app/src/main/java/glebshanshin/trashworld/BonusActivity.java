@@ -23,6 +23,7 @@ public class BonusActivity extends Activity {
     int organicc, plasticc, metalc, glassc, notrecyclec, paperc, multi;
     boolean flag;
     boolean notIntent = true;
+    float music, effects;
     MediaPlayer menuPlayer;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +33,11 @@ public class BonusActivity extends Activity {
         setContentView(R.layout.bonus_main);
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
+        init(db);
         menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(music, music);
         menuPlayer.setLooping(true);
         menuPlayer.start();
-        init(db);
         if (organicc + plasticc + metalc + glassc + notrecyclec + paperc == 18) {
             flag = true;
             StyleableToast.makeText(this, "Вы можете обнулить бонусы и тогда весь ваш TSH/мусор будет умножаться на " + multi * 3, R.style.Clear).show();
@@ -62,13 +64,15 @@ public class BonusActivity extends Activity {
     public void init(SQLiteDatabase db) {
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
-        paperc = Integer.parseInt(cursor.getString(13));
-        plasticc = Integer.parseInt(cursor.getString(14));
-        metalc = Integer.parseInt(cursor.getString(15));
-        organicc = Integer.parseInt(cursor.getString(16));
-        notrecyclec = Integer.parseInt(cursor.getString(17));
-        glassc = Integer.parseInt(cursor.getString(18));
-        multi = Integer.parseInt(cursor.getString(19));
+        paperc = cursor.getInt(13);
+        plasticc = cursor.getInt(14);
+        metalc = cursor.getInt(15);
+        organicc = cursor.getInt(16);
+        notrecyclec = cursor.getInt(17);
+        glassc = cursor.getInt(18);
+        multi = cursor.getInt(19);
+        music = cursor.getFloat(22);
+        effects = cursor.getFloat(23);
         cursor.close();
         init1();
     }
@@ -76,7 +80,7 @@ public class BonusActivity extends Activity {
     private void finish1() {
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
-        menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.setVolume(effects, effects);
         menuPlayer.setLooping(false);
         menuPlayer.start();
         finish();

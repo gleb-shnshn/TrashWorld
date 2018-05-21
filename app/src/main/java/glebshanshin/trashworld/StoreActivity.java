@@ -29,6 +29,7 @@ public class StoreActivity extends Activity {
     String t = " TSH", tsh, s = " шт.";
     boolean notIntent = true;
     MediaPlayer menuPlayer;
+    float music, effects;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +37,14 @@ public class StoreActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.store_main);
-        menuPlayer = MediaPlayer.create(this, R.raw.menu);
-        menuPlayer.start();
-        menuPlayer.setLooping(true);
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
         TSHv = findViewById(R.id.TSH);
         init(db);
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(music, music);
+        menuPlayer.start();
+        menuPlayer.setLooping(true);
         updateTSH();
         updatePRICE("all");
     }
@@ -160,6 +162,8 @@ public class StoreActivity extends Activity {
         car = cursor.getInt(3);
         robot = cursor.getInt(4);
         factory = cursor.getInt(5);
+        music = cursor.getFloat(22);
+        effects = cursor.getFloat(23);
         cursor.close();
         priceman1 = findViewById(R.id.price1man);
         pricecar1 = findViewById(R.id.price1car);
@@ -286,7 +290,7 @@ public class StoreActivity extends Activity {
     private void finish1() {
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
-        menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.setVolume(effects, effects);
         menuPlayer.setLooping(false);
         menuPlayer.start();
         finish();

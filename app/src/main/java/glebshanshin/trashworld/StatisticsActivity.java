@@ -25,6 +25,7 @@ public class StatisticsActivity extends Activity {
     String pref = " : ";
     boolean notIntent = true;
     MediaPlayer menuPlayer;
+    float music, effects;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class StatisticsActivity extends Activity {
         init1();
         fillall();
         menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(music, music);
         menuPlayer.start();
         menuPlayer.setLooping(true);
     }
@@ -138,13 +140,15 @@ public class StatisticsActivity extends Activity {
         robot = cursor.getLong(4);
         factory = cursor.getLong(5);
         TSHc = TSHc + ((2 + (man - 1)) * man / 2) + ((20 + 10 * (car - 1)) * car / 2) + ((100 + 50 * (robot - 1)) * robot / 2) + ((200 + 100 * (factory - 1)) * factory / 2);
-        paperc = Integer.parseInt(cursor.getString(6));
-        plasticc = Integer.parseInt(cursor.getString(7));
-        metalc = Integer.parseInt(cursor.getString(8));
-        organicc = Integer.parseInt(cursor.getString(9));
-        notrecyclec = Integer.parseInt(cursor.getString(10));
-        glassc = Integer.parseInt(cursor.getString(11));
-        mistakes = Integer.parseInt(cursor.getString(12));
+        paperc = cursor.getInt(6);
+        plasticc = cursor.getInt(7);
+        metalc = cursor.getInt(8);
+        organicc = cursor.getInt(9);
+        notrecyclec = cursor.getInt(10);
+        glassc = cursor.getInt(11);
+        mistakes = cursor.getInt(12);
+        music = cursor.getFloat(22);
+        effects = cursor.getFloat(23);
         trashc = plasticc + paperc + metalc + organicc + notrecyclec + glassc;
         cursor.close();
     }
@@ -161,7 +165,7 @@ public class StatisticsActivity extends Activity {
     private void finish1() {
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
-        menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.setVolume(effects, effects);
         menuPlayer.setLooping(false);
         menuPlayer.start();
         finish();

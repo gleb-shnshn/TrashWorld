@@ -44,7 +44,7 @@
                 android:layout_weight="1"
                 android:text="0 TSH"
                 android:textAlignment="textEnd"
-                android:textColor="@color/blue"
+                android:textColor="#000"
                 android:textSize="27sp"
                 app:font_name="nyeti.ttf" />
         </LinearLayout>
@@ -69,14 +69,15 @@
             android:background="@drawable/bronzel"
             app:layout_aspectRatio="100%"
             app:layout_heightPercent="100%"
-            app:layout_marginLeftPercent="2.5%" />
+            app:layout_marginLeftPercent="2.5%"
+            app:layout_marginRightPercent="1%" />
 
         <LinearLayout
             android:id="@+id/txtb"
             android:layout_toEndOf="@id/br"
             android:orientation="vertical"
             app:layout_heightPercent="100%"
-            app:layout_widthPercent="40%">
+            app:layout_widthPercent="35%">
 
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/priceB"
@@ -139,14 +140,15 @@
             android:background="@drawable/silverl"
             app:layout_aspectRatio="100%"
             app:layout_heightPercent="100%"
-            app:layout_marginLeftPercent="2.5%" />
+            app:layout_marginLeftPercent="2.5%"
+            app:layout_marginRightPercent="1%"/>
 
         <LinearLayout
             android:id="@+id/txts"
             android:layout_toEndOf="@id/si"
             android:orientation="vertical"
             app:layout_heightPercent="100%"
-            app:layout_widthPercent="40%">
+            app:layout_widthPercent="35%">
 
             <io.gloxey.cfv.CFTextView
                 android:layout_width="match_parent"
@@ -207,14 +209,15 @@
             android:background="@drawable/goldl"
             app:layout_aspectRatio="100%"
             app:layout_heightPercent="100%"
-            app:layout_marginLeftPercent="2.5%" />
+            app:layout_marginLeftPercent="2.5%"
+            app:layout_marginRightPercent="1%"/>
 
         <LinearLayout
             android:id="@+id/txtg"
             android:layout_toEndOf="@id/go"
             android:orientation="vertical"
             app:layout_heightPercent="100%"
-            app:layout_widthPercent="40%">
+            app:layout_widthPercent="35%">
 
             <io.gloxey.cfv.CFTextView
                 android:layout_width="match_parent"

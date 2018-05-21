@@ -50,6 +50,7 @@ public class StorageActivity extends Activity {
     private int now;
     private long TSHc;
     MediaPlayer menuPlayer;
+    float music, effects;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +61,7 @@ public class StorageActivity extends Activity {
         db = dbHelper.getWritableDatabase();
         init(db);
         menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(music, music);
         menuPlayer.start();
         menuPlayer.setLooping(true);
     }
@@ -70,6 +72,8 @@ public class StorageActivity extends Activity {
         TSHc = cursor.getLong(1);
         code1 = cursor.getString(20);
         code2 = cursor.getString(21);
+        music = cursor.getFloat(22);
+        effects = cursor.getFloat(23);
         cursor.close();
         text1 = findViewById(R.id.text1);
         text2 = findViewById(R.id.text2);
@@ -303,7 +307,7 @@ public class StorageActivity extends Activity {
     private void finish1() {
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
-        menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.setVolume(effects, effects);
         menuPlayer.setLooping(false);
         menuPlayer.start();
         finish();

@@ -26,6 +26,7 @@ public class LotteryStoreActivity extends Activity {
     int factory, robot, car, man;
     boolean notIntent = true;
     MediaPlayer menuPlayer;
+    float music, effects;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +34,14 @@ public class LotteryStoreActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.lotterystore_main);
-        menuPlayer = MediaPlayer.create(this, R.raw.menu);
-        menuPlayer.setLooping(true);
-        menuPlayer.start();
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
         TSHv = findViewById(R.id.TSH);
         init(db);
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(music, music);
+        menuPlayer.setLooping(true);
+        menuPlayer.start();
         checkPrize();
         updateTSH();
         updatePrice();
@@ -90,6 +92,8 @@ public class LotteryStoreActivity extends Activity {
         car = cursor.getInt(3);
         robot = cursor.getInt(4);
         factory = cursor.getInt(5);
+        music = cursor.getFloat(22);
+        effects = cursor.getFloat(23);
         cursor.close();
     }
 
@@ -184,7 +188,7 @@ public class LotteryStoreActivity extends Activity {
     private void finish1() {
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
-        menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.setVolume(effects, effects);
         menuPlayer.setLooping(false);
         menuPlayer.start();
         finish();

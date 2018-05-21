@@ -20,6 +20,7 @@ public class AchievementsActivity extends Activity {
     Cursor cursor;
     SQLiteDatabase db;
     boolean notIntent = true;
+    float music, effects;
     MediaPlayer menuPlayer;
 
     @Override
@@ -34,6 +35,7 @@ public class AchievementsActivity extends Activity {
         init1();
         fillall();
         menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(music, music);
         menuPlayer.setLooping(true);
         menuPlayer.start();
     }
@@ -41,7 +43,7 @@ public class AchievementsActivity extends Activity {
     private void finish1() {
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
-        menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.setVolume(effects, effects);
         menuPlayer.setLooping(false);
         menuPlayer.start();
         finish();
@@ -61,6 +63,8 @@ public class AchievementsActivity extends Activity {
         notrecyclec = cursor.getInt(10);
         glassc = cursor.getInt(11);
         mistake = cursor.getInt(12);
+        music = cursor.getFloat(22);
+        effects = cursor.getFloat(23);
         cursor.close();
         trash = plasticc + paperc + metalc + organicc + notrecyclec + glassc;
     }

@@ -33,6 +33,7 @@ public class LotteryActivity extends Activity {
     long TSH, obj;
     private boolean isOpen = false, isBack = false, notIntent = true;
     MediaPlayer menuPlayer;
+    float music, effects;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,10 +44,11 @@ public class LotteryActivity extends Activity {
         sc = findViewById(R.id.scratch_view);
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
+        init(db);
         menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(music, music);
         menuPlayer.setLooping(true);
         menuPlayer.start();
-        init(db);
         String got = getIntent().getExtras().getString("1");
         sc.setWatermark(getResources().getIdentifier(got, "drawable", getPackageName()));
         Random random = new Random();
@@ -162,6 +164,8 @@ public class LotteryActivity extends Activity {
         organicc = cursor.getInt(16);
         notrecyclec = cursor.getInt(17);
         glassc = cursor.getInt(18);
+        music = cursor.getFloat(22);
+        effects = cursor.getFloat(23);
         cursor.close();
     }
 
@@ -190,7 +194,7 @@ public class LotteryActivity extends Activity {
     private void finish1() {
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
-        menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.setVolume(effects, effects);
         menuPlayer.setLooping(false);
         menuPlayer.start();
         finish();
