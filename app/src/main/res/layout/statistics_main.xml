@@ -1,205 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/store"
     android:orientation="vertical"
-    tools:context=".StatisticsActivity"
-    android:weightSum="1">
+    tools:context=".StatisticsActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="84dp"
-        android:layout_weight="0.001"
-        android:orientation="horizontal">
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/up"
+        app:layout_heightPercent="15%"
+        app:layout_widthPercent="100%">
 
         <Button
             android:id="@+id/back"
-            android:layout_width="17dp"
-            android:layout_height="86dp"
-            android:layout_weight="1"
             android:background="@color/alpha1"
-            android:onClick="toSettings" />
+            android:onClick="toSettings"
+            app:layout_heightPercent="100%"
+            app:layout_widthPercent="25%" />
 
-        <LinearLayout
-            android:layout_width="230dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_weight="1" />
+        <android.support.percent.PercentRelativeLayout
+            android:layout_toEndOf="@id/back"
+            android:orientation="vertical"
+            app:layout_heightPercent="100%"
+            app:layout_widthPercent="65%">
 
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/TSH"
-                android:layout_width="254dp"
-                android:layout_height="64dp"
-                android:layout_weight="1"
-                android:text="150 tsh"
+                android:layout_centerVertical="true"
+                android:text="0 tsh"
                 android:textAlignment="textEnd"
-                android:textColor="@color/blue"
+                android:textColor="#fff"
                 android:textSize="25sp"
-                app:font_name="nyeti.ttf" />
-        </LinearLayout>
+                app:font_name="nyeti.ttf"
+                app:layout_heightPercent="45%"
+                app:layout_widthPercent="100%" />
+        </android.support.percent.PercentRelativeLayout>
 
-    </LinearLayout>
+    </android.support.percent.PercentRelativeLayout>
 
     <Space
-        android:layout_width="match_parent"
+        android:id="@+id/ups"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.4" />
+        android:layout_below="@id/up"
+        app:layout_heightPercent="3%"
+        app:layout_widthPercent="100%" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_weight="0.001"
-        android:orientation="horizontal">
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/up1"
+        android:layout_below="@id/ups"
+        app:layout_heightPercent="14%"
+        app:layout_widthPercent="100%"
+        app:layout_marginPercent="1%">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:src="@drawable/trashstat" />
+            android:id="@+id/trashstat"
+            android:src="@drawable/trashstat"
+            app:layout_heightPercent="100%"
+            app:layout_widthPercent="25%" />
 
         <io.gloxey.cfv.CFTextView
             android:id="@+id/trash"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/trashstat"
+            android:text=" : 0"
             android:textColor="@color/blue"
             android:textSize="25sp"
-            app:font_name="nyeti.ttf" />
+            app:font_name="nyeti.ttf"
+            app:layout_heightPercent="40%"
+            app:layout_widthPercent="25%" />
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:src="@drawable/mistakestat" />
+            android:id="@+id/mistakestat"
+            android:layout_toEndOf="@id/trash"
+            android:src="@drawable/mistakestat"
+            app:layout_heightPercent="100%"
+            app:layout_widthPercent="25%" />
 
         <io.gloxey.cfv.CFTextView
             android:id="@+id/mistake"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/mistakestat"
+            android:text=" : 0"
             android:textColor="@color/blue"
             android:textSize="25sp"
-            app:font_name="nyeti.ttf" />
+            app:font_name="nyeti.ttf"
+            app:layout_heightPercent="40%"
+            app:layout_widthPercent="25%" />
 
-    </LinearLayout>
+    </android.support.percent.PercentRelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_weight="0.001"
-        android:orientation="horizontal">
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/up2"
+        android:layout_below="@id/up1"
+        app:layout_heightPercent="14%"
+        app:layout_widthPercent="100%"
+        app:layout_marginPercent="1%">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:src="@drawable/organicstat" />
+            android:id="@+id/organicstat"
+            android:src="@drawable/organicstat"
+            app:layout_heightPercent="100%"
+            app:layout_widthPercent="25%" />
 
         <io.gloxey.cfv.CFTextView
             android:id="@+id/organic"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/organicstat"
+            android:text=" : 0"
             android:textColor="@color/blue"
             android:textSize="25sp"
-            app:font_name="nyeti.ttf" />
+            app:font_name="nyeti.ttf"
+            app:layout_heightPercent="40%"
+            app:layout_widthPercent="25%" />
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:src="@drawable/notrecyclestat" />
+            android:id="@+id/notrecyclestat"
+            android:layout_toEndOf="@id/organic"
+            android:src="@drawable/notrecyclestat"
+            app:layout_heightPercent="100%"
+            app:layout_widthPercent="25%" />
 
         <io.gloxey.cfv.CFTextView
             android:id="@+id/notrecycle"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/notrecyclestat"
+            android:text=" : 0"
             android:textColor="@color/blue"
             android:textSize="25sp"
-            app:font_name="nyeti.ttf" />
-    </LinearLayout>
+            app:font_name="nyeti.ttf"
+            app:layout_heightPercent="40%"
+            app:layout_widthPercent="25%" />
+    </android.support.percent.PercentRelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_weight="0.001"
-        android:orientation="horizontal">
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/up3"
+        android:layout_below="@id/up2"
+        app:layout_heightPercent="14%"
+        app:layout_widthPercent="100%"
+        app:layout_marginPercent="1%">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:src="@drawable/paperstat" />
+            android:id="@+id/paperstat"
+            android:src="@drawable/paperstat"
+            app:layout_heightPercent="100%"
+            app:layout_widthPercent="25%" />
 
         <io.gloxey.cfv.CFTextView
             android:id="@+id/paper"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/paperstat"
+            android:text=" : 0"
             android:textColor="@color/blue"
             android:textSize="25sp"
-            app:font_name="nyeti.ttf" />
+            app:font_name="nyeti.ttf"
+            app:layout_heightPercent="40%"
+            app:layout_widthPercent="25%" />
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:src="@drawable/glassstat" />
+            android:id="@+id/glassstat"
+            android:layout_toEndOf="@id/paper"
+            android:src="@drawable/glassstat"
+            app:layout_heightPercent="100%"
+            app:layout_widthPercent="25%" />
 
         <io.gloxey.cfv.CFTextView
             android:id="@+id/glass"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/glassstat"
+            android:text=" : 0"
             android:textColor="@color/blue"
             android:textSize="25sp"
-            app:font_name="nyeti.ttf" />
-    </LinearLayout>
+            app:font_name="nyeti.ttf"
+            app:layout_heightPercent="40%"
+            app:layout_widthPercent="25%" />
+    </android.support.percent.PercentRelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.001"
-        android:orientation="horizontal">
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/up4"
+        android:layout_below="@id/up3"
+        app:layout_heightPercent="14%"
+        app:layout_widthPercent="100%"
+        app:layout_marginPercent="1%">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:src="@drawable/plasticstat" />
+            android:id="@+id/plasticstat"
+            android:src="@drawable/plasticstat"
+            app:layout_heightPercent="100%"
+            app:layout_widthPercent="25%" />
 
         <io.gloxey.cfv.CFTextView
             android:id="@+id/plastic"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/plasticstat"
+            android:text=" : 0"
             android:textColor="@color/blue"
             android:textSize="25sp"
-            app:font_name="nyeti.ttf" />
+            app:font_name="nyeti.ttf"
+            app:layout_heightPercent="40%"
+            app:layout_widthPercent="25%" />
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:src="@drawable/metalstat" />
+            android:id="@+id/metalstat"
+            android:layout_toEndOf="@id/plastic"
+            android:src="@drawable/metalstat"
+            app:layout_heightPercent="100%"
+            app:layout_widthPercent="25%" />
 
         <io.gloxey.cfv.CFTextView
             android:id="@+id/metal"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/metalstat"
+            android:text=" : 0"
             android:textColor="@color/blue"
             android:textSize="25sp"
-            app:font_name="nyeti.ttf" />
-    </LinearLayout>
+            app:font_name="nyeti.ttf"
+            app:layout_heightPercent="40%"
+            app:layout_widthPercent="25%" />
+    </android.support.percent.PercentRelativeLayout>
 
-</LinearLayout>
+    <Space
+        android:id="@+id/up5"
+        android:layout_below="@id/up4"
+        app:layout_heightPercent="3%"
+        app:layout_widthPercent="100%" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_below="@+id/up5"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/reset"
+        android:onClick="reset"
+        app:layout_aspectRatio="312%"
+        app:layout_heightPercent="12%" />
+
+</android.support.percent.PercentRelativeLayout>

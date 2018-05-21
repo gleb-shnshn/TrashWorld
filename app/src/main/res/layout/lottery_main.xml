@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/first"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.01"
@@ -28,14 +29,17 @@
             android:layout_weight="40" />
     </LinearLayout>
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.02"
-        android:padding="2dp">
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/cons"
+        android:layout_below="@id/first"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="0.1"
+        app:layout_marginPercent="5%"
+        app:layout_aspectRatio="100%"
+        app:layout_widthPercent="80%">
 
         <FrameLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -45,15 +49,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <!-- content view -->
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/TSH"
-                android:layout_width="268dp"
-                android:layout_height="165dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textAlignment="center"
                 android:textColor="#333333"
-                android:textSize="60sp"
+                android:textSize="50sp"
                 app:font_name="nyeti.ttf" />
 
             <ImageView
@@ -68,27 +71,17 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center" />
 
-            <!-- scratch view -->
-
         </FrameLayout>
-    </android.support.constraint.ConstraintLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="19dp"
-        android:layout_weight="0.01" />
+    </android.support.percent.PercentRelativeLayout>
 
     <Button
         android:id="@+id/button"
-        android:layout_width="238dp"
-        android:layout_height="86dp"
+        android:layout_below="@+id/cons"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/skip"
-        android:onClick="skip" />
+        android:onClick="skip"
+        app:layout_aspectRatio="271%"
+        app:layout_heightPercent="15%" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="19dp"
-        android:layout_weight="0.01" />
-
-</LinearLayout>
+</android.support.percent.PercentRelativeLayout>

@@ -85,7 +85,7 @@ public class QRActivity extends Activity {
     private String getPrice(long s) {
         String newa = "" + s;
         if (newa.length() > 12)
-            newa = newa.substring(0, newa.length() - 9) + "T";
+            newa = newa.substring(0, newa.length() - 12) + "T";
         else if (newa.length() > 9)
             newa = newa.substring(0, newa.length() - 9) + "B";
         else if (newa.length() > 6)
@@ -115,7 +115,7 @@ public class QRActivity extends Activity {
     }
 
     public void Buy(View view) {
-        int value = seekbar.getProgress();
+        long value = seekbar.getProgress();
         String code;
         long money;
         if (value <= 1000) {
@@ -131,6 +131,7 @@ public class QRActivity extends Activity {
         while (code.length() < 4) {
             code = "0" + code;
         }
+        Toast.makeText(this,money+"",Toast.LENGTH_SHORT).show();
         if (TSHc >= money) {
             TSHc -= money;
             textView.setText("" + getPrice(TSHc) + " TSH");

@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:background="@drawable/store"
+    android:orientation="vertical"
     tools:context="glebshanshin.trashworld.LotteryStoreActivity">
 
     <LinearLayout
+        android:id="@+id/first"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_heightPercent="13%">
 
         <Button
             android:layout_width="70dp"
-            android:layout_height="82dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/alpha1"
             android:onClick="toStore" />
@@ -51,31 +52,31 @@
     </LinearLayout>
 
     <Space
-        android:layout_width="match_parent"
-        android:layout_height="70dp" />
+        android:id="@+id/fs"
+        android:layout_below="@id/first"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="100%" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingBottom="@dimen/activity_vertical_margin"
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/bronze"
+        android:layout_below="@id/fs"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="100%"
         tools:context=".StoreActivity">
 
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
         <ImageView
-            android:layout_width="111dp"
-            android:layout_height="111dp"
-            android:background="@drawable/bronzel" />
+            android:id="@+id/br"
+            android:background="@drawable/bronzel"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="100%"
+            app:layout_marginLeftPercent="2.5%" />
 
         <LinearLayout
-            android:layout_width="140dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:id="@+id/txtb"
+            android:layout_toEndOf="@id/br"
+            android:orientation="vertical"
+            app:layout_heightPercent="100%"
+            app:layout_widthPercent="40%">
 
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/priceB"
@@ -95,7 +96,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:inputType="number"
                 android:text="Цена: 1K TSH"
                 android:textColor="#000000"
                 android:textSize="20dp"
@@ -103,43 +103,50 @@
 
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/buybronze"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/butstore"
-            android:onClick="buyBronze" />
+        <android.support.percent.PercentRelativeLayout
+            android:layout_toEndOf="@+id/txtb"
+            android:orientation="vertical"
+            app:layout_aspectRatio="100%"
+            app:layout_marginRightPercent="2.5%"
+            app:layout_widthPercent="40%">
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            <ImageButton
+                android:id="@+id/buybronze"
+                android:layout_centerInParent="true"
+                android:background="@drawable/butstore"
+                android:onClick="buyBronze"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="60%" />
+        </android.support.percent.PercentRelativeLayout>
 
-    </LinearLayout>
+    </android.support.percent.PercentRelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="127dp"
-        android:orientation="horizontal"
-        android:paddingBottom="@dimen/activity_vertical_margin"
+    <Space
+        android:id="@+id/bs"
+        android:layout_below="@id/bronze"
+        app:layout_heightPercent="5%"
+        app:layout_widthPercent="100%" />
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/silver"
+        android:layout_below="@id/bs"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="100%"
         tools:context=".StoreActivity">
 
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
         <ImageView
-            android:layout_width="111dp"
-            android:layout_height="111dp"
-            android:background="@drawable/silverl" />
+            android:id="@+id/si"
+            android:background="@drawable/silverl"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="100%"
+            app:layout_marginLeftPercent="2.5%" />
 
         <LinearLayout
-            android:layout_width="140dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:id="@+id/txts"
+            android:layout_toEndOf="@id/si"
+            android:orientation="vertical"
+            app:layout_heightPercent="100%"
+            app:layout_widthPercent="40%">
 
             <io.gloxey.cfv.CFTextView
                 android:layout_width="match_parent"
@@ -158,7 +165,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:inputType="number"
                 android:text="Цена: 10K TSH"
                 android:textColor="#000000"
                 android:textSize="20dp"
@@ -166,43 +172,49 @@
 
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/buysilver"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/butstore"
-            android:onClick="buySilver" />
+        <android.support.percent.PercentRelativeLayout
+            android:layout_toEndOf="@+id/txts"
+            android:orientation="vertical"
+            app:layout_aspectRatio="100%"
+            app:layout_marginRightPercent="2.5%"
+            app:layout_widthPercent="40%">
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            <ImageButton
+                android:id="@+id/buysilver"
+                android:layout_centerInParent="true"
+                android:background="@drawable/butstore"
+                android:onClick="buySilver"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="60%" />
+        </android.support.percent.PercentRelativeLayout>
 
-    </LinearLayout>
+    </android.support.percent.PercentRelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingBottom="@dimen/activity_vertical_margin"
+    <Space
+        android:id="@+id/ss"
+        android:layout_below="@id/silver"
+        app:layout_heightPercent="5%"
+        app:layout_widthPercent="100%" />
+
+    <android.support.percent.PercentRelativeLayout
+        android:layout_below="@id/ss"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="100%"
         tools:context=".StoreActivity">
 
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
         <ImageView
-            android:layout_width="111dp"
-            android:layout_height="111dp"
-            android:background="@drawable/goldl" />
+            android:id="@+id/go"
+            android:background="@drawable/goldl"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="100%"
+            app:layout_marginLeftPercent="2.5%" />
 
         <LinearLayout
-            android:layout_width="140dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:id="@+id/txtg"
+            android:layout_toEndOf="@id/go"
+            android:orientation="vertical"
+            app:layout_heightPercent="100%"
+            app:layout_widthPercent="40%">
 
             <io.gloxey.cfv.CFTextView
                 android:layout_width="match_parent"
@@ -220,7 +232,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:inputType="number"
                 android:text="Цена: 100К TSH"
                 android:textColor="#000000"
                 android:textSize="20dp"
@@ -228,23 +239,22 @@
 
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/buygold"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/butstore"
-            android:onClick="buyGold" />
+        <android.support.percent.PercentRelativeLayout
+            android:layout_toEndOf="@+id/txtg"
+            android:orientation="vertical"
+            app:layout_aspectRatio="100%"
+            app:layout_marginRightPercent="2.5%"
+            app:layout_widthPercent="40%">
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            <ImageButton
+                android:id="@+id/buygold"
+                android:layout_centerInParent="true"
+                android:background="@drawable/butstore"
+                android:onClick="buyGold"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="60%" />
+        </android.support.percent.PercentRelativeLayout>
 
-    </LinearLayout>
+    </android.support.percent.PercentRelativeLayout>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-</LinearLayout>
+</android.support.percent.PercentRelativeLayout>

@@ -1,36 +1,30 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     android:background="@drawable/qrpage"
-    tools:context=".QRActivity"
-    >
+    android:orientation="vertical"
+    tools:context=".QRActivity">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/s1"
+        app:layout_heightPercent="12%"
+        app:layout_widthPercent="100%">
 
         <Button
             android:id="@+id/button6"
-            android:layout_width="65dp"
-            android:layout_height="77dp"
-            android:layout_weight="0.01"
             android:background="@color/alpha1"
-            android:onClick="toBack" />
+            android:onClick="toBack"
+            app:layout_aspectRatio="120%"
+            app:layout_heightPercent="100%" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="7"
-            android:orientation="vertical">
+            android:layout_toEndOf="@id/button6"
+            android:orientation="vertical"
+            app:layout_heightPercent="100%"
+            app:layout_widthPercent="53%">
 
             <Space
                 android:layout_width="match_parent"
@@ -39,10 +33,10 @@
 
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/TSH"
-                android:layout_width="204dp"
+                android:layout_width="match_parent"
                 android:layout_height="19dp"
                 android:layout_weight="0.6"
-                android:text="0 TSH"
+                android:text="999K TSH"
                 android:textAlignment="center"
                 android:textColor="#ffffff"
                 android:textSize="23sp"
@@ -50,91 +44,48 @@
                 app:textAllCaps="false" />
         </LinearLayout>
 
-    </LinearLayout>
+    </android.support.percent.PercentRelativeLayout>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.01" />
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1000">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:padding="40dp"
-            android:src="@drawable/mini"
-            app:layout_constraintDimensionRatio="w,1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
-    </android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_below="@id/s1"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/mini"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="42%"
+        app:layout_marginPercent="7%" />
 
     <io.gloxey.cfv.CFTextView
         android:id="@+id/textView2"
-        android:layout_width="201dp"
-        android:layout_height="30dp"
+        android:layout_below="@id/imageView"
         android:layout_gravity="center_horizontal"
         android:text="Номинал: 100К TSH"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        app:font_name="nyeti.ttf" />
+        app:font_name="nyeti.ttf"
+        app:layout_heightPercent="5%"
+        app:layout_widthPercent="100%" />
 
     <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
         android:id="@+id/discrete1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_below="@id/textView2"
+        android:layout_centerHorizontal="true"
         app:dsb_indicatorPopupEnabled="false"
         app:dsb_max="2999"
         app:dsb_min="100"
         app:dsb_progressColor="@color/blue"
-        app:dsb_thumbSize="20dp" />
+        app:dsb_thumbSize="20dp"
+        app:layout_heightPercent="5%"
+        app:layout_widthPercent="90%" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:layout_weight="1" />
+    <Button
+        android:id="@+id/button7"
+        android:layout_below="@id/discrete1"
+        android:layout_centerHorizontal="true"
+        android:background="@color/alpha1"
+        android:onClick="Buy"
+        app:layout_heightPercent="15%"
+        app:layout_marginPercent="2%"
+        app:layout_widthPercent="70%" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/button7"
-            android:layout_width="200dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:background="@color/alpha1"
-            android:onClick="Buy" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:layout_weight="0.01" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.01" />
-
-</LinearLayout>
+</android.support.percent.PercentRelativeLayout>

@@ -188,10 +188,10 @@ public class StorageActivity extends Activity {
 
     private void show(int i) {
         String code;
-        if (i==1){
-            code=code1;
-        }else{
-            code=code2;
+        if (i == 1) {
+            code = code1;
+        } else {
+            code = code2;
         }
         setContentView(R.layout.show_main);
         BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
@@ -285,7 +285,7 @@ public class StorageActivity extends Activity {
     private String getPrice(long s) {
         String newa = "" + s;
         if (newa.length() > 12)
-            newa = newa.substring(0, newa.length() - 9) + "T";
+            newa = newa.substring(0, newa.length() - 12) + "T";
         else if (newa.length() > 9)
             newa = newa.substring(0, newa.length() - 9) + "B";
         else if (newa.length() > 6)

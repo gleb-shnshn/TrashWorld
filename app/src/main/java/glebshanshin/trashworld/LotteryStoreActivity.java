@@ -47,24 +47,26 @@ public class LotteryStoreActivity extends Activity {
     }
 
     private void checkPrize() {
-        int prize = Integer.parseInt(getIntent().getExtras().getString("prize"));
-        switch (prize) {
-            case 0:
-                break;
-            case 1:
-                man++;
-                break;
-            case 2:
-                car++;
-                break;
-            case 3:
-                robot++;
-                break;
-            case 4:
-                factory++;
-                break;
-            default:
-                TSH += prize;
+        long prize = Long.parseLong(getIntent().getExtras().getString("prize"));
+        if (prize <= 4) {
+            switch ((int) prize) {
+                case 0:
+                    break;
+                case 1:
+                    man++;
+                    break;
+                case 2:
+                    car++;
+                    break;
+                case 3:
+                    robot++;
+                    break;
+                case 4:
+                    factory++;
+                    break;
+            }
+        } else {
+            TSH += prize;
         }
     }
 
@@ -77,7 +79,7 @@ public class LotteryStoreActivity extends Activity {
         priceB = findViewById(R.id.price1);
         text = findViewById(R.id.priceB);
         priceB.setText("Цена: " + getPrice(nprice) + " TSH");
-        text.setText(m + getPrice(nprice / 2) + " до " + getPrice((int) (nprice * 1.5)));
+        text.setText(m + getPrice(nprice / 2) + " до " + getPrice((long) (nprice * 1.5)));
     }
 
     public void init(SQLiteDatabase db) {
@@ -104,7 +106,7 @@ public class LotteryStoreActivity extends Activity {
     private String getPrice(long s) {
         String newa = "" + s;
         if (newa.length() > 12)
-            newa = newa.substring(0, newa.length() - 9) + "T";
+            newa = newa.substring(0, newa.length() - 12) + "T";
         else if (newa.length() > 9)
             newa = newa.substring(0, newa.length() - 9) + "B";
         else if (newa.length() > 6)
@@ -136,13 +138,13 @@ public class LotteryStoreActivity extends Activity {
 
     public void buyBronze(View view) {
         if (notIntent) {
-            notIntent = false;
             if (TSH >= nprice) {
+                notIntent = false;
                 TSH -= nprice;
-                Toast.makeText(this, "Снято " + nprice + " TSH", Toast.LENGTH_SHORT);
                 intent.putExtra("1", "bronzel");
                 update(db);
                 startActivity(intent);
+                finish1();
             } else {
                 toast(nprice - TSH);
             }
@@ -151,13 +153,13 @@ public class LotteryStoreActivity extends Activity {
 
     public void buySilver(View view) {
         if (notIntent) {
-            notIntent = false;
             if (TSH >= price) {
-                Toast.makeText(this, "Снято " + price + " TSH", Toast.LENGTH_SHORT);
+                notIntent = false;
                 TSH -= price;
                 intent.putExtra("1", "silverl");
                 update(db);
                 startActivity(intent);
+                finish1();
             } else {
                 toast(price - TSH);
             }
@@ -166,13 +168,13 @@ public class LotteryStoreActivity extends Activity {
 
     public void buyGold(View view) {
         if (notIntent) {
-            notIntent = false;
             if (TSH >= 100000) {
+                notIntent = false;
                 TSH -= 100000;
-                Toast.makeText(this, "Снято " + 100000 + " TSH", Toast.LENGTH_SHORT);
                 intent.putExtra("1", "goldl");
                 update(db);
                 startActivity(intent);
+                finish1();
             } else {
                 toast(100000 - TSH);
             }

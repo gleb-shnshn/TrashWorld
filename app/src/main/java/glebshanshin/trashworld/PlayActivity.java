@@ -69,7 +69,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
     private String getPrice(long s) {
         String newa = "" + s;
         if (newa.length() > 12)
-            newa = newa.substring(0, newa.length() - 9) + "T";
+            newa = newa.substring(0, newa.length() - 12) + "T";
         else if (newa.length() > 9)
             newa = newa.substring(0, newa.length() - 9) + "B";
         else if (newa.length() > 6)

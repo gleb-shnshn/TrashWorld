@@ -3,6 +3,8 @@ package glebshanshin.trashworld;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,10 @@ import android.view.WindowManager;
 public class MainActivity extends Activity {
     MediaPlayer menuPlayer;
     boolean notIntent = true;
+    float music, effects;
+    SQLiteDatabase db;
+    DBHelper dbHelper;
+    Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +25,15 @@ public class MainActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+        dbHelper = new DBHelper(this);
+        db = dbHelper.getWritableDatabase();
+        cursor = db.query("Data", null, null, null, null, null, null);
+        cursor.moveToFirst();
+        music = cursor.getFloat(22);
+        effects = cursor.getFloat(23);
+        cursor.close();
         menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(music, music);
         menuPlayer.setLooping(true);
         menuPlayer.start();
     }
@@ -36,7 +50,7 @@ public class MainActivity extends Activity {
     private void finish1() {
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
-        menuPlayer.setVolume(0.4f, 0.4f);
+        menuPlayer.setVolume(effects, effects);
         menuPlayer.setLooping(false);
         menuPlayer.start();
         finish();

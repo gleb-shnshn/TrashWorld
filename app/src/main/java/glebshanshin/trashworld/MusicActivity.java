@@ -39,7 +39,6 @@ public class MusicActivity extends Activity {
         musics = cursor.getFloat(22);
         effectes = cursor.getFloat(23);
         cursor.close();
-        Toast.makeText(this, musics + "" + effectes, Toast.LENGTH_SHORT).show();
         final TextView musicText = findViewById(R.id.music), effectsText = findViewById(R.id.effects);
         music = findViewById(R.id.musicbar);
         music.setProgress((int) (musics * 100));
@@ -60,7 +59,7 @@ public class MusicActivity extends Activity {
         });
         effects = findViewById(R.id.effectsbar);
         effects.setProgress((int) (effectes * 100));
-        effectsText.setText("Звуки " +effects.getProgress()+ "%");
+        effectsText.setText("Звуки " + effects.getProgress() + "%");
         effects.setOnProgressChangeListener(new DiscreteSeekBar.OnProgressChangeListener() {
             @Override
             public void onProgressChanged(DiscreteSeekBar seekBar, int value, boolean fromUser) {

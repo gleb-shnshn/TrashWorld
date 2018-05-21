@@ -1,6 +1,7 @@
 package glebshanshin.trashworld;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,6 +11,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 public class StatisticsActivity extends Activity {
     DBHelper dbHelper;
@@ -18,7 +22,7 @@ public class StatisticsActivity extends Activity {
     TextView organic, plastic, metal, glass, notrecycle, paper, mistake, trash, TSH;
     long organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistakes, trashc, man, car, robot, factory;
     long TSHc;
-    String pref = "\n:";
+    String pref = " : ";
     boolean notIntent = true;
     MediaPlayer menuPlayer;
 
@@ -38,6 +42,59 @@ public class StatisticsActivity extends Activity {
         menuPlayer.setLooping(true);
     }
 
+    public void Yes(View view) {
+        setContentView(R.layout.statistics_main);
+        dbHelper = new DBHelper(this);
+        db = dbHelper.getWritableDatabase();
+        update(db);
+        init1();
+        init(db);
+        fillall();
+    }
+
+    public void No(View view) {
+        setContentView(R.layout.statistics_main);
+    }
+
+    public void reset(View view) {
+        setContentView(R.layout.check_main);
+    }
+
+    private void update(SQLiteDatabase db) {
+        ContentValues newValues = new ContentValues();
+        newValues.put("TSH", 0);
+        newValues.put("man", 0);
+        newValues.put("car", 0);
+        newValues.put("robot", 0);
+        newValues.put("factory", 0);
+
+        newValues.put("paper", 0);
+        newValues.put("plastic", 0);
+        newValues.put("metal", 0);
+        newValues.put("organic", 0);
+        newValues.put("notrecycle", 0);
+        newValues.put("glass", 0);
+        newValues.put("mistakes", 0);
+
+        newValues.put("paperb", 1);
+        newValues.put("plasticb", 1);
+        newValues.put("metalb", 1);
+        newValues.put("organicb", 1);
+        newValues.put("notrecycleb", 1);
+        newValues.put("glassb", 1);
+
+        newValues.put("multi", 1);
+
+        newValues.put("qr1", 0);
+        newValues.put("qr2", 0);
+
+        newValues.put("music", 0);
+        newValues.put("effects", 0);
+
+        db.update("Data", newValues, "_id = 1", null);
+        StyleableToast.makeText(this, "✓  Все данные стерты", Toast.LENGTH_SHORT, R.style.Clear).show();
+    }
+
     private void fillall() {
         glass.setText(pref + glassc);
         organic.setText(pref + organicc);
@@ -49,7 +106,7 @@ public class StatisticsActivity extends Activity {
         plastic.setText(pref + plasticc);
         String newa = "" + TSHc;
         if (newa.length() > 12)
-            newa = newa.substring(0, newa.length() - 9) + "T";
+            newa = newa.substring(0, newa.length() - 12) + "T";
         else if (newa.length() > 9)
             newa = newa.substring(0, newa.length() - 9) + "B";
         else if (newa.length() > 6)

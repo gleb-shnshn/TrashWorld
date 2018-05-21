@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/emptypage"
     android:orientation="vertical"
-    tools:context=".BonusActivity"
-    android:weightSum="2">
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:weightSum="2"
+    tools:context=".BonusActivity">
 
     <LinearLayout
+        android:id="@+id/beck"
         android:layout_width="match_parent"
-        android:layout_height="82dp"
-        android:layout_weight="0.02"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="100%">
 
         <ImageView
             android:id="@+id/back"
             android:layout_width="56dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="toAchievements"
             android:src="@drawable/backbut2" />
@@ -43,78 +41,107 @@
     </LinearLayout>
 
     <Space
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_weight="0.001" />
+        android:id="@+id/firs"
+        android:layout_below="@id/beck"
+        app:layout_heightPercent="5%"
+        app:layout_widthPercent="100%" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/fir"
+        android:layout_below="@id/firs"
+        android:gravity="center"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="100%">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/plastic"
+            android:src="@drawable/plastic1"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="100%"
+            app:layout_marginLeftPercent="2.5%" />
 
-            <ImageView
-                android:id="@+id/plastic"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_weight="1"
-                android:src="@drawable/plastic1" />
+        <Space
+            android:id="@+id/sp1"
+            android:layout_toEndOf="@id/plastic"
+            app:layout_widthPercent="20%" />
 
-            <ImageView
-                android:id="@+id/organic"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_weight="1"
-                android:src="@drawable/organic1" />
+        <ImageView
+            android:id="@+id/organic"
+            android:layout_toEndOf="@id/sp1"
+            android:src="@drawable/organic1"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="100%"
+            app:layout_marginRightPercent="2.5%" />
 
-        </LinearLayout>
+    </android.support.percent.PercentRelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:orientation="horizontal">
+    <Space
+        android:id="@+id/secs"
+        android:layout_below="@id/fir"
+        app:layout_heightPercent="5%"
+        app:layout_widthPercent="100%" />
 
-            <ImageView
-                android:id="@+id/paper"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_weight="1"
-                android:src="@drawable/paper1" />
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/sec"
+        android:layout_below="@id/secs"
+        android:gravity="center"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="100%">
 
-            <ImageView
-                android:id="@+id/glass"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_weight="1"
-                android:src="@drawable/glass1" />
+        <ImageView
+            android:id="@+id/paper"
+            android:src="@drawable/paper1"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="100%"
+            app:layout_marginLeftPercent="2.5%" />
 
-        </LinearLayout>
+        <Space
+            android:id="@+id/sp2"
+            android:layout_toEndOf="@id/paper"
+            app:layout_widthPercent="20%" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/glass"
+            android:layout_toEndOf="@id/sp2"
+            android:src="@drawable/glass1"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="100%"
+            app:layout_marginRightPercent="2.5%" />
 
-            <ImageView
-                android:id="@+id/metal"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_weight="1"
-                android:src="@drawable/metal1" />
+    </android.support.percent.PercentRelativeLayout>
 
-            <ImageView
-                android:id="@+id/notrecycle"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_weight="1"
-                android:src="@drawable/notrecycle1" />
+    <Space
+        android:id="@+id/tis"
+        android:layout_below="@id/sec"
+        app:layout_heightPercent="5%"
+        app:layout_widthPercent="100%" />
 
-        </LinearLayout>
-    </LinearLayout>
+    <android.support.percent.PercentRelativeLayout
+        android:layout_below="@id/tis"
+        android:gravity="center"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="100%">
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/metal"
+            android:src="@drawable/metal1"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="100%"
+            app:layout_marginLeftPercent="2.5%" />
+
+        <Space
+            android:id="@+id/sp3"
+            android:layout_toEndOf="@id/metal"
+            app:layout_widthPercent="20%" />
+
+        <ImageView
+            android:id="@+id/notrecycle"
+            android:layout_toEndOf="@id/sp3"
+            android:src="@drawable/notrecycle1"
+            app:layout_aspectRatio="100%"
+            app:layout_heightPercent="100%"
+            app:layout_marginRightPercent="2.5%" />
+
+    </android.support.percent.PercentRelativeLayout>
+
+</android.support.percent.PercentRelativeLayout>
