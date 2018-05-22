@@ -1,111 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/emptypage"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     android:weightSum="1"
-    android:gravity="center_horizontal"
-    android:background="@drawable/settingpage"
     tools:context=".SettingsActivity">
 
-    <android.support.percent.PercentRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_weight="0.1"
-        android:orientation="horizontal">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/settingt" />
 
-        <Button
-            android:id="@+id/toMenu"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:background="@color/alpha1"
-            android:onClick="toMenu"
-            app:layout_widthPercent="25%" />
-    </android.support.percent.PercentRelativeLayout>
+    <Button
+        android:id="@+id/toMenu"
+        android:layout_gravity="left"
+        android:background="@drawable/backbut1"
+        android:onClick="toMenu"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="10%"
+        app:layout_marginLeftPercent="5%"
+        app:layout_marginTopPercent="2.5%" />
 
     <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.15" />
+        android:id="@+id/st"
+        app:layout_heightPercent="28%"
+        app:layout_widthPercent="100%" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.15"
-        android:orientation="horizontal">
+    <Button
+        android:id="@+id/music"
+        android:background="@color/alpha1"
+        android:onClick="music"
+        android:layout_below="@id/st"
+        android:layout_centerHorizontal="true"
+        app:layout_heightPercent="15%"
+        app:layout_widthPercent="60%" />
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/music"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:background="@color/alpha1"
-            android:onClick="music" />
+    <Button
+        android:id="@+id/statistics"
+        android:layout_below="@id/music"
+        android:layout_centerHorizontal="true"
+        app:layout_heightPercent="15%"
+        app:layout_widthPercent="60%"
+        android:background="@color/alpha1"
+        android:onClick="statistics" />
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
 
-    </LinearLayout>
+    <Button
+        android:id="@+id/promo"
+        android:layout_below="@id/statistics"
+        android:layout_centerHorizontal="true"
+        app:layout_heightPercent="15%"
+        app:layout_widthPercent="60%"
+        android:background="@color/alpha1"
+        android:onClick="promo" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.15"
-        android:orientation="horizontal">
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/statistics"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:background="@color/alpha1"
-            android:onClick="statistics" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.15"
-        android:orientation="horizontal">
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/promo"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:background="@color/alpha1"
-            android:onClick="promo" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-    </LinearLayout>
-
-</LinearLayout>
+</android.support.percent.PercentRelativeLayout>

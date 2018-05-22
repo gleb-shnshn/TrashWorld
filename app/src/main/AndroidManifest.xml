@@ -3,7 +3,7 @@
     package="glebshanshin.trashworld">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
 
 
     <application
@@ -14,7 +14,9 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,43 +25,56 @@
         </activity>
         <activity
             android:name=".PlayActivity"
-            android:label=".PlayActivity" />
+            android:label=".PlayActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".StoreActivity"
-            android:label=".StoreActivity" />
+            android:label=".StoreActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AchievementsActivity"
-            android:label=".AchievementsActivity" />
+            android:label=".AchievementsActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SettingsActivity"
-            android:label=".SettingsActivity" />
+            android:label=".SettingsActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".StatisticsActivity"
-            android:label=".StatisticsActivity" />
+            android:label=".StatisticsActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".LotteryActivity"
-            android:label=".LotteryActivity" />
+            android:label=".LotteryActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".LotteryStoreActivity"
-            android:label=".LotteryStoreActivity" />
+            android:label=".LotteryStoreActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".BonusActivity"
-            android:label=".BonusActivity" />
+            android:label=".BonusActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".QRScanActivity"
-            android:label=".QRScanActivity" />
+            android:label=".QRScanActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PromoActivity"
-            android:label=".PromoActivity" />
+            android:label=".PromoActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".QRActivity"
-            android:label=".QRActivity" />
+            android:label=".QRActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".StorageActivity"
-            android:label=".StorageActivity" />
+            android:label=".StorageActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MusicActivity"
-            android:label=".MusicActivity" />
+            android:label=".MusicActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

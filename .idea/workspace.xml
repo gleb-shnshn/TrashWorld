@@ -4,16 +4,16 @@
     <shared>
       <config>
         <devices>
-          <device id="pixel_c" />
           <device id="Nexus 5" />
-          <device id="Nexus 10" />
+          <device id="pixel_c" />
           <device id="pixel_2_xl" />
+          <device id="Nexus S" />
+          <device id="Nexus 4" />
           <device id="Nexus 6P" />
-          <device id="Nexus 9" />
           <device id="Nexus 6" />
-          <device id="Nexus 5X" />
-          <device id="pixel" />
-          <device id="Nexus 7" />
+          <device id="Nexus 9" />
+          <device id="Nexus 7 2013" />
+          <device id="Nexus 10" />
         </devices>
       </config>
     </shared>
@@ -23,6 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01e5167b-025f-421a-b15e-e58ea2b8f116" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/playt.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/promot.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/qrt.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/settingt.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/transparent.png" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
@@ -31,20 +36,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/AchievementsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/AchievementsActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/BonusActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/BonusActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/LotteryActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/LotteryActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/LotteryStoreActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/LotteryStoreActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/MusicActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/MusicActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/PlayActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/PlayActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/PromoActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/PromoActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/SettingsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/SettingsActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/StatisticsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/StatisticsActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/StorageActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/StorageActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/StoreActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/StoreActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lotterystore_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lotterystore_main.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/statistics_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/statistics_main.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/emptypage1.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/emptypage1.png" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/bonus_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/bonus_main.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/play_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/play_main.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/promo_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/promo_main.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/qr.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/qr.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/settings_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/settings_main.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/storage_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/storage_main.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -77,122 +79,131 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="LotteryActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/LotteryActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="47" column="58" lean-forward="false" selection-start-line="47" selection-start-column="58" selection-end-line="48" selection-end-column="43" />
+      <file leaf-file-name="play_main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/play_main.xml">
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PromoActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/PromoActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="72" column="83" lean-forward="false" selection-start-line="72" selection-start-column="83" selection-end-line="72" selection-end-column="83" />
-              <folding>
-                <element signature="e#3087#3103#0" expanded="true" />
-              </folding>
-            </state>
+      <file leaf-file-name="qr.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/qr.xml">
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SettingsActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/SettingsActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="51" column="59" lean-forward="false" selection-start-line="51" selection-start-column="59" selection-end-line="52" selection-end-column="47" />
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="398">
+              <caret line="85" column="34" lean-forward="false" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StoreActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/StoreActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="41" column="38" lean-forward="false" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
+      <file leaf-file-name="settings_main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/settings_main.xml">
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="17" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/PlayActivity.java">
+      <file leaf-file-name="promo_main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/promo_main.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1029">
-              <caret line="94" column="26" lean-forward="false" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="26" />
-              <folding>
-                <element signature="method#toMenu#0;class#PlayActivity#0" expanded="false" />
-                <element signature="method#update#0;class#PlayActivity#0" expanded="false" />
-                <element signature="method#incCounter#0;class#PlayActivity#0" expanded="false" />
-                <element signature="method#toStore#0;class#PlayActivity#0" expanded="false" />
-                <element signature="method#game#0;class#PlayActivity#0" expanded="false" />
-                <element signature="method#getTag#0;class#PlayActivity#0" expanded="false" />
-                <element signature="method#check#0;class#PlayActivity#0" expanded="false" />
-                <element signature="method#newTrash#0;class#PlayActivity#0" expanded="false" />
-                <element signature="method#initTSHs#0;class#PlayActivity#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="294">
+              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="23" selection-end-column="45" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LotteryStoreActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/LotteryStoreActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
+      <file leaf-file-name="music_main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/music_main.xml">
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
             <state relative-caret-position="273">
-              <caret line="26" column="29" lean-forward="false" selection-start-line="26" selection-start-column="29" selection-end-line="28" selection-end-column="25" />
+              <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lotterystore_main.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/lotterystore_main.xml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="1690">
-              <caret line="212" column="46" lean-forward="false" selection-start-line="212" selection-start-column="46" selection-end-line="212" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
+      <file leaf-file-name="check_main.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/check_main.xml">
           <provider selected="true" editor-type-id="android-designer2">
             <state />
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show_main.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/show_main.xml">
           <provider editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="44" lean-forward="false" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+            <state relative-caret-position="210">
+              <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
               <folding />
             </state>
           </provider>
-          <provider selected="true" editor-type-id="android-designer2">
-            <state />
-          </provider>
         </entry>
       </file>
-      <file leaf-file-name="statistics_main.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/statistics_main.xml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="4767">
-              <caret line="227" column="35" lean-forward="false" selection-start-line="227" selection-start-column="35" selection-end-line="227" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="android-designer2">
+      <file leaf-file-name="lottery_main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/lottery_main.xml">
+          <provider editor-type-id="android-designer2">
             <state />
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QRActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/QRActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2163">
-              <caret line="133" column="64" lean-forward="false" selection-start-line="133" selection-start-column="64" selection-end-line="133" selection-end-column="64" />
+            <state relative-caret-position="1638">
+              <caret line="78" column="39" lean-forward="false" selection-start-line="78" selection-start-column="39" selection-end-line="78" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="store_main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/store_main.xml">
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="10353">
+              <caret line="493" column="63" lean-forward="false" selection-start-line="493" selection-start-column="63" selection-end-line="493" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="achievements_main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/achievements_main.xml">
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="8883">
+              <caret line="423" column="42" lean-forward="false" selection-start-line="423" selection-start-column="42" selection-end-line="423" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bonus_main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/bonus_main.xml">
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="987">
+              <caret line="47" column="28" lean-forward="false" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -2294,10 +2305,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/splash_screen.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/SplashScreen.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/achievements_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/promo_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/SqareLayout.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/play_main_new.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/qrscan_main.xml" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
@@ -2306,18 +2315,12 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/check_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/store_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/show_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/storage_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/DBHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/music_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/QRActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/lottery_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/bonus_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/play_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/qr.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/settings_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/AchievementsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/BonusActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/LotteryActivity.java" />
@@ -2331,11 +2334,20 @@
         <option value="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/PlayActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/statistics_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/lotterystore_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/play_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/settings_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/promo_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/storage_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/qr.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/bonus_main.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-4" />
+    <option name="x" value="7" />
+    <option name="y" value="1" />
     <option name="width" value="1922" />
     <option name="height" value="1032" />
   </component>
@@ -2355,49 +2367,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="TrashWorld" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="TrashWorld" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="TrashWorld" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="trashworld" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrashWorld" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="TrashWorld" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="TrashWorld" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="TrashWorld" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -2445,29 +2415,65 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="TrashWorld" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="TrashWorld" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="TrashWorld" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="trashworld" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrashWorld" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="TrashWorld" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="TrashWorld" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="device.picker.selection" value="8190dd73" />
+    <property name="device.picker.selection" value="Pixel_C_API_22" />
     <property name="android.profiler.active" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\SamsungProject\TrashWorld\app\src\main\res\raw" />
-    </key>
-    <key name="android.template.packageName">
-      <recent name="glebshanshin.trashworld" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\SamsungProject\TrashWorld\app\src\main\res\drawable" />
       <recent name="E:\SamsungProject\TrashWorld\app\src\main\res\raw" />
       <recent name="E:\SamsungProject\TrashWorld\app\src\main\res\layout" />
       <recent name="E:\SamsungProject\TrashWorld\app\src\main\res\values" />
       <recent name="E:\SamsungProject\TrashWorld\app\src\main\java\glebshanshin\trashworld" />
+    </key>
+    <key name="android.template.packageName">
+      <recent name="glebshanshin.trashworld" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\SamsungProject\TrashWorld\app\src\main\res\raw" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -2644,9 +2650,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="0" width="1922" height="1032" extended-state="0" />
+    <frame x="7" y="1" width="1922" height="1032" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946634" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32946634" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3272727" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2662,7 +2669,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25081256" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23665893" sideWeight="0.49785176" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23665893" sideWeight="0.49785176" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299025" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24972972" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2721,13 +2728,13 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/qr.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="39" column="28" lean-forward="false" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/test.java" />
@@ -2763,13 +2770,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/play_main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="478">
           <caret line="127" column="28" lean-forward="false" selection-start-line="127" selection-start-column="28" selection-end-line="127" selection-end-column="28" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-26/android.jar!/android/database/AbstractWindowedCursor.class">
@@ -2786,22 +2793,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1281">
-          <caret line="61" column="33" lean-forward="false" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/DBHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-918">
           <caret line="11" column="62" lean-forward="false" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2809,7 +2804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2817,195 +2811,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/store_main.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="493" column="63" lean-forward="false" selection-start-line="493" selection-start-column="63" selection-end-line="493" selection-end-column="63" />
-          <folding>
-            <element signature="e#616#2146#0" expanded="false" />
-            <element signature="e#2152#7579#0" expanded="false" />
-            <element signature="e#7585#13010#0" expanded="false" />
-            <element signature="e#13016#18459#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/achievements_main.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="8883">
-          <caret line="423" column="42" lean-forward="false" selection-start-line="423" selection-start-column="42" selection-end-line="423" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/play_main.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="133" column="0" lean-forward="false" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
-          <folding>
-            <element signature="e#2336#2660#0" expanded="false" />
-            <element signature="e#2666#2999#0" expanded="false" />
-            <element signature="e#3005#3336#0" expanded="false" />
-            <element signature="e#3342#3673#0" expanded="false" />
-            <element signature="e#3679#3958#0" expanded="false" />
-            <element signature="e#3964#4254#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/music_main.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/bonus_main.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="48" column="28" lean-forward="false" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="28" />
-          <folding>
-            <element signature="e#436#469#0" expanded="false" />
-            <element signature="e#537#1451#0" expanded="false" />
-            <element signature="e#1457#1614#0" expanded="false" />
-            <element signature="e#1620#2572#0" expanded="false" />
-            <element signature="e#2578#2734#0" expanded="false" />
-            <element signature="e#2740#3682#0" expanded="false" />
-            <element signature="e#3688#3843#0" expanded="false" />
-            <element signature="e#3849#4770#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/promo_main.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/qr.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="41" column="39" lean-forward="false" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/qrscan_main.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="55" lean-forward="false" selection-start-line="2" selection-start-column="55" selection-end-line="2" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/lottery_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="78" column="39" lean-forward="false" selection-start-line="78" selection-start-column="39" selection-end-line="78" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="2478">
-          <caret line="118" column="19" lean-forward="false" selection-start-line="118" selection-start-column="19" selection-end-line="118" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="30" column="29" lean-forward="true" selection-start-line="30" selection-start-column="29" selection-end-line="32" selection-end-column="38" />
-          <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/storage_main.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="1932">
-          <caret line="92" column="29" lean-forward="false" selection-start-line="92" selection-start-column="29" selection-end-line="92" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/settings_main.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="24" column="39" lean-forward="false" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/check_main.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/AchievementsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
           <caret line="44" column="59" lean-forward="false" selection-start-line="44" selection-start-column="59" selection-end-line="45" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3013,7 +2839,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="447">
           <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3021,7 +2846,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
           <caret line="72" column="34" lean-forward="false" selection-start-line="72" selection-start-column="34" selection-end-line="74" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3029,7 +2853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
           <caret line="47" column="58" lean-forward="false" selection-start-line="47" selection-start-column="58" selection-end-line="48" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3037,7 +2860,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3045,7 +2867,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2751">
           <caret line="148" column="37" lean-forward="false" selection-start-line="148" selection-start-column="37" selection-end-line="148" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3053,7 +2874,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="573">
           <caret line="309" column="47" lean-forward="false" selection-start-line="309" selection-start-column="47" selection-end-line="309" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3061,7 +2881,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="51" column="59" lean-forward="false" selection-start-line="51" selection-start-column="59" selection-end-line="52" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3069,85 +2888,223 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2163">
           <caret line="133" column="64" lean-forward="false" selection-start-line="133" selection-start-column="64" selection-end-line="133" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/PromoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="72" column="83" lean-forward="false" selection-start-line="72" selection-start-column="83" selection-end-line="72" selection-end-column="83" />
-          <folding>
-            <element signature="e#3087#3103#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/StoreActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="567">
           <caret line="41" column="38" lean-forward="false" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/PlayActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1029">
+        <state relative-caret-position="1428">
           <caret line="94" column="26" lean-forward="false" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="26" />
-          <folding>
-            <element signature="method#toMenu#0;class#PlayActivity#0" expanded="false" />
-            <element signature="method#update#0;class#PlayActivity#0" expanded="false" />
-            <element signature="method#incCounter#0;class#PlayActivity#0" expanded="false" />
-            <element signature="method#toStore#0;class#PlayActivity#0" expanded="false" />
-            <element signature="method#game#0;class#PlayActivity#0" expanded="false" />
-            <element signature="method#getTag#0;class#PlayActivity#0" expanded="false" />
-            <element signature="method#check#0;class#PlayActivity#0" expanded="false" />
-            <element signature="method#newTrash#0;class#PlayActivity#0" expanded="false" />
-            <element signature="method#initTSHs#0;class#PlayActivity#0" expanded="false" />
-          </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/statistics_main.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="4767">
-          <caret line="227" column="35" lean-forward="false" selection-start-line="227" selection-start-column="35" selection-end-line="227" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/show_main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="12" column="44" lean-forward="false" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
           <folding />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/LotteryStoreActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="26" column="29" lean-forward="false" selection-start-line="26" selection-start-column="29" selection-end-line="28" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1512">
+          <caret line="72" column="51" lean-forward="false" selection-start-line="72" selection-start-column="51" selection-end-line="72" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/qrscan_main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="55" lean-forward="false" selection-start-line="2" selection-start-column="55" selection-end-line="2" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/lotterystore_main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
-        <state relative-caret-position="1690">
+        <state relative-caret-position="4452">
           <caret line="212" column="46" lean-forward="false" selection-start-line="212" selection-start-column="46" selection-end-line="212" selection-end-column="46" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/achievements_main.xml">
       <provider selected="true" editor-type-id="android-designer2">
         <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="8883">
+          <caret line="423" column="42" lean-forward="false" selection-start-line="423" selection-start-column="42" selection-end-line="423" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/store_main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="10353">
+          <caret line="493" column="63" lean-forward="false" selection-start-line="493" selection-start-column="63" selection-end-line="493" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/lottery_main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1638">
+          <caret line="78" column="39" lean-forward="false" selection-start-line="78" selection-start-column="39" selection-end-line="78" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/music_main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/PromoActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2186">
+          <caret line="72" column="83" lean-forward="false" selection-start-line="72" selection-start-column="83" selection-end-line="72" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/statistics_main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="4767">
+          <caret line="227" column="35" lean-forward="false" selection-start-line="227" selection-start-column="35" selection-end-line="227" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/storage_main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="11" column="41" lean-forward="false" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/play_main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/promo_main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="23" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/settings_main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="17" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/qr.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="85" column="34" lean-forward="false" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/bonus_main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="987">
+          <caret line="47" column="28" lean-forward="false" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/check_main.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>

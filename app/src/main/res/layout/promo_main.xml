@@ -1,89 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/promopage"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@drawable/emptypage"
     android:gravity="center_horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/promot" />
 
-        <Button
-            android:id="@+id/back"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_weight="0.5"
-            android:background="@color/alpha1"
-            android:onClick="toSettings" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="50" />
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/back"
+        android:layout_gravity="left"
+        android:background="@drawable/backbut1"
+        android:onClick="toSettings"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="10%"
+        app:layout_marginLeftPercent="5%"
+        app:layout_marginTopPercent="2.5%" />
 
     <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.4" />
+        android:id="@+id/st"
+        app:layout_heightPercent="35%"
+        app:layout_widthPercent="100%" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="28dp"
-        android:layout_weight="0.2"
-        android:orientation="horizontal">
+    <Button
+        android:id="@+id/gen"
+        android:layout_below="@id/st"
+        android:layout_centerHorizontal="true"
+        android:background="@color/alpha1"
+        android:onClick="Generate"
+        app:layout_heightPercent="15%"
+        app:layout_widthPercent="60%" />
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+    <Button
+        android:id="@+id/Scan"
+        android:layout_below="@id/gen"
+        android:layout_centerHorizontal="true"
+        android:background="@color/alpha1"
+        android:onClick="Scan"
+        app:layout_heightPercent="15%"
+        app:layout_widthPercent="60%" />
 
-        <Button
-            android:id="@+id/gen"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/alpha1"
-            android:onClick="Generate" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:layout_weight="0.2"
-        android:orientation="horizontal">
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/Scan"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/alpha1"
-            android:onClick="Scan" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.67" />
-
-</LinearLayout>
+</android.support.percent.PercentRelativeLayout>
