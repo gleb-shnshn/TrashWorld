@@ -72,7 +72,7 @@
         app:dsb_min="100"
         app:dsb_progressColor="@color/blue"
         app:dsb_thumbSize="20dp"
-        app:layout_heightPercent="5%"
+        app:layout_heightPercent="10%"
         app:layout_widthPercent="90%" />
 
     <Button

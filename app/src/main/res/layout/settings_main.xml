@@ -19,12 +19,21 @@
 
     <Button
         android:id="@+id/toMenu"
-        android:layout_gravity="left"
         android:background="@drawable/backbut1"
         android:onClick="toMenu"
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="10%"
         app:layout_marginLeftPercent="5%"
+        app:layout_marginTopPercent="2.5%" />
+
+    <Button
+        android:id="@+id/toInfo"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/info"
+        android:onClick="toInfo"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="10%"
+        app:layout_marginRightPercent="5%"
         app:layout_marginTopPercent="2.5%" />
 
     <Space

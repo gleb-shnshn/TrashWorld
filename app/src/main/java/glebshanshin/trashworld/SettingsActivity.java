@@ -82,4 +82,11 @@ public class SettingsActivity extends Activity {
             finish1();
         }
     }
+
+    public void toInfo(View view) {
+        setContentView(R.layout.info_main);
+    }
+    public void toSettings(View view){
+        setContentView(R.layout.settings_main);
+    }
 }

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,6 +49,7 @@ public class QRActivity extends Activity {
     long TSHc;
     TextView textView;
     boolean notIntent = true;
+    boolean qu = false;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,51 +133,56 @@ public class QRActivity extends Activity {
         while (code.length() < 4) {
             code = "0" + code;
         }
-        Toast.makeText(this,money+"",Toast.LENGTH_SHORT).show();
         if (TSHc >= money) {
-            TSHc -= money;
-            textView.setText("" + getPrice(TSHc) + " TSH");
-            generate(code);
+            generate(code, money);
         } else {
             StyleableToast.makeText(getApplicationContext(), "✘  Не хватает " + (money - TSHc) + " TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
         }
     }
 
-    private void generate(String money) {
-        code = "QR" + money + UUID.randomUUID().toString().substring(0, 7) + "QR";
-
-        try {
-            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-            Bitmap bitmap = barcodeEncoder.encodeBitmap(code, BarcodeFormat.QR_CODE, 400, 400);
-            ImageView imageViewQrCode = findViewById(R.id.imageView);
-            imageViewQrCode.setImageBitmap(bitmap);
-            insert(code);
-        } catch (WriterException e) {
-            e.printStackTrace();
-        }
+    private void generate(String qr, long money) {
+        insert(qr, money);
     }
 
-    private void insert(String qr) {
+    private void insert(final String qr, final long money) {
+        setContentView(R.layout.show_main);
+        final Button button8 = findViewById(R.id.button8);
+        code = "QR" + qr + UUID.randomUUID().toString().substring(0, 7) + "QR";
+        button8.setAlpha(0);
         HashMap<String, String> postDataParams = new HashMap<String, String>();
-        postDataParams.put("code", qr);
+        postDataParams.put("code", code);
         Call<Object> call = ins.performPostCall(postDataParams);
         call.enqueue(new Callback<Object>() {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
                 if (notIntent) {
-                    notIntent = false;
+                    TSHc -= money;
                     update(db);
-                    Intent intent = new Intent(QRActivity.this, StorageActivity.class);
-                    startActivity(intent);
-                    finish();
+                    try {
+                        BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+                        Bitmap bitmap = barcodeEncoder.encodeBitmap(code, BarcodeFormat.QR_CODE, 400, 400);
+                        ImageView imageViewQrCode = findViewById(R.id.place);
+                        imageViewQrCode.setImageBitmap(bitmap);
+                    } catch (WriterException e) {
+                        e.printStackTrace();
+                    }
+                    button8.setAlpha(1);
+                    qu = true;
                 }
             }
 
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
+                if (notIntent) {
+                    notIntent = false;
+                    Intent intent = new Intent(QRActivity.this, StorageActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
                 StyleableToast.makeText(getApplicationContext(), "Нет доступа к интернету", Toast.LENGTH_SHORT, R.style.wrong).show();
             }
         });
+
     }
 
     private void update(SQLiteDatabase db) {
@@ -183,5 +190,14 @@ public class QRActivity extends Activity {
         newValues.put("TSH", TSHc);
         newValues.put("qr" + getIntent().getStringExtra("code"), code);
         db.update("Data", newValues, "_id = 1", null);
+    }
+
+    public void reload(View view) {
+        if (qu && notIntent) {
+            notIntent = false;
+            Intent intent = new Intent(QRActivity.this, StorageActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 }
