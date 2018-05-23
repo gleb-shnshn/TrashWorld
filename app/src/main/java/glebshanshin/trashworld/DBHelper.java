@@ -77,8 +77,8 @@ public class DBHelper extends SQLiteOpenHelper {
         newValues.put("qr1", 0);
         newValues.put("qr2", 0);
 
-        newValues.put("music", 0);
-        newValues.put("effects", 0);
+        newValues.put("music", 1);
+        newValues.put("effects", 0.4);
 
         db.insert(TABLE_NAME, null, newValues);
     }

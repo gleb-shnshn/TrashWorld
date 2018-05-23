@@ -115,12 +115,18 @@ public class LotteryActivity extends Activity {
         sc.setMaskColor(0x00000000);
         sc.setMaxPercent(80);
         btn = findViewById(R.id.button);
-        back = findViewById(R.id.back);
+        back = findViewById(R.id.first);
         btn.setBackgroundColor(getResources().getColor(R.color.alpha1));
         back.setBackgroundColor(getResources().getColor(R.color.alpha1));
         sc.setEraseStatusListener(new ScratchView.EraseStatusListener() {
             @Override
             public void onProgress(int percent) {
+                if (percent >= 98) {
+                    isOpen = false;
+                    btn.setBackgroundColor(getResources().getColor(R.color.alpha1));
+                    back.setBackgroundDrawable(getResources().getDrawable(R.drawable.backbut1));
+                    isBack = true;
+                }
             }
 
             @Override
