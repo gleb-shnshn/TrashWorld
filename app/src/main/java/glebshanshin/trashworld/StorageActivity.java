@@ -93,13 +93,13 @@ public class StorageActivity extends Activity {
             lin1.setBackground(getDrawable(R.drawable.emptyqr));
         } else {
             lin1.setBackground(getDrawable(R.drawable.lookqr));
-            text1.setText(code1.substring(2, 6) + " TSH");
+            text1.setText(Integer.parseInt(code1.substring(2,5))+code1.substring(5, 6) + "\nTSH");
         }
         if (code2.equals("0")) {
             lin2.setBackground(getDrawable(R.drawable.emptyqr));
         } else {
             lin2.setBackground(getDrawable(R.drawable.lookqr));
-            text2.setText(code2.substring(2, 6) + " TSH");
+            text2.setText(Integer.parseInt(code2.substring(2,5))+code2.substring(5, 6) + "\nTSH");
         }
     }
 
