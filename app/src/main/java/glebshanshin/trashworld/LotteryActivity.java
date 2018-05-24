@@ -7,22 +7,19 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.KeyCharacterMap;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.clock.scratch.ScratchView;
 
 import java.util.Random;
 
+import site.iway.androidhelpers.ScratchCard;
+
 public class LotteryActivity extends Activity {
-    ScratchView sc;
+    ScratchCard sc;
     TextView tsh;
     Button btn, back;
     ImageView img;
@@ -46,7 +43,7 @@ public class LotteryActivity extends Activity {
         db = dbHelper.getWritableDatabase();
         init(db);
         String got = getIntent().getExtras().getString("1");
-        sc.setWatermark(getResources().getIdentifier(got, "drawable", getPackageName()));
+        sc.setScratchDrawable(getDrawable(getResources().getIdentifier(got, "drawable", getPackageName())));
         Random random = new Random();
         if (got.equals("silverl")) {
             img = findViewById(R.id.img);
@@ -108,27 +105,18 @@ public class LotteryActivity extends Activity {
             }
             obj = 0;
         }
-        sc.setMaskColor(0x00000000);
-        sc.setMaxPercent(80);
         btn = findViewById(R.id.button);
         back = findViewById(R.id.first);
         btn.setBackgroundColor(getResources().getColor(R.color.alpha1));
         back.setBackgroundColor(getResources().getColor(R.color.alpha1));
-        sc.setEraseStatusListener(new ScratchView.EraseStatusListener() {
+        sc.setScratchWidth(150f);
+        sc.setOnScratchListener(new ScratchCard.OnScratchListener() {
             @Override
-            public void onProgress(int percent) {
-                if (percent >= 98) {
-                    isOpen = false;
-                    btn.setBackgroundColor(getResources().getColor(R.color.alpha1));
-                    back.setBackgroundDrawable(getResources().getDrawable(R.drawable.backbut1));
-                    isBack = true;
+            public void onScratch(ScratchCard scratchCard, float visiblePercent) {
+                if (visiblePercent >= 0.66) {
+                    isOpen = true;
+                    btn.setBackgroundDrawable(getResources().getDrawable(R.drawable.skip));
                 }
-            }
-
-            @Override
-            public void onCompleted(View view) {
-                btn.setBackgroundDrawable(getResources().getDrawable(R.drawable.skip));
-                isOpen = true;
             }
         });
     }
@@ -148,8 +136,8 @@ public class LotteryActivity extends Activity {
 
     public void skip(View view) {
         if (isOpen) {
-            sc.clear();
             isOpen = false;
+            sc.setAlpha(0);
             btn.setBackgroundColor(getResources().getColor(R.color.alpha1));
             back.setBackgroundDrawable(getResources().getDrawable(R.drawable.backbut1));
             isBack = true;

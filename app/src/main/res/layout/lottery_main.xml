@@ -45,7 +45,7 @@
                 android:layout_height="185dp"
                 android:layout_gravity="center" />
 
-            <com.clock.scratch.ScratchView
+            <site.iway.androidhelpers.ScratchCard
                 android:id="@+id/scratch_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

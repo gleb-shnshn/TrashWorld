@@ -44,16 +44,12 @@ public class MusicActivity extends Activity {
 
     private void init() {
         clickPlayer = MediaPlayer.create(this, R.raw.click);
-        menuPlayer = MediaPlayer.create(this, R.raw.menu);
-        menuPlayer.setLooping(true);
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
         musics = cursor.getFloat(22);
         effectes = cursor.getFloat(23);
         cursor.close();
-        menuPlayer.setVolume(musics, musics);
         clickPlayer.setVolume(effectes, effectes);
-        menuPlayer.start();
         final TextView musicText = findViewById(R.id.music), effectsText = findViewById(R.id.effects);
         music = findViewById(R.id.musicbar);
         music.setProgress((int) (musics * 100));

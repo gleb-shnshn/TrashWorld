@@ -28,11 +28,11 @@ dependencies {
     compile 'org.adw.library:discrete-seekbar:1.0.1'
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'io.gloxey.cfv:custom-font-views:1.0.2'
-    compile 'com.clock.scratch:Scratch:1.0.0'
     compile 'com.journeyapps:zxing-android-embedded:3.4.0'
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile 'com.squareup.retrofit2:converter-gson:2.2.0'
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.muddzdev:styleabletoast:2.1.2'
     compile 'com.android.support:percent:26.1.0'
+    compile 'com.github.iWay7:AndroidHelpers:1.0.5'
 }

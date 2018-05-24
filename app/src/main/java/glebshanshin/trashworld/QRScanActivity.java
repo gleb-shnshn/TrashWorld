@@ -14,7 +14,6 @@ public class QRScanActivity extends CaptureActivity {
     }
 
     public void toPromo(View view) {
-        Intent intent1 = new Intent(QRScanActivity.this, PromoActivity.class);
-        startActivity(intent1);
+        finish();
     }
 }

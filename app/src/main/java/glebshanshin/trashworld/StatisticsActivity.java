@@ -41,7 +41,16 @@ public class StatisticsActivity extends Activity {
     }
 
     public void Yes(View view) {
+        menuPlayer.stop();
+        menuPlayer = MediaPlayer.create(this, R.raw.click);
+        menuPlayer.setVolume(effects, effects);
+        menuPlayer.setLooping(false);
+        menuPlayer.start();
         setContentView(R.layout.statistics_main);
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(music, music);
+        menuPlayer.setLooping(true);
+        menuPlayer.start();
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
         update(db);
@@ -51,11 +60,34 @@ public class StatisticsActivity extends Activity {
     }
 
     public void No(View view) {
+        menuPlayer.stop();
+        menuPlayer = MediaPlayer.create(this, R.raw.click);
+        menuPlayer.setVolume(effects, effects);
+        menuPlayer.setLooping(false);
+        menuPlayer.start();
         setContentView(R.layout.statistics_main);
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(music, music);
+        menuPlayer.setLooping(true);
+        menuPlayer.start();
+        dbHelper = new DBHelper(this);
+        db = dbHelper.getWritableDatabase();
+        init1();
+        init(db);
+        fillall();
     }
 
     public void reset(View view) {
+        menuPlayer.stop();
+        menuPlayer = MediaPlayer.create(this, R.raw.click);
+        menuPlayer.setVolume(effects, effects);
+        menuPlayer.setLooping(false);
+        menuPlayer.start();
         setContentView(R.layout.check_main);
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(music, music);
+        menuPlayer.setLooping(true);
+        menuPlayer.start();
     }
 
     private void update(SQLiteDatabase db) {
@@ -86,8 +118,8 @@ public class StatisticsActivity extends Activity {
         newValues.put("qr1", 0);
         newValues.put("qr2", 0);
 
-        newValues.put("music", 0);
-        newValues.put("effects", 0);
+        newValues.put("music", 0.5);
+        newValues.put("effects", 0.5);
 
         db.update("Data", newValues, "_id = 1", null);
         StyleableToast.makeText(this, "✓  Все данные стерты", Toast.LENGTH_SHORT, R.style.Clear).show();

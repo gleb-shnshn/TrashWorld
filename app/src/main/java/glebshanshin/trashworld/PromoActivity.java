@@ -5,26 +5,20 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.WriterException;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.journeyapps.barcodescanner.BarcodeEncoder;
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 import java.util.HashMap;
-import java.util.UUID;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -67,10 +61,6 @@ public class PromoActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        menuPlayer = MediaPlayer.create(this, R.raw.menu);
-        menuPlayer.setVolume(music, music);
-        menuPlayer.setLooping(true);
-        menuPlayer.start();
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null) {
             if (result.getContents() != null) {

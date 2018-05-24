@@ -55,7 +55,7 @@ public class QRActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.qr);
+        setContentView(R.layout.qr_main);
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
         init(db);
