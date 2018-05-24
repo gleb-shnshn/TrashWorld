@@ -45,10 +45,6 @@ public class LotteryActivity extends Activity {
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
         init(db);
-        menuPlayer = MediaPlayer.create(this, R.raw.menu);
-        menuPlayer.setVolume(music, music);
-        menuPlayer.setLooping(true);
-        menuPlayer.start();
         String got = getIntent().getExtras().getString("1");
         sc.setWatermark(getResources().getIdentifier(got, "drawable", getPackageName()));
         Random random = new Random();
@@ -204,5 +200,20 @@ public class LotteryActivity extends Activity {
         menuPlayer.setLooping(false);
         menuPlayer.start();
         finish();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        menuPlayer.stop();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(music, music);
+        menuPlayer.setLooping(true);
+        menuPlayer.start();
     }
 }

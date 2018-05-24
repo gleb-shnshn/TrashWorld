@@ -13,15 +13,6 @@
         app:layout_heightPercent="15%"
         app:layout_widthPercent="100%">
 
-        <Button
-            android:id="@+id/back"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/backbut1"
-            android:onClick="toSettings"
-            app:layout_aspectRatio="100%"
-            android:layout_centerVertical="true"
-            app:layout_heightPercent="70%"
-            app:layout_marginLeftPercent="5%" />
 
         <android.support.percent.PercentRelativeLayout
             android:layout_alignParentEnd="true"
@@ -39,11 +30,20 @@
                 android:textSize="25sp"
                 app:font_name="nyeti.ttf"
                 app:layout_heightPercent="45%"
-                app:layout_widthPercent="100%"
-                app:layout_marginRightPercent="10%"/>
+                app:layout_marginRightPercent="10%"
+                app:layout_widthPercent="100%" />
         </android.support.percent.PercentRelativeLayout>
 
     </android.support.percent.PercentRelativeLayout>
+
+    <Button
+        android:id="@+id/back"
+        android:background="@drawable/backbut1"
+        android:onClick="toSettings"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="10%"
+        app:layout_marginStartPercent="5%"
+        app:layout_marginTopPercent="2.5%"  />
 
     <Space
         android:id="@+id/ups"

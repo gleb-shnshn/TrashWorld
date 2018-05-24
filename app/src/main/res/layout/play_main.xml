@@ -137,12 +137,19 @@
         app:layout_heightPercent="5%" />
 
     <ImageView
-        android:id="@+id/circle"
         android:layout_below="@id/ll"
         android:src="@drawable/playcircle"
         app:layout_aspectRatio="100%"
         app:layout_marginPercent="5%"
         app:layout_widthPercent="100%" />
+
+    <ImageView
+        android:id="@+id/circle"
+        android:layout_below="@id/ll"
+        app:layout_aspectRatio="100%"
+        app:layout_marginPercent="5%"
+        app:layout_widthPercent="100%" />
+
 
     <ImageView
         android:id="@+id/img"

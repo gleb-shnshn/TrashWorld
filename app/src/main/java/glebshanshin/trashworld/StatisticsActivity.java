@@ -38,10 +38,6 @@ public class StatisticsActivity extends Activity {
         init(db);
         init1();
         fillall();
-        menuPlayer = MediaPlayer.create(this, R.raw.menu);
-        menuPlayer.setVolume(music, music);
-        menuPlayer.start();
-        menuPlayer.setLooping(true);
     }
 
     public void Yes(View view) {
@@ -169,5 +165,20 @@ public class StatisticsActivity extends Activity {
         menuPlayer.setLooping(false);
         menuPlayer.start();
         finish();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        menuPlayer.stop();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(music, music);
+        menuPlayer.setLooping(true);
+        menuPlayer.start();
     }
 }

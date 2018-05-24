@@ -259,10 +259,6 @@ public class PlayActivity extends Activity implements OnTouchListener {
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         clickPlayer = MediaPlayer.create(this, R.raw.click);
         clickPlayer.setVolume(effects, effects);
-        playPlayer = MediaPlayer.create(this, R.raw.play);
-        playPlayer.setVolume(music, music);
-        playPlayer.setLooping(true);
-        playPlayer.start();
         w = getWindowManager().getDefaultDisplay().getWidth() - 50;
         h = getWindowManager().getDefaultDisplay().getHeight() - 10;
         trash.setOnTouchListener(this);
@@ -291,7 +287,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
                             touchFlag = false;
                             if (dropFlag) {
                                 dropFlag = false;
-                                circle.setImageDrawable(getDrawable(getResources().getIdentifier("playcircle", "drawable", getPackageName())));
+                                circle.setImageDrawable(getDrawable(R.color.alpha1));
                                 game();
                                 trash.setLayoutParams(imageParams);
                             } else {
@@ -322,5 +318,20 @@ public class PlayActivity extends Activity implements OnTouchListener {
                 break;
         }
         return false;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        playPlayer.stop();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        playPlayer = MediaPlayer.create(this, R.raw.play);
+        playPlayer.setVolume(music, music);
+        playPlayer.setLooping(true);
+        playPlayer.start();
     }
 }

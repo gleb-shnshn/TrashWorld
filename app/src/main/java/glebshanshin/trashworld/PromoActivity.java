@@ -57,10 +57,6 @@ public class PromoActivity extends Activity {
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
         init(db);
-        menuPlayer = MediaPlayer.create(this, R.raw.menu);
-        menuPlayer.setVolume(music, music);
-        menuPlayer.setLooping(true);
-        menuPlayer.start();
     }
 
     private void update(SQLiteDatabase db) {
@@ -76,7 +72,6 @@ public class PromoActivity extends Activity {
         menuPlayer.setLooping(true);
         menuPlayer.start();
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-
         if (result != null) {
             if (result.getContents() != null) {
                 if (smartCheck(result.getContents())) {
@@ -201,5 +196,20 @@ public class PromoActivity extends Activity {
         menuPlayer.setLooping(false);
         menuPlayer.start();
         finish();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        menuPlayer.stop();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(music, music);
+        menuPlayer.setLooping(true);
+        menuPlayer.start();
     }
 }

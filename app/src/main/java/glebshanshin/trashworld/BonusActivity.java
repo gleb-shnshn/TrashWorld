@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -19,7 +20,8 @@ public class BonusActivity extends Activity {
     DBHelper dbHelper;
     Cursor cursor;
     SQLiteDatabase db;
-    ImageView plastic, glass, paper, notrecycle, metal, organic, reloadt;
+    ImageView plastic, glass, paper, notrecycle, metal, organic;
+    Button reloadt;
     int organicc, plasticc, metalc, glassc, notrecyclec, paperc, multi;
     boolean flag;
     boolean notIntent = true;
@@ -34,15 +36,11 @@ public class BonusActivity extends Activity {
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
         init(db);
-        menuPlayer = MediaPlayer.create(this, R.raw.menu);
-        menuPlayer.setVolume(music, music);
-        menuPlayer.setLooping(true);
-        menuPlayer.start();
         if (organicc + plasticc + metalc + glassc + notrecyclec + paperc == 18) {
             flag = true;
             StyleableToast.makeText(this, "Вы можете обнулить бонусы и тогда весь ваш TSH/мусор будет умножаться на " + multi * 3, R.style.Clear).show();
             reloadt = findViewById(R.id.reload);
-            reloadt.setImageDrawable(getDrawable(R.drawable.reload));
+            reloadt.setBackgroundDrawable(getDrawable(R.drawable.reload));
         }
     }
 
@@ -111,5 +109,20 @@ public class BonusActivity extends Activity {
             reloadt.setAlpha(0);
             flag = false;
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        menuPlayer.stop();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(music, music);
+        menuPlayer.setLooping(true);
+        menuPlayer.start();
     }
 }

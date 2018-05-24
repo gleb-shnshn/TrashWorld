@@ -110,4 +110,18 @@ public class MusicActivity extends Activity {
         }
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        menuPlayer.stop();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(musics, musics);
+        menuPlayer.setLooping(true);
+        menuPlayer.start();
+    }
 }

@@ -1,4 +1,8 @@
 package glebshanshin.trashworld;
+
+import android.content.Intent;
+import android.view.View;
+
 import com.journeyapps.barcodescanner.CaptureActivity;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 
@@ -7,5 +11,10 @@ public class QRScanActivity extends CaptureActivity {
     protected DecoratedBarcodeView initializeContent() {
         setContentView(R.layout.qrscan_main);
         return findViewById(R.id.place);
+    }
+
+    public void toPromo(View view) {
+        Intent intent1 = new Intent(QRScanActivity.this, PromoActivity.class);
+        startActivity(intent1);
     }
 }

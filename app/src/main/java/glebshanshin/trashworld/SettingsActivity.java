@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
@@ -35,10 +36,6 @@ public class SettingsActivity extends Activity {
         music = cursor.getFloat(22);
         effects = cursor.getFloat(23);
         cursor.close();
-        menuPlayer = MediaPlayer.create(this, R.raw.menu);
-        menuPlayer.setVolume(music, music);
-        menuPlayer.start();
-        menuPlayer.setLooping(true);
     }
 
     public void statistics(View view) {
@@ -86,7 +83,23 @@ public class SettingsActivity extends Activity {
     public void toInfo(View view) {
         setContentView(R.layout.info_main);
     }
-    public void toSettings(View view){
+
+    public void toSettings(View view) {
         setContentView(R.layout.settings_main);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        menuPlayer.stop();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(music, music);
+        menuPlayer.setLooping(true);
+        menuPlayer.start();
     }
 }

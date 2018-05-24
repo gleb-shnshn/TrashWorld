@@ -34,10 +34,6 @@ public class AchievementsActivity extends Activity {
         init(db);
         init1();
         fillall();
-        menuPlayer = MediaPlayer.create(this, R.raw.menu);
-        menuPlayer.setVolume(music, music);
-        menuPlayer.setLooping(true);
-        menuPlayer.start();
     }
 
     private void finish1() {
@@ -223,5 +219,20 @@ public class AchievementsActivity extends Activity {
             startActivity(intent1);
             finish1();
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        menuPlayer.stop();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(music, music);
+        menuPlayer.setLooping(true);
+        menuPlayer.start();
     }
 }

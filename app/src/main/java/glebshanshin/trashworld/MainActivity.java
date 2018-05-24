@@ -32,10 +32,6 @@ public class MainActivity extends Activity {
         music = cursor.getFloat(22);
         effects = cursor.getFloat(23);
         cursor.close();
-        menuPlayer = MediaPlayer.create(this, R.raw.menu);
-        menuPlayer.setVolume(music, music);
-        menuPlayer.setLooping(true);
-        menuPlayer.start();
     }
 
     public void toStart(View view) {
@@ -79,5 +75,20 @@ public class MainActivity extends Activity {
             startActivity(intent);
             finish1();
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        menuPlayer.stop();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        menuPlayer = MediaPlayer.create(this, R.raw.menu);
+        menuPlayer.setVolume(music, music);
+        menuPlayer.setLooping(true);
+        menuPlayer.start();
     }
 }
