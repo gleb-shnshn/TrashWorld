@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,51 +8,40 @@
     android:orientation="vertical"
     tools:context=".AchievementsActivity">
 
+    <Button
+        android:id="@+id/tomenu"
+        android:background="@drawable/backbut2"
+        android:onClick="toMenu"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="10%"
+        app:layout_marginLeftPercent="5%"
+        app:layout_marginTopPercent="2.5%" />
+
+    <Button
+        android:id="@+id/reload"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/logob"
+        android:onClick="toBonus"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="10%"
+        app:layout_marginRightPercent="5%"
+        app:layout_marginTopPercent="2.5%" />
+
+    <Space
+        android:layout_below="@id/reload"
+        android:id="@+id/s"
+        android:layout_width="match_parent"
+        app:layout_heightPercent="2%"/>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_below="@id/s"
+        app:layout_heightPercent="100%">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_weight="1" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/tomenu"
-                    android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="left"
-                    android:layout_weight="1"
-                    android:onClick="toMenu"
-                    android:src="@drawable/backbut2" />
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="left"
-                    android:layout_weight="1" />
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="left"
-                    android:layout_weight="1"
-                    android:onClick="toBonus"
-                    android:src="@drawable/logob" />
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -428,4 +418,4 @@
         </LinearLayout>
     </ScrollView>
 
-</LinearLayout>
+</android.support.percent.PercentRelativeLayout>

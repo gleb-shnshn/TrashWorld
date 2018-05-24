@@ -7,61 +7,51 @@
     android:orientation="vertical"
     tools:context=".StoreActivity">
 
+    <Button
+        android:id="@+id/toplay"
+        android:background="@drawable/backbut2"
+        android:onClick="toPlay"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="10%"
+        app:layout_marginLeftPercent="5%"
+        app:layout_marginTopPercent="2.5%" />
+
+    <Button
+        android:id="@+id/tolotterystore"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/logo"
+        android:onClick="toLotteryStore"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="10%"
+        app:layout_marginRightPercent="5%"
+        app:layout_marginTopPercent="2.5%" />
+
     <android.support.percent.PercentRelativeLayout
         android:id="@+id/action"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        app:layout_heightPercent="12%"
-        app:layout_widthPercent="100%">
+        app:layout_heightPercent="10%"
+        android:layout_alignTop="@id/tolotterystore"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/storet"
+        app:layout_widthPercent="50%">
 
-        <Button
-            android:id="@+id/t"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/backbut2"
-            android:onClick="toPlay"
-            app:layout_aspectRatio="100%"
-            app:layout_heightPercent="90%"
-            app:layout_marginStartPercent="1.5%"
-            app:layout_marginTopPercent="2.5%" />
-
-        <android.support.percent.PercentRelativeLayout
+        <io.gloxey.cfv.CFTextView
+            android:id="@+id/TSH"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/storet"
-            app:layout_marginPercent="7%"
-            app:layout_widthPercent="50%">
-
-            <io.gloxey.cfv.CFTextView
-                android:id="@+id/TSH"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="999M TSH"
-                android:textAlignment="center"
-                android:textColor="#ffffff"
-                android:textSize="25sp"
-                app:font_name="nyeti.ttf" />
-        </android.support.percent.PercentRelativeLayout>
-
-        <Button
             android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:background="@drawable/logo"
-            android:onClick="toLotteryStore"
-            app:layout_aspectRatio="100%"
-            app:layout_heightPercent="90%"
-            app:layout_marginEndPercent="1.5%"
-            app:layout_marginTopPercent="2.5%" />
-
+            android:text="999M TSH"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textSize="25sp"
+            app:font_name="nyeti.ttf" />
     </android.support.percent.PercentRelativeLayout>
 
     <LinearLayout
         android:id="@+id/man"
-        android:layout_below="@id/action"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        app:layout_heightPercent="22%"
+        android:paddingBottom="10dp"
+        app:layout_heightPercent="21%"
+        app:layout_marginTopPercent="15%"
         app:layout_marginLeftPercent="2%"
         app:layout_widthPercent="100%"
         tools:context=".StoreActivity">
@@ -203,8 +193,8 @@
         android:id="@+id/car"
         android:layout_below="@id/man"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        app:layout_heightPercent="22%"
+        android:paddingBottom="10dp"
+        app:layout_heightPercent="21%"
         app:layout_marginLeftPercent="2%"
         app:layout_widthPercent="100%"
         tools:context=".StoreActivity">
@@ -346,8 +336,8 @@
         android:id="@+id/robot"
         android:layout_below="@id/car"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        app:layout_heightPercent="22%"
+        android:paddingBottom="10dp"
+        app:layout_heightPercent="21%"
         app:layout_marginLeftPercent="2%"
         app:layout_widthPercent="100%"
         tools:context=".StoreActivity">
@@ -489,8 +479,8 @@
         android:id="@+id/factory"
         android:layout_below="@id/robot"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        app:layout_heightPercent="22%"
+        android:paddingBottom="10dp"
+        app:layout_heightPercent="21%"
         app:layout_marginLeftPercent="2%"
         app:layout_widthPercent="100%"
         tools:context=".StoreActivity">

@@ -8,43 +8,35 @@
     android:orientation="vertical"
     tools:context="glebshanshin.trashworld.LotteryStoreActivity">
 
+    <Button
+        android:id="@+id/back"
+        android:background="@drawable/backbut1"
+        android:onClick="toStore"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="10%"
+        app:layout_marginLeftPercent="5%"
+        app:layout_marginTopPercent="2.5%" />
+
+
     <android.support.percent.PercentRelativeLayout
         android:id="@+id/first"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/mea"
+        android:orientation="vertical"
         app:layout_heightPercent="15%"
-        app:layout_widthPercent="100%">
+        app:layout_widthPercent="75%">
 
-        <Button
-            android:id="@+id/back"
-            android:layout_alignParentStart="true"
+        <io.gloxey.cfv.CFTextView
+            android:id="@+id/TSH"
             android:layout_centerVertical="true"
-            android:background="@drawable/backbut1"
-            android:onClick="toStore"
-            app:layout_aspectRatio="100%"
-            app:layout_heightPercent="70%"
-            app:layout_marginLeftPercent="5%" />
-
-        <android.support.percent.PercentRelativeLayout
-            android:layout_alignParentEnd="true"
-            android:background="@drawable/mea"
-            android:orientation="vertical"
-            app:layout_heightPercent="100%"
-            app:layout_widthPercent="75%">
-
-            <io.gloxey.cfv.CFTextView
-                android:id="@+id/TSH"
-                android:layout_centerVertical="true"
-                android:text="0 tsh"
-                android:textAlignment="textEnd"
-                android:textColor="#000"
-                android:textSize="25sp"
-                app:font_name="nyeti.ttf"
-                app:layout_heightPercent="45%"
-                app:layout_marginRightPercent="10%"
-                app:layout_widthPercent="100%" />
-        </android.support.percent.PercentRelativeLayout>
-
+            android:text="0 tsh"
+            android:textAlignment="textEnd"
+            android:textColor="#000"
+            android:textSize="25sp"
+            app:font_name="nyeti.ttf"
+            app:layout_heightPercent="45%"
+            app:layout_marginRightPercent="10%"
+            app:layout_widthPercent="100%" />
     </android.support.percent.PercentRelativeLayout>
 
     <Space
@@ -137,7 +129,7 @@
             app:layout_aspectRatio="100%"
             app:layout_heightPercent="100%"
             app:layout_marginLeftPercent="2.5%"
-            app:layout_marginRightPercent="1%"/>
+            app:layout_marginRightPercent="1%" />
 
         <LinearLayout
             android:id="@+id/txts"
@@ -206,7 +198,7 @@
             app:layout_aspectRatio="100%"
             app:layout_heightPercent="100%"
             app:layout_marginLeftPercent="2.5%"
-            app:layout_marginRightPercent="1%"/>
+            app:layout_marginRightPercent="1%" />
 
         <LinearLayout
             android:id="@+id/txtg"
