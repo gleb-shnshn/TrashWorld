@@ -19,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PlayActivity extends Activity implements OnTouchListener {
     long mills = 500L;
@@ -179,18 +180,21 @@ public class PlayActivity extends Activity implements OnTouchListener {
         }
     }
 
-    private void check(TextView i) {
+    private boolean check(TextView i) {
         int topY = i.getTop();
         int leftX = i.getLeft();
         int rightX = i.getRight();
         int bottomY = i.getBottom();
         if (eX > leftX && eX < rightX && eY > topY && eY < bottomY) {
-            if (!choice.equals("" + i.getTag()))
+            if (!choice.equals("" + i.getTag())) {
                 clickPlayer.start();
-            circle.setImageDrawable(getDrawable(getResources().getIdentifier(i.getTag() + "", "drawable", getPackageName())));
-            dropFlag = true;
-            choice = "" + i.getTag();
+                circle.setImageDrawable(getDrawable(getResources().getIdentifier(i.getTag() + "", "drawable", getPackageName())));
+                dropFlag = true;
+                choice = "" + i.getTag();
+            }
+            return true;
         }
+        return false;
     }
 
     public void newTrash() {
@@ -252,7 +256,10 @@ public class PlayActivity extends Activity implements OnTouchListener {
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
         TSHv = findViewById(R.id.TSH);
+        float scale = getWindowManager().getDefaultDisplay().getHeight()*getWindowManager().getDefaultDisplay().getWidth();
+        TSHv.setTextSize(scale*0.000012f);
         TSHsv = findViewById(R.id.TSHs);
+        TSHsv.setTextSize(scale*0.000012f);
         init(db);
         increaseTSH(0);
         newTrash();
@@ -275,12 +282,11 @@ public class PlayActivity extends Activity implements OnTouchListener {
                             if (y > h) y = h;
                             RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(new ViewGroup.MarginLayoutParams(trash.getWidth(), trash.getHeight()));
                             lp.setMargins(x, y, 0, 0);
-                            check(plastic);
-                            check(metal);
-                            check(glass);
-                            check(organic);
-                            check(notrecycle);
-                            check(paper);
+                            if (!((check(plastic)) | check(metal) | check(glass) | check(organic) | check(notrecycle) | check(paper))&&!choice.equals("")) {
+                                choice="";
+                                circle.setImageDrawable(getDrawable(R.color.alpha1));
+                                dropFlag = false;
+                            }
                             trash.setLayoutParams(lp);
                             break;
                         case MotionEvent.ACTION_UP:

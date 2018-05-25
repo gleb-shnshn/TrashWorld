@@ -66,7 +66,7 @@ public class LotteryActivity extends Activity {
             long nprice = (TSH / 10) + 1000;
             obj = (long) (random.nextFloat() * nprice + nprice / 2);
             tsh = findViewById(R.id.TSH);
-            tsh.setText(getPrice(obj));
+            tsh.setText(getPrice(obj)+"\nTSH");
         } else if (got.equals("goldl")) {
             img = findViewById(R.id.img);
             obj = random.nextInt(6) + 5;
@@ -113,9 +113,16 @@ public class LotteryActivity extends Activity {
         sc.setOnScratchListener(new ScratchCard.OnScratchListener() {
             @Override
             public void onScratch(ScratchCard scratchCard, float visiblePercent) {
-                if (visiblePercent >= 0.66) {
+                if (visiblePercent >= 0.7) {
                     isOpen = true;
                     btn.setBackgroundDrawable(getResources().getDrawable(R.drawable.skip));
+                }
+                if (visiblePercent >= 0.99) {
+                    isOpen = false;
+                    sc.setAlpha(0);
+                    btn.setBackgroundColor(getResources().getColor(R.color.alpha1));
+                    back.setBackgroundDrawable(getResources().getDrawable(R.drawable.backbut1));
+                    isBack = true;
                 }
             }
         });

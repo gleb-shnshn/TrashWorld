@@ -40,6 +40,8 @@ public class StoreActivity extends Activity {
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
         TSHv = findViewById(R.id.TSH);
+        float scale = getWindowManager().getDefaultDisplay().getHeight()*getWindowManager().getDefaultDisplay().getWidth();
+        TSHv.setTextSize(scale*0.000012f);
         init(db);
         updateTSH();
         updatePRICE("all");
@@ -137,7 +139,7 @@ public class StoreActivity extends Activity {
 
     private void updateTSH() {
         String m = getPrice(TSH);
-        TSHv.setText(m + " ");
+        TSHv.setText(m+"");
     }
 
     private void update(SQLiteDatabase db) {

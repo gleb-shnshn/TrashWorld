@@ -16,47 +16,37 @@
         app:layout_marginLeftPercent="5%"
         app:layout_marginTopPercent="2.5%" />
 
-    <android.support.percent.PercentRelativeLayout
-        android:id="@+id/cons"
-        android:layout_below="@id/first"
-        android:layout_centerHorizontal="true"
-        app:layout_marginPercent="10%"
+    <io.gloxey.cfv.CFTextView
+        android:id="@+id/TSH"
+        app:layout_widthPercent="60%"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textAlignment="center"
+        android:textColor="#333333"
+        android:textSize="50sp"
+        app:font_name="nyeti.ttf" />
+
+    <ImageView
+        android:id="@+id/img"
+        app:layout_widthPercent="50%"
         app:layout_aspectRatio="100%"
-        app:layout_widthPercent="80%">
+        android:layout_centerInParent="true"/>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_aspectRatio="100%">
+    <site.iway.androidhelpers.ScratchCard
+        android:id="@+id/scratch_view"
+        app:layout_widthPercent="80%"
+        app:layout_aspectRatio="100%"
+        android:layout_centerInParent="true" />
 
-            <io.gloxey.cfv.CFTextView
-                android:id="@+id/TSH"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textAlignment="center"
-                android:textColor="#333333"
-                android:textSize="50sp"
-                app:font_name="nyeti.ttf" />
-
-            <ImageView
-                android:id="@+id/img"
-                android:layout_width="185dp"
-                android:layout_height="185dp"
-                android:layout_gravity="center" />
-
-            <site.iway.androidhelpers.ScratchCard
-                android:id="@+id/scratch_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center" />
-
-        </FrameLayout>
-    </android.support.percent.PercentRelativeLayout>
+    <Space
+        android:id="@+id/sta"
+        android:layout_below="@id/scratch_view"
+        app:layout_widthPercent="100%"
+        app:layout_heightPercent="3%"/>
 
     <Button
         android:id="@+id/button"
-        android:layout_below="@+id/cons"
+        android:layout_below="@+id/sta"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/skip"
