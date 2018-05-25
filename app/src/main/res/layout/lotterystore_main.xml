@@ -139,6 +139,7 @@
             app:layout_widthPercent="35%">
 
             <io.gloxey.cfv.CFTextView
+                android:id="@+id/des1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -208,6 +209,7 @@
             app:layout_widthPercent="35%">
 
             <io.gloxey.cfv.CFTextView
+                android:id="@+id/des2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -219,6 +221,7 @@
                 app:font_name="brody.ttf" />
 
             <io.gloxey.cfv.CFTextView
+                android:id="@+id/des3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

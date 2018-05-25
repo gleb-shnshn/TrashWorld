@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +30,7 @@ public class StoreActivity extends Activity {
     String t = " TSH", tsh, s = " шт.";
     boolean notIntent = true;
     MediaPlayer menuPlayer;
-    float music, effects;
+    float music, effects, scale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +40,7 @@ public class StoreActivity extends Activity {
         setContentView(R.layout.store_main);
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
-        TSHv = findViewById(R.id.TSH);
-        float scale = getWindowManager().getDefaultDisplay().getHeight()*getWindowManager().getDefaultDisplay().getWidth();
-        TSHv.setTextSize(scale*0.000012f);
+        scale = getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth();
         init(db);
         updateTSH();
         updatePRICE("all");
@@ -139,7 +138,7 @@ public class StoreActivity extends Activity {
 
     private void updateTSH() {
         String m = getPrice(TSH);
-        TSHv.setText(m+"");
+        TSHv.setText(m + "");
     }
 
     private void update(SQLiteDatabase db) {
@@ -179,6 +178,32 @@ public class StoreActivity extends Activity {
         countcar = findViewById(R.id.countcar);
         countrobot = findViewById(R.id.countrobot);
         countfactory = findViewById(R.id.countfactory);
+        TSHv = findViewById(R.id.TSH);
+        TSHv.setTextSize(scale * 0.000012f);
+        priceman1.setTextSize(scale * 0.000009f);
+        priceman10.setTextSize(scale * 0.000009f);
+        priceman50.setTextSize(scale * 0.000009f);
+        pricecar1.setTextSize(scale * 0.000009f);
+        pricecar10.setTextSize(scale * 0.000009f);
+        pricecar50.setTextSize(scale * 0.000009f);
+        pricerobot1.setTextSize(scale * 0.000009f);
+        pricerobot10.setTextSize(scale * 0.000009f);
+        pricerobot50.setTextSize(scale * 0.000009f);
+        pricefactory1.setTextSize(scale * 0.000009f);
+        pricefactory10.setTextSize(scale * 0.000009f);
+        pricefactory50.setTextSize(scale * 0.000009f);
+        countman.setTextSize(scale * 0.000008f);
+        countcar.setTextSize(scale * 0.000008f);
+        countrobot.setTextSize(scale * 0.000008f);
+        countfactory.setTextSize(scale * 0.000008f);
+        TextView a = findViewById(R.id.sopman),
+                b = findViewById(R.id.sopcar),
+                c = findViewById(R.id.soprobot),
+                d = findViewById(R.id.sopfactory);
+        a.setTextSize(scale * 0.000007f);
+        b.setTextSize(scale * 0.000007f);
+        c.setTextSize(scale * 0.000007f);
+        d.setTextSize(scale * 0.000007f);
     }
 
     private void toast(long a) {

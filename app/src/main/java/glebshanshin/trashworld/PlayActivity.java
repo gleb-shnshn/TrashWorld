@@ -27,9 +27,9 @@ public class PlayActivity extends Activity implements OnTouchListener {
     float music, effects;
     MediaPlayer clickPlayer, playPlayer;
     int factory, robot, car, man;
-    long TSH;
+    long TSH, Adder;
     int organicb, plasticb, metalb, glassb, notrecycleb, paperb;
-    int organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistakes, Adder, multi;
+    int organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistakes, multi;
     DBHelper dbHelper;
     Cursor cursor;
     SQLiteDatabase db;
@@ -47,7 +47,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
     int w, h;
     View root;
 
-    public void increaseTSH(int Adder) {
+    public void increaseTSH(long Adder) {
         if (choice.equals("org")) {
             Adder *= organicb;
         } else if (choice.equals("ele")) {
@@ -256,10 +256,10 @@ public class PlayActivity extends Activity implements OnTouchListener {
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
         TSHv = findViewById(R.id.TSH);
-        float scale = getWindowManager().getDefaultDisplay().getHeight()*getWindowManager().getDefaultDisplay().getWidth();
-        TSHv.setTextSize(scale*0.000012f);
+        float scale = getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth();
+        TSHv.setTextSize(scale * 0.000012f);
         TSHsv = findViewById(R.id.TSHs);
-        TSHsv.setTextSize(scale*0.000012f);
+        TSHsv.setTextSize(scale * 0.000012f);
         init(db);
         increaseTSH(0);
         newTrash();
@@ -282,8 +282,8 @@ public class PlayActivity extends Activity implements OnTouchListener {
                             if (y > h) y = h;
                             RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(new ViewGroup.MarginLayoutParams(trash.getWidth(), trash.getHeight()));
                             lp.setMargins(x, y, 0, 0);
-                            if (!((check(plastic)) | check(metal) | check(glass) | check(organic) | check(notrecycle) | check(paper))&&!choice.equals("")) {
-                                choice="";
+                            if (!((check(plastic)) | check(metal) | check(glass) | check(organic) | check(notrecycle) | check(paper)) && !choice.equals("")) {
+                                choice = "";
                                 circle.setImageDrawable(getDrawable(R.color.alpha1));
                                 dropFlag = false;
                             }

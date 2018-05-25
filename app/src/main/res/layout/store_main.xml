@@ -28,10 +28,10 @@
 
     <android.support.percent.PercentRelativeLayout
         android:id="@+id/action"
-        app:layout_heightPercent="10%"
         android:layout_alignTop="@id/tolotterystore"
         android:layout_centerHorizontal="true"
         android:background="@drawable/storet"
+        app:layout_heightPercent="10%"
         app:layout_widthPercent="50%">
 
         <io.gloxey.cfv.CFTextView
@@ -46,77 +46,69 @@
             app:font_name="nyeti.ttf" />
     </android.support.percent.PercentRelativeLayout>
 
-    <LinearLayout
+    <android.support.percent.PercentRelativeLayout
         android:id="@+id/man"
-        android:orientation="horizontal"
         android:paddingBottom="10dp"
         app:layout_heightPercent="21%"
-        app:layout_marginTopPercent="15%"
         app:layout_marginLeftPercent="2%"
+        app:layout_marginTopPercent="15%"
         app:layout_widthPercent="100%"
         tools:context=".StoreActivity">
 
 
-        <LinearLayout
-            android:layout_width="91dp"
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/showman"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:context=".StoreActivity">
+            app:layout_widthPercent="25%">
 
 
             <io.gloxey.cfv.CFTextView
+                android:id="@+id/sopman"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
                 android:text="+1 TSH/мусор"
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="#000"
                 android:textSize="13dp"
-                app:font_name="brody.ttf" />
+                app:font_name="brody.ttf"
+                app:layout_heightPercent="20%" />
 
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:background="@drawable/man" />
+                android:layout_centerInParent="true"
+                android:background="@drawable/man"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="60%" />
 
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/countman"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
                 android:text="0 шт."
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="#000"
                 android:textSize="15dp"
-                app:font_name="brody.ttf" />
+                app:font_name="brody.ttf"
+                app:layout_heightPercent="20%" />
 
-        </LinearLayout>
+        </android.support.percent.PercentRelativeLayout>
 
-        <LinearLayout
+        <android.support.percent.PercentRelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+            android:layout_toEndOf="@id/showman">
 
             <LinearLayout
+                android:id="@+id/textman"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                app:layout_heightPercent="40%">
 
                 <io.gloxey.cfv.CFTextView
                     android:id="@+id/price1man"
                     android:layout_width="234dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:inputType="number"
                     android:text="0 TSH"
@@ -129,7 +121,7 @@
                     android:id="@+id/price10man"
                     android:layout_width="234dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:inputType="number"
                     android:text="0 TSH"
@@ -142,7 +134,7 @@
                     android:id="@+id/price50man"
                     android:layout_width="234dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:inputType="number"
                     android:text="0 TSH"
@@ -154,9 +146,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_below="@id/textman"
+                android:orientation="horizontal"
+                app:layout_heightPercent="50%">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -180,16 +172,11 @@
                     android:src="@drawable/store50" />
             </LinearLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+        </android.support.percent.PercentRelativeLayout>
 
-        </LinearLayout>
+    </android.support.percent.PercentRelativeLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
+    <android.support.percent.PercentRelativeLayout
         android:id="@+id/car"
         android:layout_below="@id/man"
         android:orientation="horizontal"
@@ -200,66 +187,61 @@
         tools:context=".StoreActivity">
 
 
-        <LinearLayout
-            android:layout_width="91dp"
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/showcar"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:context=".StoreActivity">
+            app:layout_widthPercent="25%">
 
 
             <io.gloxey.cfv.CFTextView
+                android:id="@+id/sopcar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
                 android:text="+10 TSH/мусор"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="13dp"
-                app:font_name="brody.ttf" />
+                app:font_name="brody.ttf"
+                app:layout_heightPercent="20%" />
 
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:background="@drawable/car" />
+                android:layout_centerInParent="true"
+                android:background="@drawable/car"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="60%" />
 
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/countcar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
                 android:text="0 шт."
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="15dp"
-                app:font_name="brody.ttf" />
+                app:font_name="brody.ttf"
+                app:layout_heightPercent="20%" />
 
-        </LinearLayout>
+        </android.support.percent.PercentRelativeLayout>
 
-        <LinearLayout
+        <android.support.percent.PercentRelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+            android:layout_toEndOf="@id/showcar">
 
             <LinearLayout
+                android:id="@+id/textcar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                app:layout_heightPercent="40%">
 
                 <io.gloxey.cfv.CFTextView
                     android:id="@+id/price1car"
                     android:layout_width="234dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:inputType="number"
                     android:text="0 TSH"
@@ -272,7 +254,7 @@
                     android:id="@+id/price10car"
                     android:layout_width="234dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:inputType="number"
                     android:text="0 TSH"
@@ -285,7 +267,7 @@
                     android:id="@+id/price50car"
                     android:layout_width="234dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:inputType="number"
                     android:text="0 TSH"
@@ -297,9 +279,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_below="@id/textcar"
+                android:orientation="horizontal"
+                app:layout_heightPercent="50%">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -323,16 +305,12 @@
                     android:src="@drawable/store50" />
             </LinearLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
 
-        </LinearLayout>
+        </android.support.percent.PercentRelativeLayout>
 
-    </LinearLayout>
+    </android.support.percent.PercentRelativeLayout>
 
-    <LinearLayout
+    <android.support.percent.PercentRelativeLayout
         android:id="@+id/robot"
         android:layout_below="@id/car"
         android:orientation="horizontal"
@@ -343,66 +321,59 @@
         tools:context=".StoreActivity">
 
 
-        <LinearLayout
-            android:layout_width="91dp"
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/showrobot"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:context=".StoreActivity">
+            app:layout_widthPercent="25%">
 
 
             <io.gloxey.cfv.CFTextView
+                android:id="@+id/soprobot"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
                 android:text="+50 TSH/мусор"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="13dp"
-                app:font_name="brody.ttf" />
+                app:font_name="brody.ttf"
+                app:layout_heightPercent="20%" />
 
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:background="@drawable/robot" />
+                android:layout_centerInParent="true"
+                android:background="@drawable/robot"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="60%" />
 
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/countrobot"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
                 android:text="0 шт."
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="15dp"
-                app:font_name="brody.ttf" />
+                app:font_name="brody.ttf"
+                app:layout_heightPercent="20%" />
 
-        </LinearLayout>
+        </android.support.percent.PercentRelativeLayout>
 
-        <LinearLayout
+        <android.support.percent.PercentRelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+            android:layout_toEndOf="@id/showrobot">
 
             <LinearLayout
+                android:id="@+id/textrobot"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                app:layout_heightPercent="40%">
 
                 <io.gloxey.cfv.CFTextView
                     android:id="@+id/price1robot"
                     android:layout_width="234dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:inputType="number"
                     android:text="0 TSH"
@@ -415,7 +386,7 @@
                     android:id="@+id/price10robot"
                     android:layout_width="234dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:inputType="number"
                     android:text="0 TSH"
@@ -428,7 +399,7 @@
                     android:id="@+id/price50robot"
                     android:layout_width="234dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:inputType="number"
                     android:text="0 TSH"
@@ -440,9 +411,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_below="@id/textrobot"
+                android:orientation="horizontal"
+                app:layout_heightPercent="50%">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -466,16 +437,11 @@
                     android:src="@drawable/store50" />
             </LinearLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+        </android.support.percent.PercentRelativeLayout>
 
-        </LinearLayout>
+    </android.support.percent.PercentRelativeLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
+    <android.support.percent.PercentRelativeLayout
         android:id="@+id/factory"
         android:layout_below="@id/robot"
         android:orientation="horizontal"
@@ -486,68 +452,61 @@
         tools:context=".StoreActivity">
 
 
-        <LinearLayout
-            android:layout_width="91dp"
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/showfactory"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:context=".StoreActivity">
+            app:layout_widthPercent="25%">
 
 
             <io.gloxey.cfv.CFTextView
+                android:id="@+id/sopfactory"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
                 android:text="+100 TSH/мусор"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="13dp"
-                app:font_name="brody.ttf" />
+                app:font_name="brody.ttf"
+                app:layout_heightPercent="20%" />
 
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:background="@drawable/factory" />
+                android:layout_centerInParent="true"
+                android:background="@drawable/factory"
+                app:layout_aspectRatio="100%"
+                app:layout_heightPercent="60%" />
 
             <io.gloxey.cfv.CFTextView
                 android:id="@+id/countfactory"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
                 android:text="0 шт."
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="15dp"
-                app:font_name="brody.ttf" />
+                app:font_name="brody.ttf"
+                app:layout_heightPercent="20%" />
 
-        </LinearLayout>
+        </android.support.percent.PercentRelativeLayout>
 
-        <LinearLayout
+        <android.support.percent.PercentRelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+            android:layout_toEndOf="@id/showfactory">
 
             <LinearLayout
+                android:id="@+id/textfactory"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                app:layout_heightPercent="40%">
 
                 <io.gloxey.cfv.CFTextView
                     android:id="@+id/price1factory"
                     android:layout_width="234dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:inputType="number"
                     android:text="0 TSH"
                     android:textAlignment="center"
                     android:textColor="#000000"
@@ -558,9 +517,8 @@
                     android:id="@+id/price10factory"
                     android:layout_width="234dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:inputType="number"
                     android:text="0 TSH"
                     android:textAlignment="center"
                     android:textColor="#000000"
@@ -571,21 +529,20 @@
                     android:id="@+id/price50factory"
                     android:layout_width="234dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:inputType="number"
                     android:text="0 TSH"
                     android:textAlignment="center"
                     android:textColor="#000000"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     app:font_name="brody.ttf" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_below="@id/textfactory"
+                android:orientation="horizontal"
+                app:layout_heightPercent="50%">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -609,13 +566,8 @@
                     android:src="@drawable/store50" />
             </LinearLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+        </android.support.percent.PercentRelativeLayout>
 
-        </LinearLayout>
-
-    </LinearLayout>
+    </android.support.percent.PercentRelativeLayout>
 
 </android.support.percent.PercentRelativeLayout>

@@ -25,7 +25,7 @@ public class StatisticsActivity extends Activity {
     String pref = " : ";
     boolean notIntent = true;
     MediaPlayer menuPlayer;
-    float music, effects;
+    float music, effects, scale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class StatisticsActivity extends Activity {
         setContentView(R.layout.statistics_main);
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
+        scale = getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth();
         init(db);
         init1();
         fillall();
@@ -157,6 +158,15 @@ public class StatisticsActivity extends Activity {
         trash = findViewById(R.id.trash);
         mistake = findViewById(R.id.mistake);
         TSH = findViewById(R.id.TSH);
+        TSH.setTextSize(scale * 0.000012f);
+        glass.setTextSize(scale * 0.000013f);
+        metal.setTextSize(scale * 0.000013f);
+        notrecycle.setTextSize(scale * 0.000013f);
+        organic.setTextSize(scale * 0.000013f);
+        paper.setTextSize(scale * 0.000013f);
+        plastic.setTextSize(scale * 0.000013f);
+        trash.setTextSize(scale * 0.000013f);
+        mistake.setTextSize(scale * 0.000013f);
     }
 
     public void init(SQLiteDatabase db) {

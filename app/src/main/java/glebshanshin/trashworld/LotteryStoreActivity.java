@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
+import android.media.tv.TvView;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -26,7 +27,7 @@ public class LotteryStoreActivity extends Activity {
     int factory, robot, car, man;
     boolean notIntent = true;
     MediaPlayer menuPlayer;
-    float music, effects;
+    float music, effects, scale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,9 @@ public class LotteryStoreActivity extends Activity {
         setContentView(R.layout.lotterystore_main);
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
+        scale = getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth();
         TSHv = findViewById(R.id.TSH);
+        TSHv.setTextSize(scale * 0.000012f);
         init(db);
         checkPrize();
         updateTSH();
@@ -71,11 +74,8 @@ public class LotteryStoreActivity extends Activity {
     private void updatePrice() {
         price = ((man + 1) + ((car + 1) * 10) + ((robot + 1) * 50) + ((factory + 1) * 100)) / 4;
         String newa = getPrice(price);
-        priceO = findViewById(R.id.price);
         priceO.setText("Цена: " + newa + " TSH");
         nprice = (TSH / 10) + 1000;
-        priceB = findViewById(R.id.price1);
-        text = findViewById(R.id.priceB);
         priceB.setText("Цена: " + getPrice(nprice) + " TSH");
         text.setText(m + getPrice(nprice / 2) + " до " + getPrice((long) (nprice * 1.5)));
     }
@@ -91,6 +91,18 @@ public class LotteryStoreActivity extends Activity {
         music = cursor.getFloat(22);
         effects = cursor.getFloat(23);
         cursor.close();
+        priceB = findViewById(R.id.price1);
+        text = findViewById(R.id.priceB);
+        priceO = findViewById(R.id.price);
+        text.setTextSize(scale * 0.00001f);
+        priceB.setTextSize(scale * 0.00001f);
+        priceO.setTextSize(scale * 0.00001f);
+        TextView a = findViewById(R.id.des1),
+                b = findViewById(R.id.des2),
+                c = findViewById(R.id.des3);
+        a.setTextSize(scale * 0.00001f);
+        b.setTextSize(scale * 0.00001f);
+        c.setTextSize(scale * 0.00001f);
     }
 
     private void update(SQLiteDatabase db) {

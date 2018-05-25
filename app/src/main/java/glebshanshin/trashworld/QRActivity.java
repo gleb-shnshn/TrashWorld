@@ -50,6 +50,7 @@ public class QRActivity extends Activity {
     TextView textView;
     boolean notIntent = true;
     boolean qu = false;
+    float scale;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,8 +59,10 @@ public class QRActivity extends Activity {
         setContentView(R.layout.qr_main);
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
+        scale = getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth();
         init(db);
         final TextView textView = findViewById(R.id.textView2);
+        textView.setTextSize(scale * 0.000007f);
         seekbar = findViewById(R.id.discrete1);
         seekbar.setOnProgressChangeListener(new DiscreteSeekBar.OnProgressChangeListener() {
             @Override
@@ -104,6 +107,7 @@ public class QRActivity extends Activity {
         TSHc = cursor.getLong(1);
         textView = findViewById(R.id.TSH);
         textView.setText("" + getPrice(TSHc) + " TSH");
+        textView.setTextSize(scale * 0.000012f);
         cursor.close();
     }
 

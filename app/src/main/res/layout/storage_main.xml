@@ -33,13 +33,12 @@
 
     <LinearLayout
         android:id="@+id/lin1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_below="@id/so"
         android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        app:layout_aspectRatio="357%"
         app:layout_heightPercent="15%"
-        app:layout_marginPercent="5%"
-        app:layout_widthPercent="100%">
+        app:layout_marginPercent="5%">
 
         <Button
             android:id="@+id/show1"
@@ -88,14 +87,12 @@
 
     <LinearLayout
         android:id="@+id/lin2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:layout_below="@id/so2"
-        android:layout_weight="1"
+        android:layout_centerHorizontal="true"
         android:orientation="horizontal"
+        app:layout_aspectRatio="357%"
         app:layout_heightPercent="15%"
-        app:layout_marginPercent="5%"
-        app:layout_widthPercent="100%">
+        app:layout_marginPercent="5%">
 
         <Button
             android:id="@+id/show2"

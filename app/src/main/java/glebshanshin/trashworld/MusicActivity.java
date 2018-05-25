@@ -17,7 +17,7 @@ import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
 public class MusicActivity extends Activity {
     DiscreteSeekBar music, effects;
-    float musics, effectes;
+    float musics, effectes, scale;
     SQLiteDatabase db;
     DBHelper dbHelper;
     Cursor cursor;
@@ -31,6 +31,7 @@ public class MusicActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.music_main);
         dbHelper = new DBHelper(this);
+        scale = getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth();
         db = dbHelper.getWritableDatabase();
         init();
     }
@@ -51,6 +52,8 @@ public class MusicActivity extends Activity {
         cursor.close();
         clickPlayer.setVolume(effectes, effectes);
         final TextView musicText = findViewById(R.id.music), effectsText = findViewById(R.id.effects);
+        musicText.setTextSize(scale * 0.00001f);
+        effectsText.setTextSize(scale * 0.00001f);
         music = findViewById(R.id.musicbar);
         music.setProgress((int) (musics * 100));
         musicText.setText("Музыка " + music.getProgress() + "%");
