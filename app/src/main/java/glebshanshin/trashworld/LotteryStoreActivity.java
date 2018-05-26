@@ -37,9 +37,9 @@ public class LotteryStoreActivity extends Activity {
         setContentView(R.layout.lotterystore_main);
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
-        scale = getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth();
+        scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
         TSHv = findViewById(R.id.TSH);
-        TSHv.setTextSize(scale * 0.000012f);
+        TSHv.setTextSize(scale * 75f);
         init(db);
         checkPrize();
         updateTSH();
@@ -94,15 +94,15 @@ public class LotteryStoreActivity extends Activity {
         priceB = findViewById(R.id.price1);
         text = findViewById(R.id.priceB);
         priceO = findViewById(R.id.price);
-        text.setTextSize(scale * 0.00001f);
-        priceB.setTextSize(scale * 0.00001f);
-        priceO.setTextSize(scale * 0.00001f);
+        text.setTextSize(scale * 55f);
+        priceB.setTextSize(scale * 55f);
+        priceO.setTextSize(scale * 55f);
         TextView a = findViewById(R.id.des1),
                 b = findViewById(R.id.des2),
                 c = findViewById(R.id.des3);
-        a.setTextSize(scale * 0.00001f);
-        b.setTextSize(scale * 0.00001f);
-        c.setTextSize(scale * 0.00001f);
+        a.setTextSize(scale * 55f);
+        b.setTextSize(scale * 55f);
+        c.setTextSize(scale * 55f);
     }
 
     private void update(SQLiteDatabase db) {

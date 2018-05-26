@@ -31,7 +31,7 @@ public class MusicActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.music_main);
         dbHelper = new DBHelper(this);
-        scale = getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth();
+        scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
         db = dbHelper.getWritableDatabase();
         init();
     }
@@ -52,8 +52,8 @@ public class MusicActivity extends Activity {
         cursor.close();
         clickPlayer.setVolume(effectes, effectes);
         final TextView musicText = findViewById(R.id.music), effectsText = findViewById(R.id.effects);
-        musicText.setTextSize(scale * 0.00001f);
-        effectsText.setTextSize(scale * 0.00001f);
+        musicText.setTextSize(scale * 50f);
+        effectsText.setTextSize(scale * 50f);
         music = findViewById(R.id.musicbar);
         music.setProgress((int) (musics * 100));
         musicText.setText("Музыка " + music.getProgress() + "%");

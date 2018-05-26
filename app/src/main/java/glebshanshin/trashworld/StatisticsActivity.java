@@ -35,7 +35,7 @@ public class StatisticsActivity extends Activity {
         setContentView(R.layout.statistics_main);
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
-        scale = getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth();
+        scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
         init(db);
         init1();
         fillall();
@@ -158,15 +158,15 @@ public class StatisticsActivity extends Activity {
         trash = findViewById(R.id.trash);
         mistake = findViewById(R.id.mistake);
         TSH = findViewById(R.id.TSH);
-        TSH.setTextSize(scale * 0.000012f);
-        glass.setTextSize(scale * 0.000013f);
-        metal.setTextSize(scale * 0.000013f);
-        notrecycle.setTextSize(scale * 0.000013f);
-        organic.setTextSize(scale * 0.000013f);
-        paper.setTextSize(scale * 0.000013f);
-        plastic.setTextSize(scale * 0.000013f);
-        trash.setTextSize(scale * 0.000013f);
-        mistake.setTextSize(scale * 0.000013f);
+        TSH.setTextSize(scale * 75f);
+        glass.setTextSize(scale * 65f);
+        metal.setTextSize(scale * 65f);
+        notrecycle.setTextSize(scale * 65f);
+        organic.setTextSize(scale * 65f);
+        paper.setTextSize(scale * 65f);
+        plastic.setTextSize(scale * 65f);
+        trash.setTextSize(scale * 65f);
+        mistake.setTextSize(scale * 65f);
     }
 
     public void init(SQLiteDatabase db) {

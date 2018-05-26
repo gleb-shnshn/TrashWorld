@@ -28,13 +28,13 @@
 
         <io.gloxey.cfv.CFTextView
             android:id="@+id/TSH"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="0 tsh"
             android:textAlignment="textEnd"
             android:textColor="#000"
             android:textSize="25sp"
             app:font_name="nyeti.ttf"
-            app:layout_heightPercent="45%"
             app:layout_marginRightPercent="10%"
             app:layout_widthPercent="100%" />
     </android.support.percent.PercentRelativeLayout>

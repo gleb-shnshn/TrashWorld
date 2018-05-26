@@ -256,10 +256,10 @@ public class PlayActivity extends Activity implements OnTouchListener {
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
         TSHv = findViewById(R.id.TSH);
-        float scale = getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth();
-        TSHv.setTextSize(scale * 0.000012f);
+        float scale = 1 / getResources().getDisplayMetrics().density*0.5f+getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth()*0.0000001f;
+        TSHv.setTextSize(scale * 65f);
         TSHsv = findViewById(R.id.TSHs);
-        TSHsv.setTextSize(scale * 0.000012f);
+        TSHsv.setTextSize(scale * 65f);
         init(db);
         increaseTSH(0);
         newTrash();

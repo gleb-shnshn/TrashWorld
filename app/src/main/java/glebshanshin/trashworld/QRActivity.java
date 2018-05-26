@@ -59,10 +59,10 @@ public class QRActivity extends Activity {
         setContentView(R.layout.qr_main);
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
-        scale = getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth();
+        scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
         init(db);
         final TextView textView = findViewById(R.id.textView2);
-        textView.setTextSize(scale * 0.000007f);
+        textView.setTextSize(scale * 40f);
         seekbar = findViewById(R.id.discrete1);
         seekbar.setOnProgressChangeListener(new DiscreteSeekBar.OnProgressChangeListener() {
             @Override
@@ -107,7 +107,7 @@ public class QRActivity extends Activity {
         TSHc = cursor.getLong(1);
         textView = findViewById(R.id.TSH);
         textView.setText("" + getPrice(TSHc) + " TSH");
-        textView.setTextSize(scale * 0.000012f);
+        textView.setTextSize(scale * 74f);
         cursor.close();
     }
 
