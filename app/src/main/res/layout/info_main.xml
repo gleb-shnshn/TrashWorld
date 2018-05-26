@@ -18,6 +18,6 @@
         android:id="@+id/imageView3"
         android:layout_centerInParent="true"
         android:src="@drawable/dinfo"
-        app:layout_aspectRatio="108%"
+        app:layout_heightPercent="60%"
         app:layout_widthPercent="90%" />
 </android.support.percent.PercentRelativeLayout>

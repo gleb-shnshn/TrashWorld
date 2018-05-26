@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 public class StoreActivity extends Activity {
-    int factory, robot, car, man;
+    long factory, robot, car, man;
     long TSH;
     TextView TSHv, priceman1, pricecar1, pricerobot1, pricefactory1,
             priceman10, pricecar10, pricerobot10, pricefactory10,
@@ -40,7 +40,7 @@ public class StoreActivity extends Activity {
         setContentView(R.layout.store_main);
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
-        scale = 1 / getResources().getDisplayMetrics().density*0.5f+getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth()*0.0000001f;
+        scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
         init(db);
         updateTSH();
         updatePRICE("all");
@@ -117,7 +117,7 @@ public class StoreActivity extends Activity {
         }
     }
 
-    private int get(int n, int a1, int d) {
+    private long get(int n, long a1, int d) {
         return ((((2 * a1) + (n - 1) * d) * n) / 2);
     }
 
@@ -155,10 +155,10 @@ public class StoreActivity extends Activity {
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
         TSH = cursor.getLong(1);
-        man = cursor.getInt(2);
-        car = cursor.getInt(3);
-        robot = cursor.getInt(4);
-        factory = cursor.getInt(5);
+        man = cursor.getLong(2);
+        car = cursor.getLong(3);
+        robot = cursor.getLong(4);
+        factory = cursor.getLong(5);
         music = cursor.getFloat(22);
         effects = cursor.getFloat(23);
         cursor.close();
@@ -210,7 +210,7 @@ public class StoreActivity extends Activity {
         StyleableToast.makeText(getApplicationContext(), "✘  Не хватает " + a + " TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
     }
 
-    private void increase(int b, int i, String d) {
+    private void increase(long b, int i, String d) {
         int t = 0;
         switch (d) {
             case "man":
@@ -226,7 +226,7 @@ public class StoreActivity extends Activity {
                 t = 100;
                 break;
         }
-        int money = get(i, (b + 1) * t, t);
+        long money = get(i, (b + 1) * t, t);
         if (money <= TSH) {
             TSH -= money;
             switch (d) {

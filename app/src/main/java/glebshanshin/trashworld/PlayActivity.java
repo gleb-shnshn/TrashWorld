@@ -26,7 +26,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
     Vibrator vibrator;
     float music, effects;
     MediaPlayer clickPlayer, playPlayer;
-    int factory, robot, car, man;
+    long factory, robot, car, man;
     long TSH, Adder;
     int organicb, plasticb, metalb, glassb, notrecycleb, paperb;
     int organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistakes, multi;
@@ -207,10 +207,10 @@ public class PlayActivity extends Activity implements OnTouchListener {
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
         TSH = cursor.getLong(1);
-        man = cursor.getInt(2);
-        car = cursor.getInt(3);
-        robot = cursor.getInt(4);
-        factory = cursor.getInt(5);
+        man = cursor.getLong(2);
+        car = cursor.getLong(3);
+        robot = cursor.getLong(4);
+        factory = cursor.getLong(5);
         paperc = cursor.getInt(6);
         plasticc = cursor.getInt(7);
         metalc = cursor.getInt(8);

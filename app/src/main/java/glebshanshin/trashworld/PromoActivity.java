@@ -137,6 +137,7 @@ public class PromoActivity extends Activity {
         }
         TSHc += b;
         StyleableToast.makeText(this, "Вы получили " + t + a.substring(5, 6) + " TSH", Toast.LENGTH_SHORT, R.style.get).show();
+        update(db);
     }
 
     public void Scan(View view) {
