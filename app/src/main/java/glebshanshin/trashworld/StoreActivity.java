@@ -333,4 +333,16 @@ public class StoreActivity extends Activity {
         menuPlayer.setLooping(true);
         menuPlayer.start();
     }
+
+    @Override
+    public void onBackPressed() {
+        if (notIntent) {
+            notIntent = false;
+            Intent intent1 = new Intent(StoreActivity.this, PlayActivity.class);
+            startActivity(intent1);
+            update(db);
+            finish1();
+        }
+        super.onBackPressed();
+    }
 }

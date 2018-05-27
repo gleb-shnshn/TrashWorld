@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
@@ -122,5 +121,16 @@ public class MusicActivity extends Activity {
         menuPlayer.setVolume(musics, musics);
         menuPlayer.setLooping(true);
         menuPlayer.start();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (notIntent) {
+            notIntent = false;
+            Intent intent1 = new Intent(MusicActivity.this, SettingsActivity.class);
+            startActivity(intent1);
+            finish1();
+        }
+        super.onBackPressed();
     }
 }

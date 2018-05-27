@@ -211,4 +211,15 @@ public class LotteryActivity extends Activity {
         menuPlayer.setLooping(true);
         menuPlayer.start();
     }
+
+    @Override
+    public void onBackPressed() {
+        if ((isBack) && (notIntent)) {
+            notIntent = false;
+            Intent intent = new Intent(LotteryActivity.this, LotteryStoreActivity.class);
+            intent.putExtra("prize", obj + "");
+            startActivity(intent);
+            super.onBackPressed();
+        }
+    }
 }

@@ -22,6 +22,7 @@ public class SettingsActivity extends Activity {
     Cursor cursor;
     float music, effects;
     boolean notIntent = true;
+    boolean notInInfo=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,10 +82,12 @@ public class SettingsActivity extends Activity {
     }
 
     public void toInfo(View view) {
+        notInInfo=false;
         setContentView(R.layout.info_main);
     }
 
     public void toSettings(View view) {
+        notInInfo=true;
         setContentView(R.layout.settings_main);
     }
 
@@ -101,5 +104,20 @@ public class SettingsActivity extends Activity {
         menuPlayer.setVolume(music, music);
         menuPlayer.setLooping(true);
         menuPlayer.start();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!notInInfo){
+            notInInfo=true;
+            setContentView(R.layout.settings_main);
+        }
+        else if (notIntent) {
+            notIntent = false;
+            Intent intent1 = new Intent(SettingsActivity.this, MainActivity.class);
+            startActivity(intent1);
+            finish1();
+            super.onBackPressed();
+        }
     }
 }

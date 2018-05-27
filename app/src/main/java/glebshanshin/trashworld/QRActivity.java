@@ -48,7 +48,7 @@ public class QRActivity extends Activity {
     private insert ins = retrofit.create(insert.class);
     long TSHc;
     TextView textView;
-    boolean notIntent = true;
+    boolean notIntent = true, notBlock=true;
     boolean qu = false;
     float scale;
 
@@ -119,7 +119,15 @@ public class QRActivity extends Activity {
             finish();
         }
     }
-
+    @Override
+    public void onBackPressed() {
+        if (notBlock) {
+            notIntent = false;
+            Intent intent1 = new Intent(QRActivity.this, StorageActivity.class);
+            startActivity(intent1);
+            super.onBackPressed();
+        }
+    }
     public void Buy(View view) {
         long value = seekbar.getProgress();
         String code;
@@ -150,6 +158,7 @@ public class QRActivity extends Activity {
 
     private void insert(final String qr, final long money) {
         setContentView(R.layout.show_main);
+        notBlock=false;
         final Button button8 = findViewById(R.id.button8);
         code = "QR" + qr + UUID.randomUUID().toString().substring(0, 7) + "QR";
         button8.setAlpha(0);
@@ -172,6 +181,7 @@ public class QRActivity extends Activity {
                     }
                     button8.setAlpha(1);
                     qu = true;
+                    notBlock=true;
                 }
             }
 

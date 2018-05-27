@@ -125,4 +125,15 @@ public class BonusActivity extends Activity {
         menuPlayer.setLooping(true);
         menuPlayer.start();
     }
+
+    @Override
+    public void onBackPressed() {
+        if (notIntent) {
+            notIntent = false;
+            Intent intent = new Intent(BonusActivity.this, AchievementsActivity.class);
+            startActivity(intent);
+            finish1();
+        }
+        super.onBackPressed();
+    }
 }

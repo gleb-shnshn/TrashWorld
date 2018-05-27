@@ -223,4 +223,15 @@ public class StatisticsActivity extends Activity {
         menuPlayer.setLooping(true);
         menuPlayer.start();
     }
+
+    @Override
+    public void onBackPressed() {
+        if (notIntent) {
+            notIntent = false;
+            Intent intent1 = new Intent(StatisticsActivity.this, SettingsActivity.class);
+            startActivity(intent1);
+            finish1();
+        }
+        super.onBackPressed();
+    }
 }

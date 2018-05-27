@@ -256,7 +256,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
         TSHv = findViewById(R.id.TSH);
-        float scale = 1 / getResources().getDisplayMetrics().density*0.5f+getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth()*0.0000001f;
+        float scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
         TSHv.setTextSize(scale * 65f);
         TSHsv = findViewById(R.id.TSHs);
         TSHsv.setTextSize(scale * 65f);
@@ -339,5 +339,17 @@ public class PlayActivity extends Activity implements OnTouchListener {
         playPlayer.setVolume(music, music);
         playPlayer.setLooping(true);
         playPlayer.start();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (notIntent) {
+            notIntent = false;
+            Intent intent1 = new Intent(PlayActivity.this, MainActivity.class);
+            startActivity(intent1);
+            update(db);
+            finish1();
+        }
+        super.onBackPressed();
     }
 }

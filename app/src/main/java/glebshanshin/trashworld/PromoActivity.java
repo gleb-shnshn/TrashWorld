@@ -203,4 +203,16 @@ public class PromoActivity extends Activity {
         menuPlayer.setLooping(true);
         menuPlayer.start();
     }
+
+    @Override
+    public void onBackPressed() {
+        if (notIntent) {
+            notIntent = false;
+            Intent intent1 = new Intent(PromoActivity.this, SettingsActivity.class);
+            startActivity(intent1);
+            update(db);
+            finish1();
+        }
+        super.onBackPressed();
+    }
 }

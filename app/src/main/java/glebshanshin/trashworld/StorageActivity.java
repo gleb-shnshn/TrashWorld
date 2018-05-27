@@ -297,7 +297,9 @@ public class StorageActivity extends Activity {
     }
 
     public void No(View view) {
-        setContentView(R.layout.storage_main);
+        Intent intent = new Intent(StorageActivity.this, StorageActivity.class);
+        startActivity(intent);
+        finish1();
     }
 
     private void finish1() {
@@ -322,5 +324,16 @@ public class StorageActivity extends Activity {
         menuPlayer.setVolume(music, music);
         menuPlayer.setLooping(true);
         menuPlayer.start();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (notIntent) {
+            notIntent = false;
+            Intent intent = new Intent(StorageActivity.this, PromoActivity.class);
+            startActivity(intent);
+            finish1();
+        }
+        super.onBackPressed();
     }
 }
