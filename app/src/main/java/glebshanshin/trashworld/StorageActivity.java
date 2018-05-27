@@ -208,8 +208,8 @@ public class StorageActivity extends Activity {
     public void delete1(View view) {
         if (!code1.equals("0")) {
             setContentView(R.layout.check_main);
-            LinearLayout lin = findViewById(R.id.set);
-            lin.setBackground(getDrawable(R.drawable.checkpage2));
+            ImageView lin = findViewById(R.id.set);
+            lin.setImageDrawable(getDrawable(R.drawable.checkpage2));
             now = 1;
         }
     }
@@ -217,8 +217,8 @@ public class StorageActivity extends Activity {
     public void delete2(View view) {
         if (!code2.equals("0")) {
             setContentView(R.layout.check_main);
-            LinearLayout lin = findViewById(R.id.set);
-            lin.setBackground(getDrawable(R.drawable.checkpage2));
+            ImageView lin = findViewById(R.id.set);
+            lin.setImageDrawable(getDrawable(R.drawable.checkpage2));
             now = 2;
         }
     }
