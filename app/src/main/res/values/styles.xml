@@ -1,8 +1,7 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/tools">
 
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
-        <!-- to hide white screen in start of window -->
-        <item name="android:windowIsTranslucent">true</item>
+    <style name="AppTheme" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">@drawable/emptypage2</item>
     </style>
 
     <style name="Clear">
