@@ -7,10 +7,18 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:id="@+id/p5"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/transparent" />
+        android:src="@drawable/title"
+        app:layout_heightPercent="33%"
+        app:layout_widthPercent="100%" />
+
+    <ImageView
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/earth"
+        android:layout_below="@id/p5"
+        app:layout_heightPercent="56%"
+        app:layout_widthPercent="100%" />
 
     <Space
         android:id="@+id/spacik"

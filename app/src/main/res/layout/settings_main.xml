@@ -9,13 +9,6 @@
     android:weightSum="1"
     tools:context=".SettingsActivity">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/settingt" />
-
     <Button
         android:id="@+id/toMenu"
         android:background="@drawable/backbut1"
@@ -37,37 +30,37 @@
 
     <Space
         android:id="@+id/st"
-        app:layout_heightPercent="28%"
+        app:layout_heightPercent="32%"
         app:layout_widthPercent="100%" />
 
     <Button
         android:id="@+id/music"
-        android:background="@color/alpha1"
-        android:onClick="music"
         android:layout_below="@id/st"
         android:layout_centerHorizontal="true"
-        app:layout_heightPercent="15%"
-        app:layout_widthPercent="60%" />
-
+        android:background="@drawable/musicb"
+        android:onClick="music"
+        app:layout_aspectRatio="312.13%"
+        app:layout_heightPercent="12%" />
 
     <Button
         android:id="@+id/statistics"
         android:layout_below="@id/music"
+        app:layout_marginTopPercent="3%"
         android:layout_centerHorizontal="true"
-        app:layout_heightPercent="15%"
-        app:layout_widthPercent="60%"
-        android:background="@color/alpha1"
-        android:onClick="statistics" />
-
+        android:background="@drawable/statb"
+        android:onClick="statistics"
+        app:layout_aspectRatio="312.13%"
+        app:layout_heightPercent="12%" />
 
     <Button
         android:id="@+id/promo"
         android:layout_below="@id/statistics"
+        app:layout_marginTopPercent="3%"
         android:layout_centerHorizontal="true"
-        app:layout_heightPercent="15%"
-        app:layout_widthPercent="60%"
-        android:background="@color/alpha1"
-        android:onClick="promo" />
+        android:background="@drawable/promob"
+        android:onClick="promo"
+        app:layout_aspectRatio="312.13%"
+        app:layout_heightPercent="12%" />
 
 
 </android.support.percent.PercentRelativeLayout>

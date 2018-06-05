@@ -5,13 +5,6 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/promot" />
-
     <Button
         android:id="@+id/back"
         android:layout_gravity="left"
@@ -31,18 +24,19 @@
         android:id="@+id/gen"
         android:layout_below="@id/st"
         android:layout_centerHorizontal="true"
-        android:background="@color/alpha1"
+        android:background="@drawable/gen"
         android:onClick="Generate"
-        app:layout_heightPercent="15%"
-        app:layout_widthPercent="60%" />
+        app:layout_aspectRatio="311%"
+        app:layout_heightPercent="12%"  />
 
     <Button
         android:id="@+id/Scan"
         android:layout_below="@id/gen"
         android:layout_centerHorizontal="true"
-        android:background="@color/alpha1"
+        android:background="@drawable/scan"
+        app:layout_marginTopPercent="6%"
         android:onClick="Scan"
-        app:layout_heightPercent="15%"
-        app:layout_widthPercent="60%" />
+        app:layout_aspectRatio="311%"
+        app:layout_heightPercent="12%" />
 
 </android.support.percent.PercentRelativeLayout>

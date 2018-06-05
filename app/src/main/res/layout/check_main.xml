@@ -1,38 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:id="@+id/set"
+        app:layout_widthPercent="100%"
+        app:layout_marginTopPercent="10%"
+        app:layout_heightPercent="38%"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/checkpage"
-        android:id="@+id/set"/>
-
-    <Space
-        android:id="@+id/spacik"
-        app:layout_heightPercent="48%"
-        app:layout_widthPercent="100%" />
+        android:src="@drawable/checkpage" />
 
     <Button
         android:id="@+id/p1"
-        android:layout_below="@id/spacik"
         android:layout_centerHorizontal="true"
-        android:background="@color/alpha1"
+        android:background="@drawable/yes"
         android:onClick="Yes"
-        app:layout_heightPercent="14%"
-        app:layout_widthPercent="60%" />
+        app:layout_aspectRatio="312.13%"
+        app:layout_heightPercent="12%"
+        app:layout_marginTopPercent="50%"/>
 
     <Button
         android:id="@+id/p2"
         android:layout_below="@id/p1"
         android:layout_centerHorizontal="true"
-        android:background="@color/alpha1"
+        android:background="@drawable/no"
         android:onClick="No"
-        app:layout_heightPercent="14%"
-        app:layout_widthPercent="60%" />
+        app:layout_marginTopPercent="3%"
+        app:layout_aspectRatio="312.13%"
+        app:layout_heightPercent="12%" />
 
 </android.support.percent.PercentRelativeLayout>
