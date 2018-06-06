@@ -35,13 +35,14 @@ public class StatisticsActivity extends Activity {
         setContentView(R.layout.statistics_main);
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
+        //масштабирование шрифта
         scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
         init(db);
         init1();
         fillall();
     }
 
-    public void Yes(View view) {
+    public void Yes(View view) {//подтверждение обнуления
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
         menuPlayer.setVolume(effects, effects);
@@ -60,7 +61,7 @@ public class StatisticsActivity extends Activity {
         fillall();
     }
 
-    public void No(View view) {
+    public void No(View view) {//отказ обнуления
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
         menuPlayer.setVolume(effects, effects);
@@ -78,7 +79,7 @@ public class StatisticsActivity extends Activity {
         fillall();
     }
 
-    public void reset(View view) {
+    public void reset(View view) {//задавание вопроса на обнуления
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
         menuPlayer.setVolume(effects, effects);
@@ -91,7 +92,7 @@ public class StatisticsActivity extends Activity {
         menuPlayer.start();
     }
 
-    private void update(SQLiteDatabase db) {
+    private void update(SQLiteDatabase db) {//обнуление базы данных
         ContentValues newValues = new ContentValues();
         newValues.put("TSH", 0);
         newValues.put("man", 0);
@@ -126,7 +127,7 @@ public class StatisticsActivity extends Activity {
         StyleableToast.makeText(this, "✓  Все данные стерты", Toast.LENGTH_SHORT, R.style.Clear).show();
     }
 
-    private void fillall() {
+    private void fillall() {//заполнение всех пунктов статистики
         glass.setText(pref + glassc);
         organic.setText(pref + organicc);
         paper.setText(pref + paperc);
@@ -135,7 +136,7 @@ public class StatisticsActivity extends Activity {
         mistake.setText(pref + mistakes);
         metal.setText(pref + metalc);
         plastic.setText(pref + plasticc);
-        String newa = "" + TSHc;
+        String newa = "" + TSHc;//масштабирование баланса
         if (newa.length() > 12)
             newa = newa.substring(0, newa.length() - 12) + "T";
         else if (newa.length() > 9)
@@ -148,7 +149,7 @@ public class StatisticsActivity extends Activity {
         TSH.setText(newa + " TSH ");
     }
 
-    private void init1() {
+    private void init1() {//инициализация TextView и масштабирование шрифта
         glass = findViewById(R.id.glass);
         metal = findViewById(R.id.metal);
         notrecycle = findViewById(R.id.notrecycle);
@@ -169,7 +170,7 @@ public class StatisticsActivity extends Activity {
         mistake.setTextSize(scale * 65f);
     }
 
-    public void init(SQLiteDatabase db) {
+    public void init(SQLiteDatabase db) {//получение данных из базы данных
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
         TSHc = cursor.getLong(1);
@@ -191,7 +192,7 @@ public class StatisticsActivity extends Activity {
         cursor.close();
     }
 
-    public void toSettings(View view) {
+    public void toSettings(View view) {//переход в активность настроек
         if (notIntent) {
             notIntent = false;
             Intent intent = new Intent(StatisticsActivity.this, SettingsActivity.class);
@@ -200,7 +201,7 @@ public class StatisticsActivity extends Activity {
         }
     }
 
-    private void finish1() {
+    private void finish1() {//выключение музыки при переходе в другую активность
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
         menuPlayer.setVolume(effects, effects);
@@ -209,6 +210,7 @@ public class StatisticsActivity extends Activity {
         finish();
     }
 
+    //включение и отключение музыки при выключении и выключении приложения
     @Override
     protected void onStop() {
         super.onStop();
@@ -224,6 +226,7 @@ public class StatisticsActivity extends Activity {
         menuPlayer.start();
     }
 
+    //переход в класс настроек с помощью встроенной кнопки назад
     @Override
     public void onBackPressed() {
         if (notIntent) {

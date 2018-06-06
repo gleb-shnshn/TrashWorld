@@ -14,7 +14,7 @@ import android.widget.ImageView;
 
 public class AchievementsActivity extends Activity {
     ImageView mistakes, mistakeb, mistakeg, carb, factoryb, glassb, manb, metalb, notrecycleb, organicb, paperb, plasticb, robotb, trashb, carg, factoryg, glassg, mang, metalg, notrecycleg, organicg, paperg, plasticg, robotg, trashg, cars, factorys, glasss, mans, metals, notrecycles, organics, papers, plastics, robots, trashs;
-    int factory, robot, car, man;
+    long factory, robot, car, man;
     int organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistake, trash;
     DBHelper dbHelper;
     Cursor cursor;
@@ -36,7 +36,7 @@ public class AchievementsActivity extends Activity {
         fillall();
     }
 
-    private void finish1() {
+    private void finish1() {//отключение музыки при выходе из активности
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
         menuPlayer.setVolume(effects, effects);
@@ -45,13 +45,13 @@ public class AchievementsActivity extends Activity {
         finish();
     }
 
-    public void init(SQLiteDatabase db) {
+    public void init(SQLiteDatabase db) {//получение данных из базы данных
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
-        man = cursor.getInt(2);
-        car = cursor.getInt(3);
-        robot = cursor.getInt(4);
-        factory = cursor.getInt(5);
+        man = cursor.getLong(2);
+        car = cursor.getLong(3);
+        robot = cursor.getLong(4);
+        factory = cursor.getLong(5);
         paperc = cursor.getInt(6);
         plasticc = cursor.getInt(7);
         metalc = cursor.getInt(8);
@@ -65,7 +65,7 @@ public class AchievementsActivity extends Activity {
         trash = plasticc + paperc + metalc + organicc + notrecyclec + glassc;
     }
 
-    private void fillall() {
+    private void fillall() {//заполнение достижений
         if (man >= 1) {
             manb.setImageDrawable(getDrawable(R.drawable.manb));
             if (man >= 10) {
@@ -164,7 +164,7 @@ public class AchievementsActivity extends Activity {
         }
     }
 
-    private void init1() {
+    private void init1() {//инициализация ImageView
         carb = findViewById(R.id.carb);
         factoryb = findViewById(R.id.factoryb);
         glassb = findViewById(R.id.glassb);
@@ -203,7 +203,7 @@ public class AchievementsActivity extends Activity {
         mistakeg = findViewById(R.id.mistakeg);
     }
 
-    public void toMenu(View view) {
+    public void toMenu(View view) {//выход в главное меню
         if (notIntent) {
             notIntent = false;
             Intent intent1 = new Intent(AchievementsActivity.this, MainActivity.class);
@@ -212,7 +212,7 @@ public class AchievementsActivity extends Activity {
         }
     }
 
-    public void toBonus(View view) {
+    public void toBonus(View view) {//переход в класс бонусов
         if (notIntent) {
             notIntent = false;
             Intent intent1 = new Intent(AchievementsActivity.this, BonusActivity.class);
@@ -221,6 +221,7 @@ public class AchievementsActivity extends Activity {
         }
     }
 
+    //включение и отключение музыки при выключении и выключении приложения
     @Override
     protected void onStop() {
         super.onStop();
@@ -236,6 +237,7 @@ public class AchievementsActivity extends Activity {
         menuPlayer.start();
     }
 
+    //выход в главное меню через встроенную кнопку назад
     @Override
     public void onBackPressed() {
         if (notIntent) {

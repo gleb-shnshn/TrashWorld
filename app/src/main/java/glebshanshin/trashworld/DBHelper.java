@@ -48,6 +48,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor = db.query("Data", null, null, null, null, null, null);
         if (cursor.getCount() == 0)
             insert(db);
+        //если приложение запускается первый раз в базу данных вставляются значения по умолчанию
     }
 
     public void insert(SQLiteDatabase db) {

@@ -62,11 +62,11 @@ public class QRActivity extends Activity {
         scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
         init(db);
         final TextView textView = findViewById(R.id.textView2);
-        textView.setTextSize(scale * 40f);
+        textView.setTextSize(scale * 40f);//масштабирование шрифта
         seekbar = findViewById(R.id.discrete1);
         seekbar.setOnProgressChangeListener(new DiscreteSeekBar.OnProgressChangeListener() {
             @Override
-            public void onProgressChanged(DiscreteSeekBar seekBar, int value, boolean fromUser) {
+            public void onProgressChanged(DiscreteSeekBar seekBar, int value, boolean fromUser) {//изменение номинала
                 String k = "Номинал: ";
                 if (value < 1000) {
                     textView.setText(k + value + "K TSH");
@@ -87,7 +87,7 @@ public class QRActivity extends Activity {
         });
     }
 
-    private String getPrice(long s) {
+    private String getPrice(long s) { //масштабирование номинала
         String newa = "" + s;
         if (newa.length() > 12)
             newa = newa.substring(0, newa.length() - 12) + "T";
@@ -101,17 +101,17 @@ public class QRActivity extends Activity {
         return newa;
     }
 
-    public void init(SQLiteDatabase db) {
+    public void init(SQLiteDatabase db) {//получение данных из базы данных
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
         TSHc = cursor.getLong(1);
         textView = findViewById(R.id.TSH);
         textView.setText("" + getPrice(TSHc) + " TSH");
-        textView.setTextSize(scale * 74f);
+        textView.setTextSize(scale * 74f);//масштабирование шрифта
         cursor.close();
     }
 
-    public void toBack(View view) {
+    public void toBack(View view) {//переход в класс хранения кодов
         if (notIntent) {
             notIntent = false;
             Intent intent = new Intent(QRActivity.this, StorageActivity.class);
@@ -119,6 +119,8 @@ public class QRActivity extends Activity {
             finish();
         }
     }
+
+    //включение и отключение музыки при выключении и выключении приложения
     @Override
     public void onBackPressed() {
         if (notBlock) {
@@ -128,7 +130,8 @@ public class QRActivity extends Activity {
             super.onBackPressed();
         }
     }
-    public void Buy(View view) {
+
+    public void Buy(View view) {//покупка нового кода
         long value = seekbar.getProgress();
         String code;
         long money;
@@ -146,32 +149,28 @@ public class QRActivity extends Activity {
             code = "0" + code;
         }
         if (TSHc >= money) {
-            generate(code, money);
+            generate(code, money);//если хватает денег генерация кода
         } else {
             StyleableToast.makeText(getApplicationContext(), "✘  Не хватает " + (money - TSHc) + " TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
         }
     }
 
-    private void generate(String qr, long money) {
-        insert(qr, money);
-    }
-
-    private void insert(final String qr, final long money) {
-        setContentView(R.layout.show_main);
-        notBlock=false;
+    private void generate(final String qr, final long money) {
+        setContentView(R.layout.show_main);//включение разметки показа
+        notBlock=false;//заблокировать переход назад
         final Button button8 = findViewById(R.id.button8);
-        code = "QR" + qr + UUID.randomUUID().toString().substring(0, 7) + "QR";
+        code = "QR" + qr + UUID.randomUUID().toString().substring(0, 7) + "QR";//генерация кода
         button8.setAlpha(0);
         HashMap<String, String> postDataParams = new HashMap<String, String>();
         postDataParams.put("code", code);
         Call<Object> call = ins.performPostCall(postDataParams);
-        call.enqueue(new Callback<Object>() {
+        call.enqueue(new Callback<Object>() {//формирование запроса на создание кода
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
                 if (notIntent) {
                     TSHc -= money;
                     update(db);
-                    try {
+                    try {//показ кода
                         BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
                         Bitmap bitmap = barcodeEncoder.encodeBitmap(code, BarcodeFormat.QR_CODE, 400, 400);
                         ImageView imageViewQrCode = findViewById(R.id.place);
@@ -199,14 +198,14 @@ public class QRActivity extends Activity {
 
     }
 
-    private void update(SQLiteDatabase db) {
+    private void update(SQLiteDatabase db) { //обновление базы данных при переходе в другую активность
         ContentValues newValues = new ContentValues();
         newValues.put("TSH", TSHc);
         newValues.put("qr" + getIntent().getStringExtra("code"), code);
         db.update("Data", newValues, "_id = 1", null);
     }
 
-    public void reload(View view) {
+    public void reload(View view) {//переход в класс хранения промо-кодов
         if (qu && notIntent) {
             notIntent = false;
             Intent intent = new Intent(QRActivity.this, StorageActivity.class);

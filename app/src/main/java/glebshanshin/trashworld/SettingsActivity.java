@@ -22,7 +22,7 @@ public class SettingsActivity extends Activity {
     Cursor cursor;
     float music, effects;
     boolean notIntent = true;
-    boolean notInInfo=true;
+    boolean notInInfo = true;//переменная обозначающая нахождение в информации
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +39,16 @@ public class SettingsActivity extends Activity {
         cursor.close();
     }
 
-    public void statistics(View view) {
-        Intent intent = new Intent(SettingsActivity.this, StatisticsActivity.class);
-        startActivity(intent);
-        finish1();
+    public void statistics(View view) {//переход в класс статистики
+        if (notIntent) {
+            notIntent = false;
+            Intent intent = new Intent(SettingsActivity.this, StatisticsActivity.class);
+            startActivity(intent);
+            finish1();
+        }
     }
 
-    private void finish1() {
+    private void finish1() {//выключение музыки при переходе в другую активность
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
         menuPlayer.setVolume(effects, effects);
@@ -54,7 +57,7 @@ public class SettingsActivity extends Activity {
         finish();
     }
 
-    public void toMenu(View view) {
+    public void toMenu(View view) {//переход в главное меню
         if (notIntent) {
             notIntent = false;
             Intent intent1 = new Intent(SettingsActivity.this, MainActivity.class);
@@ -63,7 +66,7 @@ public class SettingsActivity extends Activity {
         }
     }
 
-    public void promo(View view) {
+    public void promo(View view) {//переход в активность промо-кодов
         if (notIntent) {
             notIntent = false;
             Intent intent1 = new Intent(SettingsActivity.this, PromoActivity.class);
@@ -72,7 +75,7 @@ public class SettingsActivity extends Activity {
         }
     }
 
-    public void music(View view) {
+    public void music(View view) {//переход в активность с музыкой
         if (notIntent) {
             notIntent = false;
             Intent intent1 = new Intent(SettingsActivity.this, MusicActivity.class);
@@ -81,16 +84,17 @@ public class SettingsActivity extends Activity {
         }
     }
 
-    public void toInfo(View view) {
-        notInInfo=false;
+    public void toInfo(View view) {//показ информации
+        notInInfo = false;
         setContentView(R.layout.info_main);
     }
 
-    public void toSettings(View view) {
-        notInInfo=true;
+    public void toSettings(View view) {//возврат настроек
+        notInInfo = true;
         setContentView(R.layout.settings_main);
     }
 
+    //включение и отключение музыки при выключении и выключении приложения
     @Override
     protected void onStop() {
         super.onStop();
@@ -106,13 +110,13 @@ public class SettingsActivity extends Activity {
         menuPlayer.start();
     }
 
+    //переход в класс настроек с помощью встроенной кнопки назад
     @Override
     public void onBackPressed() {
-        if (!notInInfo){
-            notInInfo=true;
+        if (!notInInfo) {
+            notInInfo = true;
             setContentView(R.layout.settings_main);
-        }
-        else if (notIntent) {
+        } else if (notIntent) {
             notIntent = false;
             Intent intent1 = new Intent(SettingsActivity.this, MainActivity.class);
             startActivity(intent1);

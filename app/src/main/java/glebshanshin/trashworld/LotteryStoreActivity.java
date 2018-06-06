@@ -39,7 +39,7 @@ public class LotteryStoreActivity extends Activity {
         db = dbHelper.getWritableDatabase();
         scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
         TSHv = findViewById(R.id.TSH);
-        TSHv.setTextSize(scale * 75f);
+        TSHv.setTextSize(scale * 75f);//масштабирование шрифта
         init(db);
         checkPrize();
         updateTSH();
@@ -47,7 +47,7 @@ public class LotteryStoreActivity extends Activity {
         intent = new Intent(LotteryStoreActivity.this, LotteryActivity.class);
     }
 
-    private void checkPrize() {
+    private void checkPrize() {//проверка приза по дополнительным данным из Intent
         long prize = Long.parseLong(getIntent().getExtras().getString("prize"));
         if (prize <= 4) {
             switch ((int) prize) {
@@ -71,16 +71,16 @@ public class LotteryStoreActivity extends Activity {
         }
     }
 
-    private void updatePrice() {
-        price = ((man + 1) + ((car + 1) * 10) + ((robot + 1) * 50) + ((factory + 1) * 100)) / 4;
+    private void updatePrice() {//обновление цен
+        price = ((man + 1) + ((car + 1) * 10) + ((robot + 1) * 50) + ((factory + 1) * 100)) / 4;//среднее арифметическое между предметами
         String newa = getPrice(price);
         priceO.setText("Цена: " + newa + " TSH");
-        nprice = (TSH / 10) + 1000;
+        nprice = (TSH / 10) + 1000;// 1/10 баланса + 1000
         priceB.setText("Цена: " + getPrice(nprice) + " TSH");
         text.setText(m + getPrice(nprice / 2) + " до " + getPrice((long) (nprice * 1.5)));
     }
 
-    public void init(SQLiteDatabase db) {
+    public void init(SQLiteDatabase db) {//получение данных из базы данных
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
         TSH = cursor.getLong(1);
@@ -91,9 +91,11 @@ public class LotteryStoreActivity extends Activity {
         music = cursor.getFloat(22);
         effects = cursor.getFloat(23);
         cursor.close();
+        //инициализация TextView
         priceB = findViewById(R.id.price1);
         text = findViewById(R.id.priceB);
         priceO = findViewById(R.id.price);
+        //установка масштабируемого размера текста
         text.setTextSize(scale * 55f);
         priceB.setTextSize(scale * 55f);
         priceO.setTextSize(scale * 55f);
@@ -105,7 +107,7 @@ public class LotteryStoreActivity extends Activity {
         c.setTextSize(scale * 55f);
     }
 
-    private void update(SQLiteDatabase db) {
+    private void update(SQLiteDatabase db) {//обновление базы данных при переходе в другую активность
         ContentValues newValues = new ContentValues();
         newValues.put("TSH", TSH);
         newValues.put("man", man);
@@ -115,7 +117,7 @@ public class LotteryStoreActivity extends Activity {
         db.update("Data", newValues, "_id = 1", null);
     }
 
-    private String getPrice(long s) {
+    private String getPrice(long s) {//масштабирование цен и баланса
         String newa = "" + s;
         if (newa.length() > 12)
             newa = newa.substring(0, newa.length() - 12) + "T";
@@ -129,16 +131,16 @@ public class LotteryStoreActivity extends Activity {
         return newa;
     }
 
-    private void updateTSH() {
+    private void updateTSH() {//обновление баланса
         String newa = getPrice(TSH);
         TSHv.setText(newa + " TSH ");
     }
 
-    private void toast(long a) {
+    private void toast(long a) {//всплывающее сообщение если недостаточный баланс
         StyleableToast.makeText(getApplicationContext(), "✘  Не хватает " + a + " TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
     }
 
-    public void toStore(View view) {
+    public void toStore(View view) {//переход в класс магазина
         if (notIntent) {
             notIntent = false;
             Intent intent = new Intent(LotteryStoreActivity.this, StoreActivity.class);
@@ -148,7 +150,7 @@ public class LotteryStoreActivity extends Activity {
         }
     }
 
-    public void buyBronze(View view) {
+    public void buyBronze(View view) {//покупка бронзовой лотерейки
         if (notIntent) {
             if (TSH >= nprice) {
                 notIntent = false;
@@ -163,7 +165,7 @@ public class LotteryStoreActivity extends Activity {
         }
     }
 
-    public void buySilver(View view) {
+    public void buySilver(View view) {//покупка серебряной лотерейки
         if (notIntent) {
             if (TSH >= price) {
                 notIntent = false;
@@ -178,7 +180,7 @@ public class LotteryStoreActivity extends Activity {
         }
     }
 
-    public void buyGold(View view) {
+    public void buyGold(View view) {//покупка золотой лотерейки
         if (notIntent) {
             if (TSH >= 100000) {
                 notIntent = false;
@@ -193,7 +195,7 @@ public class LotteryStoreActivity extends Activity {
         }
     }
 
-    private void finish1() {
+    private void finish1() {//отключение музыки при выходе из активности
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
         menuPlayer.setVolume(effects, effects);
@@ -202,6 +204,7 @@ public class LotteryStoreActivity extends Activity {
         finish();
     }
 
+    //включение и отключение музыки при выключении и выключении приложения
     @Override
     protected void onStop() {
         super.onStop();
@@ -217,6 +220,7 @@ public class LotteryStoreActivity extends Activity {
         menuPlayer.start();
     }
 
+    //выход в магазин через встроенную кнопку назад
     @Override
     public void onBackPressed() {
         if (notIntent) {

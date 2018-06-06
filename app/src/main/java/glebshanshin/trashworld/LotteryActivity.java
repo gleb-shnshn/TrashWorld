@@ -45,10 +45,10 @@ public class LotteryActivity extends Activity {
         String got = getIntent().getExtras().getString("1");
         sc.setScratchDrawable(getDrawable(getResources().getIdentifier(got, "drawable", getPackageName())));
         Random random = new Random();
-        if (got.equals("silverl")) {
+        if (got.equals("silverl")) {//если серебряная лотерейка
             img = findViewById(R.id.img);
             obj = random.nextInt(4) + 1;
-            switch ((int) obj) {
+            switch ((int) obj) {//установка случайного предмета
                 case 1:
                     img.setImageDrawable(getDrawable(R.drawable.man));
                     break;
@@ -62,15 +62,15 @@ public class LotteryActivity extends Activity {
                     img.setImageDrawable(getDrawable(R.drawable.factory));
                     break;
             }
-        } else if (got.equals("bronzel")) {
+        } else if (got.equals("bronzel")) {//если бронзовая лотерейка
             long nprice = (TSH / 10) + 1000;
             obj = (long) (random.nextFloat() * nprice + nprice / 2);
             tsh = findViewById(R.id.TSH);
-            tsh.setText(getPrice(obj)+"\nTSH");
-        } else if (got.equals("goldl")) {
+            tsh.setText(getPrice(obj)+"\nTSH");//установка приза
+        } else if (got.equals("goldl")) {//если золотая лотерейка
             img = findViewById(R.id.img);
             obj = random.nextInt(6) + 5;
-            switch ((int) obj) {
+            switch ((int) obj) {//установка случайного бонуса
                 case 5:
                     glassc = m(glassc) + 1;
                     img.setImageDrawable(getDrawable(getResources().getIdentifier("glass" + glassc, "drawable", getPackageName())));
@@ -113,11 +113,11 @@ public class LotteryActivity extends Activity {
         sc.setOnScratchListener(new ScratchCard.OnScratchListener() {
             @Override
             public void onScratch(ScratchCard scratchCard, float visiblePercent) {
-                if (visiblePercent >= 0.7) {
+                if (visiblePercent >= 0.7) {//появление кнопки пропустить
                     isOpen = true;
                     btn.setBackgroundDrawable(getResources().getDrawable(R.drawable.skip));
                 }
-                if (visiblePercent >= 0.99) {
+                if (visiblePercent >= 0.99) {//появление кнопки назад
                     isOpen = false;
                     sc.setAlpha(0);
                     btn.setBackgroundColor(getResources().getColor(R.color.alpha1));
@@ -128,20 +128,20 @@ public class LotteryActivity extends Activity {
         });
     }
 
-    private int m(int in) {
+    private int m(int in) {//проверка является ли максимумом
         if (in == 3) {
             return 2;
         }
         return in;
     }
 
-    private void update(String str, int in) {
+    private void update(String str, int in) {//обновление базы данных
         ContentValues newValues = new ContentValues();
         newValues.put(str, in);
         db.update("Data", newValues, "_id = 1", null);
     }
 
-    public void skip(View view) {
+    public void skip(View view) {//кнопка пропустить
         if (isOpen) {
             isOpen = false;
             sc.setAlpha(0);
@@ -151,7 +151,7 @@ public class LotteryActivity extends Activity {
         }
     }
 
-    public void init(SQLiteDatabase db) {
+    public void init(SQLiteDatabase db) {//получение данных из базы данных
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
         TSH = cursor.getLong(1);
@@ -166,7 +166,7 @@ public class LotteryActivity extends Activity {
         cursor.close();
     }
 
-    public void toBack(View view) {
+    public void toBack(View view) {//переход в класс магазин лотереек
         if ((isBack) && (notIntent)) {
             notIntent = false;
             Intent intent = new Intent(LotteryActivity.this, LotteryStoreActivity.class);
@@ -176,7 +176,7 @@ public class LotteryActivity extends Activity {
         }
     }
 
-    private String getPrice(long s) {
+    private String getPrice(long s) {//масштабирование приза
         String newa = "" + s;
         if (newa.length() > 10) {
             newa = newa.substring(0, newa.length() - 9) + "B";
@@ -188,7 +188,7 @@ public class LotteryActivity extends Activity {
         return newa;
     }
 
-    private void finish1() {
+    private void finish1() {//отключение музыки при выходе из активности
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
         menuPlayer.setVolume(effects, effects);
@@ -197,6 +197,7 @@ public class LotteryActivity extends Activity {
         finish();
     }
 
+    //включение и отключение музыки при выключении и выключении приложения
     @Override
     protected void onStop() {
         super.onStop();
@@ -212,6 +213,7 @@ public class LotteryActivity extends Activity {
         menuPlayer.start();
     }
 
+    //выход в магазин лотереек через встроенную кнопку назад
     @Override
     public void onBackPressed() {
         if ((isBack) && (notIntent)) {

@@ -35,7 +35,7 @@ public class MusicActivity extends Activity {
         init();
     }
 
-    private void finish1() {
+    private void finish1() {//отключение музыки при выходе из активности
         menuPlayer.stop();
         clickPlayer.setVolume(effectes, effectes);
         clickPlayer.start();
@@ -58,7 +58,7 @@ public class MusicActivity extends Activity {
         musicText.setText("Музыка " + music.getProgress() + "%");
         music.setOnProgressChangeListener(new DiscreteSeekBar.OnProgressChangeListener() {
             @Override
-            public void onProgressChanged(DiscreteSeekBar seekBar, int value, boolean fromUser) {
+            public void onProgressChanged(DiscreteSeekBar seekBar, int value, boolean fromUser) {//измененение музыки
                 musicText.setText("Музыка " + value + "%");
                 menuPlayer.setVolume((float) value / 100, (float) value / 100);
             }
@@ -77,7 +77,7 @@ public class MusicActivity extends Activity {
         effectsText.setText("Звуки " + effects.getProgress() + "%");
         effects.setOnProgressChangeListener(new DiscreteSeekBar.OnProgressChangeListener() {
             @Override
-            public void onProgressChanged(DiscreteSeekBar seekBar, int value, boolean fromUser) {
+            public void onProgressChanged(DiscreteSeekBar seekBar, int value, boolean fromUser) {//изменение музыки
                 effectsText.setText("Звуки " + value + "%");
                 clickPlayer.setVolume((float) value / 100, (float) value / 100);
             }
@@ -93,7 +93,7 @@ public class MusicActivity extends Activity {
         });
     }
 
-    public void toSettings(View view) {
+    public void toSettings(View view) {//переход в класс настроек
         if (notIntent) {
             notIntent = false;
             musics = (float) music.getProgress() / 100;
@@ -108,6 +108,7 @@ public class MusicActivity extends Activity {
         }
     }
 
+    //включение и отключение музыки при выключении и выключении приложения
     @Override
     protected void onStop() {
         super.onStop();
@@ -123,6 +124,7 @@ public class MusicActivity extends Activity {
         menuPlayer.start();
     }
 
+    //выход в настройки через встроенную кнопку назад
     @Override
     public void onBackPressed() {
         if (notIntent) {

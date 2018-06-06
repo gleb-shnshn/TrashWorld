@@ -53,39 +53,39 @@ public class PromoActivity extends Activity {
         init(db);
     }
 
-    private void update(SQLiteDatabase db) {
+    private void update(SQLiteDatabase db) {//обновление базы данных
         ContentValues newValues = new ContentValues();
         newValues.put("TSH", TSHc);
         db.update("Data", newValues, "_id = 1", null);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {//ожидание ответа от сканера
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null) {
             if (result.getContents() != null) {
-                if (smartCheck(result.getContents())) {
+                if (smartCheck(result.getContents())) {//если прошло быструю проверку
                     final String QR = result.getContents();
                     HashMap<String, String> postDataParams = new HashMap<String, String>();
                     postDataParams.put("code", QR);
-                    Call<Object> call = che.performPostCall(postDataParams);
+                    Call<Object> call = che.performPostCall(postDataParams);//проверка на наличие QR в серверной базе данных
                     call.enqueue(new Callback<Object>() {
                         @Override
                         public void onResponse(Call<Object> call, Response<Object> response) {
                             HashMap<String, String> map = gson.fromJson(response.body().toString(), HashMap.class);
-                            if (map.get("success").equals("good")) {
+                            if (map.get("success").equals("good")) {//если есть посылаем запрос на удаление
                                 delete(QR);
-                            } else {
+                            } else {//если нет то неккоректный код
                                 StyleableToast.makeText(getApplicationContext(), "Некорректный код", Toast.LENGTH_SHORT, R.style.wrong).show();
                             }
                         }
 
                         @Override
-                        public void onFailure(Call<Object> call, Throwable t) {
+                        public void onFailure(Call<Object> call, Throwable t) {//если ошибка с доступом
                             StyleableToast.makeText(getApplicationContext(), "Нет доступа к интернету", Toast.LENGTH_SHORT, R.style.wrong).show();
                         }
                     });
-                } else {
+                } else {//если не прошло быструю проверку
                     StyleableToast.makeText(getApplicationContext(), "Некорректный код", Toast.LENGTH_SHORT, R.style.wrong).show();
                 }
             }
@@ -94,7 +94,9 @@ public class PromoActivity extends Activity {
         }
     }
 
-    private boolean smartCheck(String code) {
+    private boolean smartCheck(String code) {//быстрая проверка
+        // код формируется длиной 15 - QR потом номинал - 4 знака, потом семизначный случайный набор и опять QR
+        // QR999KaaaaaaaQR
         if ((code.length() == 15)) {
             if ((code.substring(0, 2).equals("QR")) && (code.substring(13, 15).equals("QR"))) {
                 return true;
@@ -103,25 +105,25 @@ public class PromoActivity extends Activity {
         return false;
     }
 
-    private void delete(String qr) {
+    private void delete(String qr) {//запрос на удаление
         final String qr1 = qr;
         HashMap<String, String> postDataParams = new HashMap<String, String>();
         postDataParams.put("code", qr);
         Call<Object> call = del.performPostCall(postDataParams);
         call.enqueue(new Callback<Object>() {
             @Override
-            public void onResponse(Call<Object> call, Response<Object> response) {
+            public void onResponse(Call<Object> call, Response<Object> response) {//если удаление удачно
                 decodeMoney(qr1);
             }
 
             @Override
-            public void onFailure(Call<Object> call, Throwable t) {
+            public void onFailure(Call<Object> call, Throwable t) {//если нет доступа
                 StyleableToast.makeText(getApplicationContext(), "Нет доступа к интернету", Toast.LENGTH_SHORT, R.style.wrong).show();
             }
         });
     }
 
-    private void decodeMoney(String a) {
+    private void decodeMoney(String a) {//восстановление количества денег по номиналу
         long t = Integer.parseInt(a.substring(2, 5));
         long b = t;
         switch (a.substring(5, 6)) {
@@ -140,7 +142,7 @@ public class PromoActivity extends Activity {
         update(db);
     }
 
-    public void Scan(View view) {
+    public void Scan(View view) {//кнопка сканирования
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
         menuPlayer.setVolume(effects, effects);
@@ -151,7 +153,7 @@ public class PromoActivity extends Activity {
         integrator.initiateScan();
     }
 
-    public void Generate(View view) {
+    public void Generate(View view) {//переход в класс хранения своих QR кодов
         if (notIntent) {
             notIntent = false;
             Intent intent = new Intent(PromoActivity.this, StorageActivity.class);
@@ -161,7 +163,7 @@ public class PromoActivity extends Activity {
         }
     }
 
-    public void toSettings(View view) {
+    public void toSettings(View view) {//переход в класс настроек
         if (notIntent) {
             notIntent = false;
             Intent intent = new Intent(PromoActivity.this, SettingsActivity.class);
@@ -171,7 +173,7 @@ public class PromoActivity extends Activity {
         }
     }
 
-    public void init(SQLiteDatabase db) {
+    public void init(SQLiteDatabase db) { //получение данных из базы данных
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
         TSHc = cursor.getLong(1);
@@ -180,7 +182,7 @@ public class PromoActivity extends Activity {
         cursor.close();
     }
 
-    private void finish1() {
+    private void finish1() {//выключение музыки при переходе в другую активность
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
         menuPlayer.setVolume(effects, effects);
@@ -189,6 +191,7 @@ public class PromoActivity extends Activity {
         finish();
     }
 
+    //включение и отключение музыки при выключении и выключении приложения
     @Override
     protected void onStop() {
         super.onStop();
@@ -204,6 +207,7 @@ public class PromoActivity extends Activity {
         menuPlayer.start();
     }
 
+    //переход в настройки с помощью встроенной кнопки назад
     @Override
     public void onBackPressed() {
         if (notIntent) {

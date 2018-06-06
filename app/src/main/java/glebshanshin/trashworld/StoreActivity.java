@@ -46,7 +46,7 @@ public class StoreActivity extends Activity {
         updatePRICE("all");
     }
 
-    private void updatePRICE(String what) {
+    private void updatePRICE(String what) {//обновление цен и количества
         switch (what) {
             case "all":
                 priceman1.setText(getPrice((man + 1)));
@@ -106,7 +106,7 @@ public class StoreActivity extends Activity {
         }
     }
 
-    public void toLotteryStore(View view) {
+    public void toLotteryStore(View view) {//переход в класс магазин лотереек
         if (notIntent) {
             notIntent = false;
             update(db);
@@ -119,9 +119,9 @@ public class StoreActivity extends Activity {
 
     private long get(int n, long a1, int d) {
         return ((((2 * a1) + (n - 1) * d) * n) / 2);
-    }
+    }//получение цены по формуле алгебраической прогрессии
 
-    private String getPrice(long s) {
+    private String getPrice(long s) {//масштабирование ценников и баланса
         String newa = "" + s;
 
         if (newa.length() > 12)
@@ -136,12 +136,12 @@ public class StoreActivity extends Activity {
         return newa + t;
     }
 
-    private void updateTSH() {
+    private void updateTSH() {//установка нового баланса TSH
         String m = getPrice(TSH);
         TSHv.setText(m + "");
     }
 
-    private void update(SQLiteDatabase db) {
+    private void update(SQLiteDatabase db) {//обновление базы данных при переходе на новую активность
         ContentValues newValues = new ContentValues();
         newValues.put("TSH", TSH);
         newValues.put("man", man);
@@ -151,7 +151,7 @@ public class StoreActivity extends Activity {
         db.update("Data", newValues, "_id = 1", null);
     }
 
-    public void init(SQLiteDatabase db) {
+    public void init(SQLiteDatabase db) {//получение данных из базы данных и инициализация TextView
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
         TSH = cursor.getLong(1);
@@ -179,6 +179,10 @@ public class StoreActivity extends Activity {
         countrobot = findViewById(R.id.countrobot);
         countfactory = findViewById(R.id.countfactory);
         TSHv = findViewById(R.id.TSH);
+        setTextSize();
+    }
+
+    private void setTextSize() {//установка масштабируемых шрифтов
         TSHv.setTextSize(scale * 74f);
         priceman1.setTextSize(scale * 55f);
         priceman10.setTextSize(scale * 55f);
@@ -206,13 +210,13 @@ public class StoreActivity extends Activity {
         d.setTextSize(scale * 40f);
     }
 
-    private void toast(long a) {
+    private void toast(long a) {//вызов всплывающего сообщения при нехватке баланса
         StyleableToast.makeText(getApplicationContext(), "✘  Не хватает " + a + " TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
     }
 
-    private void increase(long b, int i, String d) {
+    private void increase(long b, int i, String d) {// покупка товара(количество уже купленного, количество нужное купить, название покупки)
         int t = 0;
-        switch (d) {
+        switch (d) {//определение цены первого предмета
             case "man":
                 t = 1;
                 break;
@@ -226,8 +230,8 @@ public class StoreActivity extends Activity {
                 t = 100;
                 break;
         }
-        long money = get(i, (b + 1) * t, t);
-        if (money <= TSH) {
+        long money = get(i, (b + 1) * t, t);//цена которую надо заплатить
+        if (money <= TSH) {//если хватает
             TSH -= money;
             switch (d) {
                 case "man":
@@ -246,11 +250,11 @@ public class StoreActivity extends Activity {
             updateTSH();
             updatePRICE(d);
             update(db);
-        } else {
+        } else {//если не хватает
             toast(money - TSH);
         }
     }
-
+    //OnClick для каждой кнопки
     public void buyMan1(View view) {
         increase(man, 1, "man");
     }
@@ -300,7 +304,7 @@ public class StoreActivity extends Activity {
     }
 
 
-    public void toPlay(View view) {
+    public void toPlay(View view) {//переход в класс основного геймплея
         if (notIntent) {
             notIntent = false;
             Intent intent = new Intent(StoreActivity.this, PlayActivity.class);
@@ -310,7 +314,7 @@ public class StoreActivity extends Activity {
         }
     }
 
-    private void finish1() {
+    private void finish1() {//отключение музыки при выходе из активности
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
         menuPlayer.setVolume(effects, effects);
@@ -319,6 +323,7 @@ public class StoreActivity extends Activity {
         finish();
     }
 
+    //включение и отключение музыки при выключении и выключении приложения
     @Override
     protected void onStop() {
         super.onStop();
@@ -334,6 +339,7 @@ public class StoreActivity extends Activity {
         menuPlayer.start();
     }
 
+    //выход в игру через встроенную кнопку назад
     @Override
     public void onBackPressed() {
         if (notIntent) {

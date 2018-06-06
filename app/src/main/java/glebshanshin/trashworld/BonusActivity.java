@@ -23,7 +23,7 @@ public class BonusActivity extends Activity {
     ImageView plastic, glass, paper, notrecycle, metal, organic;
     Button reloadt;
     int organicc, plasticc, metalc, glassc, notrecyclec, paperc, multi;
-    boolean flag;
+    boolean flag = false;
     boolean notIntent = true;
     float music, effects;
     MediaPlayer menuPlayer;
@@ -36,7 +36,7 @@ public class BonusActivity extends Activity {
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
         init(db);
-        if (organicc + plasticc + metalc + glassc + notrecyclec + paperc == 18) {
+        if (organicc + plasticc + metalc + glassc + notrecyclec + paperc == 18) {//проверка 3 уровня у всех
             flag = true;
             StyleableToast.makeText(this, "Вы можете обнулить бонусы и тогда весь ваш TSH/мусор будет умножаться на " + multi * 3, R.style.Clear).show();
             reloadt = findViewById(R.id.reload);
@@ -44,7 +44,7 @@ public class BonusActivity extends Activity {
         }
     }
 
-    private void init1() {
+    private void init1() {//инициализация ImageView и установка картинок
         plastic = findViewById(R.id.plastic);
         glass = findViewById(R.id.glass);
         paper = findViewById(R.id.paper);
@@ -59,7 +59,7 @@ public class BonusActivity extends Activity {
         organic.setImageDrawable(getDrawable(getResources().getIdentifier("organic" + organicc, "drawable", getPackageName())));
     }
 
-    public void init(SQLiteDatabase db) {
+    public void init(SQLiteDatabase db) {//получение данных из базы данных
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
         paperc = cursor.getInt(13);
@@ -75,7 +75,7 @@ public class BonusActivity extends Activity {
         init1();
     }
 
-    private void finish1() {
+    private void finish1() {//отключение музыки при выходе из активности
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
         menuPlayer.setVolume(effects, effects);
@@ -84,7 +84,7 @@ public class BonusActivity extends Activity {
         finish();
     }
 
-    public void toAchievements(View view) {
+    public void toAchievements(View view) {//переход в класс Достижений
         if (notIntent) {
             notIntent = false;
             Intent intent = new Intent(BonusActivity.this, AchievementsActivity.class);
@@ -93,7 +93,7 @@ public class BonusActivity extends Activity {
         }
     }
 
-    public void reload(View view) {
+    public void reload(View view) {//кнопка обнуления бонусов при достижении 3 уровня у всех бонусов
         if (flag) {
             ContentValues newValues = new ContentValues();
             newValues.put("paperb", 1);
@@ -111,6 +111,7 @@ public class BonusActivity extends Activity {
         }
     }
 
+    //включение и отключение музыки при выключении и выключении приложения
     @Override
     protected void onStop() {
         super.onStop();
@@ -126,6 +127,7 @@ public class BonusActivity extends Activity {
         menuPlayer.start();
     }
 
+    //выход в достижения через встроенную кнопку назад
     @Override
     public void onBackPressed() {
         if (notIntent) {

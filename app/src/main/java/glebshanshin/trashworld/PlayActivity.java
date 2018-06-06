@@ -25,7 +25,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
     long mills = 500L;
     Vibrator vibrator;
     float music, effects;
-    MediaPlayer clickPlayer, playPlayer;
+    MediaPlayer clickPlayer, playPlayer;//два плеера один для щелчков другой для фоновой музыки
     long factory, robot, car, man;
     long TSH, Adder;
     int organicb, plasticb, metalb, glassb, notrecycleb, paperb;
@@ -36,8 +36,8 @@ public class PlayActivity extends Activity implements OnTouchListener {
     TextView TSHv, TSHsv;
     int offset_x = 0;
     int offset_y = 0;
-    boolean touchFlag = false;
-    boolean dropFlag = false;
+    boolean touchFlag = false;//переменная обозначающая наличие касания
+    boolean dropFlag = false;//переменная обозначающая наличие касания в каком то из секторов
     boolean notIntent = true;
     LayoutParams imageParams;
     ImageView circle, trash;
@@ -47,7 +47,8 @@ public class PlayActivity extends Activity implements OnTouchListener {
     int w, h;
     View root;
 
-    public void increaseTSH(long Adder) {
+    public void increaseTSH(long Adder) {//увеличение очков
+        //учет бонусов для каждого вида
         if (choice.equals("org")) {
             Adder *= organicb;
         } else if (choice.equals("ele")) {
@@ -68,7 +69,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
 
     }
 
-    private String getPrice(long s) {
+    private String getPrice(long s) {//масштабирование цены
         String newa = "" + s;
         if (newa.length() > 12)
             newa = newa.substring(0, newa.length() - 12) + "T";
@@ -82,7 +83,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
         return newa;
     }
 
-    public void toMenu(View view) {
+    public void toMenu(View view) {//выход в главное меню
         if (notIntent) {
             notIntent = false;
             Intent intent1 = new Intent(PlayActivity.this, MainActivity.class);
@@ -92,13 +93,13 @@ public class PlayActivity extends Activity implements OnTouchListener {
         }
     }
 
-    private void finish1() {
+    private void finish1() {//отключение музыки при выходе из активности
         playPlayer.stop();
         clickPlayer.start();
         finish();
     }
 
-    private void update(SQLiteDatabase db) {
+    private void update(SQLiteDatabase db) {//обновление базы данных при переходе в другую активность
         ContentValues newValues = new ContentValues();
         newValues.put("TSH", TSH);
         newValues.put("man", man);
@@ -116,7 +117,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
         db.update("Data", newValues, "_id = 1", null);
     }
 
-    private void incCounter(String choice) {
+    private void incCounter(String choice) {//изменение числа правильно отсортированного мусора
         switch (choice) {
             case "pap":
                 paperc++;
@@ -139,7 +140,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
         }
     }
 
-    public void toStore(View view) {
+    public void toStore(View view) {//переход в класс магазина
         if (notIntent) {
             notIntent = false;
             update(db);
@@ -149,19 +150,19 @@ public class PlayActivity extends Activity implements OnTouchListener {
         }
     }
 
-    public void game() {
+    public void game() {//метод для проверки правильности выбора сектора
         if (tag.equals(choice)) {
             increaseTSH(Adder);
             incCounter(choice);
         } else {
-            vibrator.vibrate(mills);
+            vibrator.vibrate(mills);//вибрация при неправильном выборе
             mistakes++;
         }
         choice = "null";
         newTrash();
     }
 
-    private String getTag(String id) {
+    private String getTag(String id) {//определение вида мусора по номеру
         int id1 = Integer.parseInt(id);
         if ((id1 >= 1) & (id1 <= 3)) {
             return "gla";
@@ -180,13 +181,13 @@ public class PlayActivity extends Activity implements OnTouchListener {
         }
     }
 
-    private boolean check(TextView i) {
+    private boolean check(TextView i) {//проверка на выбор сектора
         int topY = i.getTop();
         int leftX = i.getLeft();
         int rightX = i.getRight();
         int bottomY = i.getBottom();
         if (eX > leftX && eX < rightX && eY > topY && eY < bottomY) {
-            if (!choice.equals("" + i.getTag())) {
+            if (!choice.equals("" + i.getTag())) {//проверка на повтор, чтобы не устанавливать одинаковую картинку по несколько раз
                 clickPlayer.start();
                 circle.setImageDrawable(getDrawable(getResources().getIdentifier(i.getTag() + "", "drawable", getPackageName())));
                 dropFlag = true;
@@ -197,13 +198,13 @@ public class PlayActivity extends Activity implements OnTouchListener {
         return false;
     }
 
-    public void newTrash() {
+    public void newTrash() {//генерация нового мусора
         String id = "" + ((int) (Math.random() * 32) + 1);
         tag = getTag(id);
         trash.setImageDrawable(getDrawable(getResources().getIdentifier("trash" + id, "drawable", getPackageName())));
     }
 
-    public void init(SQLiteDatabase db) {
+    public void init(SQLiteDatabase db) {//получение данных из базы данных
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
         TSH = cursor.getLong(1);
@@ -231,7 +232,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
         initTSHs();
     }
 
-    private void initTSHs() {
+    private void initTSHs() {//инициализация "увеличителя", т.е. количество TSH/мусор
         Adder = 1 + man + car * 10 + robot * 50 + factory * 100;
         Adder *= multi;
         String newa = getPrice(Adder);
@@ -244,21 +245,12 @@ public class PlayActivity extends Activity implements OnTouchListener {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.play_main);
-        circle = findViewById(R.id.circle);
-        root = findViewById(android.R.id.content).getRootView();
-        plastic = findViewById(R.id.plastic);
-        glass = findViewById(R.id.glass);
-        metal = findViewById(R.id.metal);
-        organic = findViewById(R.id.organic);
-        notrecycle = findViewById(R.id.notrecycle);
-        paper = findViewById(R.id.paper);
-        trash = findViewById(R.id.img);
+        init1();
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
-        TSHv = findViewById(R.id.TSH);
+        //масштабирование шрифтов
         float scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
         TSHv.setTextSize(scale * 65f);
-        TSHsv = findViewById(R.id.TSHs);
         TSHsv.setTextSize(scale * 65f);
         init(db);
         increaseTSH(0);
@@ -266,12 +258,13 @@ public class PlayActivity extends Activity implements OnTouchListener {
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         clickPlayer = MediaPlayer.create(this, R.raw.click);
         clickPlayer.setVolume(effects, effects);
+        //получение размера экрана
         w = getWindowManager().getDefaultDisplay().getWidth() - 50;
         h = getWindowManager().getDefaultDisplay().getHeight() - 10;
         trash.setOnTouchListener(this);
         root.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
-                if (touchFlag) {
+                if (touchFlag) { //если есть касание
                     switch (event.getActionMasked()) {
                         case MotionEvent.ACTION_MOVE:
                             eX = (int) event.getX();
@@ -281,12 +274,12 @@ public class PlayActivity extends Activity implements OnTouchListener {
                             if (x > w) x = w;
                             if (y > h) y = h;
                             RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(new ViewGroup.MarginLayoutParams(trash.getWidth(), trash.getHeight()));
-                            lp.setMargins(x, y, 0, 0);
+                            lp.setMargins(x, y, 0, 0);//установка отступов у мусора согласно касанию
                             if (!((check(plastic)) | check(metal) | check(glass) | check(organic) | check(notrecycle) | check(paper)) && !choice.equals("")) {
                                 choice = "";
                                 circle.setImageDrawable(getDrawable(R.color.alpha1));
                                 dropFlag = false;
-                            }
+                            }//проверка всех TextView
                             trash.setLayoutParams(lp);
                             break;
                         case MotionEvent.ACTION_UP:
@@ -309,6 +302,20 @@ public class PlayActivity extends Activity implements OnTouchListener {
         });
     }
 
+    private void init1() {//инициализация ImageView и TextView
+        circle = findViewById(R.id.circle);
+        root = findViewById(android.R.id.content).getRootView();
+        plastic = findViewById(R.id.plastic);
+        glass = findViewById(R.id.glass);
+        metal = findViewById(R.id.metal);
+        organic = findViewById(R.id.organic);
+        notrecycle = findViewById(R.id.notrecycle);
+        paper = findViewById(R.id.paper);
+        trash = findViewById(R.id.img);
+        TSHv = findViewById(R.id.TSH);
+        TSHsv = findViewById(R.id.TSHs);
+    }
+
     public boolean onTouch(View v, MotionEvent event) {
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
@@ -326,6 +333,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
         return false;
     }
 
+    //включение и отключение музыки при выключении и выключении приложения
     @Override
     protected void onStop() {
         super.onStop();
@@ -341,6 +349,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
         playPlayer.start();
     }
 
+    //выход в главное меню через встроенную кнопку назад
     @Override
     public void onBackPressed() {
         if (notIntent) {

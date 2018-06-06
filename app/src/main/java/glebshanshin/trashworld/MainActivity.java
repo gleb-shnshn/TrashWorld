@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
         cursor.close();
     }
 
-    public void toStart(View view) {
+    public void toStart(View view) {//переход в класс основного геймплея
         if (notIntent) {
             notIntent = false;
             Intent intent = new Intent(MainActivity.this, PlayActivity.class);
@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
         }
     }
 
-    private void finish1() {
+    private void finish1() { //отключение музыки при выходе из активности
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
         menuPlayer.setVolume(effects, effects);
@@ -52,14 +52,14 @@ public class MainActivity extends Activity {
         finish();
     }
 
-    public void toExit(View view) {
+    public void toExit(View view) {//выход из приложения
         if (notIntent) {
             notIntent = false;
             finish1();
         }
     }
 
-    public void toAchievements(View view) {
+    public void toAchievements(View view) {//переход в класс Достижений
         if (notIntent) {
             notIntent = false;
             Intent intent = new Intent(MainActivity.this, AchievementsActivity.class);
@@ -68,7 +68,7 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void toSettings(View view) {
+    public void toSettings(View view) {//переход в класс Настроек
         if (notIntent) {
             notIntent = false;
             Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
@@ -76,7 +76,7 @@ public class MainActivity extends Activity {
             finish1();
         }
     }
-
+    //включение и отключение музыки при выключении и выключении приложения
     @Override
     protected void onStop() {
         super.onStop();

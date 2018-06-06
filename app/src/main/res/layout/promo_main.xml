@@ -2,12 +2,10 @@
 <android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal">
+    android:layout_height="match_parent">
 
     <Button
         android:id="@+id/back"
-        android:layout_gravity="left"
         android:background="@drawable/backbut1"
         android:onClick="toSettings"
         app:layout_aspectRatio="100%"
@@ -15,19 +13,14 @@
         app:layout_marginLeftPercent="5%"
         app:layout_marginTopPercent="2.5%" />
 
-    <Space
-        android:id="@+id/st"
-        app:layout_heightPercent="35%"
-        app:layout_widthPercent="100%" />
-
     <Button
         android:id="@+id/gen"
-        android:layout_below="@id/st"
+        app:layout_marginTopPercent="35%"
         android:layout_centerHorizontal="true"
         android:background="@drawable/gen"
         android:onClick="Generate"
         app:layout_aspectRatio="311%"
-        app:layout_heightPercent="12%"  />
+        app:layout_heightPercent="11%"  />
 
     <Button
         android:id="@+id/Scan"
@@ -37,6 +30,6 @@
         app:layout_marginTopPercent="6%"
         android:onClick="Scan"
         app:layout_aspectRatio="311%"
-        app:layout_heightPercent="12%" />
+        app:layout_heightPercent="11%" />
 
 </android.support.percent.PercentRelativeLayout>

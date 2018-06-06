@@ -62,7 +62,7 @@ public class StorageActivity extends Activity {
         init(db);
     }
 
-    public void init(SQLiteDatabase db) {
+    public void init(SQLiteDatabase db) {//получение данных из базы данных и инициализация LinearLayout и TextView
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
         TSHc = cursor.getLong(1);
@@ -75,10 +75,11 @@ public class StorageActivity extends Activity {
         text2 = findViewById(R.id.text2);
         lin1 = findViewById(R.id.lin1);
         lin2 = findViewById(R.id.lin2);
-        checkexistingall();
+        checkexistingall();//проверка на наличие в серверной базе данных обоих qr кодов
     }
 
     private void checkexistingall() {
+        //проверка по отдельности
         if (!code1.equals("0")) {
             checkexisting(code1, 1);
         }
@@ -102,13 +103,12 @@ public class StorageActivity extends Activity {
     private void checkexisting(final String QR, final int num) {
         HashMap<String, String> postDataParams = new HashMap<String, String>();
         postDataParams.put("code", QR);
-        Call<Object> call = che.performPostCall(postDataParams);
+        Call<Object> call = che.performPostCall(postDataParams);//отправка запроса к серверу на проверку
         call.enqueue(new Callback<Object>() {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
                 HashMap<String, String> map = gson.fromJson(response.body().toString(), HashMap.class);
-                if (map.get("success").equals("good")) {
-                } else {
+                if (!map.get("success").equals("good")) {//если нет на сервере значит удаляем локально
                     delete(num);
                 }
             }
@@ -132,6 +132,15 @@ public class StorageActivity extends Activity {
             newValues.put("qr2", 0);
             db.update("Data", newValues, "_id = 1", null);
         }
+        if (notIntent) {//обновляем активность
+            notIntent = false;
+            Intent intent = new Intent(StorageActivity.this, StorageActivity.class);
+            startActivity(intent);
+            finish1();
+        }
+    }
+
+    public void reload(View view) {//обновляем активность тем самым запуская проверку с сервером
         if (notIntent) {
             notIntent = false;
             Intent intent = new Intent(StorageActivity.this, StorageActivity.class);
@@ -140,16 +149,7 @@ public class StorageActivity extends Activity {
         }
     }
 
-    public void reload(View view) {
-        if (notIntent) {
-            notIntent = false;
-            Intent intent = new Intent(StorageActivity.this, StorageActivity.class);
-            startActivity(intent);
-            finish1();
-        }
-    }
-
-    public void toBack(View view) {
+    public void toBack(View view) {//переход в класс промо-кодов
         if (notIntent) {
             notIntent = false;
             Intent intent = new Intent(StorageActivity.this, PromoActivity.class);
@@ -158,8 +158,8 @@ public class StorageActivity extends Activity {
         }
     }
 
-    public void show1(View view) {
-        if (code1.equals("0")) {
+    public void show1(View view) {//по нажатию кнопку
+        if (code1.equals("0")) {//если код не существует переход к активности создания кода
             if (notIntent) {
                 notIntent = false;
                 Intent intent = new Intent(StorageActivity.this, QRActivity.class);
@@ -167,13 +167,13 @@ public class StorageActivity extends Activity {
                 startActivity(intent);
                 finish1();
             }
-        } else {
+        } else {//если существует то показ кода
             show(1);
         }
     }
 
     public void show2(View view) {
-        if (code2.equals("0")) {
+        if (code2.equals("0")) {//если код не существует переход к активности создания кода
             if (notIntent) {
                 notIntent = false;
                 Intent intent = new Intent(StorageActivity.this, QRActivity.class);
@@ -181,12 +181,12 @@ public class StorageActivity extends Activity {
                 startActivity(intent);
                 finish1();
             }
-        } else {
+        } else {//если существует то показ кода
             show(2);
         }
     }
 
-    private void show(int i) {
+    private void show(int i) {//показ кода
         String code;
         if (i == 1) {
             code = code1;
@@ -205,25 +205,25 @@ public class StorageActivity extends Activity {
         imageViewQrCode.setImageBitmap(bitmap);
     }
 
-    public void delete1(View view) {
-        if (!code1.equals("0")) {
-            setContentView(R.layout.check_main);
+    public void delete1(View view) {//удаление первого кода
+        if (!code1.equals("0")) {//если существует
+            setContentView(R.layout.check_main);//показ разметки с вопросом
             ImageView lin = findViewById(R.id.set);
             lin.setImageDrawable(getDrawable(R.drawable.checkpage2));
             now = 1;
         }
     }
 
-    public void delete2(View view) {
-        if (!code2.equals("0")) {
-            setContentView(R.layout.check_main);
+    public void delete2(View view) {//удаление второго кода
+        if (!code2.equals("0")) {//если существует
+            setContentView(R.layout.check_main);//показ разметки с вопросом
             ImageView lin = findViewById(R.id.set);
             lin.setImageDrawable(getDrawable(R.drawable.checkpage2));
             now = 2;
         }
     }
 
-    public void Yes(View view) {
+    public void Yes(View view) {//если согласился удалить
         setContentView(R.layout.storage_main);
         checkexistingall();
         if (now == 1) {
@@ -240,10 +240,11 @@ public class StorageActivity extends Activity {
     private void obDelete(final String code) {
         HashMap<String, String> postDataParams = new HashMap<String, String>();
         postDataParams.put("code", code);
-        Call<Object> call = del.performPostCall(postDataParams);
+        Call<Object> call = del.performPostCall(postDataParams);//отправка запроса на удаление
         call.enqueue(new Callback<Object>() {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
+                //удаление и обновление активности
                 delete(now);
                 decodeMoney(code);
                 if (notIntent) {
@@ -261,7 +262,7 @@ public class StorageActivity extends Activity {
         });
     }
 
-    private void decodeMoney(String a) {
+    private void decodeMoney(String a) {//восстановление номинала кода
         long b = Integer.parseInt(a.substring(2, 5));
         switch (a.substring(5, 6)) {
             case "K":
@@ -274,7 +275,7 @@ public class StorageActivity extends Activity {
                 b *= 1000000000;
                 break;
         }
-        b /= 2;
+        b /= 2;//т.к. возвращаем только половину
         TSHc += b;
         StyleableToast.makeText(this, "Вам вернули  " + getPrice(b) + " TSH", Toast.LENGTH_SHORT, R.style.get).show();
         ContentValues newValues = new ContentValues();
@@ -282,7 +283,7 @@ public class StorageActivity extends Activity {
         db.update("Data", newValues, "_id = 1", null);
     }
 
-    private String getPrice(long s) {
+    private String getPrice(long s) {//масштабирование номинала
         String newa = "" + s;
         if (newa.length() > 12)
             newa = newa.substring(0, newa.length() - 12) + "T";
@@ -296,13 +297,13 @@ public class StorageActivity extends Activity {
         return newa;
     }
 
-    public void No(View view) {
+    public void No(View view) {//если не согласился удалять
         Intent intent = new Intent(StorageActivity.this, StorageActivity.class);
         startActivity(intent);
         finish1();
     }
 
-    private void finish1() {
+    private void finish1() {//выключение музыки при переходе в другую активность
         menuPlayer.stop();
         menuPlayer = MediaPlayer.create(this, R.raw.click);
         menuPlayer.setVolume(effects, effects);
@@ -311,6 +312,7 @@ public class StorageActivity extends Activity {
         finish();
     }
 
+    //включение и отключение музыки при выключении и выключении приложения
     @Override
     protected void onStop() {
         super.onStop();
@@ -326,6 +328,7 @@ public class StorageActivity extends Activity {
         menuPlayer.start();
     }
 
+    //переход в класс промо-кодов с помощью встроенной кнопки назад
     @Override
     public void onBackPressed() {
         if (notIntent) {

@@ -7,7 +7,7 @@ import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
-public interface delete {
+public interface delete {//интерфейс для обращения к скрипту удаления из серверной базы данных определенного QR кода
     @FormUrlEncoded
     @POST("/delete.php")
     Call<Object> performPostCall(@FieldMap HashMap<String,String> postDataParams);
