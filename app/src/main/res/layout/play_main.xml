@@ -6,7 +6,7 @@
 
     <Button
         android:id="@+id/tomenu"
-        android:background="@drawable/backbut1"
+        android:background="@drawable/smartback"
         android:onClick="toMenu"
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="10%"
@@ -16,7 +16,7 @@
     <Button
         android:id="@+id/tostore"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/buy"
+        android:background="@drawable/smartbuy"
         android:onClick="toStore"
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="10%"

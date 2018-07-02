@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/toplay"
-        android:background="@drawable/backbut2"
+        android:background="@drawable/smartback2"
         android:onClick="toPlay"
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="10%"
@@ -18,7 +18,7 @@
     <Button
         android:id="@+id/tolotterystore"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/logo"
+        android:background="@drawable/smartlottery"
         android:onClick="toLotteryStore"
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="10%"
@@ -150,25 +150,28 @@
                 app:layout_heightPercent="50%">
 
                 <ImageView
+                    android:id="@+id/m1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="buyMan1"
-                    android:src="@drawable/store1" />
+                    android:src="@drawable/smartst1b" />
 
                 <ImageView
+                    android:id="@+id/m10"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:onClick="buyMan10"
-                    android:src="@drawable/store10" />
+                    android:src="@drawable/smartst10b" />
 
                 <ImageView
+                    android:id="@+id/m50"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="buyMan50"
-                    android:src="@drawable/store50" />
+                    android:src="@drawable/smartst50b" />
             </LinearLayout>
 
         </android.support.percent.PercentRelativeLayout>
@@ -283,25 +286,28 @@
                 app:layout_heightPercent="50%">
 
                 <ImageView
+                    android:id="@+id/c1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="buyCar1"
-                    android:src="@drawable/store1" />
+                    android:src="@drawable/smartst1b" />
 
                 <ImageView
+                    android:id="@+id/c10"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:onClick="buyCar10"
-                    android:src="@drawable/store10" />
+                    android:src="@drawable/smartst10b" />
 
                 <ImageView
+                    android:id="@+id/c50"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="buyCar50"
-                    android:src="@drawable/store50" />
+                    android:src="@drawable/smartst50b" />
             </LinearLayout>
 
 
@@ -415,25 +421,28 @@
                 app:layout_heightPercent="50%">
 
                 <ImageView
+                    android:id="@+id/r1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="buyRobot1"
-                    android:src="@drawable/store1" />
+                    android:src="@drawable/smartst1b" />
 
                 <ImageView
+                    android:id="@+id/r10"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:onClick="buyRobot10"
-                    android:src="@drawable/store10" />
+                    android:src="@drawable/smartst10b" />
 
                 <ImageView
+                    android:id="@+id/r50"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="buyRobot50"
-                    android:src="@drawable/store50" />
+                    android:src="@drawable/smartst50b" />
             </LinearLayout>
 
         </android.support.percent.PercentRelativeLayout>
@@ -544,25 +553,28 @@
                 app:layout_heightPercent="50%">
 
                 <ImageView
+                    android:id="@+id/f1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="buyFactory1"
-                    android:src="@drawable/store1" />
+                    android:src="@drawable/smartst1b" />
 
                 <ImageView
+                    android:id="@+id/f10"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:onClick="buyFactory10"
-                    android:src="@drawable/store10" />
+                    android:src="@drawable/smartst10b" />
 
                 <ImageView
+                    android:id="@+id/f50"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="buyFactory50"
-                    android:src="@drawable/store50" />
+                    android:src="@drawable/smartst50b" />
             </LinearLayout>
 
         </android.support.percent.PercentRelativeLayout>

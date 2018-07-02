@@ -40,7 +40,7 @@ public class BonusActivity extends Activity {
             flag = true;
             StyleableToast.makeText(this, "Вы можете обнулить бонусы и тогда весь ваш TSH/мусор будет умножаться на " + multi * 3, R.style.Clear).show();
             reloadt = findViewById(R.id.reload);
-            reloadt.setBackgroundDrawable(getDrawable(R.drawable.reload));
+            reloadt.setAlpha(1);
         }
     }
 
@@ -95,6 +95,11 @@ public class BonusActivity extends Activity {
 
     public void reload(View view) {//кнопка обнуления бонусов при достижении 3 уровня у всех бонусов
         if (flag) {
+            menuPlayer.stop();
+            menuPlayer = MediaPlayer.create(this, R.raw.click);
+            menuPlayer.setVolume(effects, effects);
+            menuPlayer.setLooping(false);
+            menuPlayer.start();
             ContentValues newValues = new ContentValues();
             newValues.put("paperb", 1);
             newValues.put("plasticb", 1);
@@ -108,6 +113,10 @@ public class BonusActivity extends Activity {
             StyleableToast.makeText(this, "✓  Бонусы успешно обнулены", R.style.Clear).show();
             reloadt.setAlpha(0);
             flag = false;
+            menuPlayer = MediaPlayer.create(this, R.raw.menu);
+            menuPlayer.setVolume(music, music);
+            menuPlayer.setLooping(true);
+            menuPlayer.start();
         }
     }
 

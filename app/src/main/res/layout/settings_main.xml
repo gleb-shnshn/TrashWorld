@@ -11,7 +11,7 @@
 
     <Button
         android:id="@+id/toMenu"
-        android:background="@drawable/backbut1"
+        android:background="@drawable/smartback"
         android:onClick="toMenu"
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="10%"
@@ -21,7 +21,7 @@
     <Button
         android:id="@+id/toInfo"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/info"
+        android:background="@drawable/smartinfo"
         android:onClick="toInfo"
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="10%"
@@ -32,7 +32,7 @@
         android:id="@+id/music"
         app:layout_marginTopPercent="32.5%"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/musicb"
+        android:background="@drawable/smartmusic"
         android:onClick="music"
         app:layout_aspectRatio="312.13%"
         app:layout_heightPercent="10.5%" />
@@ -42,7 +42,7 @@
         android:layout_below="@id/music"
         app:layout_marginTopPercent="3%"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/statb"
+        android:background="@drawable/smartstat"
         android:onClick="statistics"
         app:layout_aspectRatio="312.13%"
         app:layout_heightPercent="10.5%" />
@@ -52,7 +52,7 @@
         android:layout_below="@id/statistics"
         app:layout_marginTopPercent="3%"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/promob"
+        android:background="@drawable/smartpromo"
         android:onClick="promo"
         app:layout_aspectRatio="312.13%"
         app:layout_heightPercent="10.5%" />

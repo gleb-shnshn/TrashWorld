@@ -115,13 +115,13 @@ public class LotteryActivity extends Activity {
             public void onScratch(ScratchCard scratchCard, float visiblePercent) {
                 if (visiblePercent >= 0.7) {//появление кнопки пропустить
                     isOpen = true;
-                    btn.setBackgroundDrawable(getResources().getDrawable(R.drawable.skip));
+                    btn.setBackgroundDrawable(getResources().getDrawable(R.drawable.smartskip));
                 }
                 if (visiblePercent >= 0.99) {//появление кнопки назад
                     isOpen = false;
                     sc.setAlpha(0);
                     btn.setBackgroundColor(getResources().getColor(R.color.alpha1));
-                    back.setBackgroundDrawable(getResources().getDrawable(R.drawable.backbut1));
+                    back.setBackgroundDrawable(getResources().getDrawable(R.drawable.smartback));
                     isBack = true;
                 }
             }
@@ -143,11 +143,20 @@ public class LotteryActivity extends Activity {
 
     public void skip(View view) {//кнопка пропустить
         if (isOpen) {
+            menuPlayer.stop();
+            menuPlayer = MediaPlayer.create(this, R.raw.click);
+            menuPlayer.setVolume(effects, effects);
+            menuPlayer.setLooping(false);
+            menuPlayer.start();
             isOpen = false;
             sc.setAlpha(0);
             btn.setBackgroundColor(getResources().getColor(R.color.alpha1));
-            back.setBackgroundDrawable(getResources().getDrawable(R.drawable.backbut1));
+            back.setBackgroundDrawable(getResources().getDrawable(R.drawable.smartback));
             isBack = true;
+            menuPlayer = MediaPlayer.create(this, R.raw.menu);
+            menuPlayer.setVolume(music, music);
+            menuPlayer.setLooping(true);
+            menuPlayer.start();
         }
     }
 

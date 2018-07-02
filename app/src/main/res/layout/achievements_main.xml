@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/tomenu"
-        android:background="@drawable/backbut2"
+        android:background="@drawable/smartback2"
         android:onClick="toMenu"
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="10%"
@@ -19,7 +19,7 @@
     <Button
         android:id="@+id/reload"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/logob"
+        android:background="@drawable/smartbonus"
         android:onClick="toBonus"
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="10%"

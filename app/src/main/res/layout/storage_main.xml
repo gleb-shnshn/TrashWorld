@@ -7,7 +7,7 @@
 
     <Button
         android:id="@+id/toBack"
-        android:background="@drawable/backbut1"
+        android:background="@drawable/smartback"
         android:onClick="toBack"
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="10%"
@@ -17,7 +17,7 @@
     <Button
         android:id="@+id/reload"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/reloadt"
+        android:background="@drawable/smartreload"
         android:onClick="reload"
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="10%"

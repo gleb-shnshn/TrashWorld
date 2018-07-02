@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/first"
-        android:background="@drawable/backbut1"
+        android:background="@drawable/smartback"
         android:onClick="toBack"
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="10%"
@@ -41,16 +41,16 @@
         android:id="@+id/sta"
         android:layout_below="@id/scratch_view"
         app:layout_widthPercent="100%"
-        app:layout_heightPercent="3%"/>
+        app:layout_heightPercent="5%"/>
 
     <Button
         android:id="@+id/button"
         android:layout_below="@+id/sta"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/skip"
+        android:background="@drawable/smartskip"
         android:onClick="skip"
-        app:layout_aspectRatio="271%"
-        app:layout_heightPercent="15%" />
+        app:layout_aspectRatio="312%"
+        app:layout_heightPercent="13%" />
 
 </android.support.percent.PercentRelativeLayout>

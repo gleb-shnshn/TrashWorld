@@ -107,9 +107,11 @@ public class StorageActivity extends Activity {
         call.enqueue(new Callback<Object>() {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
-                HashMap<String, String> map = gson.fromJson(response.body().toString(), HashMap.class);
-                if (!map.get("success").equals("good")) {//если нет на сервере значит удаляем локально
-                    delete(num);
+                if (response.body() != null) {
+                    HashMap<String, String> map = gson.fromJson(response.body().toString(), HashMap.class);
+                    if (!map.get("success").equals("good")) {//если нет на сервере значит удаляем локально
+                        delete(num);
+                    }
                 }
             }
 

@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/back"
-        android:background="@drawable/backbut1"
+        android:background="@drawable/smartback"
         android:onClick="toStore"
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="10%"
@@ -101,7 +101,7 @@
             <ImageButton
                 android:id="@+id/buybronze"
                 android:layout_centerInParent="true"
-                android:background="@drawable/butstore"
+                android:background="@drawable/smartbutstore"
                 android:onClick="buyBronze"
                 app:layout_aspectRatio="100%"
                 app:layout_heightPercent="60%" />
@@ -172,7 +172,7 @@
             <ImageButton
                 android:id="@+id/buysilver"
                 android:layout_centerInParent="true"
-                android:background="@drawable/butstore"
+                android:background="@drawable/smartbutstore"
                 android:onClick="buySilver"
                 app:layout_aspectRatio="100%"
                 app:layout_heightPercent="60%" />
@@ -242,7 +242,7 @@
             <ImageButton
                 android:id="@+id/buygold"
                 android:layout_centerInParent="true"
-                android:background="@drawable/butstore"
+                android:background="@drawable/smartbutstore"
                 android:onClick="buyGold"
                 app:layout_aspectRatio="100%"
                 app:layout_heightPercent="60%" />

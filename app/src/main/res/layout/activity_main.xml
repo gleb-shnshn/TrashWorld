@@ -14,52 +14,46 @@
         app:layout_widthPercent="100%" />
 
     <ImageView
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/earth"
         android:layout_below="@id/p5"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/earth2"
         app:layout_heightPercent="56%"
-        app:layout_widthPercent="100%" />
-
-    <Space
-        android:id="@+id/spacik"
-        android:layout_weight="0.38"
-        app:layout_heightPercent="38%"
         app:layout_widthPercent="100%" />
 
     <Button
         android:id="@+id/p1"
-        android:layout_below="@id/spacik"
+        app:layout_marginTopPercent="40%"
         android:layout_centerHorizontal="true"
-        android:background="@color/alpha1"
+        android:background="@drawable/smartstart"
         android:onClick="toStart"
-        app:layout_heightPercent="12%"
-        app:layout_widthPercent="60%" />
+        app:layout_heightPercent="10%"
+        app:layout_aspectRatio="312.13%" />
 
     <Button
         android:id="@+id/p2"
-        android:layout_below="@id/p1"
+        app:layout_marginTopPercent="51%"
         android:layout_centerHorizontal="true"
-        android:background="@color/alpha1"
+        android:background="@drawable/smartachievements"
         android:onClick="toAchievements"
-        app:layout_heightPercent="12%"
-        app:layout_widthPercent="60%" />
+        app:layout_heightPercent="10%"
+        app:layout_aspectRatio="312.13%"/>
 
     <Button
         android:id="@+id/p3"
-        android:layout_below="@id/p2"
+        app:layout_marginTopPercent="62.5%"
         android:layout_centerHorizontal="true"
-        android:background="@color/alpha1"
+        android:background="@drawable/smartsettings"
         android:onClick="toSettings"
-        app:layout_heightPercent="12%"
-        app:layout_widthPercent="60%" />
+        app:layout_heightPercent="10%"
+        app:layout_aspectRatio="312.13%"/>
 
     <Button
         android:id="@+id/p4"
-        android:layout_below="@id/p3"
+        app:layout_marginTopPercent="73.5%"
         android:layout_centerHorizontal="true"
-        android:background="@color/alpha1"
+        android:background="@drawable/smartexit"
         android:onClick="toExit"
-        app:layout_heightPercent="12%"
-        app:layout_widthPercent="60%" />
+        app:layout_heightPercent="10%"
+        app:layout_aspectRatio="312.13%"/>
 
 </android.support.percent.PercentRelativeLayout>

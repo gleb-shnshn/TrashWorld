@@ -16,7 +16,7 @@
     <Button
         android:id="@+id/p1"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/yes"
+        android:background="@drawable/smartyes"
         android:onClick="Yes"
         app:layout_aspectRatio="312.13%"
         app:layout_heightPercent="12%"
@@ -26,7 +26,7 @@
         android:id="@+id/p2"
         android:layout_below="@id/p1"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/no"
+        android:background="@drawable/smartno"
         android:onClick="No"
         app:layout_marginTopPercent="3%"
         app:layout_aspectRatio="312.13%"

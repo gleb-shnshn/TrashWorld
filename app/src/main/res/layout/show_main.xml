@@ -13,7 +13,7 @@
 
     <Button
         android:id="@+id/button8"
-        android:background="@drawable/backbut1"
+        android:background="@drawable/smartback"
         android:onClick="reload"
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="10%"

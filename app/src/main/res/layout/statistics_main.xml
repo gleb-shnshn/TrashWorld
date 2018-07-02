@@ -30,7 +30,7 @@
 
     <Button
         android:id="@+id/back"
-        android:background="@drawable/backbut1"
+        android:background="@drawable/smartback"
         android:onClick="toSettings"
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="10%"
@@ -229,7 +229,7 @@
         android:id="@+id/button2"
         android:layout_below="@+id/up5"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/reset"
+        android:background="@drawable/smartreset"
         android:onClick="reset"
         app:layout_aspectRatio="312%"
         app:layout_heightPercent="12%" />

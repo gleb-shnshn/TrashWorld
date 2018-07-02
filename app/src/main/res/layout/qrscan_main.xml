@@ -7,7 +7,7 @@
 
     <Button
         android:layout_gravity="left"
-        android:background="@drawable/backbut1"
+        android:background="@drawable/smartback"
         android:onClick="toPromo"
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="10%"

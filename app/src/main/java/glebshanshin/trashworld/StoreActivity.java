@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +30,7 @@ public class StoreActivity extends Activity {
     Cursor cursor;
     String t = " TSH", tsh, s = " шт.";
     boolean notIntent = true;
-    MediaPlayer menuPlayer;
+    MediaPlayer menuPlayer, clickPlayer;
     float music, effects, scale;
 
     @Override
@@ -44,6 +45,61 @@ public class StoreActivity extends Activity {
         init(db);
         updateTSH();
         updatePRICE("all");
+        updateBlocked();
+        clickPlayer = MediaPlayer.create(this, R.raw.click);
+        clickPlayer.setVolume(effects, effects);
+    }
+
+    private void updateBlocked() {
+        ((ImageView)(findViewById(R.id.m1))).setImageDrawable(getDrawable(R.drawable.smartst1b));
+        ((ImageView)(findViewById(R.id.m10))).setImageDrawable(getDrawable(R.drawable.smartst10b));
+        ((ImageView)(findViewById(R.id.m50))).setImageDrawable(getDrawable(R.drawable.smartst50b));
+        ((ImageView)(findViewById(R.id.c1))).setImageDrawable(getDrawable(R.drawable.smartst1b));
+        ((ImageView)(findViewById(R.id.c10))).setImageDrawable(getDrawable(R.drawable.smartst10b));
+        ((ImageView)(findViewById(R.id.c50))).setImageDrawable(getDrawable(R.drawable.smartst50b));
+        ((ImageView)(findViewById(R.id.r1))).setImageDrawable(getDrawable(R.drawable.smartst1b));
+        ((ImageView)(findViewById(R.id.r10))).setImageDrawable(getDrawable(R.drawable.smartst10b));
+        ((ImageView)(findViewById(R.id.r50))).setImageDrawable(getDrawable(R.drawable.smartst50b));
+        ((ImageView)(findViewById(R.id.f1))).setImageDrawable(getDrawable(R.drawable.smartst1b));
+        ((ImageView)(findViewById(R.id.f10))).setImageDrawable(getDrawable(R.drawable.smartst10b));
+        ((ImageView)(findViewById(R.id.f50))).setImageDrawable(getDrawable(R.drawable.smartst50b));
+        if (TSH >= man + 1) {
+            ((ImageView)(findViewById(R.id.m1))).setImageDrawable(getDrawable(R.drawable.smartst1));
+            if (TSH >= get(10, (man + 1), 1)) {
+                ((ImageView)(findViewById(R.id.m10))).setImageDrawable(getDrawable(R.drawable.smartst10));
+                if (TSH >= get(50, (man + 1), 1)) {
+                    ((ImageView)(findViewById(R.id.m50))).setImageDrawable(getDrawable(R.drawable.smartst50));
+
+                }
+            }
+        }
+        if (TSH >= (car + 1) * 10) {
+            ((ImageView)(findViewById(R.id.c1))).setImageDrawable(getDrawable(R.drawable.smartst1));
+            if (TSH >= get(10, (car + 1) * 10, 10)) {
+                ((ImageView)(findViewById(R.id.c10))).setImageDrawable(getDrawable(R.drawable.smartst10));
+                if (TSH >= get(50, (car + 1) * 10, 10)) {
+                    ((ImageView)(findViewById(R.id.c50))).setImageDrawable(getDrawable(R.drawable.smartst50));
+                }
+            }
+        }
+        if (TSH >= (robot + 1) * 50) {
+            ((ImageView)(findViewById(R.id.r1))).setImageDrawable(getDrawable(R.drawable.smartst1));
+            if (TSH >= get(10, (robot + 1) * 50, 50)) {
+                ((ImageView)(findViewById(R.id.r10))).setImageDrawable(getDrawable(R.drawable.smartst10));
+                if (TSH >= get(50, (robot + 1) * 50, 50)) {
+                    ((ImageView)(findViewById(R.id.r50))).setImageDrawable(getDrawable(R.drawable.smartst50));
+                }
+            }
+        }
+        if (TSH >= (factory + 1) * 100) {
+            ((ImageView)(findViewById(R.id.f1))).setImageDrawable(getDrawable(R.drawable.smartst1));
+            if (TSH >= get(10, (factory + 1) * 100, 100)) {
+                ((ImageView)(findViewById(R.id.f10))).setImageDrawable(getDrawable(R.drawable.smartst10));
+                if (TSH >= get(50, (factory + 1) * 100, 100)) {
+                    ((ImageView)(findViewById(R.id.f50))).setImageDrawable(getDrawable(R.drawable.smartst50));
+                }
+            }
+        }
     }
 
     private void updatePRICE(String what) {//обновление цен и количества
@@ -179,7 +235,6 @@ public class StoreActivity extends Activity {
         countrobot = findViewById(R.id.countrobot);
         countfactory = findViewById(R.id.countfactory);
         TSHv = findViewById(R.id.TSH);
-        setTextSize();
     }
 
     private void setTextSize() {//установка масштабируемых шрифтов
@@ -215,6 +270,7 @@ public class StoreActivity extends Activity {
     }
 
     private void increase(long b, int i, String d) {// покупка товара(количество уже купленного, количество нужное купить, название покупки)
+        clickPlayer.start();
         int t = 0;
         switch (d) {//определение цены первого предмета
             case "man":
@@ -249,11 +305,13 @@ public class StoreActivity extends Activity {
             }
             updateTSH();
             updatePRICE(d);
+            updateBlocked();
             update(db);
         } else {//если не хватает
             toast(money - TSH);
         }
     }
+
     //OnClick для каждой кнопки
     public void buyMan1(View view) {
         increase(man, 1, "man");
