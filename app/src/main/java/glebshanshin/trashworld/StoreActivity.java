@@ -235,6 +235,7 @@ public class StoreActivity extends Activity {
         countrobot = findViewById(R.id.countrobot);
         countfactory = findViewById(R.id.countfactory);
         TSHv = findViewById(R.id.TSH);
+        setTextSize();
     }
 
     private void setTextSize() {//установка масштабируемых шрифтов

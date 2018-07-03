@@ -20,105 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0465a466-c573-44d6-a640-64ec5919dcac" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/achievements.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/achievementspr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/backbut1pr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/backbut2pr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/butstorepr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/buypr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/earth2.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/exit.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/exitpr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/genpr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/infopr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/logobpr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/logopr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/musicbpr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/nopr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/promobpr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/qrtpr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/reloadpr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/reloadtpr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/resetpr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/scanpr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/settings.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/settingspr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/skippr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartachievements.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartback.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartback2.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartbonus.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartbutstore.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartbuy.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartexit.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartgen.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartinfo.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartlottery.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartmusic.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartno.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartpromo.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartqr.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartreload.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartreload2.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartreset.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartscan.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartsettings.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartskip.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartst1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartst10.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartst10b.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartst1b.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartst50.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartst50b.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartstart.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartstat.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/smartyes.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/start.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/startpr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/statbpr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/store10b.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/store10bpr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/store10pr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/store1b.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/store1bpr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/store1pr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/store50b.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/store50bpr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/store50pr.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/yespr.png" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/BonusActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/BonusActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/LotteryActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/LotteryActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/QRScanActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/QRScanActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/StorageActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/StorageActivity.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/StoreActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/StoreActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/skip.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/skip.png" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/achievements_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/achievements_main.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/bonus_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/bonus_main.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/check_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/check_main.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/info_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/info_main.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lottery_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lottery_main.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/lotterystore_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lotterystore_main.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/music_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/music_main.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/play_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/play_main.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/promo_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/promo_main.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/qr_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/qr_main.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/qrscan_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/qrscan_main.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/settings_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/settings_main.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/show_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/show_main.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/statistics_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/statistics_main.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/storage_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/storage_main.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/store_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/store_main.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -167,8 +77,8 @@
       <file leaf-file-name="StoreActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/StoreActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1058">
-              <caret line="101" column="9" lean-forward="false" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
+            <state relative-caret-position="8">
+              <caret line="225" column="51" lean-forward="false" selection-start-line="225" selection-start-column="51" selection-end-line="225" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -2542,7 +2452,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2555,12 +2464,12 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3291714" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291714" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25295383" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32690126" sideWeight="0.49785176" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32690126" sideWeight="0.49785176" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -3125,8 +3034,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/glebshanshin/trashworld/StoreActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1058">
-          <caret line="101" column="9" lean-forward="false" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
+        <state relative-caret-position="8">
+          <caret line="225" column="51" lean-forward="false" selection-start-line="225" selection-start-column="51" selection-end-line="225" selection-end-column="51" />
           <folding />
         </state>
       </provider>
