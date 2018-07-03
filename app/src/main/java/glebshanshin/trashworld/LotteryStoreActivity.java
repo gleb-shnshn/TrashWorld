@@ -91,10 +91,6 @@ public class LotteryStoreActivity extends UniActivity {
         TSHv.setText(newa + " TSH ");
     }
 
-    private void toast(long a) {//всплывающее сообщение если недостаточный баланс
-        StyleableToast.makeText(getApplicationContext(), "✘  Не хватает " + a + " TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
-    }
-
     public void toStore(View view) {//переход в класс магазина
         update(db);
         transfer(StoreActivity.class);

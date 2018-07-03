@@ -108,7 +108,7 @@ public class QRActivity extends UniActivity {
         if (TSH >= money) {
             generate(code, money);//если хватает денег генерация кода
         } else {
-            StyleableToast.makeText(getApplicationContext(), "✘  Не хватает " + (money - TSH) + " TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
+            toast(money - TSH);
         }
     }
 

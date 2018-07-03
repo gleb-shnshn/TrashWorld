@@ -6,6 +6,7 @@ android {
         applicationId "glebshanshin.trashworld"
         minSdkVersion 21
         targetSdkVersion 27
+        renderscriptSupportModeEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -35,4 +36,5 @@ dependencies {
     compile 'com.muddzdev:styleabletoast:2.1.2'
     compile 'com.android.support:percent:26.1.0'
     compile 'com.github.iWay7:AndroidHelpers:1.0.5'
+    compile 'com.kyleduo.blurpopupwindow:blurpopupwindow:1.0.9'
 }

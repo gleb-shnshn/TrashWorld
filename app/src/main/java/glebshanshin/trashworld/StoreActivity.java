@@ -9,9 +9,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 public class StoreActivity extends UniActivity {
     TextView TSHv, priceman1, pricecar1, pricerobot1, pricefactory1,
@@ -222,10 +219,6 @@ public class StoreActivity extends UniActivity {
         b.setTextSize(scale * 40f);
         c.setTextSize(scale * 40f);
         d.setTextSize(scale * 40f);
-    }
-
-    private void toast(long a) {//вызов всплывающего сообщения при нехватке баланса
-        StyleableToast.makeText(getApplicationContext(), "✘  Не хватает " + a + " TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
     }
 
     private void increase(long b, int i, String d) {// покупка товара(количество уже купленного, количество нужное купить, название покупки)

@@ -8,6 +8,9 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
+
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 public class UniActivity extends Activity {
     long factory, robot, car, man, TSH;
@@ -15,6 +18,7 @@ public class UniActivity extends Activity {
     int paperb, plasticb, metalb, organicb, notrecycleb, glassb;
     float music, effects, scale;
     String code1, code2;
+    StyleableToast p;
     SQLiteDatabase db;
     DBHelper dbHelper;
     Cursor cursor;
@@ -83,7 +87,13 @@ public class UniActivity extends Activity {
         clickPlayer.start();
         finish();
     }
-
+    public void toast(long a) {//вызов всплывающего сообщения при нехватке баланса
+        if (p != null)//удаление предыдущего сообщения чтобы не заспамлять
+            p.cancel();
+        StyleableToast t = StyleableToast.makeText(getApplicationContext(), "✘  Не хватает " + a + " TSH", Toast.LENGTH_SHORT, R.style.wrong1);
+        p = t;
+        t.show();
+    }
     public void transfer(Class class1) {
         if (notIntent) {
             notIntent = false;
