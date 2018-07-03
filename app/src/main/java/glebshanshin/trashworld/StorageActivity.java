@@ -1,16 +1,10 @@
 package glebshanshin.trashworld;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -31,14 +25,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class StorageActivity extends Activity {
-    boolean notIntent = true;
+public class StorageActivity extends UniActivity {
     LinearLayout lin1, lin2;
     TextView text1, text2;
-    String code1, code2;
-    DBHelper dbHelper;
-    SQLiteDatabase db;
-    Cursor cursor;
     private final String server = "https://gleb2700.000webhostapp.com";
     private Gson gson = new GsonBuilder().create();
     private Retrofit retrofit = new Retrofit.Builder()
@@ -48,29 +37,10 @@ public class StorageActivity extends Activity {
     private check che = retrofit.create(check.class);
     private delete del = retrofit.create(delete.class);
     private int now;
-    private long TSHc;
-    MediaPlayer menuPlayer;
-    float music, effects;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.storage_main);
-        dbHelper = new DBHelper(this);
-        db = dbHelper.getWritableDatabase();
-        init(db);
-    }
-
-    public void init(SQLiteDatabase db) {//получение данных из базы данных и инициализация LinearLayout и TextView
-        cursor = db.query("Data", null, null, null, null, null, null);
-        cursor.moveToFirst();
-        TSHc = cursor.getLong(1);
-        code1 = cursor.getString(20);
-        code2 = cursor.getString(21);
-        music = cursor.getFloat(22);
-        effects = cursor.getFloat(23);
-        cursor.close();
         text1 = findViewById(R.id.text1);
         text2 = findViewById(R.id.text2);
         lin1 = findViewById(R.id.lin1);
@@ -134,30 +104,15 @@ public class StorageActivity extends Activity {
             newValues.put("qr2", 0);
             db.update("Data", newValues, "_id = 1", null);
         }
-        if (notIntent) {//обновляем активность
-            notIntent = false;
-            Intent intent = new Intent(StorageActivity.this, StorageActivity.class);
-            startActivity(intent);
-            finish1();
-        }
+        transfer(StorageActivity.class);
     }
 
     public void reload(View view) {//обновляем активность тем самым запуская проверку с сервером
-        if (notIntent) {
-            notIntent = false;
-            Intent intent = new Intent(StorageActivity.this, StorageActivity.class);
-            startActivity(intent);
-            finish1();
-        }
+        transfer(StorageActivity.class);
     }
 
     public void toBack(View view) {//переход в класс промо-кодов
-        if (notIntent) {
-            notIntent = false;
-            Intent intent = new Intent(StorageActivity.this, PromoActivity.class);
-            startActivity(intent);
-            finish1();
-        }
+        transfer(PromoActivity.class);
     }
 
     public void show1(View view) {//по нажатию кнопку
@@ -249,12 +204,7 @@ public class StorageActivity extends Activity {
                 //удаление и обновление активности
                 delete(now);
                 decodeMoney(code);
-                if (notIntent) {
-                    notIntent = false;
-                    Intent intent = new Intent(StorageActivity.this, StorageActivity.class);
-                    startActivity(intent);
-                    finish1();
-                }
+                transfer(StorageActivity.class);
             }
 
             @Override
@@ -278,67 +228,21 @@ public class StorageActivity extends Activity {
                 break;
         }
         b /= 2;//т.к. возвращаем только половину
-        TSHc += b;
+        TSH += b;
         StyleableToast.makeText(this, "Вам вернули  " + getPrice(b) + " TSH", Toast.LENGTH_SHORT, R.style.get).show();
         ContentValues newValues = new ContentValues();
-        newValues.put("TSH", TSHc);
+        newValues.put("TSH", TSH);
         db.update("Data", newValues, "_id = 1", null);
     }
 
-    private String getPrice(long s) {//масштабирование номинала
-        String newa = "" + s;
-        if (newa.length() > 12)
-            newa = newa.substring(0, newa.length() - 12) + "T";
-        else if (newa.length() > 9)
-            newa = newa.substring(0, newa.length() - 9) + "B";
-        else if (newa.length() > 6)
-            newa = newa.substring(0, newa.length() - 6) + "M";
-        else if (newa.length() > 3)
-            newa = newa.substring(0, newa.length() - 3) + "K";
-
-        return newa;
-    }
-
     public void No(View view) {//если не согласился удалять
-        Intent intent = new Intent(StorageActivity.this, StorageActivity.class);
-        startActivity(intent);
-        finish1();
-    }
-
-    private void finish1() {//выключение музыки при переходе в другую активность
-        menuPlayer.stop();
-        menuPlayer = MediaPlayer.create(this, R.raw.click);
-        menuPlayer.setVolume(effects, effects);
-        menuPlayer.setLooping(false);
-        menuPlayer.start();
-        finish();
-    }
-
-    //включение и отключение музыки при выключении и выключении приложения
-    @Override
-    protected void onStop() {
-        super.onStop();
-        menuPlayer.stop();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        menuPlayer = MediaPlayer.create(this, R.raw.menu);
-        menuPlayer.setVolume(music, music);
-        menuPlayer.setLooping(true);
-        menuPlayer.start();
+        transfer(StorageActivity.class);
     }
 
     //переход в класс промо-кодов с помощью встроенной кнопки назад
     @Override
     public void onBackPressed() {
-        if (notIntent) {
-            notIntent = false;
-            Intent intent = new Intent(StorageActivity.this, PromoActivity.class);
-            startActivity(intent);
-            finish1();
-        }
+        transfer(PromoActivity.class);
         super.onBackPressed();
     }
 }

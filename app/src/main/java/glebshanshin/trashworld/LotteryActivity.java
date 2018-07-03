@@ -1,15 +1,9 @@
 package glebshanshin.trashworld;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,30 +12,19 @@ import java.util.Random;
 
 import site.iway.androidhelpers.ScratchCard;
 
-public class LotteryActivity extends Activity {
+public class LotteryActivity extends UniActivity {
     ScratchCard sc;
     TextView tsh;
     Button btn, back;
     ImageView img;
-    DBHelper dbHelper;
-    Cursor cursor;
-    SQLiteDatabase db;
-    int organicc, plasticc, metalc, glassc, notrecyclec, paperc;
-    long TSH, obj;
-    private boolean isOpen = false, isBack = false, notIntent = true;
-    MediaPlayer menuPlayer;
-    float music, effects;
+    long obj;
+    private boolean isOpen = false, isBack = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.lottery_main);
         sc = findViewById(R.id.scratch_view);
-        dbHelper = new DBHelper(this);
-        db = dbHelper.getWritableDatabase();
-        init(db);
         String got = getIntent().getExtras().getString("1");
         sc.setScratchDrawable(getDrawable(getResources().getIdentifier(got, "drawable", getPackageName())));
         Random random = new Random();
@@ -66,40 +49,40 @@ public class LotteryActivity extends Activity {
             long nprice = (TSH / 10) + 1000;
             obj = (long) (random.nextFloat() * nprice + nprice / 2);
             tsh = findViewById(R.id.TSH);
-            tsh.setText(getPrice(obj)+"\nTSH");//установка приза
+            tsh.setText(getPrice(obj) + "\nTSH");//установка приза
         } else if (got.equals("goldl")) {//если золотая лотерейка
             img = findViewById(R.id.img);
             obj = random.nextInt(6) + 5;
             switch ((int) obj) {//установка случайного бонуса
                 case 5:
-                    glassc = m(glassc) + 1;
-                    img.setImageDrawable(getDrawable(getResources().getIdentifier("glass" + glassc, "drawable", getPackageName())));
-                    update("glassb", glassc);
+                    glassb = m(glassb) + 1;
+                    img.setImageDrawable(getDrawable(getResources().getIdentifier("glass" + glassb, "drawable", getPackageName())));
+                    update("glassb", glassb);
                     break;
                 case 6:
-                    metalc = m(metalc) + 1;
-                    img.setImageDrawable(getDrawable(getResources().getIdentifier("metal" + metalc, "drawable", getPackageName())));
-                    update("metalb", metalc);
+                    metalb = m(metalb) + 1;
+                    img.setImageDrawable(getDrawable(getResources().getIdentifier("metal" + metalb, "drawable", getPackageName())));
+                    update("metalb", metalb);
                     break;
                 case 7:
-                    paperc = m(paperc) + 1;
-                    img.setImageDrawable(getDrawable(getResources().getIdentifier("paper" + paperc, "drawable", getPackageName())));
-                    update("paperb", paperc);
+                    paperb = m(paperb) + 1;
+                    img.setImageDrawable(getDrawable(getResources().getIdentifier("paper" + paperb, "drawable", getPackageName())));
+                    update("paperb", paperb);
                     break;
                 case 8:
-                    organicc = m(organicc) + 1;
-                    img.setImageDrawable(getDrawable(getResources().getIdentifier("organic" + organicc, "drawable", getPackageName())));
-                    update("organicb", organicc);
+                    organicb = m(organicb) + 1;
+                    img.setImageDrawable(getDrawable(getResources().getIdentifier("organic" + organicb, "drawable", getPackageName())));
+                    update("organicb", organicb);
                     break;
                 case 9:
-                    notrecyclec = m(notrecyclec) + 1;
-                    img.setImageDrawable(getDrawable(getResources().getIdentifier("notrecycle" + notrecyclec, "drawable", getPackageName())));
-                    update("notrecycleb", notrecyclec);
+                    notrecycleb = m(notrecycleb) + 1;
+                    img.setImageDrawable(getDrawable(getResources().getIdentifier("notrecycle" + notrecycleb, "drawable", getPackageName())));
+                    update("notrecycleb", notrecycleb);
                     break;
                 case 10:
-                    plasticc = m(plasticc) + 1;
-                    img.setImageDrawable(getDrawable(getResources().getIdentifier("plastic" + plasticc, "drawable", getPackageName())));
-                    update("plasticb", plasticc);
+                    plasticb = m(plasticb) + 1;
+                    img.setImageDrawable(getDrawable(getResources().getIdentifier("plastic" + plasticb, "drawable", getPackageName())));
+                    update("plasticb", plasticb);
                     break;
 
             }
@@ -143,36 +126,13 @@ public class LotteryActivity extends Activity {
 
     public void skip(View view) {//кнопка пропустить
         if (isOpen) {
-            menuPlayer.stop();
-            menuPlayer = MediaPlayer.create(this, R.raw.click);
-            menuPlayer.setVolume(effects, effects);
-            menuPlayer.setLooping(false);
-            menuPlayer.start();
+            clickPlayer.start();
             isOpen = false;
             sc.setAlpha(0);
             btn.setBackgroundColor(getResources().getColor(R.color.alpha1));
             back.setBackgroundDrawable(getResources().getDrawable(R.drawable.smartback));
             isBack = true;
-            menuPlayer = MediaPlayer.create(this, R.raw.menu);
-            menuPlayer.setVolume(music, music);
-            menuPlayer.setLooping(true);
-            menuPlayer.start();
         }
-    }
-
-    public void init(SQLiteDatabase db) {//получение данных из базы данных
-        cursor = db.query("Data", null, null, null, null, null, null);
-        cursor.moveToFirst();
-        TSH = cursor.getLong(1);
-        paperc = cursor.getInt(13);
-        plasticc = cursor.getInt(14);
-        metalc = cursor.getInt(15);
-        organicc = cursor.getInt(16);
-        notrecyclec = cursor.getInt(17);
-        glassc = cursor.getInt(18);
-        music = cursor.getFloat(22);
-        effects = cursor.getFloat(23);
-        cursor.close();
     }
 
     public void toBack(View view) {//переход в класс магазин лотереек
@@ -185,43 +145,6 @@ public class LotteryActivity extends Activity {
         }
     }
 
-    private String getPrice(long s) {//масштабирование приза
-        String newa = "" + s;
-        if (newa.length() > 10) {
-            newa = newa.substring(0, newa.length() - 9) + "B";
-        } else if (newa.length() > 7) {
-            newa = newa.substring(0, newa.length() - 6) + "M";
-        } else if (newa.length() > 4) {
-            newa = newa.substring(0, newa.length() - 3) + "K";
-        }
-        return newa;
-    }
-
-    private void finish1() {//отключение музыки при выходе из активности
-        menuPlayer.stop();
-        menuPlayer = MediaPlayer.create(this, R.raw.click);
-        menuPlayer.setVolume(effects, effects);
-        menuPlayer.setLooping(false);
-        menuPlayer.start();
-        finish();
-    }
-
-    //включение и отключение музыки при выключении и выключении приложения
-    @Override
-    protected void onStop() {
-        super.onStop();
-        menuPlayer.stop();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        menuPlayer = MediaPlayer.create(this, R.raw.menu);
-        menuPlayer.setVolume(music, music);
-        menuPlayer.setLooping(true);
-        menuPlayer.start();
-    }
-
     //выход в магазин лотереек через встроенную кнопку назад
     @Override
     public void onBackPressed() {
@@ -230,6 +153,7 @@ public class LotteryActivity extends Activity {
             Intent intent = new Intent(LotteryActivity.this, LotteryStoreActivity.class);
             intent.putExtra("prize", obj + "");
             startActivity(intent);
+            finish1();
             super.onBackPressed();
         }
     }

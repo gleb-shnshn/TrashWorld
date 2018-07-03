@@ -1,68 +1,18 @@
 package glebshanshin.trashworld;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 
-public class AchievementsActivity extends Activity {
+public class AchievementsActivity extends UniActivity {
     ImageView mistakes, mistakeb, mistakeg, carb, factoryb, glassb, manb, metalb, notrecycleb, organicb, paperb, plasticb, robotb, trashb, carg, factoryg, glassg, mang, metalg, notrecycleg, organicg, paperg, plasticg, robotg, trashg, cars, factorys, glasss, mans, metals, notrecycles, organics, papers, plastics, robots, trashs;
-    long factory, robot, car, man;
-    int organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistake, trash;
-    DBHelper dbHelper;
-    Cursor cursor;
-    SQLiteDatabase db;
-    boolean notIntent = true;
-    float music, effects;
-    MediaPlayer menuPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.achievements_main);
-        dbHelper = new DBHelper(this);
-        db = dbHelper.getWritableDatabase();
-        init(db);
         init1();
         fillall();
-    }
-
-    private void finish1() {//отключение музыки при выходе из активности
-        menuPlayer.stop();
-        menuPlayer = MediaPlayer.create(this, R.raw.click);
-        menuPlayer.setVolume(effects, effects);
-        menuPlayer.setLooping(false);
-        menuPlayer.start();
-        finish();
-    }
-
-    public void init(SQLiteDatabase db) {//получение данных из базы данных
-        cursor = db.query("Data", null, null, null, null, null, null);
-        cursor.moveToFirst();
-        man = cursor.getLong(2);
-        car = cursor.getLong(3);
-        robot = cursor.getLong(4);
-        factory = cursor.getLong(5);
-        paperc = cursor.getInt(6);
-        plasticc = cursor.getInt(7);
-        metalc = cursor.getInt(8);
-        organicc = cursor.getInt(9);
-        notrecyclec = cursor.getInt(10);
-        glassc = cursor.getInt(11);
-        mistake = cursor.getInt(12);
-        music = cursor.getFloat(22);
-        effects = cursor.getFloat(23);
-        cursor.close();
-        trash = plasticc + paperc + metalc + organicc + notrecyclec + glassc;
     }
 
     private void fillall() {//заполнение достижений
@@ -204,48 +154,17 @@ public class AchievementsActivity extends Activity {
     }
 
     public void toMenu(View view) {//выход в главное меню
-        if (notIntent) {
-            notIntent = false;
-            Intent intent1 = new Intent(AchievementsActivity.this, MainActivity.class);
-            startActivity(intent1);
-            finish1();
-        }
+        transfer(MainActivity.class);
     }
 
     public void toBonus(View view) {//переход в класс бонусов
-        if (notIntent) {
-            notIntent = false;
-            Intent intent1 = new Intent(AchievementsActivity.this, BonusActivity.class);
-            startActivity(intent1);
-            finish1();
-        }
-    }
-
-    //включение и отключение музыки при выключении и выключении приложения
-    @Override
-    protected void onStop() {
-        super.onStop();
-        menuPlayer.stop();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        menuPlayer = MediaPlayer.create(this, R.raw.menu);
-        menuPlayer.setVolume(music, music);
-        menuPlayer.setLooping(true);
-        menuPlayer.start();
+        transfer(BonusActivity.class);
     }
 
     //выход в главное меню через встроенную кнопку назад
     @Override
     public void onBackPressed() {
-        if (notIntent) {
-            notIntent = false;
-            Intent intent1 = new Intent(AchievementsActivity.this, MainActivity.class);
-            startActivity(intent1);
-            finish1();
-        }
+        transfer(MainActivity.class);
         super.onBackPressed();
     }
 }

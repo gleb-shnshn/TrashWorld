@@ -1,113 +1,43 @@
 package glebshanshin.trashworld;
 
-import android.app.Activity;
-import android.content.ContentValues;
-import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.Toast;
 
-import com.muddzdev.styleabletoastlibrary.StyleableToast;
-
-public class SettingsActivity extends Activity {
-    MediaPlayer menuPlayer;
-    DBHelper dbHelper;
-    SQLiteDatabase db;
-    Cursor cursor;
-    float music, effects;
-    boolean notIntent = true;
+public class SettingsActivity extends UniActivity {
     boolean notInInfo = true;//переменная обозначающая нахождение в информации
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.settings_main);
-        dbHelper = new DBHelper(this);
-        db = dbHelper.getWritableDatabase();
-        cursor = db.query("Data", null, null, null, null, null, null);
-        cursor.moveToFirst();
-        music = cursor.getFloat(22);
-        effects = cursor.getFloat(23);
-        cursor.close();
     }
 
     public void statistics(View view) {//переход в класс статистики
-        if (notIntent) {
-            notIntent = false;
-            Intent intent = new Intent(SettingsActivity.this, StatisticsActivity.class);
-            startActivity(intent);
-            finish1();
-        }
-    }
-
-    private void finish1() {//выключение музыки при переходе в другую активность
-        menuPlayer.stop();
-        menuPlayer = MediaPlayer.create(this, R.raw.click);
-        menuPlayer.setVolume(effects, effects);
-        menuPlayer.setLooping(false);
-        menuPlayer.start();
-        finish();
+        transfer(StatisticsActivity.class);
     }
 
     public void toMenu(View view) {//переход в главное меню
-        if (notIntent) {
-            notIntent = false;
-            Intent intent1 = new Intent(SettingsActivity.this, MainActivity.class);
-            startActivity(intent1);
-            finish1();
-        }
+        transfer(MainActivity.class);
     }
 
     public void promo(View view) {//переход в активность промо-кодов
-        if (notIntent) {
-            notIntent = false;
-            Intent intent1 = new Intent(SettingsActivity.this, PromoActivity.class);
-            startActivity(intent1);
-            finish1();
-        }
+        transfer(PromoActivity.class);
     }
 
     public void music(View view) {//переход в активность с музыкой
-        if (notIntent) {
-            notIntent = false;
-            Intent intent1 = new Intent(SettingsActivity.this, MusicActivity.class);
-            startActivity(intent1);
-            finish1();
-        }
+        transfer(MusicActivity.class);
     }
 
     public void toInfo(View view) {//показ информации
+        clickPlayer.start();
         notInInfo = false;
         setContentView(R.layout.info_main);
     }
 
     public void toSettings(View view) {//возврат настроек
+        clickPlayer.start();
         notInInfo = true;
         setContentView(R.layout.settings_main);
-    }
-
-    //включение и отключение музыки при выключении и выключении приложения
-    @Override
-    protected void onStop() {
-        super.onStop();
-        menuPlayer.stop();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        menuPlayer = MediaPlayer.create(this, R.raw.menu);
-        menuPlayer.setVolume(music, music);
-        menuPlayer.setLooping(true);
-        menuPlayer.start();
     }
 
     //переход в класс настроек с помощью встроенной кнопки назад
@@ -116,11 +46,9 @@ public class SettingsActivity extends Activity {
         if (!notInInfo) {
             notInInfo = true;
             setContentView(R.layout.settings_main);
-        } else if (notIntent) {
-            notIntent = false;
-            Intent intent1 = new Intent(SettingsActivity.this, MainActivity.class);
-            startActivity(intent1);
-            finish1();
+            clickPlayer.start();
+        } else {
+            transfer(MainActivity.class);
             super.onBackPressed();
         }
     }

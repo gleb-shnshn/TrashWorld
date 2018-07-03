@@ -1,46 +1,42 @@
 package glebshanshin.trashworld;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.media.MediaPlayer;
-import android.media.tv.TvView;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
-public class LotteryStoreActivity extends Activity {
-    SQLiteDatabase db;
-    DBHelper dbHelper;
-    Cursor cursor;
+public class LotteryStoreActivity extends UniActivity {
     Intent intent;
     TextView TSHv, priceO, priceB, text;
     String m = "Случайное  TSH\nот ";
-    long TSH, price, nprice;
-    int factory, robot, car, man;
-    boolean notIntent = true;
-    MediaPlayer menuPlayer;
-    float music, effects, scale;
+    long price, nprice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.lotterystore_main);
-        dbHelper = new DBHelper(this);
-        db = dbHelper.getWritableDatabase();
         scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
         TSHv = findViewById(R.id.TSH);
         TSHv.setTextSize(scale * 75f);//масштабирование шрифта
-        init(db);
+        //инициализация TextView
+        priceB = findViewById(R.id.price1);
+        text = findViewById(R.id.priceB);
+        priceO = findViewById(R.id.price);
+        //установка масштабируемого размера текста
+        text.setTextSize(scale * 55f);
+        priceB.setTextSize(scale * 55f);
+        priceO.setTextSize(scale * 55f);
+        TextView a = findViewById(R.id.des1),
+                b = findViewById(R.id.des2),
+                c = findViewById(R.id.des3);
+        a.setTextSize(scale * 55f);
+        b.setTextSize(scale * 55f);
+        c.setTextSize(scale * 55f);
         checkPrize();
         updateTSH();
         updatePrice();
@@ -80,33 +76,6 @@ public class LotteryStoreActivity extends Activity {
         text.setText(m + getPrice(nprice / 2) + " до " + getPrice((long) (nprice * 1.5)));
     }
 
-    public void init(SQLiteDatabase db) {//получение данных из базы данных
-        cursor = db.query("Data", null, null, null, null, null, null);
-        cursor.moveToFirst();
-        TSH = cursor.getLong(1);
-        man = cursor.getInt(2);
-        car = cursor.getInt(3);
-        robot = cursor.getInt(4);
-        factory = cursor.getInt(5);
-        music = cursor.getFloat(22);
-        effects = cursor.getFloat(23);
-        cursor.close();
-        //инициализация TextView
-        priceB = findViewById(R.id.price1);
-        text = findViewById(R.id.priceB);
-        priceO = findViewById(R.id.price);
-        //установка масштабируемого размера текста
-        text.setTextSize(scale * 55f);
-        priceB.setTextSize(scale * 55f);
-        priceO.setTextSize(scale * 55f);
-        TextView a = findViewById(R.id.des1),
-                b = findViewById(R.id.des2),
-                c = findViewById(R.id.des3);
-        a.setTextSize(scale * 55f);
-        b.setTextSize(scale * 55f);
-        c.setTextSize(scale * 55f);
-    }
-
     private void update(SQLiteDatabase db) {//обновление базы данных при переходе в другую активность
         ContentValues newValues = new ContentValues();
         newValues.put("TSH", TSH);
@@ -115,20 +84,6 @@ public class LotteryStoreActivity extends Activity {
         newValues.put("robot", robot);
         newValues.put("factory", factory);
         db.update("Data", newValues, "_id = 1", null);
-    }
-
-    private String getPrice(long s) {//масштабирование цен и баланса
-        String newa = "" + s;
-        if (newa.length() > 12)
-            newa = newa.substring(0, newa.length() - 12) + "T";
-        else if (newa.length() > 9)
-            newa = newa.substring(0, newa.length() - 9) + "B";
-        else if (newa.length() > 6)
-            newa = newa.substring(0, newa.length() - 6) + "M";
-        else if (newa.length() > 3)
-            newa = newa.substring(0, newa.length() - 3) + "K";
-
-        return newa;
     }
 
     private void updateTSH() {//обновление баланса
@@ -141,13 +96,8 @@ public class LotteryStoreActivity extends Activity {
     }
 
     public void toStore(View view) {//переход в класс магазина
-        if (notIntent) {
-            notIntent = false;
-            Intent intent = new Intent(LotteryStoreActivity.this, StoreActivity.class);
-            update(db);
-            startActivity(intent);
-            finish1();
-        }
+        update(db);
+        transfer(StoreActivity.class);
     }
 
     public void buyBronze(View view) {//покупка бронзовой лотерейки
@@ -195,41 +145,11 @@ public class LotteryStoreActivity extends Activity {
         }
     }
 
-    private void finish1() {//отключение музыки при выходе из активности
-        menuPlayer.stop();
-        menuPlayer = MediaPlayer.create(this, R.raw.click);
-        menuPlayer.setVolume(effects, effects);
-        menuPlayer.setLooping(false);
-        menuPlayer.start();
-        finish();
-    }
-
-    //включение и отключение музыки при выключении и выключении приложения
-    @Override
-    protected void onStop() {
-        super.onStop();
-        menuPlayer.stop();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        menuPlayer = MediaPlayer.create(this, R.raw.menu);
-        menuPlayer.setVolume(music, music);
-        menuPlayer.setLooping(true);
-        menuPlayer.start();
-    }
-
     //выход в магазин через встроенную кнопку назад
     @Override
     public void onBackPressed() {
-        if (notIntent) {
-            notIntent = false;
-            Intent intent1 = new Intent(LotteryStoreActivity.this, StoreActivity.class);
-            startActivity(intent1);
-            update(db);
-            finish1();
-        }
+        update(db);
+        transfer(StoreActivity.class);
         super.onBackPressed();
     }
 }

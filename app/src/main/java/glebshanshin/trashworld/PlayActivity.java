@@ -1,12 +1,8 @@
 package glebshanshin.trashworld;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.MotionEvent;
@@ -14,31 +10,19 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class PlayActivity extends Activity implements OnTouchListener {
+public class PlayActivity extends UniActivity implements OnTouchListener {
     long mills = 500L;
     Vibrator vibrator;
-    float music, effects;
-    MediaPlayer clickPlayer, playPlayer;//два плеера один для щелчков другой для фоновой музыки
-    long factory, robot, car, man;
-    long TSH, Adder;
-    int organicb, plasticb, metalb, glassb, notrecycleb, paperb;
-    int organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistakes, multi;
-    DBHelper dbHelper;
-    Cursor cursor;
-    SQLiteDatabase db;
+    long Adder;
     TextView TSHv, TSHsv;
     int offset_x = 0;
     int offset_y = 0;
     boolean touchFlag = false;//переменная обозначающая наличие касания
     boolean dropFlag = false;//переменная обозначающая наличие касания в каком то из секторов
-    boolean notIntent = true;
     LayoutParams imageParams;
     ImageView circle, trash;
     TextView plastic, glass, metal, organic, notrecycle, paper;
@@ -69,34 +53,9 @@ public class PlayActivity extends Activity implements OnTouchListener {
 
     }
 
-    private String getPrice(long s) {//масштабирование цены
-        String newa = "" + s;
-        if (newa.length() > 12)
-            newa = newa.substring(0, newa.length() - 12) + "T";
-        else if (newa.length() > 9)
-            newa = newa.substring(0, newa.length() - 9) + "B";
-        else if (newa.length() > 6)
-            newa = newa.substring(0, newa.length() - 6) + "M";
-        else if (newa.length() > 3)
-            newa = newa.substring(0, newa.length() - 3) + "K";
-
-        return newa;
-    }
-
     public void toMenu(View view) {//выход в главное меню
-        if (notIntent) {
-            notIntent = false;
-            Intent intent1 = new Intent(PlayActivity.this, MainActivity.class);
-            startActivity(intent1);
-            update(db);
-            finish1();
-        }
-    }
-
-    private void finish1() {//отключение музыки при выходе из активности
-        playPlayer.stop();
-        clickPlayer.start();
-        finish();
+        update(db);
+        transfer(MainActivity.class);
     }
 
     private void update(SQLiteDatabase db) {//обновление базы данных при переходе в другую активность
@@ -113,7 +72,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
         newValues.put("organic", organicc);
         newValues.put("notrecycle", notrecyclec);
         newValues.put("glass", glassc);
-        newValues.put("mistakes", mistakes);
+        newValues.put("mistakes", mistake);
         db.update("Data", newValues, "_id = 1", null);
     }
 
@@ -141,13 +100,8 @@ public class PlayActivity extends Activity implements OnTouchListener {
     }
 
     public void toStore(View view) {//переход в класс магазина
-        if (notIntent) {
-            notIntent = false;
-            update(db);
-            Intent intent = new Intent(PlayActivity.this, StoreActivity.class);
-            startActivity(intent);
-            finish1();
-        }
+        update(db);
+        transfer(StoreActivity.class);
     }
 
     public void game() {//метод для проверки правильности выбора сектора
@@ -156,7 +110,7 @@ public class PlayActivity extends Activity implements OnTouchListener {
             incCounter(choice);
         } else {
             vibrator.vibrate(mills);//вибрация при неправильном выборе
-            mistakes++;
+            mistake++;
         }
         choice = "null";
         newTrash();
@@ -204,34 +158,6 @@ public class PlayActivity extends Activity implements OnTouchListener {
         trash.setImageDrawable(getDrawable(getResources().getIdentifier("trash" + id, "drawable", getPackageName())));
     }
 
-    public void init(SQLiteDatabase db) {//получение данных из базы данных
-        cursor = db.query("Data", null, null, null, null, null, null);
-        cursor.moveToFirst();
-        TSH = cursor.getLong(1);
-        man = cursor.getLong(2);
-        car = cursor.getLong(3);
-        robot = cursor.getLong(4);
-        factory = cursor.getLong(5);
-        paperc = cursor.getInt(6);
-        plasticc = cursor.getInt(7);
-        metalc = cursor.getInt(8);
-        organicc = cursor.getInt(9);
-        notrecyclec = cursor.getInt(10);
-        glassc = cursor.getInt(11);
-        mistakes = cursor.getInt(12);
-        paperb = cursor.getInt(13);
-        plasticb = cursor.getInt(14);
-        metalb = cursor.getInt(15);
-        organicb = cursor.getInt(16);
-        notrecycleb = cursor.getInt(17);
-        glassb = cursor.getInt(18);
-        multi = cursor.getInt(19);
-        music = cursor.getFloat(22);
-        effects = cursor.getFloat(23);
-        cursor.close();
-        initTSHs();
-    }
-
     private void initTSHs() {//инициализация "увеличителя", т.е. количество TSH/мусор
         Adder = 1 + man + car * 10 + robot * 50 + factory * 100;
         Adder *= multi;
@@ -242,22 +168,16 @@ public class PlayActivity extends Activity implements OnTouchListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.play_main);
         init1();
-        dbHelper = new DBHelper(this);
-        db = dbHelper.getWritableDatabase();
         //масштабирование шрифтов
-        float scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
+        scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
         TSHv.setTextSize(scale * 65f);
         TSHsv.setTextSize(scale * 65f);
-        init(db);
+        initTSHs();
         increaseTSH(0);
         newTrash();
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        clickPlayer = MediaPlayer.create(this, R.raw.click);
-        clickPlayer.setVolume(effects, effects);
         //получение размера экрана
         w = getWindowManager().getDefaultDisplay().getWidth() - 50;
         h = getWindowManager().getDefaultDisplay().getHeight() - 10;
@@ -333,32 +253,11 @@ public class PlayActivity extends Activity implements OnTouchListener {
         return false;
     }
 
-    //включение и отключение музыки при выключении и выключении приложения
-    @Override
-    protected void onStop() {
-        super.onStop();
-        playPlayer.stop();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        playPlayer = MediaPlayer.create(this, R.raw.play);
-        playPlayer.setVolume(music, music);
-        playPlayer.setLooping(true);
-        playPlayer.start();
-    }
-
     //выход в главное меню через встроенную кнопку назад
     @Override
     public void onBackPressed() {
-        if (notIntent) {
-            notIntent = false;
-            Intent intent1 = new Intent(PlayActivity.this, MainActivity.class);
-            startActivity(intent1);
-            update(db);
-            finish1();
-        }
+        update(db);
+        transfer(MainActivity.class);
         super.onBackPressed();
     }
 }

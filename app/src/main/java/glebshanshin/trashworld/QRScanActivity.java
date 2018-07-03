@@ -26,10 +26,10 @@ public class QRScanActivity extends CaptureActivity {
         cursor.moveToFirst();
         float effects = cursor.getFloat(23);
         cursor.close();
-        MediaPlayer menuPlayer = MediaPlayer.create(this, R.raw.click);
-        menuPlayer.setVolume(effects, effects);
-        menuPlayer.setLooping(false);
-        menuPlayer.start();
+        MediaPlayer clickPlayer = MediaPlayer.create(this, R.raw.click);
+        clickPlayer.setVolume(effects, effects);
+        clickPlayer.setLooping(false);
+        clickPlayer.start();
         finish();
     }
 

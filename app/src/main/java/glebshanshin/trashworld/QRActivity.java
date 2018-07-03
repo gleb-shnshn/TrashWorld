@@ -1,15 +1,10 @@
 package glebshanshin.trashworld;
 
-import android.app.Activity;
 import android.content.ContentValues;
-import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,10 +28,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class QRActivity extends Activity {
-    DBHelper dbHelper;
-    SQLiteDatabase db;
-    Cursor cursor;
+public class QRActivity extends UniActivity {
     String code;
     private final String server = "https://gleb2700.000webhostapp.com";
     private Gson gson = new GsonBuilder().create();
@@ -46,21 +38,17 @@ public class QRActivity extends Activity {
             .build();
     DiscreteSeekBar seekbar;
     private insert ins = retrofit.create(insert.class);
-    long TSHc;
     TextView textView;
-    boolean notIntent = true, notBlock=true;
+    boolean notBlock=true;
     boolean qu = false;
-    float scale;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.qr_main);
-        dbHelper = new DBHelper(this);
-        db = dbHelper.getWritableDatabase();
         scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
-        init(db);
+        textView = findViewById(R.id.TSH);
+        textView.setText("" + getPrice(TSH) + " TSH");
+        textView.setTextSize(scale * 74f);
         final TextView textView = findViewById(R.id.textView2);
         textView.setTextSize(scale * 40f);//масштабирование шрифта
         seekbar = findViewById(R.id.discrete1);
@@ -68,9 +56,9 @@ public class QRActivity extends Activity {
             @Override
             public void onProgressChanged(DiscreteSeekBar seekBar, int value, boolean fromUser) {//изменение номинала
                 String k = "Номинал: ";
-                if (value < 1000) {
+                if (value < 1001) {
                     textView.setText(k + value + "K TSH");
-                } else if (value < 2000) {
+                } else if (value < 2001) {
                     textView.setText(k + value % 1000 + "M TSH");
                 } else {
                     textView.setText(k + value % 1000 + "B TSH");
@@ -87,46 +75,15 @@ public class QRActivity extends Activity {
         });
     }
 
-    private String getPrice(long s) { //масштабирование номинала
-        String newa = "" + s;
-        if (newa.length() > 12)
-            newa = newa.substring(0, newa.length() - 12) + "T";
-        else if (newa.length() > 9)
-            newa = newa.substring(0, newa.length() - 9) + "B";
-        else if (newa.length() > 6)
-            newa = newa.substring(0, newa.length() - 6) + "M";
-        else if (newa.length() > 3)
-            newa = newa.substring(0, newa.length() - 3) + "K";
-
-        return newa;
-    }
-
-    public void init(SQLiteDatabase db) {//получение данных из базы данных
-        cursor = db.query("Data", null, null, null, null, null, null);
-        cursor.moveToFirst();
-        TSHc = cursor.getLong(1);
-        textView = findViewById(R.id.TSH);
-        textView.setText("" + getPrice(TSHc) + " TSH");
-        textView.setTextSize(scale * 74f);//масштабирование шрифта
-        cursor.close();
-    }
-
     public void toBack(View view) {//переход в класс хранения кодов
-        if (notIntent) {
-            notIntent = false;
-            Intent intent = new Intent(QRActivity.this, StorageActivity.class);
-            startActivity(intent);
-            finish();
-        }
+       transfer(StorageActivity.class);
     }
 
     //включение и отключение музыки при выключении и выключении приложения
     @Override
     public void onBackPressed() {
         if (notBlock) {
-            notIntent = false;
-            Intent intent1 = new Intent(QRActivity.this, StorageActivity.class);
-            startActivity(intent1);
+            transfer(StorageActivity.class);
             super.onBackPressed();
         }
     }
@@ -148,10 +105,10 @@ public class QRActivity extends Activity {
         while (code.length() < 4) {
             code = "0" + code;
         }
-        if (TSHc >= money) {
+        if (TSH >= money) {
             generate(code, money);//если хватает денег генерация кода
         } else {
-            StyleableToast.makeText(getApplicationContext(), "✘  Не хватает " + (money - TSHc) + " TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
+            StyleableToast.makeText(getApplicationContext(), "✘  Не хватает " + (money - TSH) + " TSH", Toast.LENGTH_SHORT, R.style.wrong1).show();
         }
     }
 
@@ -168,7 +125,7 @@ public class QRActivity extends Activity {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
                 if (notIntent) {
-                    TSHc -= money;
+                    TSH -= money;
                     update(db);
                     try {//показ кода
                         BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
@@ -186,12 +143,7 @@ public class QRActivity extends Activity {
 
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
-                if (notIntent) {
-                    notIntent = false;
-                    Intent intent = new Intent(QRActivity.this, StorageActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
+                transfer(StorageActivity.class);
                 StyleableToast.makeText(getApplicationContext(), "Нет доступа к интернету", Toast.LENGTH_SHORT, R.style.wrong).show();
             }
         });
@@ -200,17 +152,14 @@ public class QRActivity extends Activity {
 
     private void update(SQLiteDatabase db) { //обновление базы данных при переходе в другую активность
         ContentValues newValues = new ContentValues();
-        newValues.put("TSH", TSHc);
+        newValues.put("TSH", TSH);
         newValues.put("qr" + getIntent().getStringExtra("code"), code);
         db.update("Data", newValues, "_id = 1", null);
     }
 
     public void reload(View view) {//переход в класс хранения промо-кодов
-        if (qu && notIntent) {
-            notIntent = false;
-            Intent intent = new Intent(QRActivity.this, StorageActivity.class);
-            startActivity(intent);
-            finish();
+        if (qu) {
+            transfer(StorageActivity.class);
         }
     }
 }

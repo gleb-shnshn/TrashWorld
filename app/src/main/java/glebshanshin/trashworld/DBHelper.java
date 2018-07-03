@@ -51,7 +51,7 @@ public class DBHelper extends SQLiteOpenHelper {
         //если приложение запускается первый раз в базу данных вставляются значения по умолчанию
     }
 
-    public void insert(SQLiteDatabase db) {
+    public ContentValues getDefault() {
         ContentValues newValues = new ContentValues();
         newValues.put("TSH", 0);
         newValues.put("man", 0);
@@ -80,8 +80,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
         newValues.put("music", 0.5);
         newValues.put("effects", 0.5);
+        return newValues;
+    }
 
-        db.insert(TABLE_NAME, null, newValues);
+    public void insert(SQLiteDatabase db) {
+        db.insert(TABLE_NAME, null, getDefault());
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
