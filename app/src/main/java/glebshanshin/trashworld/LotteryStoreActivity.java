@@ -74,6 +74,12 @@ public class LotteryStoreActivity extends UniActivity {
         nprice = (TSH / 10) + 1000;// 1/10 баланса + 1000
         priceB.setText("Цена: " + getPrice(nprice) + " TSH");
         text.setText(m + getPrice(nprice / 2) + " до " + getPrice((long) (nprice * 1.5)));
+        if (TSH < nprice)
+            findViewById(R.id.buybronze).setBackground(getDrawable(R.drawable.smartbutstoreb));
+        if (TSH < price)
+            findViewById(R.id.buysilver).setBackground(getDrawable(R.drawable.smartbutstoreb));
+        if (TSH < 100000)
+            findViewById(R.id.buygold).setBackground(getDrawable(R.drawable.smartbutstoreb));
     }
 
     private void update(SQLiteDatabase db) {//обновление базы данных при переходе в другую активность

@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">TrashWorld</string>
+    <string name="know">Знаете ли вы что...</string>
+    <string name="fact1">В Швецию для переработки ввозится около 80 000 тонн отходов</string>
+    <string name="fact2">В мире есть целый мусорный континент, который находится в Тихом океане</string>
+    <string name="fact3">Согласно статистике, каждый американец ежегодно отправляет на свалку 5 тонн мусора</string>
+    <string name="fact4">Из всех алюминиевых банок, которые за год выбросили американцы, можно построить 10 башен высотой до Луны</string>
+    <string name="fact5">В сингапуре за мусор, не донесенный до урны, есть штраф от 500 до 1000$</string>
+    <string name="fact6">Ежегодно в мире выбрасывается примерно 4,5 млрд. штук сигаретных окурков</string>
+    <string name="nothingbad">Ничего страшного,  все ошибаются</string>
+    <string name="ele">Этот мусор из категории электро</string>
+    <string name="gla">Этот мусор из категории стекло</string>
+    <string name="met">Этот мусор из категории металл</string>
+    <string name="org">Этот мусор из категории органика</string>
+    <string name="pap">Этот мусор из категории бумага</string>
+    <string name="pla">Этот мусор из категории пластик</string>
 </resources>

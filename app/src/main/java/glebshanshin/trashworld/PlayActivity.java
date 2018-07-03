@@ -21,7 +21,7 @@ public class PlayActivity extends UniActivity implements OnTouchListener {
     long mills = 500L;
     Vibrator vibrator;
     long Adder;
-    String id="1";
+    String id = "1";
     TextView TSHv, TSHsv;
     int offset_x = 0;
     int offset_y = 0;
@@ -110,13 +110,23 @@ public class PlayActivity extends UniActivity implements OnTouchListener {
 
     public void game() {//метод для проверки правильности выбора сектора
         if (tag.equals(choice)) {
+            if (Integer.parseInt(id) == 19 || Integer.parseInt(id) == 15)//появление фактов
+                new BlurPopupWindow.Builder(findViewById(android.R.id.content).getContext())
+                        .setContentView(getResources().getIdentifier("fact" + ((int) (Math.random() * 5) + 1), "layout", getPackageName()))
+                        .setGravity(Gravity.CENTER)
+                        .setScaleRatio(0.2f)
+                        .setBlurRadius(10)
+                        .setDismissOnClickBack(true)
+                        .setTintColor(0x30000000)
+                        .build()
+                        .show();
             increaseTSH(Adder);
             incCounter(choice);
         } else {
             vibrator.vibrate(mills);//вибрация при неправильном выборе
             mistake++;
             new BlurPopupWindow.Builder(findViewById(android.R.id.content).getContext())
-                    .setContentView(getResources().getIdentifier(tag,"layout",getPackageName()))
+                    .setContentView(getResources().getIdentifier(tag, "layout", getPackageName()))
                     .setGravity(Gravity.CENTER)
                     .setScaleRatio(0.2f)
                     .setBlurRadius(10)
@@ -167,13 +177,13 @@ public class PlayActivity extends UniActivity implements OnTouchListener {
 
     public void newTrash() {//генерация нового мусора
         int id1 = ((int) (Math.random() * 32) + 1);
-        if (id1==Integer.parseInt(id)){
-            id1=id1+2;
+        if (id1 == Integer.parseInt(id)) {
+            id1 = id1 + 2;
         }
-        if (id1>33){
-            id1=id1-5;
+        if (id1 > 33) {
+            id1 = id1 - 5;
         }
-        id=id1+"";
+        id = id1 + "";
         tag = getTag(id);
         trash.setImageDrawable(getDrawable(getResources().getIdentifier("trash" + id, "drawable", getPackageName())));
     }

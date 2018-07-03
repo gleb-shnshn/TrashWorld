@@ -89,6 +89,7 @@ public class QRActivity extends UniActivity {
     }
 
     public void Buy(View view) {//покупка нового кода
+        clickPlayer.start();
         long value = seekbar.getProgress();
         String code;
         long money;

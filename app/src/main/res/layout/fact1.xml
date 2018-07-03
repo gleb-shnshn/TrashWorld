@@ -18,13 +18,13 @@
         android:id="@+id/image"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/mistakestat" />
+        android:src="@drawable/loopa" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/nothingbad"
+        android:text="@string/know"
         android:textAlignment="center"
         android:textColor="#333333"
         android:textSize="14sp"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
-        android:text="@string/ele"
+        android:text="@string/fact1"
         android:textColor="#777"
         android:textSize="14sp" />
 

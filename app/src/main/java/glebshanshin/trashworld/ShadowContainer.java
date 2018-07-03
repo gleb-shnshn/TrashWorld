@@ -18,9 +18,7 @@ import android.support.annotation.Px;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
-/**
- * Created by kyle on 2017/3/23.
- */
+//https://github.com/kyleduo/BlurPopupWindow/blob/master/BlurPopupWindow/app/src/main/java/com/kyleduo/blurpopupwindow/ShadowContainer.java
 
 public class ShadowContainer extends LinearLayout {
     public static final int DEFAULT_SHADOW_COLOR = 0x20000000;
