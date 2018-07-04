@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<glebshanshin.trashworld.ShadowContainer
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="290dp"
     android:layout_height="wrap_content"
+    android:background="@drawable/back"
     android:clickable="true"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingBottom="30dp"
     android:paddingLeft="40dp"
     android:paddingRight="40dp"
-    android:paddingTop="30dp"
-    app:sc_shadowColor="#40444444">
+    android:paddingTop="30dp">
 
 
     <ImageView
@@ -40,4 +39,4 @@
         android:textColor="#777"
         android:textSize="14sp" />
 
-</glebshanshin.trashworld.ShadowContainer>
+</LinearLayout>
