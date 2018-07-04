@@ -2,7 +2,6 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/back"
     android:layout_width="290dp"
     android:layout_height="wrap_content"
     android:clickable="true"
@@ -11,20 +10,23 @@
     android:paddingBottom="30dp"
     android:paddingLeft="40dp"
     android:paddingRight="40dp"
-    android:paddingTop="30dp">
+    android:layout_gravity="center"
+    android:paddingTop="30dp"
+    android:background="@drawable/back">
 
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/loopa" />
+        android:src="@drawable/mistakestat" />
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/know"
+        android:text="@string/nothingbad"
         android:textAlignment="center"
         android:textColor="#333333"
         android:textSize="14sp"
@@ -36,7 +38,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
-        android:text="@string/fact6"
         android:textColor="#777"
         android:textSize="14sp" />
 

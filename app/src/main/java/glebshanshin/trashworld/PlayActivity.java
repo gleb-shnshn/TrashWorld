@@ -111,29 +111,14 @@ public class PlayActivity extends UniActivity implements OnTouchListener {
     public void game() {//метод для проверки правильности выбора сектора
         if (tag.equals(choice)) {
             if (Integer.parseInt(id) == 19 || Integer.parseInt(id) == 15)//появление фактов
-                new BlurPopupWindow.Builder(findViewById(android.R.id.content).getContext())
-                        .setContentView(getResources().getIdentifier("fact" + ((int) (Math.random() * 5) + 1), "layout", getPackageName()))
-                        .setGravity(Gravity.CENTER)
-                        .setScaleRatio(0.2f)
-                        .setBlurRadius(10)
-                        .setDismissOnClickBack(true)
-                        .setTintColor(0x30000000)
-                        .build()
-                        .show();
+                new UniPopup.Builder(PlayActivity.this, getString(getResources().getIdentifier("fact" + ((int) (Math.random() * 5) + 1), "string", getPackageName())), true).build().show();
             increaseTSH(Adder);
             incCounter(choice);
         } else {
             vibrator.vibrate(mills);//вибрация при неправильном выборе
             mistake++;
-            new BlurPopupWindow.Builder(findViewById(android.R.id.content).getContext())
-                    .setContentView(getResources().getIdentifier(tag, "layout", getPackageName()))
-                    .setGravity(Gravity.CENTER)
-                    .setScaleRatio(0.2f)
-                    .setBlurRadius(10)
-                    .setDismissOnClickBack(true)
-                    .setTintColor(0x30000000)
-                    .build()
-                    .show();
+            //показ сообщения об ошибке
+            new UniPopup.Builder(PlayActivity.this, getString(getResources().getIdentifier(tag, "string", getPackageName())), false).build().show();
         }
         choice = "null";
         newTrash();
