@@ -11,9 +11,9 @@ public class MainActivity extends UniActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void toStart(View view) {//переход в класс основного геймплея
+    public void toStart(View view) {
         transfer(PlayActivity.class);
-    }
+    }//переход в класс основного геймплея
 
     public void toExit(View view) {//выход из приложения
         if (notIntent) {
@@ -22,11 +22,11 @@ public class MainActivity extends UniActivity {
         }
     }
 
-    public void toAchievements(View view) {//переход в класс Достижений
+    public void toAchievements(View view) {
         transfer(AchievementsActivity.class);
-    }
+    }//переход в класс Достижений
 
-    public void toSettings(View view) {//переход в класс Настроек
+    public void toSettings(View view) {
         transfer(SettingsActivity.class);
-    }
+    }//переход в класс Настроек
 }

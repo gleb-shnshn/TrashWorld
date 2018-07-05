@@ -15,7 +15,7 @@ public class AchievementsActivity extends UniActivity {
         fillall();
     }
 
-    private void fillall() {//заполнение достижений
+    private void fillall() {//заполнение достижений, т.к. по умолчанию они все заблокированы
         if (man >= 1) {
             manb.setImageDrawable(getDrawable(R.drawable.manb));
             if (man >= 10) {
@@ -153,13 +153,13 @@ public class AchievementsActivity extends UniActivity {
         mistakeg = findViewById(R.id.mistakeg);
     }
 
-    public void toMenu(View view) {//выход в главное меню
+    public void toMenu(View view) {
         transfer(MainActivity.class);
-    }
+    }//переход в главное меню
 
-    public void toBonus(View view) {//переход в класс бонусов
+    public void toBonus(View view) {
         transfer(BonusActivity.class);
-    }
+    }//переход в класс бонусов
 
     //выход в главное меню через встроенную кнопку назад
     @Override

@@ -45,7 +45,6 @@ public class QRActivity extends UniActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.qr_main);
-        scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
         textView = findViewById(R.id.TSH);
         textView.setText("" + getPrice(TSH) + " TSH");
         textView.setTextSize(scale * 74f);
@@ -75,9 +74,9 @@ public class QRActivity extends UniActivity {
         });
     }
 
-    public void toBack(View view) {//переход в класс хранения кодов
+    public void toBack(View view) {
        transfer(StorageActivity.class);
-    }
+    }//переход в класс хранения кодов
 
     //включение и отключение музыки при выключении и выключении приложения
     @Override
@@ -144,7 +143,7 @@ public class QRActivity extends UniActivity {
 
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
-                transfer(StorageActivity.class);
+                transfer(StorageActivity.class);//возвращение в класс хранения кодов и вызов сообщения об отсустствии интернета
                 StyleableToast.makeText(getApplicationContext(), "Нет доступа к интернету", Toast.LENGTH_SHORT, R.style.wrong).show();
             }
         });
@@ -160,7 +159,7 @@ public class QRActivity extends UniActivity {
 
     public void reload(View view) {//переход в класс хранения промо-кодов
         if (qu) {
-            transfer(StorageActivity.class);
+            transfer(StorageActivity.class);//этот метод нужен при показе qr кода после его генерации
         }
     }
 }

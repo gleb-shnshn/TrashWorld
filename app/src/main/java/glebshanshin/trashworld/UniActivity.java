@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
-public class UniActivity extends Activity {
+public class UniActivity extends Activity {//Общая активность в которой описаны общие методы и поля
     long factory, robot, car, man, TSH;
     int organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistake, trash, multi;
     int paperb, plasticb, metalb, organicb, notrecycleb, glassb;
@@ -22,7 +22,7 @@ public class UniActivity extends Activity {
     SQLiteDatabase db;
     DBHelper dbHelper;
     Cursor cursor;
-    MediaPlayer menuPlayer, clickPlayer;
+    MediaPlayer menuPlayer, clickPlayer;//плееры отдельно для кликов и фоновой музыки
     boolean notIntent = true;
 
     @Override
@@ -32,49 +32,51 @@ public class UniActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         dbHelper = new DBHelper(this);
         db = dbHelper.getWritableDatabase();
-        init(db);
-        clickPlayer = MediaPlayer.create(this, R.raw.click);
+        init(db);//получение данных из базы данных
+        clickPlayer = MediaPlayer.create(this, R.raw.click);//настройка плеера для кликов
         clickPlayer.setVolume(effects, effects);
     }
 
     public void init(SQLiteDatabase db) {
         cursor = db.query("Data", null, null, null, null, null, null);
         cursor.moveToFirst();
-        TSH = cursor.getLong(1);
-        man = cursor.getLong(2);
-        car = cursor.getLong(3);
-        robot = cursor.getLong(4);
-        factory = cursor.getLong(5);
-        paperc = cursor.getInt(6);
-        plasticc = cursor.getInt(7);
-        metalc = cursor.getInt(8);
-        organicc = cursor.getInt(9);
-        notrecyclec = cursor.getInt(10);
-        glassc = cursor.getInt(11);
-        trash = plasticc + paperc + metalc + organicc + notrecyclec + glassc;
-        mistake = cursor.getInt(12);
-        paperb = cursor.getInt(13);
-        plasticb = cursor.getInt(14);
-        metalb = cursor.getInt(15);
-        organicb = cursor.getInt(16);
-        notrecycleb = cursor.getInt(17);
-        glassb = cursor.getInt(18);
-        multi = cursor.getInt(19);
-        code1 = cursor.getString(20);
-        code2 = cursor.getString(21);
-        music = cursor.getFloat(22);
-        effects = cursor.getFloat(23);
+        TSH = cursor.getLong(1);//очки TSH
+        man = cursor.getLong(2);//количество уборщиков
+        car = cursor.getLong(3);//количество мусоровозов
+        robot = cursor.getLong(4);//количество роботов
+        factory = cursor.getLong(5);//количество заводов
+        paperc = cursor.getInt(6);//количество отсортированного мусора из категории бумага
+        plasticc = cursor.getInt(7);//количество отсортированного мусора из категории пластик
+        metalc = cursor.getInt(8);//количество отсортированного мусора из категории металл
+        organicc = cursor.getInt(9);//количество отсортированного мусора из категории органика
+        notrecyclec = cursor.getInt(10);//количество отсортированного мусора из категории электро
+        glassc = cursor.getInt(11);//количество отсортированного мусора из категории стекло
+        trash = plasticc + paperc + metalc + organicc + notrecyclec + glassc;//общее количество мусора
+        mistake = cursor.getInt(12);//количество ошибок
+        paperb = cursor.getInt(13);//бонус для категории бумага
+        plasticb = cursor.getInt(14);//бонус для категории пластик
+        metalb = cursor.getInt(15);//бонус для категории металл
+        organicb = cursor.getInt(16);//бонус для категории органика
+        notrecycleb = cursor.getInt(17);//бонус для категории электро
+        glassb = cursor.getInt(18);//бонус для категории стекло
+        multi = cursor.getInt(19);//общий бонус(появляется по достижении 3 уровня по отдельности)
+        code1 = cursor.getString(20);//первый qr код
+        code2 = cursor.getString(21);//второй qr кол
+        music = cursor.getFloat(22);//настройка громкости фоновой музыки
+        effects = cursor.getFloat(23);//настройка громкости кликов
+        scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
+        //показатель площади для масштабирования шрифтов
         cursor.close();
     }
 
-    @Override
+    @Override//выключение фоновой музыки при сворачивании и выключении экрана
     protected void onStop() {
         super.onStop();
         menuPlayer.stop();
     }
 
     @Override
-    protected void onStart() {
+    protected void onStart() {//включение фоновой музыки при включении приложения
         super.onStart();
         menuPlayer = MediaPlayer.create(this, R.raw.menu);
         menuPlayer.setVolume(music, music);
@@ -94,8 +96,8 @@ public class UniActivity extends Activity {
         p = t;
         t.show();
     }
-    public void transfer(Class class1) {
-        if (notIntent) {
+    public void transfer(Class class1) {//переход в новую активность
+        if (notIntent) {//чтобы не создавалось лишних активностей, нельзя вызвать более одного раза
             notIntent = false;
             Intent intent = new Intent(this, class1);
             startActivity(intent);
@@ -106,13 +108,13 @@ public class UniActivity extends Activity {
     public String getPrice(long s) {//масштабирование цены
         String newa = "" + s;
         if (newa.length() > 12)
-            newa = newa.substring(0, newa.length() - 12) + "T";
+            newa = newa.substring(0, newa.length() - 12) + "T";//триллионы
         else if (newa.length() > 9)
-            newa = newa.substring(0, newa.length() - 9) + "B";
+            newa = newa.substring(0, newa.length() - 9) + "B";//миллиарды(billions)
         else if (newa.length() > 6)
-            newa = newa.substring(0, newa.length() - 6) + "M";
+            newa = newa.substring(0, newa.length() - 6) + "M";//миллионы
         else if (newa.length() > 3)
-            newa = newa.substring(0, newa.length() - 3) + "K";
+            newa = newa.substring(0, newa.length() - 3) + "K";//тысячи(k - kilo)
 
         return newa;
     }

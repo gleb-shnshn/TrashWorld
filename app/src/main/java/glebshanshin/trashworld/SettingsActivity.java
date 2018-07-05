@@ -12,21 +12,21 @@ public class SettingsActivity extends UniActivity {
         setContentView(R.layout.settings_main);
     }
 
-    public void statistics(View view) {//переход в класс статистики
+    public void statistics(View view) {
         transfer(StatisticsActivity.class);
-    }
+    }//переход в класс статистики
 
-    public void toMenu(View view) {//переход в главное меню
+    public void toMenu(View view) {
         transfer(MainActivity.class);
-    }
+    }//переход в главное меню
 
-    public void promo(View view) {//переход в активность промо-кодов
+    public void promo(View view) {
         transfer(PromoActivity.class);
-    }
+    }//переход в активность промо-кодов
 
-    public void music(View view) {//переход в активность с музыкой
+    public void music(View view) {
         transfer(MusicActivity.class);
-    }
+    }//переход в активность с настройкой музыки
 
     public void toInfo(View view) {//показ информации
         clickPlayer.start();

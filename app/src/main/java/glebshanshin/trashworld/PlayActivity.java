@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -14,8 +13,6 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.kyleduo.blurpopupwindow.library.BlurPopupWindow;
 
 public class PlayActivity extends UniActivity implements OnTouchListener {
     long mills = 500L;
@@ -111,14 +108,14 @@ public class PlayActivity extends UniActivity implements OnTouchListener {
     public void game() {//метод для проверки правильности выбора сектора
         if (tag.equals(choice)) {
             if (Integer.parseInt(id) == 19 || Integer.parseInt(id) == 15)//появление фактов
-                new UniPopup.Builder(PlayActivity.this, getString(getResources().getIdentifier("fact" + ((int) (Math.random() * 5) + 1), "string", getPackageName())), true).build().show();
+                new UniPopup.Builder(PlayActivity.this, getString(getResources().getIdentifier("fact" + ((int) (Math.random() * 19) + 1), "string", getPackageName())), true).build().show();
             increaseTSH(Adder);
             incCounter(choice);
         } else {
             vibrator.vibrate(mills);//вибрация при неправильном выборе
             mistake++;
             //показ сообщения об ошибке
-            new UniPopup.Builder(PlayActivity.this, getString(getResources().getIdentifier(tag, "string", getPackageName())), false).build().show();
+            new UniPopup.Builder(PlayActivity.this, getString(R.string.category)+" "+getString(getResources().getIdentifier(tag, "string", getPackageName())), false).build().show();
         }
         choice = "null";
         newTrash();
@@ -162,11 +159,11 @@ public class PlayActivity extends UniActivity implements OnTouchListener {
 
     public void newTrash() {//генерация нового мусора
         int id1 = ((int) (Math.random() * 32) + 1);
-        if (id1 == Integer.parseInt(id)) {
+        if (id1 == Integer.parseInt(id)) {//если одинаковый мусор то прибавляем два к номеру мусора
             id1 = id1 + 2;
-        }
-        if (id1 > 33) {
-            id1 = id1 - 5;
+            if (id1 > 33) {// если после этого номер больше чем количество мусора, то отнимаем пять
+                id1 = id1 - 5;
+            }
         }
         id = id1 + "";
         tag = getTag(id);
@@ -186,7 +183,6 @@ public class PlayActivity extends UniActivity implements OnTouchListener {
         setContentView(R.layout.play_main);
         init1();
         //масштабирование шрифтов
-        scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
         TSHv.setTextSize(scale * 65f);
         TSHsv.setTextSize(scale * 65f);
         initTSHs();

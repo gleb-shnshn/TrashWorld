@@ -107,13 +107,13 @@ public class StorageActivity extends UniActivity {
         transfer(StorageActivity.class);
     }
 
-    public void reload(View view) {//обновляем активность тем самым запуская проверку с сервером
+    public void reload(View view) {
         transfer(StorageActivity.class);
-    }
+    }//обновляем активность тем самым запуская проверку с сервером
 
-    public void toBack(View view) {//переход в класс промо-кодов
+    public void toBack(View view) {
         transfer(PromoActivity.class);
-    }
+    }//переход в класс промо-кодов
 
     public void show1(View view) {//по нажатию кнопку
         if (code1.equals("0")) {//если код не существует переход к активности создания кода

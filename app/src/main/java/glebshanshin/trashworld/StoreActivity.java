@@ -23,7 +23,14 @@ public class StoreActivity extends UniActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.store_main);
-        scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
+        initText();//инициализация TextView
+        setTextSize();//установка размеров шрифтов
+        updateTSH();//обновление баланса
+        updatePRICE("all"); //обновление цен в магазине
+        updateBlocked();//обновление недоступных товаров
+    }
+
+    public void initText() {
         priceman1 = findViewById(R.id.price1man);
         pricecar1 = findViewById(R.id.price1car);
         pricerobot1 = findViewById(R.id.price1robot);
@@ -41,13 +48,9 @@ public class StoreActivity extends UniActivity {
         countrobot = findViewById(R.id.countrobot);
         countfactory = findViewById(R.id.countfactory);
         TSHv = findViewById(R.id.TSH);
-        setTextSize();
-        updateTSH();
-        updatePRICE("all");
-        updateBlocked();
     }
 
-    private void updateBlocked() {
+    private void updateBlocked() {//установка "серых" значков для всего и потом установка оранжевых на доступное
         ((ImageView) (findViewById(R.id.m1))).setImageDrawable(getDrawable(R.drawable.smartst1b));
         ((ImageView) (findViewById(R.id.m10))).setImageDrawable(getDrawable(R.drawable.smartst10b));
         ((ImageView) (findViewById(R.id.m50))).setImageDrawable(getDrawable(R.drawable.smartst50b));
@@ -101,7 +104,7 @@ public class StoreActivity extends UniActivity {
 
     public String getPrice(long s) {
         return super.getPrice(s) + " TSH";
-    }
+    }//добавление к масштабировании цены название валюты
 
     private void updatePRICE(String what) {//обновление цен и количества
         switch (what) {
@@ -140,7 +143,7 @@ public class StoreActivity extends UniActivity {
                 pricefactory50.setText(getPrice(get(50, (factory + 1) * 100, 100)));
                 break;
         }
-        switch (what) {
+        switch (what) {//обновление количества
             case "all":
                 countman.setText(man + s);
                 countcar.setText(car + s);

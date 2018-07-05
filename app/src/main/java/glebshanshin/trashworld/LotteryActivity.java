@@ -18,7 +18,8 @@ public class LotteryActivity extends UniActivity {
     Button btn, back;
     ImageView img;
     long obj;
-    private boolean isOpen = false, isBack = false;
+    boolean isOpen = false, isBack = false;//флаги для проверки доситупна ли кнопка пропустить и кнопка назад
+    Random random = new Random();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,88 +28,99 @@ public class LotteryActivity extends UniActivity {
         sc = findViewById(R.id.scratch_view);
         String got = getIntent().getExtras().getString("1");
         sc.setScratchDrawable(getDrawable(getResources().getIdentifier(got, "drawable", getPackageName())));
-        Random random = new Random();
-        if (got.equals("silverl")) {//если серебряная лотерейка
-            img = findViewById(R.id.img);
-            obj = random.nextInt(4) + 1;
-            switch ((int) obj) {//установка случайного предмета
-                case 1:
-                    img.setImageDrawable(getDrawable(R.drawable.man));
-                    break;
-                case 2:
-                    img.setImageDrawable(getDrawable(R.drawable.car));
-                    break;
-                case 3:
-                    img.setImageDrawable(getDrawable(R.drawable.robot));
-                    break;
-                case 4:
-                    img.setImageDrawable(getDrawable(R.drawable.factory));
-                    break;
-            }
-        } else if (got.equals("bronzel")) {//если бронзовая лотерейка
-            long nprice = (TSH / 10) + 1000;
-            obj = (long) (random.nextFloat() * nprice + nprice / 2);
-            tsh = findViewById(R.id.TSH);
-            tsh.setText(getPrice(obj) + "\nTSH");//установка приза
+        if (got.equals("bronzel")) {//если бронзовая лотерейка
+            ifBronze();
+        } else if (got.equals("silverl")) {//если серебряная лотерейка
+            ifSilver();
         } else if (got.equals("goldl")) {//если золотая лотерейка
-            img = findViewById(R.id.img);
-            obj = random.nextInt(6) + 5;
-            switch ((int) obj) {//установка случайного бонуса
-                case 5:
-                    glassb = m(glassb) + 1;
-                    img.setImageDrawable(getDrawable(getResources().getIdentifier("glass" + glassb, "drawable", getPackageName())));
-                    update("glassb", glassb);
-                    break;
-                case 6:
-                    metalb = m(metalb) + 1;
-                    img.setImageDrawable(getDrawable(getResources().getIdentifier("metal" + metalb, "drawable", getPackageName())));
-                    update("metalb", metalb);
-                    break;
-                case 7:
-                    paperb = m(paperb) + 1;
-                    img.setImageDrawable(getDrawable(getResources().getIdentifier("paper" + paperb, "drawable", getPackageName())));
-                    update("paperb", paperb);
-                    break;
-                case 8:
-                    organicb = m(organicb) + 1;
-                    img.setImageDrawable(getDrawable(getResources().getIdentifier("organic" + organicb, "drawable", getPackageName())));
-                    update("organicb", organicb);
-                    break;
-                case 9:
-                    notrecycleb = m(notrecycleb) + 1;
-                    img.setImageDrawable(getDrawable(getResources().getIdentifier("notrecycle" + notrecycleb, "drawable", getPackageName())));
-                    update("notrecycleb", notrecycleb);
-                    break;
-                case 10:
-                    plasticb = m(plasticb) + 1;
-                    img.setImageDrawable(getDrawable(getResources().getIdentifier("plastic" + plasticb, "drawable", getPackageName())));
-                    update("plasticb", plasticb);
-                    break;
-
-            }
-            obj = 0;
+            ifGold();
         }
         btn = findViewById(R.id.button);
         back = findViewById(R.id.first);
-        btn.setBackgroundColor(getResources().getColor(R.color.alpha1));
-        back.setBackgroundColor(getResources().getColor(R.color.alpha1));
+        btn.setAlpha(0);
+        back.setAlpha(0);
         sc.setScratchWidth(150f);
         sc.setOnScratchListener(new ScratchCard.OnScratchListener() {
             @Override
             public void onScratch(ScratchCard scratchCard, float visiblePercent) {
                 if (visiblePercent >= 0.7) {//появление кнопки пропустить
                     isOpen = true;
-                    btn.setBackgroundDrawable(getResources().getDrawable(R.drawable.smartskip));
+                    btn.setAlpha(1);
                 }
                 if (visiblePercent >= 0.99) {//появление кнопки назад
                     isOpen = false;
                     sc.setAlpha(0);
-                    btn.setBackgroundColor(getResources().getColor(R.color.alpha1));
-                    back.setBackgroundDrawable(getResources().getDrawable(R.drawable.smartback));
+                    btn.setAlpha(0);//исчезание кнопки пропустить
+                    back.setAlpha(1);
                     isBack = true;
                 }
             }
         });
+    }
+
+    private void ifGold() {
+        img = findViewById(R.id.img);
+        obj = random.nextInt(6) + 5;
+        switch ((int) obj) {//установка случайного бонуса
+            case 5://стекло
+                glassb = m(glassb) + 1;
+                img.setImageDrawable(getDrawable(getResources().getIdentifier("glass" + glassb, "drawable", getPackageName())));
+                update("glassb", glassb);
+                break;
+            case 6://металл
+                metalb = m(metalb) + 1;
+                img.setImageDrawable(getDrawable(getResources().getIdentifier("metal" + metalb, "drawable", getPackageName())));
+                update("metalb", metalb);
+                break;
+            case 7://бумага
+                paperb = m(paperb) + 1;
+                img.setImageDrawable(getDrawable(getResources().getIdentifier("paper" + paperb, "drawable", getPackageName())));
+                update("paperb", paperb);
+                break;
+            case 8://органика
+                organicb = m(organicb) + 1;
+                img.setImageDrawable(getDrawable(getResources().getIdentifier("organic" + organicb, "drawable", getPackageName())));
+                update("organicb", organicb);
+                break;
+            case 9://электро
+                notrecycleb = m(notrecycleb) + 1;
+                img.setImageDrawable(getDrawable(getResources().getIdentifier("notrecycle" + notrecycleb, "drawable", getPackageName())));
+                update("notrecycleb", notrecycleb);
+                break;
+            case 10://пластик
+                plasticb = m(plasticb) + 1;
+                img.setImageDrawable(getDrawable(getResources().getIdentifier("plastic" + plasticb, "drawable", getPackageName())));
+                update("plasticb", plasticb);
+                break;
+
+        }
+        obj = 0;
+    }
+
+    private void ifBronze() {
+        long nprice = (TSH / 10) + 1000;
+        obj = (long) (random.nextFloat() * nprice + nprice / 2);
+        tsh = findViewById(R.id.TSH);
+        tsh.setText(getPrice(obj) + "\nTSH");//установка приза
+    }
+
+    private void ifSilver() {
+        img = findViewById(R.id.img);
+        obj = random.nextInt(4) + 1;
+        switch ((int) obj) {//установка случайного предмета
+            case 1://уборщик
+                img.setImageDrawable(getDrawable(R.drawable.man));
+                break;
+            case 2://мусоровоз
+                img.setImageDrawable(getDrawable(R.drawable.car));
+                break;
+            case 3://робот
+                img.setImageDrawable(getDrawable(R.drawable.robot));
+                break;
+            case 4://завод
+                img.setImageDrawable(getDrawable(R.drawable.factory));
+                break;
+        }
     }
 
     private int m(int in) {//проверка является ли максимумом
@@ -129,8 +141,8 @@ public class LotteryActivity extends UniActivity {
             clickPlayer.start();
             isOpen = false;
             sc.setAlpha(0);
-            btn.setBackgroundColor(getResources().getColor(R.color.alpha1));
-            back.setBackgroundDrawable(getResources().getDrawable(R.drawable.smartback));
+            btn.setAlpha(0);//исчезание кнопки пропустить
+            back.setAlpha(1);//появление кнопки назад
             isBack = true;
         }
     }
@@ -139,7 +151,7 @@ public class LotteryActivity extends UniActivity {
         if ((isBack) && (notIntent)) {
             notIntent = false;
             Intent intent = new Intent(LotteryActivity.this, LotteryStoreActivity.class);
-            intent.putExtra("prize", obj + "");
+            intent.putExtra("prize", obj + "");//передача приза в активности магазина лотереек
             startActivity(intent);
             finish1();
         }
@@ -151,7 +163,7 @@ public class LotteryActivity extends UniActivity {
         if ((isBack) && (notIntent)) {
             notIntent = false;
             Intent intent = new Intent(LotteryActivity.this, LotteryStoreActivity.class);
-            intent.putExtra("prize", obj + "");
+            intent.putExtra("prize", obj + "");//передача приза в активности магазина лотереек
             startActivity(intent);
             finish1();
             super.onBackPressed();

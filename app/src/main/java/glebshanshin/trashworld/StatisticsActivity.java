@@ -17,7 +17,6 @@ public class StatisticsActivity extends UniActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.statistics_main);
         //масштабирование шрифта
-        scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
         TSH = TSH + ((2 + (man - 1)) * man / 2) + ((20 + 10 * (car - 1)) * car / 2) + ((100 + 50 * (robot - 1)) * robot / 2) + ((200 + 100 * (factory - 1)) * factory / 2);
         init1();
         fillall();
@@ -83,10 +82,11 @@ public class StatisticsActivity extends UniActivity {
         mistakev.setTextSize(scale * 65f);
     }
 
-    public void toSettings(View view) {//переход в активность настроек
+    public void toSettings(View view) {
         transfer(SettingsActivity.class);
-    }
+    }//переход в активность настроек
 
+    //возврат в настройки через встроенную кнопку назад
     @Override
     public void onBackPressed() {
         transfer(SettingsActivity.class);

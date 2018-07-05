@@ -40,9 +40,9 @@ public class BonusActivity extends UniActivity {
         organic.setImageDrawable(getDrawable(getResources().getIdentifier("organic" + organicb, "drawable", getPackageName())));
     }
 
-    public void toAchievements(View view) {//переход в класс Достижений
+    public void toAchievements(View view) {
         transfer(AchievementsActivity.class);
-    }
+    }//переход в класс Достижений
 
     public void reload(View view) {//кнопка обнуления бонусов при достижении 3 уровня у всех бонусов
         if (flag) {

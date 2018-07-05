@@ -6,9 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 public class LotteryStoreActivity extends UniActivity {
     Intent intent;
@@ -20,7 +17,6 @@ public class LotteryStoreActivity extends UniActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lotterystore_main);
-        scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
         TSHv = findViewById(R.id.TSH);
         TSHv.setTextSize(scale * 75f);//масштабирование шрифта
         //инициализация TextView
@@ -74,6 +70,7 @@ public class LotteryStoreActivity extends UniActivity {
         nprice = (TSH / 10) + 1000;// 1/10 баланса + 1000
         priceB.setText("Цена: " + getPrice(nprice) + " TSH");
         text.setText(m + getPrice(nprice / 2) + " до " + getPrice((long) (nprice * 1.5)));
+        //установка заблокированных(серых) иконок
         if (TSH < nprice)
             findViewById(R.id.buybronze).setBackground(getDrawable(R.drawable.smartbutstoreb));
         if (TSH < price)
