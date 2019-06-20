@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.percentlayout.widget.PercentRelativeLayout;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -39,37 +42,43 @@ public class StorageActivity extends UniActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        checkExistingOfAll();//проверка на наличие в серверной базе данных обоих qr кодов
+    }
+
+    private void initStorageLayout() {
         setContentView(R.layout.storage_main);
         text1 = findViewById(R.id.text1);
         text2 = findViewById(R.id.text2);
         lin1 = findViewById(R.id.lin1);
         lin2 = findViewById(R.id.lin2);
-        checkexistingall();//проверка на наличие в серверной базе данных обоих qr кодов
     }
 
-    private void checkexistingall() {
+    private void checkExistingOfAll() {
         //проверка по отдельности
+        initStorageLayout();
         if (!code1.equals("0")) {
-            checkexisting(code1, 1);
+            checkExisting(code1, 1);
         }
         if (!code2.equals("0")) {
-            checkexisting(code2, 2);
+            checkExisting(code2, 2);
         }
         if (code1.equals("0")) {
             lin1.setBackground(getDrawable(R.drawable.emptyqr));
+            text1.setText("");
         } else {
             lin1.setBackground(getDrawable(R.drawable.lookqr));
             text1.setText(Integer.parseInt(code1.substring(2, 5)) + code1.substring(5, 6) + "\nTSH");
         }
         if (code2.equals("0")) {
             lin2.setBackground(getDrawable(R.drawable.emptyqr));
+            text2.setText("");
         } else {
             lin2.setBackground(getDrawable(R.drawable.lookqr));
             text2.setText(Integer.parseInt(code2.substring(2, 5)) + code2.substring(5, 6) + "\nTSH");
         }
     }
 
-    private void checkexisting(final String QR, final int num) {
+    private void checkExisting(final String QR, final int num) {
         HashMap<String, String> postDataParams = new HashMap<String, String>();
         postDataParams.put("code", QR);
         Call<Object> call = che.performPostCall(postDataParams);//отправка запроса к серверу на проверку
@@ -98,11 +107,11 @@ public class StorageActivity extends UniActivity {
             code2 = "0";
         }
         update();
-        transfer(StorageActivity.class);
+        checkExistingOfAll();
     }
 
     public void reload(View view) {
-        transfer(StorageActivity.class);
+        checkExistingOfAll();
     }//обновляем активность тем самым запуская проверку с сервером
 
     public void toBack(View view) {
@@ -110,31 +119,28 @@ public class StorageActivity extends UniActivity {
     }//переход в класс промо-кодов
 
     public void show1(View view) {//по нажатию кнопку
-        if (code1.equals("0")) {//если код не существует переход к активности создания кода
+        showExistingOrNot(1);
+    }
+
+    public void showExistingOrNot(int number) {
+        if ((number == 1 && code1.equals("0")) || (number == 2) && code2.equals("0")) {
+            //если код не существует переход к активности создания кода
             if (notIntent) {
                 notIntent = false;
                 Intent intent = new Intent(StorageActivity.this, QRActivity.class);
-                intent.putExtra("code", "1");
+                intent.putExtra("code", number);
+                newClass = QRActivity.class;
                 startActivity(intent);
                 finish1();
             }
         } else {//если существует то показ кода
-            show(1);
+            show(number);
         }
+
     }
 
     public void show2(View view) {
-        if (code2.equals("0")) {//если код не существует переход к активности создания кода
-            if (notIntent) {
-                notIntent = false;
-                Intent intent = new Intent(StorageActivity.this, QRActivity.class);
-                intent.putExtra("code", "2");
-                startActivity(intent);
-                finish1();
-            }
-        } else {//если существует то показ кода
-            show(2);
-        }
+        showExistingOrNot(2);
     }
 
     private void show(int i) {//показ кода
@@ -175,8 +181,7 @@ public class StorageActivity extends UniActivity {
     }
 
     public void Yes(View view) {//если согласился удалить
-        setContentView(R.layout.storage_main);
-        checkexistingall();
+        initStorageLayout();
         if (now == 1) {
             if (!code1.equals("0")) {
                 obDelete(code1);
@@ -198,7 +203,7 @@ public class StorageActivity extends UniActivity {
                 //удаление и обновление активности
                 delete(now);
                 decodeMoney(code);
-                transfer(StorageActivity.class);
+                checkExistingOfAll();
             }
 
             @Override
@@ -228,7 +233,7 @@ public class StorageActivity extends UniActivity {
     }
 
     public void No(View view) {//если не согласился удалять
-        transfer(StorageActivity.class);
+        checkExistingOfAll();
     }
 
     //переход в класс промо-кодов с помощью встроенной кнопки назад

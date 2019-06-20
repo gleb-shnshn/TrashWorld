@@ -124,10 +124,9 @@ public class QRActivity extends UniActivity {
             public void onResponse(Call<Object> call, Response<Object> response) {
                 if (notIntent) {
                     TSH -= money;
-                    if (getIntent().getStringExtra("code").equals("1")){
+                    if (getIntent().getIntExtra("code", 1) == 1) {
                         code1 = code;
-                    }
-                    else{
+                    } else {
                         code2 = code;
                     }
                     update();

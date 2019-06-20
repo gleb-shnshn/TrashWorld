@@ -3,7 +3,6 @@ package glebshanshin.trashworld;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -11,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.muddzdev.styleabletoast.StyleableToast;
 
-public class UniActivity extends AppCompatActivity {//Общая активность в которой описаны общие методы и поля
+abstract class UniActivity extends AppCompatActivity {//Общая активность в которой описаны общие методы и поля
     long factory, robot, car, man, TSH;
     int organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistake, trash, multi;
     int paperb, plasticb, metalb, organicb, notrecycleb, glassb;
@@ -96,14 +95,12 @@ public class UniActivity extends AppCompatActivity {//Общая активно�
         super.onStop();
         if ((newClass.getName()).equals(getClass().getName())) {
             App.getInstance().menuPlayer.pause();
-            Log.d("tokens", "stopped " + getClass().getName());
         }
     }
 
     @Override
     protected void onStart() {//включение фоновой музыки при включении приложения
         super.onStart();
-        Log.d("tokens", "started " + getClass().getName());
         App.getInstance().menuPlayer.start();
     }
 
