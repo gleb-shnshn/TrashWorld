@@ -1,4 +1,4 @@
-<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         app:layout_marginLeftPercent="5%"
         app:layout_marginTopPercent="2%" />
 
-    <android.support.percent.PercentRelativeLayout
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/s1"
         android:layout_alignParentEnd="true"
         android:background="@drawable/mea"
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             app:layout_marginRightPercent="10%"
             app:layout_widthPercent="100%" />
-    </android.support.percent.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
 
 
 
@@ -43,7 +43,7 @@
         android:id="@+id/imageView"
         android:layout_below="@id/s1"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/mini"
+        app:srcCompat="@drawable/mini"
         app:layout_aspectRatio="100%"
         app:layout_heightPercent="42%"
         app:layout_marginPercent="7%" />
@@ -82,4 +82,4 @@
         app:layout_heightPercent="13%"
         app:layout_aspectRatio="312%" />
 
-</android.support.percent.PercentRelativeLayout>
+</androidx.percentlayout.widget.PercentRelativeLayout>

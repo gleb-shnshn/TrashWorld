@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".StatisticsActivity">
 
-    <android.support.percent.PercentRelativeLayout
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/up"
         android:layout_alignParentEnd="true"
         android:background="@drawable/mea"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             app:layout_marginRightPercent="10%"
             app:layout_widthPercent="100%" />
-    </android.support.percent.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <Button
         android:id="@+id/back"
@@ -46,7 +46,7 @@
         app:layout_widthPercent="100%" />
 
 
-    <android.support.percent.PercentRelativeLayout
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/up1"
         android:layout_below="@id/ups"
         app:layout_heightPercent="14%"
@@ -55,7 +55,7 @@
 
         <ImageView
             android:id="@+id/trashstat"
-            android:src="@drawable/trashstat"
+            app:srcCompat="@drawable/trashstat"
             app:layout_heightPercent="100%"
             app:layout_widthPercent="25%" />
 
@@ -73,7 +73,7 @@
         <ImageView
             android:id="@+id/mistakestat"
             android:layout_toEndOf="@id/trash"
-            android:src="@drawable/mistakestat"
+            app:srcCompat="@drawable/mistakestat"
             app:layout_heightPercent="100%"
             app:layout_widthPercent="25%" />
 
@@ -88,9 +88,9 @@
             android:layout_height="wrap_content"
             app:layout_widthPercent="25%" />
 
-    </android.support.percent.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
 
-    <android.support.percent.PercentRelativeLayout
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/up2"
         android:layout_below="@id/up1"
         app:layout_heightPercent="14%"
@@ -99,7 +99,7 @@
 
         <ImageView
             android:id="@+id/organicstat"
-            android:src="@drawable/organicstat"
+            app:srcCompat="@drawable/organicstat"
             app:layout_heightPercent="100%"
             app:layout_widthPercent="25%" />
 
@@ -117,7 +117,7 @@
         <ImageView
             android:id="@+id/notrecyclestat"
             android:layout_toEndOf="@id/organic"
-            android:src="@drawable/notrecyclestat"
+            app:srcCompat="@drawable/notrecyclestat"
             app:layout_heightPercent="100%"
             app:layout_widthPercent="25%" />
 
@@ -131,9 +131,9 @@
             app:font_name="nyeti.ttf"
             android:layout_height="wrap_content"
             app:layout_widthPercent="25%" />
-    </android.support.percent.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
 
-    <android.support.percent.PercentRelativeLayout
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/up3"
         android:layout_below="@id/up2"
         app:layout_heightPercent="14%"
@@ -142,7 +142,7 @@
 
         <ImageView
             android:id="@+id/paperstat"
-            android:src="@drawable/paperstat"
+            app:srcCompat="@drawable/paperstat"
             app:layout_heightPercent="100%"
             app:layout_widthPercent="25%" />
 
@@ -160,7 +160,7 @@
         <ImageView
             android:id="@+id/glassstat"
             android:layout_toEndOf="@id/paper"
-            android:src="@drawable/glassstat"
+            app:srcCompat="@drawable/glassstat"
             app:layout_heightPercent="100%"
             app:layout_widthPercent="25%" />
 
@@ -174,9 +174,9 @@
             app:font_name="nyeti.ttf"
             android:layout_height="wrap_content"
             app:layout_widthPercent="25%" />
-    </android.support.percent.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
 
-    <android.support.percent.PercentRelativeLayout
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/up4"
         android:layout_below="@id/up3"
         app:layout_heightPercent="14%"
@@ -185,7 +185,7 @@
 
         <ImageView
             android:id="@+id/plasticstat"
-            android:src="@drawable/plasticstat"
+            app:srcCompat="@drawable/plasticstat"
             app:layout_heightPercent="100%"
             app:layout_widthPercent="25%" />
 
@@ -203,7 +203,7 @@
         <ImageView
             android:id="@+id/metalstat"
             android:layout_toEndOf="@id/plastic"
-            android:src="@drawable/metalstat"
+            app:srcCompat="@drawable/metalstat"
             app:layout_heightPercent="100%"
             app:layout_widthPercent="25%" />
 
@@ -217,7 +217,7 @@
             app:font_name="nyeti.ttf"
             android:layout_height="wrap_content"
             app:layout_widthPercent="25%" />
-    </android.support.percent.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <Space
         android:id="@+id/up5"
@@ -234,4 +234,4 @@
         app:layout_aspectRatio="312%"
         app:layout_heightPercent="12%" />
 
-</android.support.percent.PercentRelativeLayout>
+</androidx.percentlayout.widget.PercentRelativeLayout>

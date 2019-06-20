@@ -1,7 +1,5 @@
 package glebshanshin.trashworld;
 
-import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +13,7 @@ import com.google.gson.GsonBuilder;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
-import com.muddzdev.styleabletoastlibrary.StyleableToast;
+import com.muddzdev.styleabletoast.StyleableToast;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
@@ -39,7 +37,7 @@ public class QRActivity extends UniActivity {
     DiscreteSeekBar seekbar;
     private insert ins = retrofit.create(insert.class);
     TextView textView;
-    boolean notBlock=true;
+    boolean notBlock = true;
     boolean qu = false;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +73,7 @@ public class QRActivity extends UniActivity {
     }
 
     public void toBack(View view) {
-       transfer(StorageActivity.class);
+        transfer(StorageActivity.class);
     }//переход в класс хранения кодов
 
     //включение и отключение музыки при выключении и выключении приложения
@@ -88,7 +86,7 @@ public class QRActivity extends UniActivity {
     }
 
     public void Buy(View view) {//покупка нового кода
-        clickPlayer.start();
+        App.getInstance().clickPlayer.start();
         long value = seekbar.getProgress();
         String code;
         long money;
@@ -108,13 +106,13 @@ public class QRActivity extends UniActivity {
         if (TSH >= money) {
             generate(code, money);//если хватает денег генерация кода
         } else {
-            toast(money - TSH);
+            showToast(money - TSH);
         }
     }
 
     private void generate(final String qr, final long money) {
         setContentView(R.layout.show_main);//включение разметки показа
-        notBlock=false;//заблокировать переход назад
+        notBlock = false;//заблокировать переход назад
         final Button button8 = findViewById(R.id.button8);
         code = "QR" + qr + UUID.randomUUID().toString().substring(0, 7) + "QR";//генерация кода
         button8.setAlpha(0);
@@ -126,7 +124,14 @@ public class QRActivity extends UniActivity {
             public void onResponse(Call<Object> call, Response<Object> response) {
                 if (notIntent) {
                     TSH -= money;
-                    update(db);
+                    if (getIntent().getStringExtra("code").equals("1")){
+                        code1 = code;
+                    }
+                    else{
+                        code2 = code;
+                    }
+                    update();
+
                     try {//показ кода
                         BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
                         Bitmap bitmap = barcodeEncoder.encodeBitmap(code, BarcodeFormat.QR_CODE, 400, 400);
@@ -137,7 +142,7 @@ public class QRActivity extends UniActivity {
                     }
                     button8.setAlpha(1);
                     qu = true;
-                    notBlock=true;
+                    notBlock = true;
                 }
             }
 
@@ -148,13 +153,6 @@ public class QRActivity extends UniActivity {
             }
         });
 
-    }
-
-    private void update(SQLiteDatabase db) { //обновление базы данных при переходе в другую активность
-        ContentValues newValues = new ContentValues();
-        newValues.put("TSH", TSH);
-        newValues.put("qr" + getIntent().getStringExtra("code"), code);
-        db.update("Data", newValues, "_id = 1", null);
     }
 
     public void reload(View view) {//переход в класс хранения промо-кодов

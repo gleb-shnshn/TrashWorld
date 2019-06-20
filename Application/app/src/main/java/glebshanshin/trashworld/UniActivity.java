@@ -1,28 +1,24 @@
 package glebshanshin.trashworld;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.media.MediaPlayer;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
-import com.muddzdev.styleabletoastlibrary.StyleableToast;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class UniActivity extends Activity {//Общая активность в которой описаны общие методы и поля
+import com.muddzdev.styleabletoast.StyleableToast;
+
+public class UniActivity extends AppCompatActivity {//Общая активность в которой описаны общие методы и поля
     long factory, robot, car, man, TSH;
     int organicc, plasticc, metalc, glassc, notrecyclec, paperc, mistake, trash, multi;
     int paperb, plasticb, metalb, organicb, notrecycleb, glassb;
     float music, effects, scale;
     String code1, code2;
-    StyleableToast p;
-    SQLiteDatabase db;
-    DBHelper dbHelper;
-    Cursor cursor;
-    MediaPlayer menuPlayer, clickPlayer;//плееры отдельно для кликов и фоновой музыки
+    StyleableToast toast;
+    Class newClass;
     boolean notIntent = true;
 
     @Override
@@ -30,76 +26,105 @@ public class UniActivity extends Activity {//Общая активность в 
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        dbHelper = new DBHelper(this);
-        db = dbHelper.getWritableDatabase();
-        init(db);//получение данных из базы данных
-        clickPlayer = MediaPlayer.create(this, R.raw.click);//настройка плеера для кликов
-        clickPlayer.setVolume(effects, effects);
+        init();//получение данных из базы данных
+        newClass = getClass();
     }
 
-    public void init(SQLiteDatabase db) {
-        cursor = db.query("Data", null, null, null, null, null, null);
-        cursor.moveToFirst();
-        TSH = cursor.getLong(1);//очки TSH
-        man = cursor.getLong(2);//количество уборщиков
-        car = cursor.getLong(3);//количество мусоровозов
-        robot = cursor.getLong(4);//количество роботов
-        factory = cursor.getLong(5);//количество заводов
-        paperc = cursor.getInt(6);//количество отсортированного мусора из категории бумага
-        plasticc = cursor.getInt(7);//количество отсортированного мусора из категории пластик
-        metalc = cursor.getInt(8);//количество отсортированного мусора из категории металл
-        organicc = cursor.getInt(9);//количество отсортированного мусора из категории органика
-        notrecyclec = cursor.getInt(10);//количество отсортированного мусора из категории электро
-        glassc = cursor.getInt(11);//количество отсортированного мусора из категории стекло
+    public void update() {
+        SharedPreferences sp = App.getInstance().getStorage();
+        SharedPreferences.Editor ed = sp.edit();
+        ed.putLong("TSH", TSH);//очки TSH
+        ed.putLong("man", man);//количество уборщиков
+        ed.putLong("car", car);//количество мусоровозов
+        ed.putLong("robot", robot);//количество роботов
+        ed.putLong("factory", factory);//количество заводов
+        ed.putInt("paperc", paperc);//количество отсортированного мусора из категории бумага
+        ed.putInt("plasticc", plasticc);//количество отсортированного мусора из категории пластик
+        ed.putInt("metalc", metalc);//количество отсортированного мусора из категории металл
+        ed.putInt("organicc", organicc);//количество отсортированного мусора из категории органика
+        ed.putInt("notrecyclec", notrecyclec);//количество отсортированного мусора из категории электро
+        ed.putInt("glassc", glassc);//количество отсортированного мусора из категории стекло
+        ed.putInt("mistake", mistake);//количество ошибок
+        ed.putInt("paperb", paperb);//бонус для категории бумага
+        ed.putInt("plasticb", plasticb);//бонус для категории пластик
+        ed.putInt("metalb", metalb);//бонус для категории металл
+        ed.putInt("organicb", organicb);//бонус для категории органика
+        ed.putInt("notrecycleb", notrecycleb);//бонус для категории электро
+        ed.putInt("glassb", glassb);//бонус для категории стекло
+        ed.putInt("multi", multi);//общий бонус(появляется по достижении 3 уровня по отдельности)
+        ed.putString("code1", code1);//первый qr код
+        ed.putString("code2", code2);//второй qr кол
+        ed.putFloat("music", music);//настройка громкости фоновой музыки
+        ed.putFloat("effects", effects);//настройка громкости кликов
+        ed.apply();
+    }
+
+    public void init() {
+        SharedPreferences sp = App.getInstance().getStorage();
+        TSH = sp.getLong("TSH", 0);//очки TSH
+        man = sp.getLong("man", 0);//количество уборщиков
+        car = sp.getLong("car", 0);//количество мусоровозов
+        robot = sp.getLong("robot", 0);//количество роботов
+        factory = sp.getLong("factory", 0);//количество заводов
+        paperc = sp.getInt("paperc", 0);//количество отсортированного мусора из категории бумага
+        plasticc = sp.getInt("plasticc", 0);//количество отсортированного мусора из категории пластик
+        metalc = sp.getInt("metalc", 0);//количество отсортированного мусора из категории металл
+        organicc = sp.getInt("organicc", 0);//количество отсортированного мусора из категории органика
+        notrecyclec = sp.getInt("notrecyclec", 0);//количество отсортированного мусора из категории электро
+        glassc = sp.getInt("glassc", 0);//количество отсортированного мусора из категории стекло
         trash = plasticc + paperc + metalc + organicc + notrecyclec + glassc;//общее количество мусора
-        mistake = cursor.getInt(12);//количество ошибок
-        paperb = cursor.getInt(13);//бонус для категории бумага
-        plasticb = cursor.getInt(14);//бонус для категории пластик
-        metalb = cursor.getInt(15);//бонус для категории металл
-        organicb = cursor.getInt(16);//бонус для категории органика
-        notrecycleb = cursor.getInt(17);//бонус для категории электро
-        glassb = cursor.getInt(18);//бонус для категории стекло
-        multi = cursor.getInt(19);//общий бонус(появляется по достижении 3 уровня по отдельности)
-        code1 = cursor.getString(20);//первый qr код
-        code2 = cursor.getString(21);//второй qr кол
-        music = cursor.getFloat(22);//настройка громкости фоновой музыки
-        effects = cursor.getFloat(23);//настройка громкости кликов
+        mistake = sp.getInt("mistake", 0);//количество ошибок
+        paperb = sp.getInt("paperb", 1);//бонус для категории бумага
+        plasticb = sp.getInt("plasticb", 1);//бонус для категории пластик
+        metalb = sp.getInt("metalb", 1);//бонус для категории металл
+        organicb = sp.getInt("organicb", 1);//бонус для категории органика
+        notrecycleb = sp.getInt("notrecycleb", 1);//бонус для категории электро
+        glassb = sp.getInt("glassb", 1);//бонус для категории стекло
+        multi = sp.getInt("multi", 1);//общий бонус(появляется по достижении 3 уровня по отдельности)
+        code1 = sp.getString("code1", "0");//первый qr код
+        code2 = sp.getString("code2", "0");//второй qr кол
+        music = sp.getFloat("music", 1f);//настройка громкости фоновой музыки
+        effects = sp.getFloat("effects", 1f);//настройка громкости кликов
         scale = 1 / getResources().getDisplayMetrics().density * 0.5f + getWindowManager().getDefaultDisplay().getHeight() * getWindowManager().getDefaultDisplay().getWidth() * 0.0000001f;
         //показатель площади для масштабирования шрифтов
-        cursor.close();
+        App.getInstance().clickPlayer.setVolume(effects, effects);
+        App.getInstance().menuPlayer.setVolume(music, music);
     }
 
     @Override//выключение фоновой музыки при сворачивании и выключении экрана
     protected void onStop() {
         super.onStop();
-        menuPlayer.stop();
+        if ((newClass.getName()).equals(getClass().getName())) {
+            App.getInstance().menuPlayer.pause();
+            Log.d("tokens", "stopped " + getClass().getName());
+        }
     }
 
     @Override
     protected void onStart() {//включение фоновой музыки при включении приложения
         super.onStart();
-        menuPlayer = MediaPlayer.create(this, R.raw.menu);
-        menuPlayer.setVolume(music, music);
-        menuPlayer.setLooping(true);
-        menuPlayer.start();
+        Log.d("tokens", "started " + getClass().getName());
+        App.getInstance().menuPlayer.start();
     }
 
     public void finish1() { //отключение музыки при выходе из активности
-        menuPlayer.stop();
-        clickPlayer.start();
+        App.getInstance().clickPlayer.start();
         finish();
     }
-    public void toast(long a) {//вызов всплывающего сообщения при нехватке баланса
-        if (p != null)//удаление предыдущего сообщения чтобы не заспамлять
-            p.cancel();
-        StyleableToast t = StyleableToast.makeText(getApplicationContext(), "✘  Не хватает " + a + " TSH", Toast.LENGTH_SHORT, R.style.wrong1);
-        p = t;
+
+    public void showToast(long a) {//вызов всплывающего сообщения при нехватке баланса
+        if (toast != null)//удаление предыдущего сообщения чтобы не заспамлять
+            toast.cancel();
+        StyleableToast t = StyleableToast.makeText(getApplicationContext(), "✘  Не хватает " + a + " TSH", R.style.wrong1);
+        toast = t;
         t.show();
     }
-    public void transfer(Class class1) {//переход в новую активность
+
+    public void transfer(Class newClass) {//переход в новую активность
         if (notIntent) {//чтобы не создавалось лишних активностей, нельзя вызвать более одного раза
             notIntent = false;
-            Intent intent = new Intent(this, class1);
+            this.newClass = newClass;
+            Intent intent = new Intent(this, newClass);
             startActivity(intent);
             finish1();
         }

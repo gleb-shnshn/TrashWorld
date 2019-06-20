@@ -1,8 +1,6 @@
 package glebshanshin.trashworld;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -40,7 +38,10 @@ public class LotteryStoreActivity extends UniActivity {
     }
 
     private void checkPrize() {//проверка приза по дополнительным данным из Intent
-        long prize = Long.parseLong(getIntent().getExtras().getString("prize"));
+        String prizeString = getIntent().getStringExtra("prize");
+        if (prizeString == null)
+            return;
+        long prize = Long.parseLong(prizeString);
         if (prize <= 4) {
             switch ((int) prize) {
                 case 0:
@@ -61,6 +62,7 @@ public class LotteryStoreActivity extends UniActivity {
         } else {
             TSH += prize;
         }
+        update();
     }
 
     private void updatePrice() {//обновление цен
@@ -79,67 +81,40 @@ public class LotteryStoreActivity extends UniActivity {
             findViewById(R.id.buygold).setBackground(getDrawable(R.drawable.smartbutstoreb));
     }
 
-    private void update(SQLiteDatabase db) {//обновление базы данных при переходе в другую активность
-        ContentValues newValues = new ContentValues();
-        newValues.put("TSH", TSH);
-        newValues.put("man", man);
-        newValues.put("car", car);
-        newValues.put("robot", robot);
-        newValues.put("factory", factory);
-        db.update("Data", newValues, "_id = 1", null);
-    }
-
     private void updateTSH() {//обновление баланса
         String newa = getPrice(TSH);
         TSHv.setText(newa + " TSH ");
     }
 
     public void toStore(View view) {//переход в класс магазина
-        update(db);
+        update();
         transfer(StoreActivity.class);
     }
 
     public void buyBronze(View view) {//покупка бронзовой лотерейки
-        if (notIntent) {
-            if (TSH >= nprice) {
-                notIntent = false;
-                TSH -= nprice;
-                intent.putExtra("1", "bronzel");
-                update(db);
-                startActivity(intent);
-                finish1();
-            } else {
-                toast(nprice - TSH);
-            }
-        }
+        buyLottery("bronzel", nprice);
     }
 
     public void buySilver(View view) {//покупка серебряной лотерейки
-        if (notIntent) {
-            if (TSH >= price) {
-                notIntent = false;
-                TSH -= price;
-                intent.putExtra("1", "silverl");
-                update(db);
-                startActivity(intent);
-                finish1();
-            } else {
-                toast(price - TSH);
-            }
-        }
+        buyLottery("silverl", price);
     }
 
     public void buyGold(View view) {//покупка золотой лотерейки
+        buyLottery("goldl", 100000);
+    }
+
+    public void buyLottery(String name, long priceOfLottery) {
         if (notIntent) {
-            if (TSH >= 100000) {
+            if (TSH >= priceOfLottery) {
                 notIntent = false;
-                TSH -= 100000;
-                intent.putExtra("1", "goldl");
-                update(db);
+                TSH -= priceOfLottery;
+                intent.putExtra("lottery", name);
+                newClass = LotteryActivity.class;
+                update();
                 startActivity(intent);
                 finish1();
             } else {
-                toast(100000 - TSH);
+                showToast(priceOfLottery - TSH);
             }
         }
     }
@@ -147,7 +122,7 @@ public class LotteryStoreActivity extends UniActivity {
     //выход в магазин через встроенную кнопку назад
     @Override
     public void onBackPressed() {
-        update(db);
+        update();
         transfer(StoreActivity.class);
         super.onBackPressed();
     }

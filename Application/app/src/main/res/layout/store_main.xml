@@ -1,4 +1,4 @@
-<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -25,7 +25,7 @@
         app:layout_marginRightPercent="5%"
         app:layout_marginTopPercent="2.5%" />
 
-    <android.support.percent.PercentRelativeLayout
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/action"
         android:layout_alignTop="@id/tolotterystore"
         android:layout_centerHorizontal="true"
@@ -43,9 +43,9 @@
             android:textColor="#ffffff"
             android:textSize="25sp"
             app:font_name="nyeti.ttf" />
-    </android.support.percent.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
 
-    <android.support.percent.PercentRelativeLayout
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/man"
         android:paddingBottom="10dp"
         app:layout_heightPercent="21%"
@@ -55,7 +55,7 @@
         tools:context=".StoreActivity">
 
 
-        <android.support.percent.PercentRelativeLayout
+        <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/showman"
             android:layout_height="match_parent"
             app:layout_widthPercent="25%">
@@ -90,9 +90,9 @@
                 app:font_name="brody.ttf"
                 app:layout_heightPercent="20%" />
 
-        </android.support.percent.PercentRelativeLayout>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
 
-        <android.support.percent.PercentRelativeLayout
+        <androidx.percentlayout.widget.PercentRelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toEndOf="@id/showman">
@@ -155,7 +155,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="buyMan1"
-                    android:src="@drawable/smartst1b" />
+                    app:srcCompat="@drawable/smartst1b" />
 
                 <ImageView
                     android:id="@+id/m10"
@@ -163,7 +163,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:onClick="buyMan10"
-                    android:src="@drawable/smartst10b" />
+                    app:srcCompat="@drawable/smartst10b" />
 
                 <ImageView
                     android:id="@+id/m50"
@@ -171,14 +171,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="buyMan50"
-                    android:src="@drawable/smartst50b" />
+                    app:srcCompat="@drawable/smartst50b" />
             </LinearLayout>
 
-        </android.support.percent.PercentRelativeLayout>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
 
-    </android.support.percent.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
 
-    <android.support.percent.PercentRelativeLayout
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/car"
         android:layout_below="@id/man"
         android:orientation="horizontal"
@@ -189,7 +189,7 @@
         tools:context=".StoreActivity">
 
 
-        <android.support.percent.PercentRelativeLayout
+        <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/showcar"
             android:layout_height="match_parent"
             app:layout_widthPercent="25%">
@@ -226,9 +226,9 @@
                 app:font_name="brody.ttf"
                 app:layout_heightPercent="20%" />
 
-        </android.support.percent.PercentRelativeLayout>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
 
-        <android.support.percent.PercentRelativeLayout
+        <androidx.percentlayout.widget.PercentRelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toEndOf="@id/showcar">
@@ -291,7 +291,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="buyCar1"
-                    android:src="@drawable/smartst1b" />
+                    app:srcCompat="@drawable/smartst1b" />
 
                 <ImageView
                     android:id="@+id/c10"
@@ -299,7 +299,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:onClick="buyCar10"
-                    android:src="@drawable/smartst10b" />
+                    app:srcCompat="@drawable/smartst10b" />
 
                 <ImageView
                     android:id="@+id/c50"
@@ -307,15 +307,15 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="buyCar50"
-                    android:src="@drawable/smartst50b" />
+                    app:srcCompat="@drawable/smartst50b" />
             </LinearLayout>
 
 
-        </android.support.percent.PercentRelativeLayout>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
 
-    </android.support.percent.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
 
-    <android.support.percent.PercentRelativeLayout
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/robot"
         android:layout_below="@id/car"
         android:orientation="horizontal"
@@ -326,7 +326,7 @@
         tools:context=".StoreActivity">
 
 
-        <android.support.percent.PercentRelativeLayout
+        <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/showrobot"
             android:layout_height="match_parent"
             app:layout_widthPercent="25%">
@@ -361,9 +361,9 @@
                 app:font_name="brody.ttf"
                 app:layout_heightPercent="20%" />
 
-        </android.support.percent.PercentRelativeLayout>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
 
-        <android.support.percent.PercentRelativeLayout
+        <androidx.percentlayout.widget.PercentRelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toEndOf="@id/showrobot">
@@ -426,7 +426,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="buyRobot1"
-                    android:src="@drawable/smartst1b" />
+                    app:srcCompat="@drawable/smartst1b" />
 
                 <ImageView
                     android:id="@+id/r10"
@@ -434,7 +434,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:onClick="buyRobot10"
-                    android:src="@drawable/smartst10b" />
+                    app:srcCompat="@drawable/smartst10b" />
 
                 <ImageView
                     android:id="@+id/r50"
@@ -442,14 +442,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="buyRobot50"
-                    android:src="@drawable/smartst50b" />
+                    app:srcCompat="@drawable/smartst50b" />
             </LinearLayout>
 
-        </android.support.percent.PercentRelativeLayout>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
 
-    </android.support.percent.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
 
-    <android.support.percent.PercentRelativeLayout
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/factory"
         android:layout_below="@id/robot"
         android:orientation="horizontal"
@@ -460,7 +460,7 @@
         tools:context=".StoreActivity">
 
 
-        <android.support.percent.PercentRelativeLayout
+        <androidx.percentlayout.widget.PercentRelativeLayout
             android:id="@+id/showfactory"
             android:layout_height="match_parent"
             app:layout_widthPercent="25%">
@@ -495,9 +495,9 @@
                 app:font_name="brody.ttf"
                 app:layout_heightPercent="20%" />
 
-        </android.support.percent.PercentRelativeLayout>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
 
-        <android.support.percent.PercentRelativeLayout
+        <androidx.percentlayout.widget.PercentRelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toEndOf="@id/showfactory">
@@ -558,7 +558,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="buyFactory1"
-                    android:src="@drawable/smartst1b" />
+                    app:srcCompat="@drawable/smartst1b" />
 
                 <ImageView
                     android:id="@+id/f10"
@@ -566,7 +566,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:onClick="buyFactory10"
-                    android:src="@drawable/smartst10b" />
+                    app:srcCompat="@drawable/smartst10b" />
 
                 <ImageView
                     android:id="@+id/f50"
@@ -574,11 +574,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="buyFactory50"
-                    android:src="@drawable/smartst50b" />
+                    app:srcCompat="@drawable/smartst50b" />
             </LinearLayout>
 
-        </android.support.percent.PercentRelativeLayout>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
 
-    </android.support.percent.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
 
-</android.support.percent.PercentRelativeLayout>
+</androidx.percentlayout.widget.PercentRelativeLayout>

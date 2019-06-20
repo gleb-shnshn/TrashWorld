@@ -1,12 +1,11 @@
 package glebshanshin.trashworld;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.muddzdev.styleabletoastlibrary.StyleableToast;
+import com.muddzdev.styleabletoast.StyleableToast;
 
 public class StatisticsActivity extends UniActivity {
     TextView organicv, plasticv, metalv, glassv, notrecyclev, paperv, mistakev, trashv, TSHv;
@@ -23,30 +22,52 @@ public class StatisticsActivity extends UniActivity {
     }
 
     public void Yes(View view) {//подтверждение обнуления
-        clickPlayer.start();
+        App.getInstance().clickPlayer.start();
         setContentView(R.layout.statistics_main);
-        update(db);
+        resetData();
+        update();
+        StyleableToast.makeText(this, "✓  Все данные стерты", Toast.LENGTH_SHORT, R.style.Clear).show();
         init1();
-        init(db);
         fillall();
     }
 
+    private void resetData() {
+        TSH = 0;//очки TSH
+        man = 0;//количество уборщиков
+        car = 0;//количество мусоровозов
+        robot = 0;//количество роботов
+        factory = 0;//количество заводов
+        paperc = 0;//количество отсортированного мусора из категории бумага
+        plasticc = 0;//количество отсортированного мусора из категории пластик
+        metalc = 0;//количество отсортированного мусора из категории металл
+        organicc = 0;//количество отсортированного мусора из категории органика
+        notrecyclec = 0;//количество отсортированного мусора из категории электро
+        glassc = 0;//количество отсортированного мусора из категории стекло
+        trash = plasticc + paperc + metalc + organicc + notrecyclec + glassc;//общее количество мусора
+        mistake = 0;//количество ошибок
+        paperb = 1;//бонус для категории бумага
+        plasticb = 1;//бонус для категории пластик
+        metalb = 1;//бонус для категории металл
+        organicb = 1;//бонус для категории органика
+        notrecycleb = 1;//бонус для категории электро
+        glassb = 1;//бонус для категории стекло
+        multi = 1;//общий бонус(появляется по достижении 3 уровня по отдельности)
+        code1 = "0";//первый qr код
+        code2 = "0";//второй qr кол
+        music = 1f;//настройка громкости фоновой музыки
+        effects = 1f;//настройка громкости кликов
+    }
+
     public void No(View view) {//отказ обнуления
-        clickPlayer.start();
+        App.getInstance().clickPlayer.start();
         setContentView(R.layout.statistics_main);
         init1();
-        init(db);
         fillall();
     }
 
     public void reset(View view) {//задавание вопроса на обнуления
-        clickPlayer.start();
+        App.getInstance().clickPlayer.start();
         setContentView(R.layout.check_main);
-    }
-
-    private void update(SQLiteDatabase db) {//обнуление базы данных
-        db.update("Data", dbHelper.getDefault(), "_id = 1", null);
-        StyleableToast.makeText(this, "✓  Все данные стерты", Toast.LENGTH_SHORT, R.style.Clear).show();
     }
 
     private void fillall() {//заполнение всех пунктов статистики

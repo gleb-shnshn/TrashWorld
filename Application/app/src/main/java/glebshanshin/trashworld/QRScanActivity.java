@@ -1,8 +1,5 @@
 package glebshanshin.trashworld;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.media.MediaPlayer;
 import android.view.View;
 
 import com.journeyapps.barcodescanner.CaptureActivity;
@@ -20,16 +17,7 @@ public class QRScanActivity extends CaptureActivity {
     }
 
     private void finish1() {
-        DBHelper dbHelper = new DBHelper(this);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor cursor = db.query("Data", null, null, null, null, null, null);
-        cursor.moveToFirst();
-        float effects = cursor.getFloat(23);
-        cursor.close();
-        MediaPlayer clickPlayer = MediaPlayer.create(this, R.raw.click);
-        clickPlayer.setVolume(effects, effects);
-        clickPlayer.setLooping(false);
-        clickPlayer.start();
+        App.getInstance().clickPlayer.start();
         finish();
     }
 

@@ -1,8 +1,6 @@
 package glebshanshin.trashworld;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -167,14 +165,7 @@ public class StoreActivity extends UniActivity {
     }
 
     public void toLotteryStore(View view) {//переход в класс магазин лотереек
-        if (notIntent) {
-            notIntent = false;
-            update(db);
-            Intent intent = new Intent(StoreActivity.this, LotteryStoreActivity.class);
-            intent.putExtra("prize", "0");
-            startActivity(intent);
-            finish1();
-        }
+        transfer(LotteryStoreActivity.class);
     }
 
     private long get(int n, long a1, int d) {
@@ -184,16 +175,6 @@ public class StoreActivity extends UniActivity {
     private void updateTSH() {//установка нового баланса TSH
         String m = getPrice(TSH);
         TSHv.setText(m);
-    }
-
-    private void update(SQLiteDatabase db) {//обновление базы данных при переходе на новую активность
-        ContentValues newValues = new ContentValues();
-        newValues.put("TSH", TSH);
-        newValues.put("man", man);
-        newValues.put("car", car);
-        newValues.put("robot", robot);
-        newValues.put("factory", factory);
-        db.update("Data", newValues, "_id = 1", null);
     }
 
     private void setTextSize() {//установка масштабируемых шрифтов
@@ -225,7 +206,7 @@ public class StoreActivity extends UniActivity {
     }
 
     private void increase(long b, int i, String d) {// покупка товара(количество уже купленного, количество нужное купить, название покупки)
-        clickPlayer.start();
+        App.getInstance().clickPlayer.start();
         int t = 0;
         switch (d) {//определение цены первого предмета
             case "man":
@@ -261,9 +242,9 @@ public class StoreActivity extends UniActivity {
             updateTSH();
             updatePRICE(d);
             updateBlocked();
-            update(db);
+            update();
         } else {//если не хватает
-            toast(money - TSH);
+            showToast(money - TSH);
         }
     }
 
@@ -318,14 +299,14 @@ public class StoreActivity extends UniActivity {
 
 
     public void toPlay(View view) {//переход в класс основного геймплея
-        update(db);
+        update();
         transfer(PlayActivity.class);
     }
 
     //выход в игру через встроенную кнопку назад
     @Override
     public void onBackPressed() {
-        update(db);
+        update();
         transfer(PlayActivity.class);
         super.onBackPressed();
     }

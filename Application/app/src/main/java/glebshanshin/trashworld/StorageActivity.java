@@ -1,6 +1,5 @@
 package glebshanshin.trashworld;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -15,7 +14,7 @@ import com.google.gson.GsonBuilder;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
-import com.muddzdev.styleabletoastlibrary.StyleableToast;
+import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.util.HashMap;
 
@@ -95,15 +94,10 @@ public class StorageActivity extends UniActivity {
     public void delete(int num) {
         if (num == 1) {
             code1 = "0";
-            ContentValues newValues = new ContentValues();
-            newValues.put("qr1", 0);
-            db.update("Data", newValues, "_id = 1", null);
         } else {
             code2 = "0";
-            ContentValues newValues = new ContentValues();
-            newValues.put("qr2", 0);
-            db.update("Data", newValues, "_id = 1", null);
         }
+        update();
         transfer(StorageActivity.class);
     }
 
@@ -230,9 +224,7 @@ public class StorageActivity extends UniActivity {
         b /= 2;//т.к. возвращаем только половину
         TSH += b;
         StyleableToast.makeText(this, "Вам вернули  " + getPrice(b) + " TSH", Toast.LENGTH_SHORT, R.style.get).show();
-        ContentValues newValues = new ContentValues();
-        newValues.put("TSH", TSH);
-        db.update("Data", newValues, "_id = 1", null);
+        update();
     }
 
     public void No(View view) {//если не согласился удалять

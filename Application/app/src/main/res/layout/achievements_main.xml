@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".AchievementsActivity">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/tomenu"
         android:background="@drawable/smartback2"
         android:onClick="toMenu"
@@ -16,7 +16,7 @@
         app:layout_marginLeftPercent="5%"
         app:layout_marginTopPercent="2.5%" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/reload"
         android:layout_alignParentEnd="true"
         android:background="@drawable/smartbonus"
@@ -26,13 +26,13 @@
         app:layout_marginRightPercent="5%"
         app:layout_marginTopPercent="2.5%" />
 
-    <Space
-        android:layout_below="@id/reload"
+    <androidx.legacy.widget.Space
         android:id="@+id/s"
         android:layout_width="match_parent"
-        app:layout_heightPercent="2%"/>
+        android:layout_below="@id/reload"
+        app:layout_heightPercent="2%" />
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_below="@id/s"
         app:layout_heightPercent="100%">
@@ -54,7 +54,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/trashs"
@@ -62,7 +62,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/trashg"
@@ -70,7 +70,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
             </LinearLayout>
 
             <LinearLayout
@@ -85,7 +85,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/mistakes"
@@ -93,7 +93,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/mistakeg"
@@ -101,7 +101,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
             </LinearLayout>
 
             <LinearLayout
@@ -116,7 +116,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/papers"
@@ -124,7 +124,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/paperg"
@@ -132,7 +132,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
             </LinearLayout>
 
             <LinearLayout
@@ -147,7 +147,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/metals"
@@ -155,7 +155,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/metalg"
@@ -163,7 +163,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
             </LinearLayout>
 
             <LinearLayout
@@ -178,7 +178,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/organics"
@@ -186,7 +186,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/organicg"
@@ -194,7 +194,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
             </LinearLayout>
 
             <LinearLayout
@@ -209,7 +209,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/notrecycles"
@@ -217,7 +217,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/notrecycleg"
@@ -225,7 +225,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
             </LinearLayout>
 
             <LinearLayout
@@ -240,7 +240,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/glasss"
@@ -248,7 +248,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/glassg"
@@ -256,7 +256,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
             </LinearLayout>
 
             <LinearLayout
@@ -271,7 +271,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/plastics"
@@ -279,7 +279,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/plasticg"
@@ -287,7 +287,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
             </LinearLayout>
 
             <LinearLayout
@@ -302,7 +302,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/mans"
@@ -310,7 +310,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/mang"
@@ -318,7 +318,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
             </LinearLayout>
 
             <LinearLayout
@@ -333,7 +333,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/cars"
@@ -341,7 +341,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/carg"
@@ -349,7 +349,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
             </LinearLayout>
 
             <LinearLayout
@@ -364,7 +364,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/robots"
@@ -372,7 +372,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/robotg"
@@ -380,7 +380,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
             </LinearLayout>
 
             <LinearLayout
@@ -395,7 +395,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/factorys"
@@ -403,7 +403,7 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
 
                 <ImageView
                     android:id="@+id/factoryg"
@@ -411,10 +411,10 @@
                     android:layout_height="150dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/empty" />
+                    app:srcCompat="@drawable/empty" />
             </LinearLayout>
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
-</android.support.percent.PercentRelativeLayout>
+</androidx.percentlayout.widget.PercentRelativeLayout>

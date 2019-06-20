@@ -19,7 +19,7 @@
         android:id="@+id/image"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/mistakestat" />
+        app:srcCompat="@drawable/mistakestat" />
 
     <TextView
         android:id="@+id/title"

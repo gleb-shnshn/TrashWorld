@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,7 +17,7 @@
         app:layout_marginTopPercent="2.5%" />
 
 
-    <android.support.percent.PercentRelativeLayout
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/first"
         android:layout_alignParentEnd="true"
         android:background="@drawable/mea"
@@ -36,7 +36,7 @@
             app:font_name="nyeti.ttf"
             app:layout_marginRightPercent="10%"
             app:layout_widthPercent="100%" />
-    </android.support.percent.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <Space
         android:id="@+id/fs"
@@ -44,7 +44,7 @@
         app:layout_heightPercent="6%"
         app:layout_widthPercent="100%" />
 
-    <android.support.percent.PercentRelativeLayout
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/bronze"
         android:layout_below="@id/fs"
         app:layout_heightPercent="20%"
@@ -91,7 +91,7 @@
 
         </LinearLayout>
 
-        <android.support.percent.PercentRelativeLayout
+        <androidx.percentlayout.widget.PercentRelativeLayout
             android:layout_toEndOf="@+id/txtb"
             android:orientation="vertical"
             app:layout_aspectRatio="100%"
@@ -105,9 +105,9 @@
                 android:onClick="buyBronze"
                 app:layout_aspectRatio="100%"
                 app:layout_heightPercent="60%" />
-        </android.support.percent.PercentRelativeLayout>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
 
-    </android.support.percent.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <Space
         android:id="@+id/bs"
@@ -115,7 +115,7 @@
         app:layout_heightPercent="5%"
         app:layout_widthPercent="100%" />
 
-    <android.support.percent.PercentRelativeLayout
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:id="@+id/silver"
         android:layout_below="@id/bs"
         app:layout_heightPercent="20%"
@@ -162,7 +162,7 @@
 
         </LinearLayout>
 
-        <android.support.percent.PercentRelativeLayout
+        <androidx.percentlayout.widget.PercentRelativeLayout
             android:layout_toEndOf="@+id/txts"
             android:orientation="vertical"
             app:layout_aspectRatio="100%"
@@ -176,9 +176,9 @@
                 android:onClick="buySilver"
                 app:layout_aspectRatio="100%"
                 app:layout_heightPercent="60%" />
-        </android.support.percent.PercentRelativeLayout>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
 
-    </android.support.percent.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
 
     <Space
         android:id="@+id/ss"
@@ -186,7 +186,7 @@
         app:layout_heightPercent="5%"
         app:layout_widthPercent="100%" />
 
-    <android.support.percent.PercentRelativeLayout
+    <androidx.percentlayout.widget.PercentRelativeLayout
         android:layout_below="@id/ss"
         app:layout_heightPercent="20%"
         app:layout_widthPercent="100%"
@@ -232,7 +232,7 @@
 
         </LinearLayout>
 
-        <android.support.percent.PercentRelativeLayout
+        <androidx.percentlayout.widget.PercentRelativeLayout
             android:layout_toEndOf="@+id/txtg"
             android:orientation="vertical"
             app:layout_aspectRatio="100%"
@@ -246,8 +246,8 @@
                 android:onClick="buyGold"
                 app:layout_aspectRatio="100%"
                 app:layout_heightPercent="60%" />
-        </android.support.percent.PercentRelativeLayout>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
 
-    </android.support.percent.PercentRelativeLayout>
+    </androidx.percentlayout.widget.PercentRelativeLayout>
 
-</android.support.percent.PercentRelativeLayout>
+</androidx.percentlayout.widget.PercentRelativeLayout>

@@ -29,13 +29,13 @@ public class SettingsActivity extends UniActivity {
     }//переход в активность с настройкой музыки
 
     public void toInfo(View view) {//показ информации
-        clickPlayer.start();
+        App.getInstance().clickPlayer.start();
         notInInfo = false;
         setContentView(R.layout.info_main);
     }
 
     public void toSettings(View view) {//возврат настроек
-        clickPlayer.start();
+        App.getInstance().clickPlayer.start();
         notInInfo = true;
         setContentView(R.layout.settings_main);
     }
@@ -46,7 +46,7 @@ public class SettingsActivity extends UniActivity {
         if (!notInInfo) {
             notInInfo = true;
             setContentView(R.layout.settings_main);
-            clickPlayer.start();
+            App.getInstance().clickPlayer.start();
         } else {
             transfer(MainActivity.class);
             super.onBackPressed();

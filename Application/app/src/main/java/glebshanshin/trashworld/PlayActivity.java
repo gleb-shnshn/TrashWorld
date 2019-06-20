@@ -1,8 +1,6 @@
 package glebshanshin.trashworld;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.MotionEvent;
@@ -55,26 +53,8 @@ public class PlayActivity extends UniActivity implements OnTouchListener {
     }
 
     public void toMenu(View view) {//выход в главное меню
-        update(db);
+        update();
         transfer(MainActivity.class);
-    }
-
-    private void update(SQLiteDatabase db) {//обновление базы данных при переходе в другую активность
-        ContentValues newValues = new ContentValues();
-        newValues.put("TSH", TSH);
-        newValues.put("man", man);
-        newValues.put("car", car);
-        newValues.put("robot", robot);
-        newValues.put("factory", factory);
-
-        newValues.put("paper", paperc);
-        newValues.put("plastic", plasticc);
-        newValues.put("metal", metalc);
-        newValues.put("organic", organicc);
-        newValues.put("notrecycle", notrecyclec);
-        newValues.put("glass", glassc);
-        newValues.put("mistakes", mistake);
-        db.update("Data", newValues, "_id = 1", null);
     }
 
     private void incCounter(String choice) {//изменение числа правильно отсортированного мусора
@@ -101,7 +81,7 @@ public class PlayActivity extends UniActivity implements OnTouchListener {
     }
 
     public void toStore(View view) {//переход в класс магазина
-        update(db);
+        update();
         transfer(StoreActivity.class);
     }
 
@@ -147,7 +127,7 @@ public class PlayActivity extends UniActivity implements OnTouchListener {
         int bottomY = i.getBottom();
         if (eX > leftX && eX < rightX && eY > topY && eY < bottomY) {
             if (!choice.equals("" + i.getTag())) {//проверка на повтор, чтобы не устанавливать одинаковую картинку по несколько раз
-                clickPlayer.start();
+                App.getInstance().clickPlayer.start();
                 circle.setImageDrawable(getDrawable(getResources().getIdentifier(i.getTag() + "", "drawable", getPackageName())));
                 dropFlag = true;
                 choice = "" + i.getTag();
@@ -267,7 +247,7 @@ public class PlayActivity extends UniActivity implements OnTouchListener {
     //выход в главное меню через встроенную кнопку назад
     @Override
     public void onBackPressed() {
-        update(db);
+        update();
         transfer(MainActivity.class);
         super.onBackPressed();
     }

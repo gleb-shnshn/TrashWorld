@@ -1,12 +1,12 @@
 package glebshanshin.trashworld;
 
-import android.content.ContentValues;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.muddzdev.styleabletoastlibrary.StyleableToast;
+import com.muddzdev.styleabletoast.StyleableToast;
+
 
 public class BonusActivity extends UniActivity {
     ImageView plastic, glass, paper, notrecycle, metal, organic;
@@ -46,17 +46,15 @@ public class BonusActivity extends UniActivity {
 
     public void reload(View view) {//кнопка обнуления бонусов при достижении 3 уровня у всех бонусов
         if (flag) {
-            clickPlayer.start();
-            ContentValues newValues = new ContentValues();
-            newValues.put("paperb", 1);
-            newValues.put("plasticb", 1);
-            newValues.put("metalb", 1);
-            newValues.put("organicb", 1);
-            newValues.put("notrecycleb", 1);
-            newValues.put("glassb", 1);
-            newValues.put("multi", multi * 3);
-            db.update("Data", newValues, "_id = 1", null);
-            init(db);
+            App.getInstance().clickPlayer.start();
+            paperb = 1;
+            plasticb = 1;
+            metalb = 1;
+            organicb = 1;
+            notrecycleb = 1;
+            glassb = 1;
+            multi *= 3;
+            update();
             StyleableToast.makeText(this, "✓  Бонусы успешно обнулены", R.style.Clear).show();
             reloadt.setAlpha(0);
             flag = false;

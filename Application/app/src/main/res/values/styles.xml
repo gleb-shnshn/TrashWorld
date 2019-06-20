@@ -1,36 +1,37 @@
-<resources xmlns:android="http://schemas.android.com/tools">
+<resources >
 
-    <style name="AppTheme" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/emptypage2</item>
     </style>
 
     <style name="Clear">
-        <item name="colorBackground">#70dd45</item>
-        <item name="textColor">#000</item>
-        <item name="length">SHORT</item>
-        <item name="radius">10dp</item>
+        <item name="stTextColor">#000</item>
+        <item name="stColorBackground">#70dd45</item>
+        <item name="stLength">SHORT</item>
+        <item name="stRadius">10dp</item>
     </style>
 
+
     <style name="get">
-        <item name="colorBackground">#70dd45</item>
-        <item name="textColor">#000</item>
-        <item name="length">SHORT</item>
-        <item name="radius">8dp</item>
-        <item name="iconStart">@drawable/toastic</item>
+        <item name="stColorBackground">#70dd45</item>
+        <item name="stTextColor">#000</item>
+        <item name="stLength">SHORT</item>
+        <item name="stRadius">8dp</item>
+        <item name="stIconStart">@drawable/toastic</item>
     </style>
 
     <style name="wrong">
-        <item name="colorBackground">#e82926</item>
-        <item name="textColor">#000</item>
-        <item name="length">SHORT</item>
-        <item name="radius">8dp</item>
-        <item name="iconStart">@drawable/toastic</item>
+        <item name="stColorBackground">#e82926</item>
+        <item name="stTextColor">#000</item>
+        <item name="stLength">SHORT</item>
+        <item name="stRadius">8dp</item>
+        <item name="stIconStart">@drawable/toastic</item>
     </style>
 
     <style name="wrong1">
-        <item name="colorBackground">#e82926</item>
-        <item name="textColor">#fff</item>
-        <item name="length">SHORT</item>
-        <item name="radius">8dp</item>
+        <item name="stColorBackground">#e82926</item>
+        <item name="stTextColor">#fff</item>
+        <item name="stLength">SHORT</item>
+        <item name="stRadius">8dp</item>
     </style>
 </resources>

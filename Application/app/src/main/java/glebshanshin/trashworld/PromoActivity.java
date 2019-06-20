@@ -2,7 +2,6 @@ package glebshanshin.trashworld;
 
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -11,7 +10,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.muddzdev.styleabletoastlibrary.StyleableToast;
+import com.muddzdev.styleabletoast.StyleableToast;
 
 import java.util.HashMap;
 
@@ -33,12 +32,6 @@ public class PromoActivity extends UniActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.promo_main);
-    }
-
-    private void update(SQLiteDatabase db) {//обновление базы данных
-        ContentValues newValues = new ContentValues();
-        newValues.put("TSH", TSH);
-        db.update("Data", newValues, "_id = 1", null);
     }
 
     @Override
@@ -103,30 +96,30 @@ public class PromoActivity extends UniActivity {
         }
         TSH += b;
         StyleableToast.makeText(this, "Вы получили " + t + a.substring(5, 6) + " TSH", Toast.LENGTH_SHORT, R.style.get).show();
-        update(db);
+        update();
     }
 
     public void Scan(View view) {//кнопка сканирования
-        clickPlayer.start();
+        App.getInstance().clickPlayer.start();
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setCaptureActivity(QRScanActivity.class);
         integrator.initiateScan();
     }
 
     public void Generate(View view) {//переход в класс хранения своих QR кодов
-        update(db);
+        update();
         transfer(StorageActivity.class);
     }
 
     public void toSettings(View view) {//переход в класс настроек
-        update(db);
+        update();
         transfer(SettingsActivity.class);
     }
 
     //переход в настройки с помощью встроенной кнопки назад
     @Override
     public void onBackPressed() {
-        update(db);
+        update();
         transfer(SettingsActivity.class);
         super.onBackPressed();
     }

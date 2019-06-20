@@ -1,6 +1,5 @@
 package glebshanshin.trashworld;
 
-import android.content.ContentValues;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -14,10 +13,10 @@ public class MusicActivity extends UniActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.music_main);
-        init();
+        initViews();
     }
 
-    private void init() {
+    private void initViews() {
         final TextView musicText = findViewById(R.id.music), effectsText = findViewById(R.id.effects);
         musicText.setTextSize(scale * 50f);
         effectsText.setTextSize(scale * 50f);
@@ -28,7 +27,7 @@ public class MusicActivity extends UniActivity {
             @Override
             public void onProgressChanged(DiscreteSeekBar seekBar, int value, boolean fromUser) {//измененение музыки
                 musicText.setText("Музыка " + value + "%");
-                menuPlayer.setVolume((float) value / 100, (float) value / 100);
+                App.getInstance().menuPlayer.setVolume((float) value / 100, (float) value / 100);
             }
 
             @Override
@@ -37,7 +36,7 @@ public class MusicActivity extends UniActivity {
 
             @Override
             public void onStopTrackingTouch(DiscreteSeekBar seekBar) {
-                clickPlayer.start();
+                App.getInstance().clickPlayer.start();
             }
         });
         effectes = findViewById(R.id.effectsbar);
@@ -47,7 +46,7 @@ public class MusicActivity extends UniActivity {
             @Override
             public void onProgressChanged(DiscreteSeekBar seekBar, int value, boolean fromUser) {//изменение музыки
                 effectsText.setText("Звуки " + value + "%");
-                clickPlayer.setVolume((float) value / 100, (float) value / 100);
+                App.getInstance().clickPlayer.setVolume((float) value / 100, (float) value / 100);
             }
 
             @Override
@@ -56,21 +55,20 @@ public class MusicActivity extends UniActivity {
 
             @Override
             public void onStopTrackingTouch(DiscreteSeekBar seekBar) {
-                clickPlayer.start();
+                App.getInstance().clickPlayer.start();
             }
         });
     }
-    public void save(){
+
+    public void save() {
         if (notIntent) {
             music = (float) musics.getProgress() / 100;
             effects = (float) effectes.getProgress() / 100;
-            ContentValues newValues = new ContentValues();
-            newValues.put("music", music);
-            newValues.put("effects", effects);
-            db.update("Data", newValues, "_id = 1", null);
+            update();
             transfer(SettingsActivity.class);
         }
     }
+
     public void toSettings(View view) {//переход в класс настроек
         save();
     }
